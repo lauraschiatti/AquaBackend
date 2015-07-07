@@ -1,40 +1,55 @@
-@extends('layout/template')
-@section('title')
-    <h1>Nodes</h1>
-@stop
+@extends('layout.admin')
+
 @section('content')
-    <a href="{{url('/nodes/create')}}" class="btn btn-success">Create Node</a>
-    <hr>
-    <table class="table table-striped table-bordered table-hover">
-        <thead>
-        <tr class="bg-info">
-            <th>Id</th>
-            <th>Name</th>
-            <th>Longitude</th>
-            <th>Latitude</th>
-            <th colspan="3">Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach ($nodes as $node)
-            <tr>
-                <td>{{ $node->id }}</td>
-                <td>{{ $node->name }}</td>
-                <td>{{ $node->longitude }}</td>
-                <td>{{ $node->latitude }}</td>
-                <td><a href="{{url('nodes',$node->id)}}" class="btn btn-primary">Read</a></td>
-                <td>
-                    <a href="{{route('nodes.edit', $node->id)}}" class="btn btn-warning">Update</a>
-                </td>
-                <td>
-                    {!! Form::open(['method' => 'DELETE', 'route'=>['nodes.destroy', $node->id]]) !!}
-                    <input class="btn btn-danger" type="submit" value="Delete">
-                    {!! Form::close() !!}
-                </td>
-            </tr>
-        @endforeach
+    <div class="desktop row" id="nodes">
+        <!-- Tittle -->
+        <div class="linker"><p class="light">Dashboard > Nodes </p></div>
+        <h4 class="light">Nodes</h4>
+        <div class="divider"></div>
 
-        </tbody>
+        <!-- Table -->
+        <div class="col s12">
+            <table class="striped">
+                <thead>
+                <tr>
+                    <th data-field="id">Id</th>
+                    <th data-field="name">Name</th>
+                    <th data-field="price">Longitude</th>
+                    <th data-field="id">Latitude</th>
+                    <th data-field="name">Actions</th>
+                </tr>
+                </thead>
 
-    </table>
+                <tbody>
+                @foreach ($nodes as $node)
+                    <tr>
+                        <td>{{ $node->id }}</td>
+                        <td>{{ $node->name }}</td>
+                        <td>{{ $node->longitude }}</td>
+                        <td>{{ $node->latitude }}</td>
+                        <td>
+                            <a href="{{url('nodes',$node->id)}}"><i class="material-icons">visibility</i></a>
+                            <a href="{{route('nodes.edit', $node->id)}}"><i class="material-icons">edit</i></a>
+                            {!! Form::open(['method' => 'DELETE', 'route'=>['nodes.destroy', $node->id]]) !!}
+                            <button type="submit">
+                                <i class="material-icons">delete</i>
+                            </button>
+                                <!--<i class="material-icons">delete</i>-->
+                            {!! Form::close() !!}
+                        </td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <!-- FLOATING BUTTON -->
+    <div class="fixed-action-btn hide-on-large-only" id="#lab-add">
+        <a href="{{url('/nodes/create')}}" class="btn-floating btn-large waves-effect waves-circle waves-light red">
+            <i class="large material-icons">+</i>
+        </a>
+    </div>
+    <!-- FLOATING BUTTON -->
 @endsection

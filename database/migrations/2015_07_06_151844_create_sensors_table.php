@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateNodesTable extends Migration
+class CreateSensorsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,12 @@ class CreateNodesTable extends Migration
      */
     public function up()
     {
-        //@todo verificar relaciones de la tabla
-        Schema::create('Nodes', function (Blueprint $table) {
+        Schema::create('sensors', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->double('longitude');
-            $table->double('latitude');
+            $table->string('type');
+            $table->string('unit');
+            $table->string('range');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateNodesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('Nodes');
+        Schema::drop('sensors');
     }
 }

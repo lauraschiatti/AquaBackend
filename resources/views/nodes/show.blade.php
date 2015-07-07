@@ -1,4 +1,4 @@
-@extends('layout/template')
+@extends('layout.admin')
 @section('title')
     <h1>Node info</h1>
 @stop
@@ -27,6 +27,13 @@
             <div class="col-sm-10">
                 <input type="text" class="form-control" id="latitude" placeholder={{$node->latitude}} readonly>
             </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Sensors</label>
+            @foreach ($sensors as $sensor)
+                <input type="text" class="form-control col-sm-2" id="latitude" placeholder={{$sensor}} readonly>
+            @endforeach
         </div>
 
         <div class="form-group">

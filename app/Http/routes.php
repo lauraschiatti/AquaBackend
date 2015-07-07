@@ -16,3 +16,9 @@ Route::get('/', function () {
 });
 
 Route::resource('nodes', 'NodesController');
+
+Route::resource('sensors', 'SensorsController');
+
+//Route::get('sensorsbynode/{node_id}', ['as' => 'sensorsbynode_show', 'uses' => 'SensorsByNodeController@showSensors']);
+
+Route::resource('sensorsbynode', 'SensorsByNodeController');
