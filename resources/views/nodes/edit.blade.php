@@ -1,82 +1,119 @@
 @extends('layout.admin')
+
 @section('title')
-    <h1>Update Node</h1>
+    <a href="#" class="mobile-tittle">Edit Node</a>
+    <a href="{{ url('nodes')}}" class="mobile-right"><i class="material-icons">close</i></a>
 @stop
+
 @section('content')
-    {!! Form::model($node,[
-    'method' => 'PUT',
-    'route'=>['nodes.update',$node->id]
-    ]) !!}
+    <div class="desktop row" id="nodes">
+        <!-- Tittle -->
+        <div class="linker"><p class="light">Dashboard > Nodes > Edit </p></div>
+        <h4 class="light">Edit Node</h4>
+        <div class="divider"></div>
 
-   <!-- Trigger the modal with a button -->
-    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Edit sensors</button>
+        <!-- Form -->
+        {!! Form::model($node,[
+        'method' => 'PUT',
+        'route'=>['nodes.update',$node->id]
+        ]) !!}
 
-    <!-- Modal -->
-    <div id="myModal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Sensors</h4>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="material-icons prefix">play_for_work</i>
+                <input id="icon_label" type="text" name="name" type="text" id="name" value="{{$node->name}}" required>
+                <label for="icon_label">Name</label>
             </div>
-            <div class="modal-body">
-                <!-- Table -->
-                <div class="col s12">
-                    <table class="striped">
-                        <thead>
-                        <tr>
-                            <th data-field="id">Id</th>
-                            <th data-field="name">Name</th>
-                            <th data-field="price">Type</th>
-                            <th data-field="id">Unit</th>
-                            <th data-field="name">Range</th>
-                            <th data-field="name">Action</th>
-                        </tr>
-                        </thead>
-
-                        <tbody>
-                        @foreach ($sensors as $sensor)
-                            <tr>
-                                <td>{{ $sensor->id }}</td>
-                                <td>{{ $sensor->name }}</td>
-                                <td>{{ $sensor->type }}</td>
-                                <td>{{ $sensor->unit }}</td>
-                                <td>{{ $sensor->range }}</td>
-                                <td>
-                                    {!! Form::open(['method' => 'DELETE', 'route'=>['sensorsbynode.destroy', $sensor->id, $node->id]]) !!}
-                                        <input class="material-icons" type="submit" value="Delete">
-                                    {!! Form::close() !!}
-                                </td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
-                </div>
+            <div class="input-field col s12" style="margin-bottom: 10px;">
+                <i class="material-icons prefix">swap_vert</i>
+                <input id="icon_swap_vert" type="text" name="longitude" type="text" id="longitude" pattern="\d+(\.\d*)?" value="{{$node->longitude}}" required>
+                <label for="icon_swap_vert">Latitude</label>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <div class="input-field col s12">
+                <i class="material-icons prefix">swap_horiz</i>
+                <input id="icon_swap_horiz" type="text"  name="latitude" type="text" id="latitude" pattern="\d+(\.\d*)?" value="{{$node->latitude}}" required>
+                <label for="icon_swap_horiz">Longitude</label>
             </div>
         </div>
 
-    </div>
+
+        <!-- FLOATING BUTTONS -->
+        <div class="fixed-action-btn" id="add">
+            <button type="submit" class="btn-floating btn-large waves-effect waves-circle waves-light"> <!-- Green -->
+                <i class="large material-icons">check</i>
+            </button>
+        </div>
+        <!-- FLOATING BUTTONS -->
+        {!! Form::close() !!}
+
+        <!-- FLOATING BUTTONS -->
+        <div class="fixed-action-btn" id="cancel">
+            <a href="{{ url('nodes')}}" class="btn-floating btn-large waves-effect waves-circle waves-light">
+                <i class="large material-icons">close</i>
+            </a>
+        </div>
+        <!-- FLOATING BUTTONS -->
+
+        <h4 class="light">Edit Sensors</h4>
+        <div class="divider"></div>
+
+        <!-- Table -->
+        <div class="col s12">
+            <table class="striped">
+                <thead>
+                <tr>
+                    <th data-field="id">Id</th>
+                    <th data-field="name">Name</th>
+                    <th data-field="type">Type</th>
+                    <th data-field="unit">Unit</th>
+                    <th data-field="range">Range</th>
+                    <th data-field="action">Action</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                @foreach ($sensors as $sensor)
+                    <tr>
+                        <td>{{ $sensor->id }}</td>
+                        <td>{{ $sensor->name }}</td>
+                        <td>{{ $sensor->type }}</td>
+                        <td>{{ $sensor->unit }}</td>
+                        <td>{{ $sensor->range }}</td>
+                        <td>
+                            <a class="modal-trigger" href="#modal2"><i class="material-icons">delete</i></a>
+                        </td>
+                    </tr>
+
+                    <!-- cancel modal Structure -->
+                    <div id="modal2" class="modal">
+                        <div class="modal-content center">
+                            <h6 class="light">This action can not be reversed, would you like to continue? </h6><br>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-flat">Yes</button>
+                                <button class="btn btn-flat modal-action modal-close">No</button>
+                            </div>
+                            <!--, $sensor->id, $node->id]-->
+                        </div>
+                    </div>
+                @endforeach
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Modal Trigger -->
+        <br>
+        <a class="waves-effect waves-light btn btn-primary modal-trigger right" href="#modal1">Modal</a>
+
+        <!-- Modal Structure -->
+        <div id="modal1" class="modal bottom-sheet">
+            <div class="modal-content">
+                <h4>Modal Header</h4>
+                <p>A bunch of text</p>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+            </div>
+        </div>
     </div>
 
-    <div class="form-group">
-        <label for="name">Name:</label>
-        <input class="form-control"  name="name" type="text" id="name" value="{{$node->name}}" required>
-    </div>
-    <div class="form-group">
-        <label for="longitude">Longitude:</label>
-        <input class="form-control"  name="longitude" type="text" id="longitude" value="{{$node->longitude}}" required>
-    </div>
-    <div class="form-group">
-        <label for="latitude">Latitude:</label>
-        <input class="form-control"  name="latitude" type="text" id="latitude" value="{{$node->latitude}}" required>
-    </div>
-    <div class="form-group">
-        <input class="btn btn-primary form-control" type="submit" value="Update">
-    </div>
-    {!! Form::close() !!}
 @stop

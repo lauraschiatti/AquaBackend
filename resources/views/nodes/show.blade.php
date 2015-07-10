@@ -1,45 +1,58 @@
 @extends('layout.admin')
+
 @section('title')
-    <h1>Node info</h1>
+    <a href="#" class="mobile-tittle">Node info</a>
+    <a href="{{ url('nodes')}}" class="mobile-right"><i class="material-icons">close</i></a>
 @stop
+
 @section('content')
-    <form class="form-horizontal">
-        <div class="form-group">
-            <label for="id" class="col-sm-2 control-label">Id</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" id="id" placeholder={{$node->id}} readonly>
-            </div>
+
+    <div class="desktop show row">
+        <!-- Tittle -->
+        <div class="linker"><p class="light">Dashboard > Nodes > Show </p></div>
+        <h4 class="light">Node Info</h4>
+        <div class="hide-on-med-and-down divider"></div>
+        <div class="input-field col s12">
+            <i class="material-icons prefix">play_for_work</i>
+            <input id="icon_label" type="text" id="id" value="{{$node->id}}" readonly>
+            <label for="icon_label">Id</label>
         </div>
-        <div class="form-group">
-            <label for="name" class="col-sm-2 control-label">Name</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" id="name" placeholder={{$node->name}} readonly>
-            </div>
+        <div class="input-field col s12">
+            <i class="material-icons prefix">play_for_work</i>
+            <input id="icon_label" type="text" value="{{$node->name}}" readonly>
+            <label for="icon_label">Name</label>
         </div>
-        <div class="form-group">
-            <label for="longitude" class="col-sm-2 control-label">Longitude</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" id="longitude" placeholder={{$node->longitude}} readonly>
-            </div>
+        <div class="input-field col s12">
+            <i class="material-icons prefix">play_for_work</i>
+            <input id="icon_label" type="text" id="id" value="{{$node->longitude}}" readonly>
+            <label for="icon_label">Longitude</label>
         </div>
-        <div class="form-group">
-            <label for="latitude" class="col-sm-2 control-label">Latitude</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" id="latitude" placeholder={{$node->latitude}} readonly>
-            </div>
+        <div class="input-field col s12">
+            <i class="material-icons prefix">play_for_work</i>
+            <input id="icon_label" type="text" id="id" value="{{$node->latitude}}" readonly>
+            <label for="icon_label">Latitude</label>
+        </div>
+        <div class="input-field col s12">
+            <h4 class="light">Sensors Info</h4><br>
+
+            <ul class="collection">
+                @foreach ($sensors as $sensor)
+                    <li class="collection-item avatar">
+                        <i class="material-icons circle">settings_remote</i>
+                        <span><strong>{{$sensor->name}}</strong></span>
+                        <p class="light"><strong>Id </strong>{{$sensor->id}}</p>
+                        <p class="light"><strong>Name </strong> {{$sensor->type}} </p>
+                        <p class="light"><strong>Unit </strong> {{$sensor->unit}} </p>
+                        <p class="light"><strong>range </strong> {{$sensor->range}} </p>
+
+                    </li>
+                @endforeach
+            </ul>
+            <div class="hide-on-med-and-down divider"></div>
         </div>
 
-        <div class="form-group">
-            <label class="col-sm-2 control-label">Sensors</label>
-            @foreach ($sensors as $sensor)
-                <input type="text" class="form-control col-sm-2" id="latitude" placeholder={{$sensor}} readonly>
-            @endforeach
-        </div>
 
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-                <a href="{{ url('nodes')}}" class="btn btn-primary">Back</a>
-            </div>
-        </div>
-    </form>
+
+        <a href="{{ url('nodes')}}" class="btn btn-primary right hide-on-med-and-down">Back</a>
+    </div>
 @stop

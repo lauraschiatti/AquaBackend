@@ -21,7 +21,7 @@
                 <!-- Small Navigation Bar -->
                 <div class="row hide-on-large-only primary">
                     <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-                    <a href="#" class="mobile-tittle">Dashboard</a>
+                    @yield('title')
                 </div>
 
                 <!-- Large Navigation Bar -->
@@ -49,8 +49,8 @@
                     <div class="container">
                         <div class="divider"></div>
                         <li class="active"><a href="#"><i class="material-icons left">widgets</i>Dashboard</a></li>
-                        <li><a href="#"><i class="material-icons left">place</i>Sensors</a></li>
-                        <li><a href="#"><i class="material-icons left">games</i>Nodes</a></li>
+                        <li><a href="{{url('/sensors')}}"><i class="material-icons left">place</i>Sensors</a></li>
+                        <li><a href="{{url('/nodes')}}"><i class="material-icons left">games</i>Nodes</a></li>
                         <li><a href="#"><i class="material-icons left">people</i>Users</a></li>
                         <div class="divider"></div>
                         <li><a href="#"><i class="material-icons left">settings</i>Settings</a></li>
@@ -101,7 +101,6 @@
         <a href="#!" class="btn primary">Yes</a>
     </div>
 </div>
-
 
 <script src="/js/jq/jquery.min.js" type="text/javascript"></script>						<!-- Jquery core JS -->
 <script src="/js/materialize.min.js" type="text/javascript"></script> 					<!-- Materialize core JS -->

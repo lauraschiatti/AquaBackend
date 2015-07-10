@@ -1,5 +1,10 @@
 @extends('layout.admin')
 
+@section('title')
+    <a href="#" class="mobile-tittle">Nodes</a>
+@stop
+
+
 @section('content')
     <div class="desktop row" id="nodes">
         <!-- Tittle -->
@@ -30,14 +35,23 @@
                         <td>
                             <a href="{{url('nodes',$node->id)}}"><i class="material-icons">visibility</i></a>
                             <a href="{{route('nodes.edit', $node->id)}}"><i class="material-icons">edit</i></a>
-                            {!! Form::open(['method' => 'DELETE', 'route'=>['nodes.destroy', $node->id]]) !!}
-                            <button type="submit">
-                                <i class="material-icons">delete</i>
-                            </button>
-                                <!--<i class="material-icons">delete</i>-->
-                            {!! Form::close() !!}
+
+                            <a class="modal-trigger" href="#modal2"><i class="material-icons">delete</i></a>
                         </td>
                     </tr>
+
+                    <!-- cancel modal Structure -->
+                    <div id="modal2" class="modal">
+                        <div class="modal-content center">
+                            <h6 class="light">This action can not be reversed, would you like to continue? </h6><br>
+                            <div class="modal-footer">
+                                {!! Form::open(['method' => 'DELETE', 'route'=>['nodes.destroy', $node->id]]) !!}
+                                <button type="submit" class="btn btn-flat">Yes</button>
+                                {!! Form::close() !!}
+                                <button class="btn btn-flat modal-action modal-close">No</button>
+                            </div>
+                        </div>
+                    </div>
                 @endforeach
                 </tbody>
             </table>
