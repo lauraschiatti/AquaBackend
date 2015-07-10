@@ -11,7 +11,6 @@
     <link href="/css/materialize.min.css" rel="stylesheet">               					           <!-- Materialize core CSS -->
     <link href="/css/lab.css" rel="stylesheet">                         						           <!-- Lab core CSS -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">	 <!-- Material Icons -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"> <!--Bootstrap-->
 </head>
 <body>
 <header>
@@ -31,7 +30,6 @@
                     <li><a href="#"><i class="material-icons">refresh</i></a></li>
                     <li><a href="#"><i class="material-icons">vertical_align_bottom</i></a></li>
                     <li><a class="modal-trigger" href="#modal1"><i class="material-icons">close</i></a></li>
-
                 </ul>
 
                 <!-- Desktop Menu  -->
@@ -70,8 +68,8 @@
                     <!--Options-->
                     <div class="container">
                         <li><a href="#"><i class="material-icons left">widgets</i>Dashboard</a></li>
-                        <li><a href="#"><i class="material-icons left">place</i>Sensors</a></li>
-                        <li><a href="#"><i class="material-icons left">games</i>Nodes</a></li>
+                        <li><a href="{{url('/sensors')}}"><i class="material-icons left">place</i>Sensors</a></li>
+                        <li><a href="{{url('/nodes')}}"><i class="material-icons left">games</i>Nodes</a></li>
                         <li><a href="#"><i class="material-icons left">people</i>Users</a></li>
                         <div class="divider"></div>
                         <li><a href="#"><i class="material-icons left">person</i>Profile</a></li>
@@ -93,10 +91,12 @@
 
 <!-- Log out modal Structure -->
 <div id="modal1" class="modal">
+    <div class="modal-header primary center" style="padding-top: 20px; padding-bottom: 40px;">
+        <!--<h4 class="light white-text">Log out</h4>-->
+        <i class="material-icons white-text modal-action modal-close" style="margin-right: 20px; float: right;">close</i>
+    </div>
     <div class="modal-content center">
-        <h3>Log out</h3>
-        <div class="divider"></div>
-        <h6 class="light">Would you like to finish admin session? </h6><br>
+        <h6 class="light">Would you like to close admin session? </h6><br>
         <a href="#!" class="btn btn-flat modal-action modal-close">No</a>
         <a href="#!" class="btn primary">Yes</a>
     </div>
@@ -106,6 +106,5 @@
 <script src="/js/jq/jquery.min.js" type="text/javascript"></script>						<!-- Jquery core JS -->
 <script src="/js/materialize.min.js" type="text/javascript"></script> 					<!-- Materialize core JS -->
 <script src="/js/init.js" type="text/javascript"></script> 					          <!-- Init core JS -->
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> <!--Bootstrap->
 </body>
 </html>

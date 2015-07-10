@@ -14,9 +14,9 @@
                 <tr>
                     <th data-field="id">Id</th>
                     <th data-field="name">Name</th>
-                    <th data-field="price">Longitude</th>
-                    <th data-field="id">Latitude</th>
-                    <th data-field="name">Actions</th>
+                    <th data-field="longitude">Longitude</th>
+                    <th data-field="latitude">Latitude</th>
+                    <th data-field="actions">Actions</th>
                 </tr>
                 </thead>
 
@@ -44,11 +44,10 @@
         </div>
     </div>
 
-
     <!-- FLOATING BUTTON -->
-    <div class="fixed-action-btn hide-on-large-only" id="#lab-add">
+    <div class="fixed-action-btn" id="add">
         <a href="{{url('/nodes/create')}}" class="btn-floating btn-large waves-effect waves-circle waves-light red">
-            <i class="large material-icons">+</i>
+            <i class="large material-icons">add</i>
         </a>
     </div>
     <!-- FLOATING BUTTON -->
