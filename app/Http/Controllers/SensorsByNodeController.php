@@ -25,7 +25,7 @@ class SensorsByNodeController extends Controller
      */
     public function create()
     {
-
+        //
     }
 
     /**
@@ -35,7 +35,8 @@ class SensorsByNodeController extends Controller
      */
     public function store()
     {
-        //
+
+
     }
 
     /**
