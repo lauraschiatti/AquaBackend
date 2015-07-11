@@ -11,9 +11,20 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/dashboard', function () {
+    return view('layout.dashboard');
 });
+
+// Authentication routes...
+Route::get('adminlogin', 'Auth\AuthController@getAdminLogin');
+Route::post('adminlogin', 'Auth\AuthController@postAdminLogin');
+Route::get('/', 'Auth\AuthController@getLogout');
+
+// Registration routes...
+/*Route::get('register', 'Auth\AuthController@getRegister');
+Route::post('register', 'Auth\AuthController@postRegister');*/
+
+Route::resource('users', 'UsersController');
 
 Route::resource('nodes', 'NodesController');
 

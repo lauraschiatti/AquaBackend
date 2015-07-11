@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\SensorsByNode;
 use Request;
 use App\Http\Requests;
 use App\Nodes;
 use App\Sensors;
-use App\SensorByNode;
+use App\SensorsByNode;
 use Illuminate\Support\Facades\Input;
 
 
@@ -32,17 +31,21 @@ class NodesController extends Controller
     public function create()
     {
         $sensorsList = Sensors::all();
-        $sensors = array();
-        $finalSensor = array();
-        $sensors_names = array();
-        foreach($sensorsList as $sensor) {
-            $finalSensor["name"] = $sensor->name;
-            $finalSensor["type"] = $sensor->type;
-            $finalSensor["unit"] = $sensor->unit;
-            $finalSensor["range"] = $sensor->range;
+        if($sensorsList == null){
+            $sensors_names = "";
+        }else{
+            $sensors = array();
+            $finalSensor = array();
+            $sensors_names = array();
+            foreach($sensorsList as $sensor) {
+                $finalSensor["name"] = $sensor->name;
+                $finalSensor["type"] = $sensor->type;
+                $finalSensor["unit"] = $sensor->unit;
+                $finalSensor["range"] = $sensor->range;
 
-            array_push($sensors, $finalSensor);
-            array_push($sensors_names, $finalSensor["name"]);
+                array_push($sensors, $finalSensor);
+                array_push($sensors_names, $finalSensor["name"]);
+            }
         }
 
         return view('nodes.create', compact('sensors', 'sensors_names'));
@@ -61,23 +64,37 @@ class NodesController extends Controller
 
         if($node == null){
             Nodes::create($input);
+
+            //save sensors in that node
+            $n = Nodes::where("name", "=", Input::get('name'))->first();
+            $node_id = $n->id;
+
+            $sensors_checked = $input["sensors"];
+
+            foreach($sensors_checked as $sensor_checked){
+                $sensorbynode = new SensorsByNode();
+                $sensorbynode->node_id = $node_id;
+
+                $sensor = Sensors::where("name", "=",$sensor_checked)->first();
+                $sensorbynode->sensor_id = $sensor->id ;
+
+                $node = SensorsByNode::where("node_id", "=", $node_id)
+                    ->Where("sensor_id", "=", $sensor->id)
+                    ->first();
+
+                if($node == null){
+                    $sensorbynode->save();
+                }else{
+                    //@todo revisar que hacer en caso de que exista el sensor en el nodo
+                    //return $sensorbynode;
+                }
+
+            }
+
             return redirect('nodes');
         }else{
             //@todo revisar que devolver en caso de que exista el node
             return $node;
-        }
-
-        $n = Nodes::where("name", "=", Input::get('name'))->first();
-        $node_id = $n->id;
-
-        $sensors_checked = $input["sensors"];
-
-        foreach($sensors_checked as $sensor_checked){
-            $sensorbynode = new SensorsByNode();
-            $sensorbynode->node_id = $node_id;
-            $sensor = Sensors::where("name", "=",$sensor_checked)->first();
-            $sensorbynode->sensor_id = $sensor->id ;
-            $sensorbynode->save();
         }
 
         //$try = SensorsByNode::all();
@@ -93,14 +110,18 @@ class NodesController extends Controller
     public function show($id)
     {
         $node=Nodes::find($id);
-        $sensors = array();
+
+            $sensors = array();
         $sensorsbynode =  SensorsByNode::where("node_id", "=", $id)->get();
+
         foreach($sensorsbynode as $sensorbynode){
             $sensor_id = $sensorbynode->sensor_id;
             $sensor = Sensors::find($sensor_id);
-            $sensor =(object)$sensor;
-            array_push($sensors, $sensor->name);
+            $sensor->name =  strtoupper($sensor->name);
+            array_push($sensors, $sensor);
         }
+
+        //return $sensors;
         return view('nodes.show',compact('node', 'sensors'));
     }
 

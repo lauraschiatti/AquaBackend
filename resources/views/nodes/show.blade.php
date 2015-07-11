@@ -38,7 +38,7 @@
             <ul class="collection">
                 @foreach ($sensors as $sensor)
                     <li class="collection-item avatar">
-                        <i class="material-icons circle">settings_remote</i>
+                        <i class="material-icons circle red">settings_remote</i>
                         <span><strong>{{$sensor->name}}</strong></span>
                         <p class="light"><strong>Id </strong>{{$sensor->id}}</p>
                         <p class="light"><strong>Name </strong> {{$sensor->type}} </p>

@@ -21,17 +21,17 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="material-icons prefix">play_for_work</i>
-                <input id="icon_label" type="text" name="name" type="text" id="name" value="{{$node->name}}" required>
+                <input id="icon_label" class="validate" name="name" type="text" id="name" value="{{$node->name}}" required>
                 <label for="icon_label">Name</label>
             </div>
             <div class="input-field col s12" style="margin-bottom: 10px;">
                 <i class="material-icons prefix">swap_vert</i>
-                <input id="icon_swap_vert" type="text" name="longitude" type="text" id="longitude" pattern="\d+(\.\d*)?" value="{{$node->longitude}}" required>
+                <input id="icon_swap_vert" class="validate" name="longitude" type="text" id="longitude" pattern="\d+(\.\d*)?" value="{{$node->longitude}}" required>
                 <label for="icon_swap_vert">Latitude</label>
             </div>
             <div class="input-field col s12">
                 <i class="material-icons prefix">swap_horiz</i>
-                <input id="icon_swap_horiz" type="text"  name="latitude" type="text" id="latitude" pattern="\d+(\.\d*)?" value="{{$node->latitude}}" required>
+                <input id="icon_swap_horiz" class="validate"  name="latitude" type="text" id="latitude" pattern="\d+(\.\d*)?" value="{{$node->latitude}}" required>
                 <label for="icon_swap_horiz">Longitude</label>
             </div>
         </div>

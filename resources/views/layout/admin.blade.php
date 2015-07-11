@@ -40,7 +40,13 @@
                     <ul class="collection">
                         <li class="collection-item avatar">
                             <img src="/img/face.jpg" alt="" class="circle">
-                            <span class="title black-text">Username</span>
+                            <strong><span class="title black-text">
+                                @if(Auth::check())
+                                    {{strtoupper(Auth::user()->name)}}
+                                @else
+                                    User
+                                @endif
+                            </span></strong>
                             <p class="black-text">Admin Profile</p>
                             <a href="#!" class="secondary-content"><i class="right material-icons">chevron_right</i></a>
                         </li>
@@ -48,10 +54,10 @@
                     <!--Options-->
                     <div class="container">
                         <div class="divider"></div>
-                        <li class="active"><a href="#"><i class="material-icons left">widgets</i>Dashboard</a></li>
+                        <li class="active"><a href="{{url('/dashboard')}}"><i class="material-icons left">widgets</i>Dashboard</a></li>
                         <li><a href="{{url('/sensors')}}"><i class="material-icons left">place</i>Sensors</a></li>
                         <li><a href="{{url('/nodes')}}"><i class="material-icons left">games</i>Nodes</a></li>
-                        <li><a href="#"><i class="material-icons left">people</i>Users</a></li>
+                        <li><a href="{{url('users')}}"><i class="material-icons left">people</i>Users</a></li>
                         <div class="divider"></div>
                         <li><a href="#"><i class="material-icons left">settings</i>Settings</a></li>
                         <li><a href="#"><i class="material-icons left">turned_in</i>Help &amp; Feed</a></li>
@@ -67,10 +73,10 @@
                     </section>
                     <!--Options-->
                     <div class="container">
-                        <li><a href="#"><i class="material-icons left">widgets</i>Dashboard</a></li>
+                        <li><a href="{{url('/dashboard')}}"><i class="material-icons left">widgets</i>Dashboard</a></li>
                         <li><a href="{{url('/sensors')}}"><i class="material-icons left">place</i>Sensors</a></li>
                         <li><a href="{{url('/nodes')}}"><i class="material-icons left">games</i>Nodes</a></li>
-                        <li><a href="#"><i class="material-icons left">people</i>Users</a></li>
+                        <li><a href="{{url('users')}}"><i class="material-icons left">people</i>Users</a></li>
                         <div class="divider"></div>
                         <li><a href="#"><i class="material-icons left">person</i>Profile</a></li>
                         <li><a href="#"><i class="material-icons left">settings</i>Settings</a></li>
@@ -98,7 +104,7 @@
     <div class="modal-content center">
         <h6 class="light">Would you like to close admin session? </h6><br>
         <a href="#!" class="btn btn-flat modal-action modal-close">No</a>
-        <a href="#!" class="btn primary">Yes</a>
+        <a href="{{url('/')}}" class="btn primary">Yes</a>
     </div>
 </div>
 
