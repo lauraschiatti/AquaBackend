@@ -70,17 +70,22 @@ class AuthController extends Controller
 
     //@todo: remember me
 
+    public function getLogin()
+    {
+        return view('auth.login');
+    }
+
     public function getAdminLogin()
     {
         return view('auth.admin_login');
     }
 
-    public function postAdminLogin()
+    public function postLogin()
     {
         $email = Input::get('email');
         $password = Input::get('password');
 
-        if (Auth::attempt(['email' => $email, 'password' => $password, 'role' => 'admin'])) {
+        if (Auth::attempt(['email' => $email, 'password' => $password, 'role' => 'provider'])) {
             // Authentication passed...
             //@todo: mostrar usuario que inicio sesion
             $user = $email;
@@ -95,7 +100,7 @@ class AuthController extends Controller
                 $error = "WRONG USER OR PASSWORD";
             }
 
-            return view('auth.admin_login', compact('error'));
+            return view('auth.login', compact('error'));
         }
 
     }
@@ -103,6 +108,11 @@ class AuthController extends Controller
     public function getLogout()
     {
         Auth::logout();
-        return redirect('adminlogin');
+        return redirect('login');
+    }
+
+    public function getRegister()
+    {
+        return view('auth.register');
     }
 }

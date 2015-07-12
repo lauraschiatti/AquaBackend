@@ -19,11 +19,11 @@
     <div class="box-header">
         <img src="/img/brand-no-back.png" alt="brand">
     </div>
-    <!-- Content -->
-    <div class="box-content container">
-        <p id="login_error">{{$error or ""}}</p>
-        <!-- Form -->
-        {!! Form::open(['url' => 'adminlogin', 'class' => 'white-text']) !!}
+<!-- Content -->
+<div class="box-content container">
+    <p id="login_error">{{$error or ""}}</p>
+    <!-- Form -->
+    {!! Form::open(['url' => 'login', 'class' => 'white-text']) !!}
         <div class="row">
             <div class="input-field col s12">
                 <i class="material-icons prefix">person</i>
@@ -47,9 +47,10 @@
 
             <!-- Buttons-->
             <div class="col s12 center" style="margin-top: 20px;">
+                <a href="{{ url('register')}}" class="btn btn-primary primary waves-effect waves-light">Sign up</a>
                 <button class="btn btn-secundary waves-effect waves-light">Sign in</button>
             </div>
-            {!! Form::close() !!}
+    {!! Form::close() !!}
 
             <!-- Forgot -->
             <div class="col s12 center">
@@ -57,16 +58,16 @@
             </div>
 
         </div>
-    </div>
-    <!-- === BOX === -->
+</div>
+<!-- === BOX === -->
 
-    <div class="footer light">
-        <p>Help? Try <a class="light" href="#"><strong>reading our wiki</strong></a> or
-            <a class="light" href="#"><strong>contacting an human</strong></a></p>
-    </div>
+<div class="footer light">
+    <p>Help? Try <a class="light" href="#"><strong>reading our wiki</strong></a> or
+        <a class="light" href="#"><strong>contacting an human</strong></a></p>
+</div>
 
-    <script src="/js/jq/jquery.min.js" type="text/javascript"></script>						<!-- Jquery core JS -->
-    <script src="/js/materialize.min.js" type="text/javascript"></script> 					<!-- Materialize core JS -->
+<script src="/js/jq/jquery.min.js" type="text/javascript"></script>						<!-- Jquery core JS -->
+<script src="/js/materialize.min.js" type="text/javascript"></script> 					<!-- Materialize core JS -->
 </body>
 </html>
 

@@ -61,7 +61,7 @@
     <!-- FLOATING BUTTON -->
     <div class="fixed-action-btn" id="add">
         <a href="{{url('/users/create')}}" class="btn-floating btn-large waves-effect waves-circle waves-light red">
-            <i class="large material-icons">add</i>
+            <i class="large material-icons">person_add</i>
         </a>
     </div>
     <!-- FLOATING BUTTON -->

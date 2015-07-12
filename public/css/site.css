@@ -1,0 +1,115 @@
+/********************************************
+				        DEFAULT SETTINGS
+ ********************************************/
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+/***** Media Queries *****/
+@media only screen and (max-width : 665px) {
+  #tittle h2 {
+    font-size: 40px;
+  }
+}
+
+@media only screen and (max-width : 550px) {
+  #tittle h2 {
+    font-size: 30px;
+  }
+
+  #tittle h5 {
+    font-size: 15px;
+  }
+}
+
+/***** Palette *****/
+.primary { background: #007EE5 !important; }
+.secundary { background: #263238 !important; }
+.footer-copyright { background: #151F24 !important; }
+
+/***** Button Settings *****/
+.btn-primary, .btn-primary:hover, .btn-primary:focus {
+  background: #FFFFFF;
+  color: #1976D2;
+}
+
+.btn-secundary, .btn-secundary:hover, .btn-secundary:focus {
+  background: #007EE5;
+  color: #FFFFFF;
+}
+
+.btn-flat, .btn-flat:hover, .btn-flat:focus {
+  background: none;
+  color: #FFFFFF;
+  box-shadow: none !important;
+  -webkit-box-shadow:none !important;
+}
+
+/***** NAVBAR *****/
+nav {
+  box-shadow: none !important;
+  -webkit-box-shadow:none !important;
+}
+
+.brand img {
+  width: 150px;
+  margin-left: 30px;
+  margin-top: 5px;
+}
+
+.nav-wrapper .button-collapse i {
+  font-size: 25px;
+  margin-left: 30px;
+}
+
+.nav-wrapper .hide-on-med-and-down {
+  margin-right: 30px;
+}
+.nav-wrapper .hide-on-med-and-down li:hover {
+  background: none;
+}
+
+/***** Side Menu *****/
+.menu-header {
+  text-align: center;
+  background: #007EE5;
+}
+
+.menu-header img {
+  width: 100px;
+  margin-top: 30px;
+}
+
+/********************************************
+                  SECTIONS
+ ********************************************/
+/***** BANNER *****/
+#banner {
+  min-height: 620px;
+  max-height: 820px;
+  position: relative;
+}
+
+#tittle {
+  text-align: center;
+  margin-top: 50px;
+}
+
+#tittle h2 {
+  margin-bottom: 0px;
+}
+
+#tittle h5 {
+  margin-bottom: 40px;
+}
+
+#tittle p {
+  font-size: 11px;
+  margin-top: 8px;
+}

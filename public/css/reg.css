@@ -1,67 +1,78 @@
 /********************************************
-				      LOGIN SETTINGS
+				      REGISTRATION SETTINGS
  ********************************************/
-body{
+ body {
   background: #007EE5;
-  min-height: 100%;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
 
-#login_error{
-    color: white;
-    weight: bold;
-    text-align: center ;
+main {
+  flex: 1 0 auto;
+}
+
+@media only screen and (max-width : 410px) {
+  .page-footer .left { display: none; }
 }
 
 /***** Buttons Settings *****/
   /***** Primary *****/
 .btn-primary, .btn-primary:hover, .btn-primary:focus {
+  width: 100%;
+  background: #FFFFFF;
+  color: #007EE5;
+}
+
+/***** Navbar *****/
+nav {
+  background: #007EE5 !important;
+  box-shadow: none !important;
+  -webkit-box-shadow:none !important;
+}
+
+.brand img {
+  width: 150px;
+  margin-left: 30px;
+  margin-top: 5px;
+}
+
+.nav-wrapper .hide-on-small-only {
+  margin-right: 30px;
+}
+
+.nav-wrapper .hide-on-small-only li:hover {
   background: none;
-  color: #FFFFFF;
-  margin-bottom: 30px;
-}
-
-/***** secundary *****/
-.btn-secundary, .btn-secundary:hover, .btn-secundary:focus {
-background: #FFFFFF;
-color: #007EE5;
-margin-bottom: 30px;
-}
-
-/***** Brand Logo *****/
-.box-header {
-  text-align: center;
-}
-
-.box-header img{
-  margin-top: 40px;
-  max-width: 160px;
-  margin-left: 35px;
 }
 
 /***** Form *****/
-.box-content {
-  max-width: 280px;
+form {
+  max-width: 350px;
 }
 
 .input-field label,
 .input-field .prefix.active,
+input[type=text]:focus:not([readonly]) + label,
 input[type=email]:focus:not([readonly]) + label,
 input[type=password]:focus:not([readonly]) + label,
 input[type=checkbox]+label {
   color: #FFFFFF;
 }
 
+input[type=text],
 input[type=email],
 input[type=password] {
   border-bottom: 1px solid white;
 }
 
+input[type=text].valid, input[type=text]:focus.valid,
 input[type=email].valid, input[type=email]:focus.valid,
-input[type=password].valid, input[type=password]:focus.valid {
+input[type=password].valid, input[type=password]:focus.valid  {
   border-bottom: 1px solid #039BE5;
   box-shadow: 0 1px 0 0 #039BE5;
 }
 
+input[type=text]:focus:not([readonly]),
 input[type=email]:focus:not([readonly]),
 input[type=password]:focus:not([readonly]) {
   border-bottom: 1px solid #FFFFFF;
@@ -83,11 +94,12 @@ border-bottom: 2px solid #FFFFFF;
 }
 
 /***** Footer *****/
-.footer {
-  margin-top: 30px;
-  text-align: center;
+.page-footer {
+  background: #007EE5 !important;
+  padding: 30px;
 }
 
-.footer p, .footer a, .footer a:hover {
+.page-footer a{
   color: #FFFFFF;
+  margin-right: 10px;
 }

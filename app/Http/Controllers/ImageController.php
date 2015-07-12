@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\SensorsByNode;
+use Illuminate\Http\Request;
+
 use App\Http\Requests;
+use App\Http\Controllers\Controller;
+use App\Image;
+use Validator;
 
-class SensorsByNodeController extends Controller
+class ImageController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +18,7 @@ class SensorsByNodeController extends Controller
      */
     public function index()
     {
-       //
+        //
     }
 
     /**
@@ -25,7 +28,7 @@ class SensorsByNodeController extends Controller
      */
     public function create()
     {
-        //
+        return view('add-new-image');
     }
 
     /**
@@ -33,10 +36,22 @@ class SensorsByNodeController extends Controller
      *
      * @return Response
      */
-    public function store()
+    public function store(Request $request)
     {
+        // Process valid data & go to success page //
+        $image = new Image();
 
+        $file = $request->file('userfile');
+        $destination_path = 'uploads/';
+        $filename = str_random(6).'_'.$file->getClientOriginalName();
+        $file->move($destination_path, $filename);
 
+        /*$image->file = $destination_path . $filename;
+        $image->caption = $request->input('caption');
+        $image->description = $request->input('description');
+        $image->save();*/
+
+        return redirect('/image')->with('message','You just uploaded an image!');
     }
 
     /**
@@ -47,7 +62,7 @@ class SensorsByNodeController extends Controller
      */
     public function show($id)
     {
-
+        //
     }
 
     /**
@@ -78,12 +93,8 @@ class SensorsByNodeController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function destroy()//$sensor_id, $node_id)
+    public function destroy($id)
     {
-        /*SensorsByNode::where("node_id", "=", $node_id)
-                      ->Where("sensor_id", "=", $sensor_id)
-                      ->delete();
-        return redirect('nodes.edit');*/
-        return "";
+        //
     }
 }

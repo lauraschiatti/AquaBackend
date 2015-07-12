@@ -13,7 +13,7 @@ class CreateNodesTable extends Migration
     public function up()
     {
         //@todo verificar relaciones de la tabla
-        Schema::create('Nodes', function (Blueprint $table) {
+        Schema::create('nodes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->double('longitude');

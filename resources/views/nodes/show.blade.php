@@ -51,8 +51,6 @@
             <div class="hide-on-med-and-down divider"></div>
         </div>
 
-
-
         <a href="{{ url('nodes')}}" class="btn btn-primary right hide-on-med-and-down">Back</a>
     </div>
 @stop

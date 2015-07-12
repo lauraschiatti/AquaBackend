@@ -35,7 +35,6 @@
                         <td>
                             <a href="{{url('nodes',$node->id)}}"><i class="material-icons">visibility</i></a>
                             <a href="{{route('nodes.edit', $node->id)}}"><i class="material-icons">edit</i></a>
-
                             <a class="modal-trigger" href="#modal2"><i class="material-icons">delete</i></a>
                         </td>
                     </tr>

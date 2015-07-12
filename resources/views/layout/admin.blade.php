@@ -10,7 +10,8 @@
 
     <link href="/css/materialize.min.css" rel="stylesheet">               					           <!-- Materialize core CSS -->
     <link href="/css/lab.css" rel="stylesheet">                         						           <!-- Lab core CSS -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">	 <!-- Material Icons -->
+    <!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->	 <!-- Material Icons -->
+    <link href="/css/materialicons.css" rel="stylesheet">	 <!-- Material Icons -->
 </head>
 <body>
 <header>
@@ -39,7 +40,12 @@
                     </section>
                     <ul class="collection">
                         <li class="collection-item avatar">
-                            <img src="/img/face.jpg" alt="" class="circle">
+
+                            {{-- @if(Auth::check()) --}}
+                                <!--<img src="/users_photos/{{--Auth::user()->id--}}.png" alt="" class="circle">-->
+                            {{--@else--}}
+                                <img src="/img/face.jpg" alt="" class="circle">
+                            {{--@endif--}}
                             <strong><span class="title black-text">
                                 @if(Auth::check())
                                     {{strtoupper(Auth::user()->name)}}

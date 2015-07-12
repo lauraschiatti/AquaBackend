@@ -16,13 +16,14 @@ Route::get('/dashboard', function () {
 });
 
 // Authentication routes...
+Route::get('login', 'Auth\AuthController@getLogin');
 Route::get('adminlogin', 'Auth\AuthController@getAdminLogin');
-Route::post('adminlogin', 'Auth\AuthController@postAdminLogin');
+Route::post('login', 'Auth\AuthController@postLogin');
 Route::get('/', 'Auth\AuthController@getLogout');
 
 // Registration routes...
-/*Route::get('register', 'Auth\AuthController@getRegister');
-Route::post('register', 'Auth\AuthController@postRegister');*/
+Route::get('register', 'Auth\AuthController@getRegister');
+Route::post('register', 'Auth\AuthController@postRegister');
 
 Route::resource('users', 'UsersController');
 
@@ -33,3 +34,5 @@ Route::resource('sensors', 'SensorsController');
 //Route::get('sensorsbynode/{node_id}', ['as' => 'sensorsbynode_show', 'uses' => 'SensorsByNodeController@showSensors']);
 
 Route::resource('sensorsbynode', 'SensorsByNodeController');
+
+

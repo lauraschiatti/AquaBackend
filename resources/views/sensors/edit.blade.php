@@ -1,31 +1,62 @@
 @extends('layout.admin')
-@section('title')
-    <h1>Update Sensor</h1>
-@stop
-@section('content')
-    {!! Form::model($sensor,[
-    'method' => 'PUT',
-    'route'=>['sensors.update',$sensor->id]
-    ]) !!}
 
-    <div class="form-group">
-        <label for="name">Name:</label>
-        <input class="form-control"  name="name" type="text" id="name" value="{{$sensor->name}}" required>
+@section('title')
+    <a href="#" class="mobile-tittle">Edit Sensor</a>
+    <a href="{{ url('sensors')}}" class="mobile-right"><i class="material-icons">close</i></a>
+@stop
+
+@section('content')
+    <div class="desktop row" id="nodes">
+        <!-- Tittle -->
+        <div class="linker"><p class="light">Dashboard > Sensors > Edit </p></div>
+        <h4 class="light">Edit Sensor</h4>
+        <div class="divider"></div>
+
+        <!-- Form -->
+        {!! Form::model($sensor,[
+        'method' => 'PUT',
+        'route'=>['sensors.update',$sensor->id]
+        ]) !!}
+
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="material-icons prefix">link</i>
+                <input id="icon_label" class="validate" name="name" type="text" id="name" value="{{$sensor->name}}" required>
+                <label for="icon_label">Name</label>
+            </div>
+            <div class="input-field col s12" style="margin-bottom: 10px;">
+                <i class="material-icons prefix">select_all</i>
+                <input id="icon_swap_vert" class="validate" name="type" id="type" type="text" value="{{$sensor->type}}" required>
+                <label for="icon_swap_vert">Type</label>
+            </div>
+            <div class="input-field col s12">
+                <i class="material-icons prefix">grain</i>
+                <input id="icon_swap_horiz" class="validate" name="unit" type="text" id="unit" value="{{$sensor->unit}}" required>
+                <label for="icon_swap_horiz">Unit</label>
+            </div>
+            <div class="input-field col s12">
+                <i class="material-icons prefix">graphic_eq</i>
+                <input id="icon_graphic_eq" class="validate" name="range" type="text" id="range" value="{{$sensor->range}}" required>
+                <label for="icon_graphic_eq">Range</label>
+            </div>
+        </div>
+
+        <!-- FLOATING BUTTONS -->
+        <div class="fixed-action-btn" id="add">
+            <button type="submit" class="btn-floating btn-large waves-effect waves-circle waves-light"> <!-- Green -->
+                <i class="large material-icons">check</i>
+            </button>
+        </div>
+        <!-- FLOATING BUTTONS -->
+        {!! Form::close() !!}
+
+        <!-- FLOATING BUTTONS -->
+        <div class="fixed-action-btn" id="cancel">
+            <a href="{{ url('sensors')}}" class="btn-floating btn-large waves-effect waves-circle waves-light">
+                <i class="large material-icons">close</i>
+            </a>
+        </div>
+        <!-- FLOATING BUTTONS -->
     </div>
-    <div class="form-group">
-        <label for="longitude">Type:</label>
-        <input class="form-control"  name="type" type="text" id="type" value="{{$sensor->type}}" required>
-    </div>
-    <div class="form-group">
-        <label for="latitude">Unit:</label>
-        <input class="form-control"  name="unit" type="text" id="unit" value="{{$sensor->unit}}" required>
-    </div>
-    <div class="form-group">
-        <label for="latitude">Range:</label>
-        <input class="form-control"  name="range" type="text" id="range" value="{{$sensor->range}}" required>
-    </div>
-    <div class="form-group">
-        <input class="btn btn-primary form-control" type="submit" value="Update">
-    </div>
-    {!! Form::close() !!}
+
 @stop

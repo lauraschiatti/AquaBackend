@@ -13,22 +13,44 @@
         <div class="divider"></div>
 
         <!-- Form -->
-        {!! Form::open(array('url'=>'users','method'=>'POST', 'files'=>true)) !!}
-        <div class="row">
+        {!! Form::open(array('url' => 'users', 'files'=> true)) !!}
             <div class="input-field col s12">
-                <i class="material-icons prefix">play_for_work</i>
-                <input id="icon_label" class="validate"  name="name" type="text" id="name" required>
-                <label for="icon_label">Name</label>
+                <i class="material-icons prefix">person</i>
+                <input class="validate"  name="name" type="text" id="name" required>
+                <label for="name">Name</label>
             </div>
             <div class="input-field col s12" style="margin-bottom: 10px;">
-                <i class="material-icons prefix">swap_vert</i>
-                <input id="icon_swap_vert" class="validate"  name="email" type="email" id="email" required>
-                <label for="icon_swap_vert">Email</label>
+                <i class="material-icons prefix">email</i>
+                <input class="validate"  name="email" type="email" id="email" required>
+                <label for="email">Email</label>
             </div>
-            <div class="input-field col s12">
-                <i class="material-icons prefix">swap_horiz</i>
-                <input id="icon_swap_horiz" class="validate"  name="password" type="password" id="password" required>
-                <label for="icon_swap_horiz">Password</label>
+            <!--<div class="input-field col s12">
+                <i class="material-icons prefix">link</i>
+                <input id="icon_swap_horiz" class="validate"  name="URL" type="text" id="URL">
+                <label for="icon_swap_horiz">Profile picture URL</label>
+            </div>-->
+            <div class="col s12">
+                <br><br>
+                <label for="icon_swap_vert">Select user type</label>
+                <div id="radiobuttons">
+                    <p>
+                        <i class="material-icons prefix">person</i>
+                        <input name="role" type="radio" id="user" value="user"/>
+                        <label for="user">User</label>
+                    </p>
+                    <p>
+                        <i class="material-icons prefix">lock</i>
+                        <input name="role" type="radio" id="provider" value="provider"/>
+                        <label for="provider">Provider</label>
+                    </p>
+                    @if(Auth::check() and Auth::user()->role == 'superadmin')
+                        <p>
+                            <i class="material-icons prefix">supervisor_account</i>
+                            <input type="radio" name="role" id="superadmin" value="superadmin">
+                            <label for="superadmin">Super Admin</label>
+                        </p>
+                    @endif
+                </div>
             </div>
         </div>
 
