@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Request;
 use App\Http\Requests;
 use App\Nodes;
@@ -30,13 +31,16 @@ class NodesController extends Controller
      */
     public function create()
     {
-        $sensorsList = Sensors::all();
-        if($sensorsList == null){
+        $sensors = Sensors::all();
+        return view('nodes.create', compact('sensors'));
+
+
+        /*if($sensorsList == null){
             $sensors_names = "";
         }else{
             $sensors = array();
             $finalSensor = array();
-            $sensors_names = array();
+            //$sensors_names = array();
             foreach($sensorsList as $sensor) {
                 $finalSensor["name"] = $sensor->name;
                 $finalSensor["type"] = $sensor->type;
@@ -44,11 +48,10 @@ class NodesController extends Controller
                 $finalSensor["range"] = $sensor->range;
 
                 array_push($sensors, $finalSensor);
-                array_push($sensors_names, $finalSensor["name"]);
+                //array_push($sensors_names, $finalSensor["name"]);
             }
-        }
+        }*/
 
-        return view('nodes.create', compact('sensors', 'sensors_names'));
     }
 
     /**
@@ -100,11 +103,14 @@ class NodesController extends Controller
                 }
 
             }
-
-            return redirect('nodes');
+            if(Auth::check() && Auth::user()->role == 'superadmin'){
+                return redirect('nodes');
+            }else{
+                return redirect('mynodes');
+            }
         }else{
-            //@todo revisar que devolver en caso de que exista el node
-            return $node;
+            //@todo revisar que hacer en caso de que exista el sensor en el nodo
+            return redirect('nodes/create');
         }
 
         //$try = SensorsByNode::all();
@@ -121,7 +127,7 @@ class NodesController extends Controller
     {
         $node=Nodes::find($id);
 
-            $sensors = array();
+        $sensors = array();
         $sensorsbynode =  SensorsByNode::where("node_id", "=", $id)->get();
 
         foreach($sensorsbynode as $sensorbynode){
@@ -131,8 +137,10 @@ class NodesController extends Controller
             array_push($sensors, $sensor);
         }
 
+        $user =  User::where("id", "=", $node->user_id)->first();
+
         //return $sensors;
-        return view('nodes.show',compact('node', 'sensors'));
+        return view('nodes.show',compact('node', 'sensors', 'user'));
     }
 
     /**
@@ -167,9 +175,23 @@ class NodesController extends Controller
     public function update($id)
     {
         $nodeUpdate=Request::all();
-        $node=Nodes::find($id);
-        $node->update($nodeUpdate);
-        return redirect('nodes');
+
+        $check =  Nodes::where("name", "=", Input::get('name'))->first();
+
+        if(!$check){
+            $node=Nodes::find($id);
+            $node->update($nodeUpdate);
+
+            if(Auth::check() && Auth::user()->role == 'superadmin'){
+                return redirect('nodes');
+            }else{
+                return redirect('mynodes');
+            }
+        }else{
+            //@todo existe el nodo
+            return $check;
+        }
+
     }
 
     /**
@@ -181,6 +203,25 @@ class NodesController extends Controller
     public function destroy($id)
     {
         Nodes::find($id)->delete();
-        return redirect('nodes');
+        if(Auth::check() && Auth::user()->role == 'superadmin'){
+            return redirect('nodes');
+        }else{
+            return redirect('mynodes');
+        }
+
+    }
+
+    /*
+     * Show only the user´s nodes
+     */
+    public function getMyNodes(){
+        if(Auth::check()){
+            $nodes=Nodes::where("user_id", "=", Auth::user()->id)->get();//json data
+
+        }else{
+            $nodes = null;
+        }
+        return view('nodes.mynodes',compact('nodes')); //pass json data to index view
+
     }
 }

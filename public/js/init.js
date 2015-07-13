@@ -13,3 +13,10 @@ var checkboxes = $("input[type='checkbox']"), submitButt = $("button[id='create'
 checkboxes.click(function() {
     submitButt.attr("disabled", !checkboxes.is(":checked"));
 });
+
+
+$(document).ready(function(){
+    $('.collapsible').collapsible({
+        accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+    });
+});

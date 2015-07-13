@@ -45,7 +45,7 @@ class UsersController extends Controller
             $newUser = new User;
             $newUser->name = Input::get('name');
             $newUser->email = Input::get('email');
-            $newUser->password = bcrypt("1234");
+            $newUser->password = bcrypt("123456");
             $newUser->role = Input::get('role');
             $newUser->save();
 

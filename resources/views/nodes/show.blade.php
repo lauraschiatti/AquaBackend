@@ -19,42 +19,48 @@
         </div>
         <div class="input-field col s12">
             <i class="material-icons prefix">play_for_work</i>
-            <input type="text" id="user_id" value="{{$node->user_id}}" readonly>
-            <label for="user_id">Created by</label>
-        </div>
-        <div class="input-field col s12">
-            <i class="material-icons prefix">play_for_work</i>
             <input id="name" type="text" value="{{$node->name}}" readonly>
             <label for="name">Name</label>
         </div>
         <div class="input-field col s12">
-            <i class="material-icons prefix">play_for_work</i>
+            <i class="material-icons prefix">swap_vert</i>
             <input id="longitude" type="text" id="id" value="{{$node->longitude}}" readonly>
             <label for="longitude">Longitude</label>
         </div>
         <div class="input-field col s12">
-            <i class="material-icons prefix">play_for_work</i>
+            <i class="material-icons prefix">swap_horiz</i>
             <input id="latitude" type="text" id="id" value="{{$node->latitude}}" readonly>
             <label for="latitude">Latitude</label>
         </div>
+
         <div class="input-field col s12">
-            <h4 class="light">Sensors Info</h4><br>
+            <h4 class="light">Sensors Info</h4>
+            <div class="hide-on-med-and-down divider"></div><br/>
 
             <ul class="collection">
                 @foreach ($sensors as $sensor)
                     <li class="collection-item avatar">
                         <i class="material-icons circle red">settings_remote</i>
-                        <span><strong>{{$sensor->name}}</strong></span>
+                        <span class="title"><strong>{{$sensor->name}}</strong></span>
                         <p class="light"><strong>Id </strong>{{$sensor->id}}</p>
-                        <p class="light"><strong>Name </strong> {{$sensor->type}} </p>
+                        <p class="light"><strong>Type </strong> {{$sensor->type}} </p>
                         <p class="light"><strong>Unit </strong> {{$sensor->unit}} </p>
-                        <p class="light"><strong>range </strong> {{$sensor->range}} </p>
-
+                        <p class="light"><strong>Range </strong> {{$sensor->range}} </p>
                     </li>
                 @endforeach
             </ul>
-            <div class="hide-on-med-and-down divider"></div>
         </div>
+
+        <h4 class="light">Creator Info</h4>
+        <div class="hide-on-med-and-down divider"></div><br/>
+
+        <ul class="collection" id="person">
+            <li class="collection-item avatar">
+                <img src="/img/face.jpg" alt="" class="circle">
+                <span class="title">{{$user->name}}</span>
+                <p class="light"> {{$user->email}} </p>
+            </li>
+        </ul>
 
         <a href="{{ url('nodes')}}" class="btn btn-primary right hide-on-med-and-down">Back</a>
     </div>

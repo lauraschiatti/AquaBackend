@@ -11,8 +11,13 @@
 |
 */
 
-Route::get('/dashboard', function () {
+
+Route::get('dashboard', function () {
     return view('layout.dashboard');
+});
+
+Route::get('home', function () {
+    return view('layout.home');
 });
 
 // Authentication routes...
@@ -29,6 +34,8 @@ Route::post('register', 'Auth\AuthController@postRegister');
 Route::resource('users', 'UsersController');
 
 Route::resource('nodes', 'NodesController');
+
+Route::get('mynodes', 'NodesController@getMyNodes');
 
 Route::resource('sensors', 'SensorsController');
 

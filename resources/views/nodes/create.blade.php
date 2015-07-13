@@ -32,14 +32,28 @@
             </div>
         </div>
 
+
         <div class="col s12">
             <div id="checkboxes">
-                @foreach ($sensors_names as $sensor_name)
-                <p>
-                    <input tabindex="1" type="checkbox" name="sensors[]" id="{{$sensor_name}}" value="{{$sensor_name}}">
-                    <label for="{{$sensor_name}}">{{$sensor_name}}</label>
-                </p>
-                @endforeach
+                <ul class="collapsible popout z-depth-2" data-collapsible="accordion">
+                    @foreach ($sensors as $sensor)
+                        <li>
+                            <div class="collapsible-header">
+                                <input tabindex="1" type="checkbox" name="sensors[]" id="{{$sensor->name}}" value="{{$sensor->name}}">
+                                <label for="{{$sensor->name}}">{{$sensor->name}}</label>
+                                <i class="material-icons right">keyboard_arrow_down</i>
+                            </div>
+                            <div class="collapsible-body">
+                                <ul style="margin: 20px;">
+                                <li class="light"><strong>Id </strong>{{$sensor->id}}</li>
+                                <li class="light"><strong>Type </strong> {{$sensor->type}} </li>
+                                <li class="light"><strong>Unit </strong> {{$sensor->unit}} </li>
+                                <li class="light"><strong>Range </strong> {{$sensor->range}} </li>
+                                </ul>
+                            </div>
+                        </li>
+                    @endforeach
+                </ul>
             </div>
         </div>
 

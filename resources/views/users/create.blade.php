@@ -30,22 +30,22 @@
                 <label for="icon_swap_horiz">Profile picture URL</label>
             </div>-->
             <div class="col s12">
-                <br><br>
-                <label for="icon_swap_vert">Select user type</label>
+                <br>
+                <label>Select user type</label>
                 <div id="radiobuttons">
                     <p>
-                        <i class="material-icons prefix">person</i>
+                        <i class="material-icons prefix">person_pin</i>
                         <input name="role" type="radio" id="user" value="user"/>
                         <label for="user">User</label>
                     </p>
                     <p>
-                        <i class="material-icons prefix">lock</i>
+                        <i class="material-icons prefix">assistant</i>
                         <input name="role" type="radio" id="provider" value="provider"/>
                         <label for="provider">Provider</label>
                     </p>
                     @if(Auth::check() and Auth::user()->role == 'superadmin')
                         <p>
-                            <i class="material-icons prefix">supervisor_account</i>
+                            <i class="material-icons prefix">live_help</i>
                             <input type="radio" name="role" id="superadmin" value="superadmin">
                             <label for="superadmin">Super Admin</label>
                         </p>

@@ -23,7 +23,7 @@
     <div class="box-content container">
         <p id="login_error">{{$error or ""}}</p>
         <!-- Form -->
-        {!! Form::open(['url' => 'adminlogin', 'class' => 'white-text']) !!}
+        {!! Form::open(['url' => 'adminlogin', 'class' => 'light white-text']) !!}
         <div class="row">
             <div class="input-field col s12">
                 <i class="material-icons prefix">person</i>
@@ -46,8 +46,8 @@
             </div>
 
             <!-- Buttons-->
-            <div class="col s12 center" style="margin-top: 20px;">
-                <button class="btn btn-secundary waves-effect waves-light">Sign in</button>
+            <div class="col s12">
+                <button class="btn btn-secundary waves-effect waves-light right">Sign in</button>
             </div>
             {!! Form::close() !!}
 

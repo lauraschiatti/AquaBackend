@@ -50,11 +50,10 @@
                                 @if(Auth::check())
                                     {{strtoupper(Auth::user()->name)}}
                                 @else
-                                    User
+                                    USER
                                 @endif
                             </span></strong>
                             <p class="black-text">Admin Profile</p>
-                            <a href="#!" class="secondary-content"><i class="right material-icons">chevron_right</i></a>
                         </li>
                     </ul>
                     <!--Options-->
@@ -62,7 +61,16 @@
                         <div class="divider"></div>
                         <li class="active"><a href="{{url('/dashboard')}}"><i class="material-icons left">widgets</i>Dashboard</a></li>
                         <li><a href="{{url('/sensors')}}"><i class="material-icons left">place</i>Sensors</a></li>
-                        <li><a href="{{url('/nodes')}}"><i class="material-icons left">games</i>Nodes</a></li>
+                        <ul class="collapsible collapsible-accordion">
+                            <li><a class="collapsible-header">Nodes</a>
+                                <div class="collapsible-body">
+                                    <ul>
+                                        <li><a href="{{url('/mynodes')}}">My Nodes</a></li>
+                                        <li><a href="{{url('/nodes')}}">All Nodes</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
                         <li><a href="{{url('users')}}"><i class="material-icons left">people</i>Users</a></li>
                         <div class="divider"></div>
                         <li><a href="#"><i class="material-icons left">settings</i>Settings</a></li>
