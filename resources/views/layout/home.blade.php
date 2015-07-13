@@ -31,9 +31,7 @@
                     <li><a href="#" class="waves-effect waves-light">Team</a></li>
                     <li><a href="#" class="waves-effect waves-light">Contribute | Contact</a></li>
                     <li><a href="{{ url('register')}}" class="waves-effect waves-light btn btn-flat">Sign up</a></li>
-                    <li>
-                        <a href="{{ url('login')}}" class="waves-effect waves-dark btn btn-secundary">Login</a>
-                    </li>
+                    <li><a href="{{ url('login')}}" class="waves-effect waves-dark btn btn-secundary">Login</a></li>
                 </ul>
 
                 <ul class="side-nav" id="mobile">
