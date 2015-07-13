@@ -17,8 +17,9 @@ Route::get('/dashboard', function () {
 
 // Authentication routes...
 Route::get('login', 'Auth\AuthController@getLogin');
+Route:post('login', 'Auth\AuthController@postLogin');
 Route::get('adminlogin', 'Auth\AuthController@getAdminLogin');
-Route::post('login', 'Auth\AuthController@postLogin');
+Route::post('adminlogin', 'Auth\AuthController@postAdminLogin');
 Route::get('/', 'Auth\AuthController@getLogout');
 
 // Registration routes...

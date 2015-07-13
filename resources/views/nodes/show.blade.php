@@ -14,23 +14,28 @@
         <div class="hide-on-med-and-down divider"></div>
         <div class="input-field col s12">
             <i class="material-icons prefix">play_for_work</i>
-            <input id="icon_label" type="text" id="id" value="{{$node->id}}" readonly>
-            <label for="icon_label">Id</label>
+            <input type="text" id="id" value="{{$node->id}}" readonly>
+            <label for="id">Id</label>
         </div>
         <div class="input-field col s12">
             <i class="material-icons prefix">play_for_work</i>
-            <input id="icon_label" type="text" value="{{$node->name}}" readonly>
-            <label for="icon_label">Name</label>
+            <input type="text" id="user_id" value="{{$node->user_id}}" readonly>
+            <label for="user_id">Created by</label>
         </div>
         <div class="input-field col s12">
             <i class="material-icons prefix">play_for_work</i>
-            <input id="icon_label" type="text" id="id" value="{{$node->longitude}}" readonly>
-            <label for="icon_label">Longitude</label>
+            <input id="name" type="text" value="{{$node->name}}" readonly>
+            <label for="name">Name</label>
         </div>
         <div class="input-field col s12">
             <i class="material-icons prefix">play_for_work</i>
-            <input id="icon_label" type="text" id="id" value="{{$node->latitude}}" readonly>
-            <label for="icon_label">Latitude</label>
+            <input id="longitude" type="text" id="id" value="{{$node->longitude}}" readonly>
+            <label for="longitude">Longitude</label>
+        </div>
+        <div class="input-field col s12">
+            <i class="material-icons prefix">play_for_work</i>
+            <input id="latitude" type="text" id="id" value="{{$node->latitude}}" readonly>
+            <label for="latitude">Latitude</label>
         </div>
         <div class="input-field col s12">
             <h4 class="light">Sensors Info</h4><br>

@@ -15,10 +15,13 @@ class CreateNodesTable extends Migration
         //@todo verificar relaciones de la tabla
         Schema::create('nodes', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id')->unsigned();
             $table->string('name');
             $table->double('longitude');
             $table->double('latitude');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

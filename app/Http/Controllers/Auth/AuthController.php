@@ -85,30 +85,58 @@ class AuthController extends Controller
         $email = Input::get('email');
         $password = Input::get('password');
 
-        if (Auth::attempt(['email' => $email, 'password' => $password, 'role' => 'provider'])) {
+        if (Auth::attempt(['email' => $email, 'password' => $password, 'role' => 'user'])
+        || Auth::attempt(['email' => $email, 'password' => $password, 'role' => 'provider'])
+        || Auth::attempt(['email' => $email, 'password' => $password, 'role' => 'superadmin'])) {
+            // Authentication passed...
+            //@todo: mostrar usuario que inicio sesion
+            $user = $email;
+            return "logged in!";
+        }else{
+            $error = "WRONG USER OR PASSWORD";
+            return view('auth.login', compact('error'));
+        }
+
+    }
+
+    public function postAdminLogin()
+    {
+        $email = Input::get('email');
+        $password = Input::get('password');
+
+        if (Auth::attempt(['email' => $email, 'password' => $password, 'role' => 'provider']) ||
+            Auth::attempt(['email' => $email, 'password' => $password, 'role' => 'superadmin'])) {
             // Authentication passed...
             //@todo: mostrar usuario que inicio sesion
             $user = $email;
             return view('layout.dashboard');
         }else{
             $user = User::where("email", "=", $email)->first();
-            $role = $user->role;
+            if($user != null){
+                $role = $user->role;
 
-            if($role == 'user'){
-                $error = "ACCESS DENIED";
-            }else{
-                $error = "WRONG USER OR PASSWORD";
+                if($role == 'user'){
+                    $error = "ACCESS DENIED";
+                }
             }
 
-            return view('auth.login', compact('error'));
+            if(!(Auth::attempt(['email' => $email, 'password' => $password]))){
+                $error = "WRONG USER OR PASSWORD";
+            }
+            return view('auth.admin_login', compact('error'));
         }
 
     }
 
     public function getLogout()
     {
-        Auth::logout();
-        return redirect('login');
+        if(Auth::check() and Auth::user()->role == 'user'){
+            Auth::logout();
+            return redirect('login');
+        }else{
+            Auth::logout();
+            return redirect('adminlogin');
+        }
     }
 
     public function getRegister()

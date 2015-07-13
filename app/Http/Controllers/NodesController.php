@@ -8,7 +8,7 @@ use App\Nodes;
 use App\Sensors;
 use App\SensorsByNode;
 use Illuminate\Support\Facades\Input;
-
+use Auth;
 
 class NodesController extends Controller
 {
@@ -58,18 +58,28 @@ class NodesController extends Controller
      */
     public function store()
     {
-        $input=Request::all();
+        //$input=Request::all();
 
         $node = Nodes::where("name", "=", Input::get('name'))->first();
 
         if($node == null){
-            Nodes::create($input);
+            $newNode = new Nodes();
+            $newNode->name = Input::get('name');
+            $newNode->latitude = Input::get('latitude');
+            $newNode->longitude = Input::get('longitude');
+
+            if(Auth::check()){
+                $newNode->user_id = Auth::user()->id;
+            }
+
+            //Nodes::create($input);
+            $newNode->save();
 
             //save sensors in that node
             $n = Nodes::where("name", "=", Input::get('name'))->first();
             $node_id = $n->id;
 
-            $sensors_checked = $input["sensors"];
+            $sensors_checked = Input::get('sensors');
 
             foreach($sensors_checked as $sensor_checked){
                 $sensorbynode = new SensorsByNode();
