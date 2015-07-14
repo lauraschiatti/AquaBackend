@@ -34,24 +34,29 @@
                         <td>{{ $user->role }}</td>
                         <td>
                             <a href="{{url('users',$user->id)}}"><i class="material-icons">visibility</i></a>
-                            <a href="{{route('users.edit', $user->id)}}"><i class="material-icons">edit</i></a>
-                            <a class="modal-trigger" href="#modal2"><i class="material-icons">delete</i></a>
+
+                            @if(Auth::check() and Auth::user()->role == 'superadmin')
+                                <a href="{{route('users.edit', $user->id)}}"><i class="material-icons">edit</i></a>
+                            @endif
+
+                            @if(Auth::check() and Auth::user()->role == 'superadmin')
+                                <a class="modal-trigger" href="#modal2"><i class="material-icons">delete</i></a>
+
+                                <!-- cancel modal Structure -->
+                                <div id="modal2" class="modal">
+                                    <div class="modal-content center">
+                                        <h6 class="light">This action can not be reversed, would you like to continue? </h6><br>
+                                        <div class="modal-footer">
+                                            {!! Form::open(['method' => 'DELETE', 'route'=>['users.destroy', $user->id]]) !!}
+                                            <button type="submit" class="btn btn-flat">Yes</button>
+                                            {!! Form::close() !!}
+                                            <button class="btn btn-flat modal-action modal-close">No</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
                         </td>
                     </tr>
-
-                    <!-- cancel modal Structure -->
-                    <div id="modal2" class="modal">
-                        <div class="modal-content center">
-                            <h6 class="light">This action can not be reversed, would you like to continue? </h6><br>
-                            <div class="modal-footer">
-                                <!--not working-->
-                                {!! Form::open(['method' => 'DELETE', 'route'=>['users.destroy', $user->id]]) !!}
-                                <button type="submit" class="btn btn-flat">Yes</button>
-                                {!! Form::close() !!}
-                                <button class="btn btn-flat modal-action modal-close">No</button>
-                            </div>
-                        </div>
-                    </div>
                 @endforeach
                 </tbody>
             </table>

@@ -27,45 +27,43 @@
 <main>
     <div class="content center white-text">
         <h4 class="light">Create New User</h4>
-        <form class="row white-text">
-
+        <p id="login_error">{{$error or ""}}</p>
+        <!-- Form -->
+        {!! Form::open(['url' => 'register', 'class' => 'row white-text', 'id' => 'register']) !!}
             <div class="input-field col s12">
                 <i class="material-icons prefix">person</i>
-                <input id="name" type="text" class="validate" required>
+                <input id="name" type="text" class="validate" name="name" required>
                 <label for="name">Name</label>
             </div>
 
             <div class="input-field col s12">
                 <i class="material-icons prefix">email</i>
-                <input id="email" type="email" class="validate" required>
+                <input id="email" type="email" class="validate" name="email" required>
                 <label for="email">Email</label>
             </div>
 
             <div class="input-field col s12">
                 <i class="material-icons prefix">lock</i>
-                <input id="pass" type="password" class="validate" required>
+                <input id="pass" type="password" class="validate" name="pass" required>
                 <label for="pass">Password</label>
             </div>
 
             <div class="input-field col s12">
                 <i class="material-icons prefix">vpn_key</i>
-                <input id="pass2" type="password" class="validate" required>
+                <input id="pass2" type="password" class="validate" name="pass2" required>
                 <label for="pass2">Repeat Password</label>
             </div>
 
             <div class="col s12 white-text">
                 <p class="center">
-                    <input type="checkbox" id="check" required/>
+                    <input type="checkbox" id="check"/> <!--required-->
                     <label for="check">I'm agree with Terms &#38; Conditions</label>
                 </p>
             </div>
-
-
             <div class="input-field col s12">
                 <button type="submit" class="waves-effect waves-dark btn btn-primary">Sign in</button>
             </div>
-
-        </form>
+        {!! Form::close() !!}
     </div>
 
 </main>

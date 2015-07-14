@@ -46,7 +46,8 @@ class SensorsController extends Controller
             return redirect('sensors');
         }else{
             //@todo revisar que devolver en caso de que exista el sensor
-            return $sensor;
+            //return $sensor;
+            return redirect('sensors/create')->with('error', 'Sensor already exists');
         }
     }
 
@@ -83,9 +84,17 @@ class SensorsController extends Controller
     public function update($id)
     {
         $sensorUpdate=Request::all();
-        $sensor=Sensors::find($id);
-        $sensor->update($sensorUpdate);
-        return redirect('sensors');
+
+        $check =  Sensors::where("name", "=", Input::get('name'))->first();
+
+        if($check->id != $id){
+            //@todo existe el sensor
+            return "el nodo ya existe";
+        }else{
+            $sensor=Sensors::find($id);
+            $sensor->update($sensorUpdate);
+            return redirect('sensors');
+        }
     }
 
     /**

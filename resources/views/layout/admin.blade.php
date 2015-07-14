@@ -116,9 +116,9 @@
         <i class="material-icons white-text modal-action modal-close" style="margin-right: 20px; float: right;">close</i>
     </div>
     <div class="modal-content center">
-        <h6 class="light">Would you like to close admin session? </h6><br>
+        <h6 class="light">Would you like to close session? </h6><br>
         <a href="#!" class="btn btn-flat modal-action modal-close">No</a>
-        <a href="{{url('/')}}" class="btn primary">Yes</a>
+        <a href="{{url('/logout')}}" class="btn primary">Yes</a>
     </div>
 </div>
 

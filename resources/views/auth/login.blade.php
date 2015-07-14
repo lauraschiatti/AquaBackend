@@ -40,8 +40,8 @@
             <!-- Remember -->
             <div class="col s12 white-text">
                 <p class="left">
-                    <input type="checkbox" id="check"/>
-                    <label for="check">Remember me</label>
+                    <input type="checkbox" name="remember" value="true" id="remember"/>
+                    <label for="remember">Remember me</label>
                 </p>
             </div>
 

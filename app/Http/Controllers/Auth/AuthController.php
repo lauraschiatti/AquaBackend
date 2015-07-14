@@ -68,8 +68,6 @@ class AuthController extends Controller
         ]);
     }
 
-    //@todo: remember me
-
     public function getLogin()
     {
         return view('auth.login');
@@ -98,7 +96,6 @@ class AuthController extends Controller
             $error = "WRONG USER OR PASSWORD";
             return view('auth.login', compact('error'));
         }
-
     }
 
     public function getLogout()
@@ -111,5 +108,33 @@ class AuthController extends Controller
     public function getRegister()
     {
         return view('auth.register');
+    }
+
+    public function postRegister(){
+        $user = User::where("email", "=", Input::get('email'))->first();
+        //$user = Request::all();
+
+        if(Input::get('pass')!= Input::get('pass2')){
+            $error = "PASSWORDS DON´T MATCH";
+            return view('auth.register', compact('error'));
+        }else{
+            if($user == null){
+                $newUser = new User;
+                $newUser->name = Input::get('name');
+                $newUser->email = Input::get('email');
+                $newUser->password = Input::get('pass');
+                $newUser->role = "user";
+                $newUser->save();
+                return redirect('/');
+                //return $newUser;
+
+                //@todo iniciar sesion automaticamente
+                //Auth::loginUsingId(1); o Auth::login($user);
+
+            }else{
+                $error = "USER ALREADY EXISTS";
+                return view('auth.register', compact('error'));
+            }
+        }
     }
 }

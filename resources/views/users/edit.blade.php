@@ -29,6 +29,51 @@
                 <input id="icon_swap_vert" class="validate" name="email" type="email" id="email" value="{{$user->email}}" required>
                 <label for="icon_swap_vert">Email</label>
             </div>
+            <div class="col s12">
+                <br>
+                <label>Change user type</label>
+                <div id="radiobuttons">
+                    @if($user->role == "user")
+                        <p>
+                            <i class="material-icons prefix">person_pin</i>
+                            <input name="role" type="radio" id="user" value="user" checked/>
+                            <label for="user">User</label>
+                        </p>
+                    @else
+                        <p>
+                            <i class="material-icons prefix">person_pin</i>
+                            <input name="role" type="radio" id="user" value="user"/>
+                            <label for="user">User</label>
+                        </p>
+                    @endif
+                    @if($user->role == "provider")
+                        <p>
+                            <i class="material-icons prefix">assistant</i>
+                            <input name="role" type="radio" id="provider" value="provider" checked/>
+                            <label for="provider">Provider</label>
+                        </p>
+                    @else
+                        <p>
+                            <i class="material-icons prefix">assistant</i>
+                            <input name="role" type="radio" id="provider" value="provider">
+                            <label for="provider">Provider</label>
+                        </p>
+                    @endif
+                    @if($user->role == "superadmin")
+                        <p>
+                            <i class="material-icons prefix">live_help</i>
+                            <input type="radio" name="role" id="superadmin" value="superadmin" checked>
+                            <label for="superadmin">Super Admin</label>
+                        </p>
+                    @else
+                        <p>
+                            <i class="material-icons prefix">live_help</i>
+                            <input type="radio" name="role" id="superadmin" value="superadmin">
+                            <label for="superadmin">Super Admin</label>
+                        </p>
+                    @endif
+                </div>
+            </div>
         </div>
 
 

@@ -16,14 +16,14 @@ Route::get('dashboard', function () {
     return view('layout.dashboard');
 });
 
-Route::get('home', function () {
+Route::get('/', function () {
     return view('layout.home');
 });
 
 // Authentication routes...
 Route::get('login', 'Auth\AuthController@getLogin');
 Route:post('login', 'Auth\AuthController@postLogin');
-Route::get('/', 'Auth\AuthController@getLogout');
+Route::get('/logout', 'Auth\AuthController@getLogout');
 
 // Registration routes...
 Route::get('register', 'Auth\AuthController@getRegister');

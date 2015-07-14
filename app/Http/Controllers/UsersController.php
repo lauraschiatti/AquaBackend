@@ -88,7 +88,8 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        //
+        $user=User::find($id);
+        return view('users.show',compact('user'));
     }
 
     /**
@@ -116,9 +117,17 @@ class UsersController extends Controller
     public function update($id)
     {
         $userUpdate=Request::all();
-        $user=User::find($id);
-        $user->update($userUpdate);
-        return redirect('users');
+
+        $check =  User::where("email", "=", Input::get('email'))->first();
+
+        if($check->id != $id){
+            //@todo existe el usuario
+            return "el nodo ya existe";
+        }else{
+            $user=User::find($id);
+            $user->update($userUpdate);
+            return redirect('users');
+        }
     }
 
     /**

@@ -12,6 +12,19 @@
         <h4 class="light">Create Sensor</h4>
         <div class="divider"></div>
 
+        @if (session('error'))
+            <footer class="page-footer" style="width: 30%; margin-left: 35%; margin-right: 35%;">
+                <div class="container">
+                    <div class="row">
+                        <div>
+                            <h5 class="white-text">ERROR!</h5>
+                            <span class="grey-text text-lighten-4">{{ session('error') }}</span>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        @endif
+
         <!-- Form -->
         {!! Form::open(['url' => 'sensors']) !!}
         <div class="row">

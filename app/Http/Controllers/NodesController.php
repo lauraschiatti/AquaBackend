@@ -103,11 +103,8 @@ class NodesController extends Controller
                 }
 
             }
-            if(Auth::check() && Auth::user()->role == 'superadmin'){
-                return redirect('nodes');
-            }else{
-                return redirect('mynodes');
-            }
+            return redirect('mynodes');
+
         }else{
             //@todo revisar que hacer en caso de que exista el sensor en el nodo
             return redirect('nodes/create');
@@ -178,20 +175,14 @@ class NodesController extends Controller
 
         $check =  Nodes::where("name", "=", Input::get('name'))->first();
 
-        if(!$check){
+        if($check->id != $id){
+            //@todo existe el nodo
+            return "el nodo ya existe";
+        }else{
             $node=Nodes::find($id);
             $node->update($nodeUpdate);
-
-            if(Auth::check() && Auth::user()->role == 'superadmin'){
-                return redirect('nodes');
-            }else{
-                return redirect('mynodes');
-            }
-        }else{
-            //@todo existe el nodo
-            return $check;
+            return redirect('mynodes');
         }
-
     }
 
     /**

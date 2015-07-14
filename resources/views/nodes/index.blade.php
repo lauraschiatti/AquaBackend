@@ -55,7 +55,6 @@
                                     </div>
                                 </div>
                             @endif
-
                         </td>
                     </tr>
                 @endforeach
