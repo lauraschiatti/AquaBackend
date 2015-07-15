@@ -12,9 +12,9 @@ class Sensors extends Model
      * @var array
      */
     protected $fillable=[
-        'name',
         'type',
-        'unit',
-        'range'
+        'unit'
     ];
+
+    protected $table = "sensors";
 }

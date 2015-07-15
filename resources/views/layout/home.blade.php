@@ -30,8 +30,14 @@
                     <li><a href="#" class="waves-effect waves-light">Wiki</a></li>
                     <li><a href="#" class="waves-effect waves-light">Team</a></li>
                     <li><a href="#" class="waves-effect waves-light">Contribute | Contact</a></li>
-                    <li><a href="{{ url('register')}}" class="waves-effect waves-light btn btn-flat">Sign up</a></li>
-                    <li><a href="{{ url('login')}}" class="waves-effect waves-dark btn btn-secundary">Login</a></li>
+
+                    @if(Auth::check())
+                        <li><a href="#" class="waves-effect waves-light btn btn-flat">Hi, {{Auth::User()->name}}</a></li>
+                        <li><a href="{{ url('logout')}}" class="waves-effect waves-dark btn btn-secundary">Log out</a></li>
+                    @else
+                        <li><a href="{{ url('register')}}" class="waves-effect waves-light btn btn-flat">Sign up</a></li>
+                        <li><a href="{{ url('login')}}" class="waves-effect waves-dark btn btn-secundary">Login</a></li>
+                    @endif
                 </ul>
 
                 <ul class="side-nav" id="mobile">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Redirect;
 use Request;
 use App\Http\Requests;
 use App\Sensors;
@@ -37,17 +38,27 @@ class SensorsController extends Controller
      */
     public function store()
     {
-        $input=Request::all();
+        //$input=Request::all();
 
-        $sensor = Sensors::where("name", "=", Input::get('name'))->first();
+        $unit =  trim(Input::get('unit'));
+        $type = trim(Input::get('type'));
+
+        $sensor = Sensors::where("type", "=", $type)
+                         ->Where("unit", "=", $unit)
+                         ->first();
 
         if($sensor == null){
-            Sensors::create($input);
+            //Sensors::create($input);
+            $newSensor = new Sensors();
+            $newSensor->type = $type;
+            $newSensor->unit = $unit;
+            $newSensor->save();
             return redirect('sensors');
         }else{
-            //@todo revisar que devolver en caso de que exista el sensor
             //return $sensor;
-            return redirect('sensors/create')->with('error', 'Sensor already exists');
+            return redirect('sensors/create')->with('error', 'TYPE-UNIT COMBINATION ALREADY EXISTS')
+                                             ->with('type', $type)
+                                             ->with('unit', $unit);
         }
     }
 
@@ -83,18 +94,25 @@ class SensorsController extends Controller
      */
     public function update($id)
     {
-        $sensorUpdate=Request::all();
+        $unit =  trim(Input::get('unit'));
+        $type = trim(Input::get('type'));
 
-        $check =  Sensors::where("name", "=", Input::get('name'))->first();
+        $sensor = Sensors::where("type", "=", $type)
+                          ->Where("unit", "=", $unit)
+                          ->Where("id", "!=", $id)
+                          ->first();
 
-        if($check->id != $id){
-            //@todo existe el sensor
-            return "el nodo ya existe";
-        }else{
-            $sensor=Sensors::find($id);
-            $sensor->update($sensorUpdate);
+        if($sensor == null){
+            Sensors::where('id', '=', $id)->update(['type' => $type, 'unit' => $unit]);
             return redirect('sensors');
+        }else{
+            //return Redirect::back()->withErrors('error', 'TYPE-UNIT COMBINATION ALREADY EXISTS');
+            //return Redirect::back()->with('error', 'error');
+            //@todo devolver el error
+            return "existe";
         }
+
+
     }
 
     /**

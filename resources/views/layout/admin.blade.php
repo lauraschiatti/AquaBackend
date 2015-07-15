@@ -60,7 +60,6 @@
                     <div class="container">
                         <div class="divider"></div>
                         <li class="active"><a href="{{url('/dashboard')}}"><i class="material-icons left">widgets</i>Dashboard</a></li>
-                        <li><a href="{{url('/sensors')}}"><i class="material-icons left">place</i>Sensors</a></li>
                         <ul class="collapsible collapsible-accordion">
                             <li><a class="collapsible-header">Nodes</a>
                                 <div class="collapsible-body">
@@ -71,8 +70,10 @@
                                 </div>
                             </li>
                         </ul>
+                        <li><a href="{{url('/sensors')}}"><i class="material-icons left">place</i>Sensors</a></li>
                         <li><a href="{{url('users')}}"><i class="material-icons left">people</i>Users</a></li>
                         <div class="divider"></div>
+                        <li><a href="/"><i class="material-icons left">home</i>Home</a></li>
                         <li><a href="#"><i class="material-icons left">settings</i>Settings</a></li>
                         <li><a href="#"><i class="material-icons left">turned_in</i>Help &amp; Feed</a></li>
                         <div class="divider"></div>
@@ -88,9 +89,9 @@
                     <!--Options-->
                     <div class="container">
                         <li><a href="{{url('/dashboard')}}"><i class="material-icons left">widgets</i>Dashboard</a></li>
-                        <li><a href="{{url('/sensors')}}"><i class="material-icons left">place</i>Sensors</a></li>
                         <li><a href="{{url('/nodes')}}"><i class="material-icons left">games</i>Nodes</a></li>
-                        <li><a href="{{url('users')}}"><i class="material-icons left">people</i>Users</a></li>
+                        <li><a href="{{url('/sensors')}}"><i class="material-icons left">place</i>Sensors</a></li>
+                        <li><a href="{{url('/users')}}"><i class="material-icons left">people</i>Users</a></li>
                         <div class="divider"></div>
                         <li><a href="#"><i class="material-icons left">person</i>Profile</a></li>
                         <li><a href="#"><i class="material-icons left">settings</i>Settings</a></li>

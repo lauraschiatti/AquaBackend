@@ -10,20 +10,51 @@
         <!-- Tittle -->
         <div class="linker"><p class="light">Dashboard > Users > Create </p></div>
         <h4 class="light">Create User</h4>
-        <div class="divider"></div>
+        <div class="divider"></div><br>
+
+        @if (session('error'))
+            <footer class="page-footer" style="width: 30%; margin-left: 35%; margin-right: 35%;">
+                <div class="container">
+                    <div class="row">
+                        <div>
+                            <h5 class="white-text">ERROR!</h5>
+                            <span class="grey-text text-lighten-4">{{session('error')}}</span>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        @endif
 
         <!-- Form -->
         {!! Form::open(array('url' => 'users', 'files'=> true)) !!}
-            <div class="input-field col s12">
-                <i class="material-icons prefix">person</i>
-                <input class="validate"  name="name" type="text" id="name" required>
-                <label for="name">Name</label>
-            </div>
-            <div class="input-field col s12" style="margin-bottom: 10px;">
-                <i class="material-icons prefix">email</i>
-                <input class="validate"  name="email" type="email" id="email" required>
-                <label for="email">Email</label>
-            </div>
+            @if (session('name'))
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">person</i>
+                    <input class="validate"  name="name" type="text" id="name" value="{{session('name')}}" required>
+                    <label for="name">Name</label>
+                </div>
+            @else
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">person</i>
+                    <input class="validate"  name="name" type="text" id="name" required>
+                    <label for="name">Name</label>
+                </div>
+            @endif
+            @if (session('email'))
+                <div class="input-field col s12" style="margin-bottom: 10px;">
+                    <i class="material-icons prefix">email</i>
+                    <input class="validate"  name="email" type="email" id="email" value="{{session('email')}}" required>
+                    <label for="email">Email</label>
+                </div>
+            @else
+                <div class="input-field col s12" style="margin-bottom: 10px;">
+                    <i class="material-icons prefix">email</i>
+                    <input class="validate"  name="email" type="email" id="email" required>
+                    <label for="email">Email</label>
+                </div>
+            @endif
+
+
             <!--<div class="input-field col s12">
                 <i class="material-icons prefix">link</i>
                 <input id="icon_swap_horiz" class="validate"  name="URL" type="text" id="URL">

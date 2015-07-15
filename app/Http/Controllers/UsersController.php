@@ -38,15 +38,19 @@ class UsersController extends Controller
      */
     public function store()
     {
-        $user = User::where("email", "=", Input::get('email'))->first();
+        $name = trim(Input::get('name'));
+        $email = trim(Input::get('email'));
+        $role = trim(Input::get('role'));
+
+        $user = User::where("email", "=", $email)->first();
         //$user = Request::all();
 
         if($user == null){
             $newUser = new User;
-            $newUser->name = Input::get('name');
-            $newUser->email = Input::get('email');
+            $newUser->name = $name;
+            $newUser->email = $email;
             $newUser->password = bcrypt("123456");
-            $newUser->role = Input::get('role');
+            $newUser->role = $role;
             $newUser->save();
 
             //profile picture
@@ -75,8 +79,9 @@ class UsersController extends Controller
             //return $user;
 
         }else{
-            //@todo revisar que devolver en caso de que exista el sensor
-            return $user;
+            return redirect('users/create')->with('error', 'USER EXISTS')
+                                             ->with('name', $name)
+                                             ->with('email', $email);
         }
     }
 
@@ -101,10 +106,6 @@ class UsersController extends Controller
     public function edit($id)
     {
         $user=User::find($id);
-
-        //@todo: averiguar si se puede editar el rol de usuario
-        //@todo: cambiar password
-
         return view('users.edit',compact('user'));
     }
 
@@ -118,16 +119,10 @@ class UsersController extends Controller
     {
         $userUpdate=Request::all();
 
-        $check =  User::where("email", "=", Input::get('email'))->first();
+        $user=User::find($id);
+        $user->update($userUpdate);
+        return redirect('users');
 
-        if($check->id != $id){
-            //@todo existe el usuario
-            return "el nodo ya existe";
-        }else{
-            $user=User::find($id);
-            $user->update($userUpdate);
-            return redirect('users');
-        }
     }
 
     /**

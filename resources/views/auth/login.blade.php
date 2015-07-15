@@ -38,12 +38,12 @@
             </div>
 
             <!-- Remember -->
-            <div class="col s12 white-text">
+            <!--<div class="col s12 white-text">
                 <p class="left">
                     <input type="checkbox" name="remember" value="true" id="remember"/>
                     <label for="remember">Remember me</label>
                 </p>
-            </div>
+            </div>-->
 
             <!-- Buttons-->
             <div class="col s12 center" style="margin-top: 20px;">

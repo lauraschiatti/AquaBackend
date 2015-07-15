@@ -10,7 +10,7 @@
         <!-- Tittle -->
         <div class="linker"><p class="light">Dashboard > Sensors > Edit </p></div>
         <h4 class="light">Edit Sensor</h4>
-        <div class="divider"></div>
+        <div class="divider"></div><br>
 
         <!-- Form -->
         {!! Form::model($sensor,[
@@ -19,11 +19,6 @@
         ]) !!}
 
         <div class="row">
-            <div class="input-field col s12">
-                <i class="material-icons prefix">link</i>
-                <input id="icon_label" class="validate" name="name" type="text" id="name" value="{{$sensor->name}}" required>
-                <label for="icon_label">Name</label>
-            </div>
             <div class="input-field col s12" style="margin-bottom: 10px;">
                 <i class="material-icons prefix">select_all</i>
                 <input id="icon_swap_vert" class="validate" name="type" id="type" type="text" value="{{$sensor->type}}" required>
@@ -33,11 +28,6 @@
                 <i class="material-icons prefix">grain</i>
                 <input id="icon_swap_horiz" class="validate" name="unit" type="text" id="unit" value="{{$sensor->unit}}" required>
                 <label for="icon_swap_horiz">Unit</label>
-            </div>
-            <div class="input-field col s12">
-                <i class="material-icons prefix">graphic_eq</i>
-                <input id="icon_graphic_eq" class="validate" name="range" type="text" id="range" value="{{$sensor->range}}" required>
-                <label for="icon_graphic_eq">Range</label>
             </div>
         </div>
 

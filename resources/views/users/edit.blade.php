@@ -10,7 +10,19 @@
         <!-- Tittle -->
         <div class="linker"><p class="light">Dashboard > Users > Edit </p></div>
         <h4 class="light">Edit User</h4>
-        <div class="divider"></div>
+        <div class="divider"></div><br>
+
+        @if (session('error'))
+            <footer class="page-footer" style="width: 30%; margin-left: 35%; margin-right: 35%;">
+                <div class="container">
+                    <div class="row">
+                        <div>
+                            <span class="grey-text text-lighten-4">{{session('error')}}</span>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        @endif
 
         <!-- Form -->
         {!! Form::model($user,[
@@ -24,11 +36,7 @@
                 <input id="icon_label" class="validate" name="name" type="text" id="name" value="{{$user->name}}" required>
                 <label for="icon_label">Name</label>
             </div>
-            <div class="input-field col s12" style="margin-bottom: 10px;">
-                <i class="material-icons prefix">swap_vert</i>
-                <input id="icon_swap_vert" class="validate" name="email" type="email" id="email" value="{{$user->email}}" required>
-                <label for="icon_swap_vert">Email</label>
-            </div>
+
             <div class="col s12">
                 <br>
                 <label>Change user type</label>

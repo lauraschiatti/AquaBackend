@@ -18,7 +18,6 @@
                 <thead>
                 <tr>
                     <th data-field="id">Id</th>
-                    <th data-field="name">Name</th>
                     <th data-field="longitude">Email</th>
                     <th data-field="latitude">Role</th>
                     <th data-field="actions">Actions</th>
@@ -29,7 +28,6 @@
                 @foreach ($users as $user)
                     <tr>
                         <td>{{ $user->id }}</td>
-                        <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->role }}</td>
                         <td>
@@ -40,10 +38,13 @@
                             @endif
 
                             @if(Auth::check() and Auth::user()->role == 'superadmin')
-                                <a class="modal-trigger" href="#modal2"><i class="material-icons">delete</i></a>
+                                {!! Form::open(['method' => 'DELETE', 'route'=>['users.destroy', $user->id]]) !!}
+                                <button type="submit" class="btn-flat"><i class="material-icons">delete</i></button>
+                                {!! Form::close() !!}
+                                <!--<a class="modal-trigger" href="#modal2"><i class="material-icons">delete</i></a>-->
 
                                 <!-- cancel modal Structure -->
-                                <div id="modal2" class="modal">
+                                <!--<div id="modal2" class="modal">
                                     <div class="modal-content center">
                                         <h6 class="light">This action can not be reversed, would you like to continue? </h6><br>
                                         <div class="modal-footer">
@@ -53,7 +54,7 @@
                                             <button class="btn btn-flat modal-action modal-close">No</button>
                                         </div>
                                     </div>
-                                </div>
+                                </div>-->
                             @endif
                         </td>
                     </tr>

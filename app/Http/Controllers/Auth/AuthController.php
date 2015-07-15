@@ -75,8 +75,8 @@ class AuthController extends Controller
 
     public function postLogin()
     {
-        $email = Input::get('email');
-        $password = Input::get('password');
+        $email = trim(Input::get('email'));
+        $password = trim(Input::get('password'));
 
         if (Auth::attempt(['email' => $email, 'password' => $password, 'role' => 'user'])) {
             // Authentication passed...
@@ -101,7 +101,7 @@ class AuthController extends Controller
     public function getLogout()
     {
         Auth::logout();
-        return redirect('login');
+        return redirect('/');
 
     }
 
@@ -111,30 +111,36 @@ class AuthController extends Controller
     }
 
     public function postRegister(){
-        $user = User::where("email", "=", Input::get('email'))->first();
+        $name = trim(Input::get('name'));
+        $email = trim(Input::get('email'));
+        $password = Input::get('pass');
+        $password2 = Input::get('pass2');
+
+        $user = User::where("email", "=", $email)->first();
         //$user = Request::all();
 
-        if(Input::get('pass')!= Input::get('pass2')){
-            $error = "PASSWORDS DON´T MATCH";
-            return view('auth.register', compact('error'));
-        }else{
-            if($user == null){
+
+        if($user == null){
+            if($password == $password2) {
                 $newUser = new User;
-                $newUser->name = Input::get('name');
-                $newUser->email = Input::get('email');
-                $newUser->password = Input::get('pass');
+                $newUser->name = $name;
+                $newUser->email = $email;
+                $newUser->password = bcrypt($password);
                 $newUser->role = "user";
                 $newUser->save();
-                return redirect('/');
-                //return $newUser;
 
                 //@todo iniciar sesion automaticamente
-                //Auth::loginUsingId(1); o Auth::login($user);
-
-            }else{
-                $error = "USER ALREADY EXISTS";
-                return view('auth.register', compact('error'));
+                //Auth::loginUsingId(1);
+                Auth::login($newUser);
+                return redirect('/');
+            }else {
+                $error = "PASSWORDS DON´T MATCH";
+                return view('auth.register', compact('error', 'name', 'email'));
             }
+        }else{
+            $error = "USER EXISTS";
+            return view('auth.register', compact('error', 'name', 'email'));
         }
+
     }
 }

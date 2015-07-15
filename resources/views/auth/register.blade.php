@@ -32,13 +32,13 @@
         {!! Form::open(['url' => 'register', 'class' => 'row white-text', 'id' => 'register']) !!}
             <div class="input-field col s12">
                 <i class="material-icons prefix">person</i>
-                <input id="name" type="text" class="validate" name="name" required>
+                <input id="name" type="text" class="validate" name="name" value="{{$name or ""}}" required>
                 <label for="name">Name</label>
             </div>
 
             <div class="input-field col s12">
                 <i class="material-icons prefix">email</i>
-                <input id="email" type="email" class="validate" name="email" required>
+                <input id="email" type="email" class="validate" name="email" value="{{$email or ""}}" required>
                 <label for="email">Email</label>
             </div>
 
