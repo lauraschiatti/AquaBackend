@@ -10,14 +10,16 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+Route::get('/', function () {
+    return view('layout.home');
+});
 
+Route::get('app', function () {
+    return view('layout.app');
+});
 
 Route::get('dashboard', function () {
     return view('layout.dashboard');
-});
-
-Route::get('/', function () {
-    return view('layout.home');
 });
 
 // Authentication routes...
@@ -39,17 +41,11 @@ Route::get('sensorsorder', ['as' => 'order', function(){
 
 Route::post('sensorsorder', 'NodesController@saveSensorsByNode');
 
-/*Route::post( 'sensorsorder', array(
-    'as' => 'order',
-    'uses' => 'NodesController@saveSensorsByNode'
-) );*/
-
 Route::get('mynodes', 'NodesController@getMyNodes');
 
 Route::resource('sensors', 'SensorsController');
 
-//Route::get('sensorsbynode/{node_id}', ['as' => 'sensorsbynode_show', 'uses' => 'SensorsByNodeController@showSensors']);
-
-Route::resource('sensorsbynode', 'SensorsByNodeController');
+//Route::resource('sensorsbynode', 'SensorsByNodeController');
+Route::get('sensorsbynode', 'NodesController@getSensorsByNode');
 
 

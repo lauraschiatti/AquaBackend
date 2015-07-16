@@ -73,7 +73,7 @@
 
         <div class="col s12">
             <div class="col s4">
-                <h5 class="light left">Types</h5><br><br>
+                <h5 class="light left">Types</h5>
                 <a href="/sensors/create"><i class="material-icons right">add</i>Add new type</a><br><br>
 
                 <dl name="sensors[]">

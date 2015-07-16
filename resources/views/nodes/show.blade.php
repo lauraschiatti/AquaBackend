@@ -38,16 +38,14 @@
             <div class="hide-on-med-and-down divider"></div><br/>
 
             <ul class="collection">
-                @foreach ($sensors as $sensor)
+                @for ($i = 0; $i < $size; $i++)
                     <li class="collection-item avatar">
                         <i class="material-icons circle red">settings_remote</i>
-                        <span class="title"><strong>{{$sensor->name}}</strong></span>
-                        <p class="light"><strong>Id </strong>{{$sensor->id}}</p>
-                        <p class="light"><strong>Type </strong> {{$sensor->type}} </p>
-                        <p class="light"><strong>Unit </strong> {{$sensor->unit}} </p>
-                        <p class="light"><strong>Range </strong> {{$sensor->range}} </p>
+                        <p class="light"><strong>Id </strong>{{$sensors[$i]["id"]}}</p>
+                        <p class="light"><strong>Type </strong> {{$sensors[$i]["type"]}} </p>
+                        <p class="light"><strong>Unit </strong> {{$sensors[$i]["unit"]}} </p>
                     </li>
-                @endforeach
+                @endfor
             </ul>
         </div>
 

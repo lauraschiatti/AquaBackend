@@ -63,7 +63,7 @@
         <div class="container white-text" id="tittle">
             <h2 class="light">Cross-Browsers Platform</h2>
             <h5 class="light">for real time statistics of Cartagena's Bay</h5>
-            <a target="_blank" href="#"><button class="btn btn-primary waves-effect waves-light">Try it!</button></a><p>
+            <a target="_blank" href="{{ url('app')}}"><button class="btn btn-primary waves-effect waves-light">Try it!</button></a><p>
             <p> Chrome | Firefox | Safari | Opera </p>
         </div>
     </div>

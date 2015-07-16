@@ -1,46 +1,61 @@
 /********************************************
-				      LOGIN SETTINGS
+		            LOGIN SETTINGS
  ********************************************/
 body{
-  background: #007EE5;
-  min-height: 100%;
+    background: #007EE5;
+    min-height: 100%;
 }
 
-#login_error{
-    color: white;
-    weight: bold;
-    text-align: center ;
+/***** Desktop Media *****/
+@media only screen and (min-width : 992px) {
+    img{
+        margin-top: 40px;
+        max-width: 180px;
+        margin-left: 35px;
+    }
+}
+
+/***** Tablet & Mobile Media *****/
+@media only screen and (max-width : 992px) {
+    img {
+        margin-top: 20px;
+        width: 140px;
+        margin-left: 35px;
+    }
+
 }
 
 /***** Buttons Settings *****/
-  /***** Primary *****/
+/***** Primary *****/
 .btn-primary, .btn-primary:hover, .btn-primary:focus {
-  background: none;
-  color: #FFFFFF;
-  margin-bottom: 30px;
+    background: none;
+    color: #FFFFFF;
+    margin-bottom: 30px;
 }
 
 /***** secundary *****/
 .btn-secundary, .btn-secundary:hover, .btn-secundary:focus {
-background: #FFFFFF;
-color: #007EE5;
-margin-bottom: 30px;
+    background: #FFFFFF;
+    color: #007EE5;
+    margin-bottom: 30px;
 }
 
 /***** Brand Logo *****/
 .box-header {
-  text-align: center;
+    text-align: center;
 }
 
-.box-header img{
-  margin-top: 40px;
-  max-width: 160px;
-  margin-left: 35px;
+/***** Error *****/
+#alert {
+    text-align: center;
+    text-transform: uppercase;
+    weight: bold;
+    color: #FFFFFF;
 }
 
 /***** Form *****/
 .box-content {
-  max-width: 280px;
+    max-width: 280px;
 }
 
 .input-field label,
@@ -48,46 +63,37 @@ margin-bottom: 30px;
 input[type=email]:focus:not([readonly]) + label,
 input[type=password]:focus:not([readonly]) + label,
 input[type=checkbox]+label {
-  color: #FFFFFF;
+    color: #FFFFFF;
 }
 
 input[type=email],
 input[type=password] {
-  border-bottom: 1px solid white;
+    border-bottom: 1px solid white;
 }
 
 input[type=email].valid, input[type=email]:focus.valid,
 input[type=password].valid, input[type=password]:focus.valid {
-  border-bottom: 1px solid #039BE5;
-  box-shadow: 0 1px 0 0 #039BE5;
+    border-bottom: 1px solid #039BE5;
+    box-shadow: 0 1px 0 0 #039BE5;
 }
 
 input[type=email]:focus:not([readonly]),
 input[type=password]:focus:not([readonly]) {
-  border-bottom: 1px solid #FFFFFF;
-  box-shadow: none !important;
-  -webkit-box-shadow:none !important;
-}
-
-[type="checkbox"] + label:before {
-  border: 2px solid #FFFFFF;
-}
-
-[type="checkbox"]:checked + label:before {
-border-right: 2px solid #FFFFFF;
-border-bottom: 2px solid #FFFFFF;
+    border-bottom: 1px solid #FFFFFF;
+    box-shadow: none !important;
+    -webkit-box-shadow:none !important;
 }
 
 .input-field .prefix ~ label {
-  margin-left: 4rem;
+    margin-left: 4rem;
 }
 
 /***** Footer *****/
 .footer {
-  margin-top: 30px;
-  text-align: center;
+    margin-top: 30px;
+    text-align: center;
 }
 
 .footer p, .footer a, .footer a:hover {
-  color: #FFFFFF;
+    color: #FFFFFF;
 }

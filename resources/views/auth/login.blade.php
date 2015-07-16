@@ -21,7 +21,7 @@
     </div>
 <!-- Content -->
 <div class="box-content container">
-    <p id="login_error">{{$error or ""}}</p>
+    <p id="alert">{{$error or ""}}</p>
     <!-- Form -->
     {!! Form::open(['url' => 'login', 'class' => 'white-text']) !!}
         <div class="row">
@@ -45,6 +45,11 @@
                 </p>
             </div>-->
 
+            <!-- Forgot -->
+            <div class="col s12 left">
+                <a class="light white-text" href="#">Forgot password?</a>
+            </div>
+
             <!-- Buttons-->
             <div class="col s12 center" style="margin-top: 20px;">
                 <a href="{{ url('register')}}" class="btn btn-primary primary waves-effect waves-light">Sign up</a>
@@ -52,10 +57,6 @@
             </div>
     {!! Form::close() !!}
 
-            <!-- Forgot -->
-            <div class="col s12 center">
-                <a class="light white-text" href="#">Forgot password?</a>
-            </div>
 
         </div>
 </div>

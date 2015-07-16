@@ -82,7 +82,7 @@ class AuthController extends Controller
             // Authentication passed...
             //@todo: mostrar usuario que inicio sesion
             $user = $email;
-            return "logged in!";
+            return view('layout.app');
         }
 
         if (Auth::attempt(['email' => $email, 'password' => $password, 'role' => 'provider']) ||
@@ -132,7 +132,7 @@ class AuthController extends Controller
                 //@todo iniciar sesion automaticamente
                 //Auth::loginUsingId(1);
                 Auth::login($newUser);
-                return redirect('/');
+                return redirect('app');
             }else {
                 $error = "PASSWORDS DON´T MATCH";
                 return view('auth.register', compact('error', 'name', 'email'));
