@@ -10,57 +10,89 @@
         <!-- Tittle -->
         <div class="linker"><p class="light">Dashboard > Nodes > Create </p></div>
         <h4 class="light">Create Node</h4>
-        <div class="divider"></div>
+        <div class="divider"></div><br>
+
+        @if (session('error'))
+            <footer class="page-footer" style="width: 30%; margin-left: 35%; margin-right: 35%;">
+                <div class="container">
+                    <div class="row">
+                        <div>
+                            <span class="grey-text text-lighten-4">{{session('error')}}</span>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        @endif
 
         <!-- Form -->
         {!! Form::open(['url' => 'nodes']) !!}
         <div class="row">
-            <div class="input-field col s12">
-                <i class="material-icons prefix">play_for_work</i>
-                <input id="icon_label" type="text" name="name" type="text" id="name" required>
-                <label for="icon_label">Name</label>
-            </div>
-            <div class="input-field col s12" style="margin-bottom: 10px;">
-                <i class="material-icons prefix">swap_vert</i>
-                <input id="icon_swap_vert" type="text" name="longitude" type="text" id="longitude" pattern="\d+(\.\d*)?" required>
-                <label for="icon_swap_vert">Latitude</label>
-            </div>
-            <div class="input-field col s12">
-                <i class="material-icons prefix">swap_horiz</i>
-                <input id="icon_swap_horiz" type="text"  name="latitude" type="text" id="latitude" pattern="\d+(\.\d*)?" required>
-                <label for="icon_swap_horiz">Longitude</label>
-            </div>
+            @if (session('name'))
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">play_for_work</i>
+                    <input type="text" name="name" id="name" value="{{session('name')}}" required>
+                    <label for="name">Name</label>
+                </div>
+            @else
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">play_for_work</i>
+                    <input type="text" name="name" id="name" required>
+                    <label for="name">Name</label>
+                </div>
+            @endif
+            @if (session('longitude'))
+                <div class="input-field col s12" style="margin-bottom: 10px;">
+                    <i class="material-icons prefix">swap_vert</i>
+                    <input type="text" name="longitude" id="longitude" pattern="\d+(\.\d*)?" value="{{session('longitude')}}" required>
+                    <label for="longitude">Longitude</label>
+                </div>
+            @else
+                <div class="input-field col s12" style="margin-bottom: 10px;">
+                    <i class="material-icons prefix">swap_vert</i>
+                    <input type="text" name="longitude" id="longitude" pattern="\d+(\.\d*)?" required>
+                    <label for="longitude">Longitude</label>
+                </div>
+            @endif
+            @if (session('latitude'))
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">swap_horiz</i>
+                    <input type="text"  name="latitude" id="latitude" pattern="\d+(\.\d*)?" value="{{session('latitude')}}" required>
+                    <label for="latitude">Latitude</label>
+                </div>
+            @else
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">swap_horiz</i>
+                    <input type="text"  name="latitude" id="latitude" pattern="\d+(\.\d*)?" required>
+                    <label for="latitude">Latitude</label>
+                </div>
+            @endif
         </div>
 
+        <h4 class="light">Choose sensors</h4>
+        <div class="divider"></div><br>
 
         <div class="col s12">
-            <div id="checkboxes">
-                <ul class="collapsible popout z-depth-2" data-collapsible="accordion">
-                    @foreach ($sensors as $sensor)
-                        <li>
-                            <div class="collapsible-header">
-                                <input tabindex="1" type="checkbox" name="sensors[]" id="{{$sensor->name}}" value="{{$sensor->name}}">
-                                <label for="{{$sensor->name}}">{{$sensor->name}}</label>
-                                <i class="material-icons right">keyboard_arrow_down</i>
-                            </div>
-                            <div class="collapsible-body">
-                                <ul style="margin: 20px;">
-                                <li class="light"><strong>Id </strong>{{$sensor->id}}</li>
-                                <li class="light"><strong>Type </strong> {{$sensor->type}} </li>
-                                <li class="light"><strong>Unit </strong> {{$sensor->unit}} </li>
-                                <li class="light"><strong>Range </strong> {{$sensor->range}} </li>
-                                </ul>
-                            </div>
-                        </li>
+            <div class="col s4">
+                <h5 class="light left">Types</h5><br><br>
+                <a href="/sensors/create"><i class="material-icons right">add</i>Add new type</a><br><br>
+
+                <dl name="sensors[]">
+                    @foreach($sensors_types as $sensors_type)
+                        <dt>{{$sensors_type}}</dt>
+                        @foreach($sensors_types_by_unit[$sensors_type] as $sensor_type_by_unit[$sensors_type] )
+                            <dd><input type="text" id="{{$sensor_type_by_unit[$sensors_type]}}" name="sensors_units[]" value="{{$sensor_type_by_unit[$sensors_type]}}" readonly></dd>
+                            <dd><input type="number" class="validate" id="{{$sensor_type_by_unit[$sensors_type]}}" name="sensors_number[]" value="0" min="0"></dd>
+                        @endforeach
+                        <br><br>
                     @endforeach
-                </ul>
+                </dl>
             </div>
         </div>
 
         <!-- FLOATING BUTTONS -->
         <div class="fixed-action-btn" id="add">
-            <button type="submit" class="btn-floating btn-large waves-effect waves-circle waves-light" id="create" disabled> <!-- Green -->
-                <i class="large material-icons">check</i>
+            <button type="submit" class="btn-floating btn-large waves-effect waves-circle waves-light" id="create"> <!-- Green -->
+                <i class="large material-icons">navigate_next</i>
             </button>
         </div>
         <!-- FLOATING BUTTONS -->
@@ -68,7 +100,7 @@
 
         <!-- FLOATING BUTTONS -->
         <div class="fixed-action-btn" id="cancel">
-            <a href="{{ url('nodes')}}" class="btn-floating btn-large waves-effect waves-circle waves-light">
+            <a href="{{ url('mynodes')}}" class="btn-floating btn-large waves-effect waves-circle waves-light">
                 <i class="large material-icons">close</i>
             </a>
         </div>

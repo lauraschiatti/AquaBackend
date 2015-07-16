@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use Illuminate\Support\Facades\Redirect;
 use Request;
 use App\Http\Requests;
 use App\Nodes;
@@ -32,8 +33,25 @@ class NodesController extends Controller
     public function create()
     {
         $sensors = Sensors::all();
-        return view('nodes.create', compact('sensors'));
+        $sensors_types_by_unit = array();
+        $sensors_types = array();
 
+        foreach($sensors as $sensor){
+            if(in_array($sensor->type, $sensors_types_by_unit)){
+
+            }else{
+                array_push($sensors_types_by_unit,$sensor->type);
+                array_push($sensors_types,$sensor->type);
+            }
+        }
+
+        foreach($sensors as $sensor){
+            $sensors_types_by_unit[$sensor->type][] = $sensor->unit;
+        }
+
+        return view('nodes.create', compact('sensors_types', 'sensors_types_by_unit'));
+
+        //return $sensors_types;
 
         /*if($sensorsList == null){
             $sensors_names = "";
@@ -61,57 +79,59 @@ class NodesController extends Controller
      */
     public function store()
     {
-        //$input=Request::all();
+        $sensors_data = Request::all();
 
-        $node = Nodes::where("name", "=", Input::get('name'))->first();
+        $name = trim(Input::get('name'));
+        $latitude =  trim(Input::get('latitude'));
+        $longitude = trim(Input::get('longitude'));
+
+        $node = Nodes::where("name", "=", $name)->first();
 
         if($node == null){
             $newNode = new Nodes();
-            $newNode->name = Input::get('name');
-            $newNode->latitude = Input::get('latitude');
-            $newNode->longitude = Input::get('longitude');
+            $newNode->name = $name;
+            $newNode->latitude = $latitude;
+            $newNode->longitude = $longitude;
 
             if(Auth::check()){
                 $newNode->user_id = Auth::user()->id;
             }
 
-            //Nodes::create($input);
             $newNode->save();
 
-            //save sensors in that node
-            $n = Nodes::where("name", "=", Input::get('name'))->first();
-            $node_id = $n->id;
+            //sensors in that node
+            $sensors_names = $sensors_data["sensors_units"];
 
-            $sensors_checked = Input::get('sensors');
-
-            foreach($sensors_checked as $sensor_checked){
-                $sensorbynode = new SensorsByNode();
-                $sensorbynode->node_id = $node_id;
-
-                $sensor = Sensors::where("name", "=",$sensor_checked)->first();
-                $sensorbynode->sensor_id = $sensor->id ;
-
-                $node = SensorsByNode::where("node_id", "=", $node_id)
-                    ->Where("sensor_id", "=", $sensor->id)
-                    ->first();
-
-                if($node == null){
-                    $sensorbynode->save();
-                }else{
-                    //@todo revisar que hacer en caso de que exista el sensor en el nodo
-                    //return $sensorbynode;
-                }
-
+            $sensors_numbers = $sensors_data["sensors_number"];
+            //convert to int
+            foreach ($sensors_numbers as $key => $var) {
+                $sensors_numbers[$key] = (int)$var;
             }
-            return redirect('mynodes');
+
+            $sensors = array();
+
+            $i = 0;
+            while ($i < count($sensors_names)){
+                $j = 0;
+                while ($j < $sensors_numbers[$i]) {
+                    array_push($sensors, $sensors_names[$i]);
+                    $j++;
+                }
+                $i++;
+            }
+
+            return Redirect::route('order')->with('data', $sensors);
+            //return $sensors;
+            //return $sensors_data;
+            //return $newNode;
 
         }else{
-            //@todo revisar que hacer en caso de que exista el sensor en el nodo
-            return redirect('nodes/create');
+            return redirect('nodes/create')->with('error', 'NODE NAME EXISTS')
+                ->with('name', $name)
+                ->with('latitude', $latitude)
+                ->with('longitude', $longitude);
         }
 
-        //$try = SensorsByNode::all();
-        //return $try;
     }
 
     /**
@@ -214,5 +234,10 @@ class NodesController extends Controller
         }
         return view('nodes.mynodes',compact('nodes')); //pass json data to index view
 
+    }
+
+    public function saveSensorsByNode(){
+        $request = Request::all();
+        return $request;
     }
 }

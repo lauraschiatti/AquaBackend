@@ -6,12 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="description" content="AquApp">
     <meta name="author" content="">
+    @yield('meta')
     <title> AquAPP Admin | Dashboard </title>
 
     <link href="/css/materialize.min.css" rel="stylesheet">               					           <!-- Materialize core CSS -->
     <link href="/css/lab.css" rel="stylesheet">                         						           <!-- Lab core CSS -->
     <!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->	 <!-- Material Icons -->
     <link href="/css/materialicons.css" rel="stylesheet">	 <!-- Material Icons -->
+    @yield('css')
+
 </head>
 <body>
 <header>
@@ -124,7 +127,12 @@
 </div>
 
 <script src="/js/jq/jquery.min.js" type="text/javascript"></script>						<!-- Jquery core JS -->
+<script src="/js/jq/jquery-ui-1.8.custom.min.js" type="text/javascript"></script>
+<script src="/js/jq/jquery.cookie.js" type="text/javascript"></script>
 <script src="/js/materialize.min.js" type="text/javascript"></script> 					<!-- Materialize core JS -->
 <script src="/js/init.js" type="text/javascript"></script> 					          <!-- Init core JS -->
+
+@yield('javascript')
+
 </body>
 </html>

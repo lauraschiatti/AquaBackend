@@ -210,20 +210,22 @@ td a { color: #444; }
 .input-field .prefix { color: #039BE5; }        /*Light blue*/
 .input-field .prefix.active { color: #007EE5; }
 .input-field label { color: #9E9E9E; }
-.input-field label, input[type=text]:focus:not([readonly]) + label, input[type=email]:focus:not([readonly]) + label {
+.input-field label, input[type=text]:focus:not([readonly]) + label, input[type=email]:focus:not([readonly]) + label, input[type=number]:focus:not([readonly]) + label {
   color: #9E9E9E;                               /*Gray for inputs*/
 }
 
-input[type=text],input[type=email] {
+input[type=text], input[type=email], input[type=number] {
   color: #9E9E9E
   border-bottom: 1px solid #9E9E9E;
 }
 
 input[type=text]:focus:not([readonly]),
-input[type=email]:focus:not([readonly]){
+input[type=email]:focus:not([readonly]),
+input[type=number]:focus:not([readonly]){
   color: #9E9E9E;
   border-bottom: 1px solid #007EE5;
 }
+
 
 #checkboxes {
   margin-left: 40px;

@@ -35,9 +35,6 @@
 
                             @if(Auth::check() and Auth::user()->role == 'superadmin')
                                 <a href="{{route('users.edit', $user->id)}}"><i class="material-icons">edit</i></a>
-                            @endif
-
-                            @if(Auth::check() and Auth::user()->role == 'superadmin')
                                 {!! Form::open(['method' => 'DELETE', 'route'=>['users.destroy', $user->id]]) !!}
                                 <button type="submit" class="btn-flat"><i class="material-icons">delete</i></button>
                                 {!! Form::close() !!}
