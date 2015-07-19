@@ -34,16 +34,29 @@
         </div>
 
         <div class="input-field col s12">
-            <h4 class="light">Sensors Info</h4>
+            <h4 class="light">Sensors</h4>
             <div class="hide-on-med-and-down divider"></div><br/>
 
-            <ul class="collection">
+            <div class="collection">
+                @foreach($sensors_types as $sensors_type)
+                    @foreach($sensors_types_by_unit[$sensors_type] as $key => $value)
+                        <a href="#!" class="collection-item"><strong>{{strtoupper($sensors_type)}}  </strong>in {{$value}}<span class="badge">{{$sensors_types_by_unit_number[$value][0]}}</span></a>
+                    @endforeach
+                @endforeach
+            </div>
+
+            <br><br>
+
+            <h4 class="light">Sensors List Info</h4>
+            <div class="hide-on-med-and-down divider"></div><br/>
+
+           <ul class="collection">
                 @for ($i = 0; $i < $size; $i++)
                     <li class="collection-item avatar">
                         <i class="material-icons circle red">settings_remote</i>
-                        <p class="light"><strong>Id </strong>{{$sensors[$i]["id"]}}</p>
-                        <p class="light"><strong>Type </strong> {{$sensors[$i]["type"]}} </p>
-                        <p class="light"><strong>Unit </strong> {{$sensors[$i]["unit"]}} </p>
+                        <p class="light"><strong>Id </strong>{{$sensors_array[$i]["id"]}}</p>
+                        <p class="light"><strong>Type </strong> {{$sensors_array[$i]["type"]}} </p>
+                        <p class="light"><strong>Unit </strong> {{$sensors_array[$i]["unit"]}} </p>
                     </li>
                 @endfor
             </ul>

@@ -56,7 +56,7 @@ class SensorsController extends Controller
             return redirect('sensors');
         }else{
             //return $sensor;
-            return redirect('sensors/create')->with('error', 'TYPE-UNIT COMBINATION ALREADY EXISTS')
+            return redirect('sensors/create')->with('error', ' TYPE-UNIT COMBINATION ALREADY EXISTS')
                                              ->with('type', $type)
                                              ->with('unit', $unit);
         }
@@ -106,13 +106,8 @@ class SensorsController extends Controller
             Sensors::where('id', '=', $id)->update(['type' => $type, 'unit' => $unit]);
             return redirect('sensors');
         }else{
-            //return Redirect::back()->withErrors('error', 'TYPE-UNIT COMBINATION ALREADY EXISTS');
-            //return Redirect::back()->with('error', 'error');
-            //@todo devolver el error
-            return "existe";
+            return redirect()->back()->with('error', ' TYPE-UNIT COMBINATION ALREADY EXISTS');
         }
-
-
     }
 
     /**

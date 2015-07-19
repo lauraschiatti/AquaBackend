@@ -6,11 +6,17 @@
 @stop
 
 @section('content')
-    <div class="desktop row" id="nodes">
+    <div class="desktop row" id="sensors">
         <!-- Tittle -->
         <div class="linker"><p class="light">Dashboard > Sensors > Edit </p></div>
         <h4 class="light">Edit Sensor</h4>
         <div class="divider"></div><br>
+
+        @if (session('error'))
+            <div class="warning-box">
+                <p><i class="material-icons">highlight_off</i><span class="ups">Wops!</span>{{session('error')}}</p>
+            </div>
+        @endif
 
         <!-- Form -->
         {!! Form::model($sensor,[

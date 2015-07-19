@@ -13,8 +13,12 @@
     <link href="/css/lab.css" rel="stylesheet">                         						           <!-- Lab core CSS -->
     <!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->	 <!-- Material Icons -->
     <link href="/css/materialicons.css" rel="stylesheet">	 <!-- Material Icons -->
-    @yield('css')
+    <!--favicon-->
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/img/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png">
 
+    @yield('css')
 </head>
 <body>
 <header>

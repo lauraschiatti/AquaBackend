@@ -79,9 +79,9 @@ class UsersController extends Controller
             //return $user;
 
         }else{
-            return redirect('users/create')->with('error', 'USER EXISTS')
-                                             ->with('name', $name)
-                                             ->with('email', $email);
+            return redirect('users/create')->with('error', ' USER EXISTS')
+                                           ->with('name', $name)
+                                           ->with('email', $email);
         }
     }
 

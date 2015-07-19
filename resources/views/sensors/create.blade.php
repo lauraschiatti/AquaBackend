@@ -6,22 +6,16 @@
 @stop
 
 @section('content')
-    <div class="desktop row" id="nodes">
+    <div class="desktop row" id="sensors">
         <!-- Tittle -->
         <div class="linker"><p class="light">Dashboard > Sensors > Create </p></div>
         <h4 class="light">Create Sensor Type</h4>
         <div class="divider"></div><br>
 
         @if (session('error'))
-            <footer class="page-footer" style="width: 30%; margin-left: 35%; margin-right: 35%;">
-                <div class="container">
-                    <div class="row">
-                        <div>
-                            <span class="grey-text text-lighten-4">{{session('error')}}</span>
-                        </div>
-                    </div>
-                </div>
-            </footer>
+            <div class="warning-box">
+                <p><i class="material-icons">highlight_off</i><span class="ups">Wops!</span>{{session('error')}}</p>
+            </div>
         @endif
 
 

@@ -41,11 +41,16 @@ Route::get('sensorsorder', ['as' => 'order', function(){
 
 Route::post('sensorsorder', 'NodesController@saveSensorsByNode');
 
+Route::get('sensorsorderupdate', ['as' => 'order_update', function(){
+    return view('nodes.sensors_order_update');
+}]);
+
+Route::post('sensorsorderupdate', 'NodesController@updateSensorsByNode');
+
 Route::get('mynodes', 'NodesController@getMyNodes');
 
 Route::resource('sensors', 'SensorsController');
 
-//Route::resource('sensorsbynode', 'SensorsByNodeController');
-Route::get('sensorsbynode', 'NodesController@getSensorsByNode');
+Route::resource('sensorsbynode', 'SensorsByNodeController');
 
 

@@ -54,8 +54,8 @@
         <div class="divider"></div><br>
 
         <!-- Form -->
-        {!! Form::open(array('url'=>'sensorsorder','method'=>'POST', 'id'=>'sensors')) !!}
-            <div id="center-wrapper">
+        {!! Form::open(array('url'=>'sensorsorderupdate','method'=>'POST', 'id'=>'sensors')) !!}
+        <div id="center-wrapper">
             <div class="dhe-example-section" id="ex-2-1">
                 <div class="dhe-example-section-content">
 
@@ -80,9 +80,9 @@
 
         <!-- FLOATING BUTTONS -->
         <div class="fixed-action-btn" id="add">
-           <button type="submit" class="btn-floating btn-large waves-effect waves-circle waves-light" id="btn-get"> <!-- Green -->
+            <button type="submit" class="btn-floating btn-large waves-effect waves-circle waves-light" id="btn-get"> <!-- Green -->
                 <i class="large material-icons">check</i>
-           </button>
+            </button>
         </div>
         <!-- FLOATING BUTTONS -->
 
@@ -93,6 +93,7 @@
 
 @section('javascript')
     <!-- Example JavaScript files -->
+    <script type="text/javascript" src="/js/jq/jquery.min.js"></script>
     <script type="text/javascript" src="/js/jq/jquery-ui.min.js"></script>
     <script type="text/javascript" src="/js/jq/jquery.cookie.js"></script>
 
@@ -116,11 +117,11 @@
             });
 
             $('#btn-get').click(function(){
-               // token =  token = $('meta[name="csrf-token"]').attr('content');
+                // token =  token = $('meta[name="csrf-token"]').attr('content');
                 var sensors_order = getItems('#example-2-1');
                 var node_id =  $('input[id=id]').val();
                 $.ajax({
-                    url: 'sensorsorder',
+                    url: 'sensorsorderupdate',
                     type: "post",
                     data: {'order': sensors_order, 'node_id' : node_id},//, '_token' : token},
                     success: function(data){

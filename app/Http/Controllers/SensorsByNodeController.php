@@ -15,7 +15,8 @@ class SensorsByNodeController extends Controller
      */
     public function index()
     {
-       //
+        $sensorsbynode=SensorsByNode::all(); //json data
+        return $sensorsbynode; //pass json data to index view
     }
 
     /**
@@ -78,12 +79,10 @@ class SensorsByNodeController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function destroy()//$sensor_id, $node_id)
+    public function destroy($id)
     {
-        /*SensorsByNode::where("node_id", "=", $node_id)
-                      ->Where("sensor_id", "=", $sensor_id)
-                      ->delete();
-        return redirect('nodes.edit');*/
-        return "";
+        $sensor = SensorsByNode::where("id", "=", $id)->first();
+        return $sensor;
+        //return redirect()->back();
     }
 }

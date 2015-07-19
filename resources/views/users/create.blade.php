@@ -13,16 +13,9 @@
         <div class="divider"></div><br>
 
         @if (session('error'))
-            <footer class="page-footer" style="width: 30%; margin-left: 35%; margin-right: 35%;">
-                <div class="container">
-                    <div class="row">
-                        <div>
-                            <h5 class="white-text">ERROR!</h5>
-                            <span class="grey-text text-lighten-4">{{session('error')}}</span>
-                        </div>
-                    </div>
-                </div>
-            </footer>
+            <div class="warning-box">
+                <p><i class="material-icons">highlight_off</i><span class="ups">Wops!</span>{{session('error')}}</p>
+            </div>
         @endif
 
         <!-- Form -->

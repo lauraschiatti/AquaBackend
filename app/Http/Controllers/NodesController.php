@@ -50,26 +50,6 @@ class NodesController extends Controller
         }
 
         return view('nodes.create', compact('sensors_types', 'sensors_types_by_unit'));
-
-        //return $sensors_types;
-
-        /*if($sensorsList == null){
-            $sensors_names = "";
-        }else{
-            $sensors = array();
-            $finalSensor = array();
-            //$sensors_names = array();
-            foreach($sensorsList as $sensor) {
-                $finalSensor["name"] = $sensor->name;
-                $finalSensor["type"] = $sensor->type;
-                $finalSensor["unit"] = $sensor->unit;
-                $finalSensor["range"] = $sensor->range;
-
-                array_push($sensors, $finalSensor);
-                //array_push($sensors_names, $finalSensor["name"]);
-            }
-        }*/
-
     }
 
     /**
@@ -130,10 +110,10 @@ class NodesController extends Controller
             //return $newNode;
 
         }else{
-            return redirect('nodes/create')->with('error', 'NODE NAME EXISTS')
-                ->with('name', $name)
-                ->with('latitude', $latitude)
-                ->with('longitude', $longitude);
+            return redirect('nodes/create')->with('error', ' NODE NAME EXISTS')
+                                           ->with('name', $name)
+                                           ->with('latitude', $latitude)
+                                           ->with('longitude', $longitude);
         }
 
     }
@@ -145,6 +125,82 @@ class NodesController extends Controller
      * @return Response
      */
     public function show($id)
+    {
+        $node=Nodes::find($id);
+
+        $sensors_array = array();
+        $sensorsbynode =  SensorsByNode::where("node_id", "=", $id)->get();
+
+        $i = 0;
+        foreach($sensorsbynode as $sensorbynode) {
+            $sensor_id = $sensorbynode->id;
+            $sensor_type_id = $sensorbynode->sensor_type_id;
+            $sensor = Sensors::find($sensor_type_id);
+
+            $sensors_array[$i]["id"] = $sensor_id;
+            $sensors_array[$i]["type"] = $sensor["type"];
+            $sensors_array[$i]["unit"] = $sensor["unit"];
+            $i++;
+        }
+
+
+        $user =  User::where("id", "=", $node->user_id)->first();
+
+        $sensors = Sensors::all();
+        $sensors_number = Sensors::all()->toArray();
+        $sensors_types_by_unit = array();
+        $sensors_types = array();
+        $sensors_units = array();
+
+        //fill array with number of sensors size with 0
+        $sensors_types_by_unit_number = array_fill(0, count($sensors_number), 0);
+
+        foreach($sensors as $sensor){
+            if(in_array($sensor->type, $sensors_types_by_unit)){
+
+            }else{
+                array_push($sensors_types_by_unit,$sensor->type);
+                array_push($sensors_types,$sensor->type);
+            }
+            array_push($sensors_units,$sensor->unit);
+        }
+
+        foreach($sensors as $sensor){
+            $sensors_types_by_unit[$sensor->type][] = $sensor->unit;
+        }
+
+        $sensorsbynode =  SensorsByNode::where("node_id", "=", $id)->get()->toArray();
+
+
+        $j = 0;
+        foreach($sensors as $sensor){
+            $aux = 0;
+            for($i = 0; $i<count($sensorsbynode); $i++){
+                if( $sensor->id ==$sensorsbynode[$i]["sensor_type_id"]){
+                    $aux += 1;
+                }
+            }
+            $sensors_types_by_unit_number[$sensor->unit][] =  $aux;
+            $j++;
+        }
+
+        for($i = 0; $i < count($sensors_number); $i++){
+            $sensors_types_by_unit_number[$i] = trim($sensors_types_by_unit_number[$i]);
+        }
+
+
+        $size = count($sensors_array);
+        return view('nodes.show',compact('node', 'sensors_array', 'size', 'user', 'sensors_types', 'sensors_types_by_unit', 'sensors_types_by_unit_number'));
+        //return $size;
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function edit($id)
     {
         $node=Nodes::find($id);
 
@@ -162,35 +218,53 @@ class NodesController extends Controller
             $sensors[$i]["unit"] = $sensor["unit"];
             $i++;
         }
+
         $size = count($sensors);
 
-        $user =  User::where("id", "=", $node->user_id)->first();
+        $sensores = Sensors::all();
+        $sensors_number = Sensors::all()->toArray();
+        $sensors_types_by_unit = array();
+        $sensors_types = array();
+        $sensors_units = array();
 
-        //return $sensors;
-        return view('nodes.show',compact('node', 'sensors', 'size', 'user'));
-    }
+        //fill array with number of sensors size with 0
+        $sensors_types_by_unit_number = array_fill(0, count($sensors_number), 0);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        $node=Nodes::find($id);
+        foreach($sensores as $sensor){
+            if(in_array($sensor->type, $sensors_types_by_unit)){
 
-        $sensorsbynode =  SensorsByNode::where("node_id", "=", $id)->get();
-        $sensors =array();
-
-        foreach($sensorsbynode as $sensorbynode){
-            $sensor_id = $sensorbynode->sensor_type_id;
-            $sensor = Sensors::find($sensor_id);
-            $sensor =(object)$sensor;
-            array_push($sensors, $sensor);
+            }else{
+                array_push($sensors_types_by_unit,$sensor->type);
+                array_push($sensors_types,$sensor->type);
+            }
+            array_push($sensors_units,$sensor->unit);
         }
 
-        return view('nodes.edit',compact('node', 'sensors'));
+        foreach($sensores as $sensor){
+            $sensors_types_by_unit[$sensor->type][] = $sensor->unit;
+        }
+
+        $sensorsbynode =  SensorsByNode::where("node_id", "=", $id)->get()->toArray();
+
+
+        $j = 0;
+        foreach($sensores as $sensor){
+            $aux = 0;
+            for($i = 0; $i<count($sensorsbynode); $i++){
+                if( $sensor->id ==$sensorsbynode[$i]["sensor_type_id"]){
+                    $aux += 1;
+                }
+            }
+            $sensors_types_by_unit_number[$sensor->unit][] =  $aux;
+            $j++;
+        }
+
+        for($i = 0; $i < count($sensors_number); $i++){
+            $sensors_types_by_unit_number[$i] = trim($sensors_types_by_unit_number[$i]);
+        }
+
+        //return $sensors_types_by_unit_number["g/m3"];
+        return view('nodes.edit', compact('node', 'sensors', 'size', 'sensors_types', 'sensors_types_by_unit', 'sensors_types_by_unit_number'));
     }
 
     /**
@@ -201,17 +275,48 @@ class NodesController extends Controller
      */
     public function update($id)
     {
-        $nodeUpdate=Request::all();
+        $name =  trim(Input::get('name'));
+        $latitude = trim(Input::get('latitude'));
+        $longitude = trim(Input::get('longitude'));
 
-        $check =  Nodes::where("name", "=", Input::get('name'))->first();
+        $node = Nodes::where("name", "=", $name)
+                       ->Where("id", "!=", $id)
+                       ->first();
 
-        if($check->id != $id){
-            //@todo existe el nodo
-            return "el nodo ya existe";
-        }else{
-            $node=Nodes::find($id);
-            $node->update($nodeUpdate);
-            return redirect('mynodes');
+        if($node == null){
+            Nodes::where('id', '=', $id)->update(['name' => $name, 'latitude' => $latitude, 'longitude' => $longitude]);
+
+            $sensors_data = Request::all();
+
+            //sensors in that node
+            $sensors_names = $sensors_data["sensors_units"];
+
+            $sensors_numbers = $sensors_data["sensors_number"];
+            //convert to int
+            foreach ($sensors_numbers as $key => $var) {
+                $sensors_numbers[$key] = (int)$var;
+            }
+
+            $sensors = array();
+
+            $i = 0;
+            while ($i < count($sensors_names)){
+                $j = 0;
+                while ($j < $sensors_numbers[$i]) {
+                    array_push($sensors, $sensors_names[$i]);
+                    $j++;
+                }
+                $i++;
+            }
+
+            //return $sensors;
+            return Redirect::route('order_update')->with('data', $sensors)
+                                                  ->with('id', $id)
+                                                  ->with('name', $name)
+                                                  ->with('latitude', $latitude)
+                                                  ->with('longitude', $longitude);
+        }else {
+            return redirect()->back()->with('error', ' NODE NAME EXISTS');
         }
     }
 
@@ -225,7 +330,8 @@ class NodesController extends Controller
     {
         Nodes::find($id)->delete();
 
-        //@todo eliminar sensores del nodo
+        $sensorsbynode =  SensorsByNode::where("node_id", "=", $id)->delete();
+
         if(Auth::check() && Auth::user()->role == 'superadmin'){
             return redirect('nodes');
         }else{
@@ -259,7 +365,6 @@ class NodesController extends Controller
             $sensors_order = explode(',', $sensors_order);
 
             //save sensors in a node
-            //$try =  array();
             $i = 0;
             while($i < count($sensors_order)){
                 $sensor = Sensors::where('unit', '=', $sensors_order[$i])->first();
@@ -280,7 +385,48 @@ class NodesController extends Controller
         //return SensorsByNode::all();
     }
 
-    public function getSensorsByNode(){
-        return SensorsByNode::all();
+    public function updateSensorsByNode(){
+        // Getting all post data
+        if(Request::ajax()) {
+            $data = Input::all();
+            //print_r($data);die;
+
+            $sensors_order = $data["order"];
+            $node_id = $data["node_id"];
+            $sensors_order = explode(',', $sensors_order);
+
+            $sensorsbynode = SensorsByNode::where('node_id', '=', $node_id)->first();
+
+            /*foreach ($sensorsbynode-> as $sensorbynode){
+                if(in_array($sensor->type, $sensors_types_by_unit)){
+
+                }else{
+                    array_push($sensors_types_by_unit,$sensor->type);
+                    array_push($sensors_types,$sensor->type);
+                }
+            }*/
+
+            //save sensors in a node
+            //$i = 0;
+            /*while($i < count($sensors_order)){
+                $sensor = Sensors::where('unit', '=', $sensors_order[$i])->first();
+                $sensor_id = $sensor->id;
+
+                $newSensorByNode = new SensorsByNode();
+                $newSensorByNode->node_id = $node_id;
+                $newSensorByNode->sensor_type_id = $sensor_id;
+                $newSensorByNode->weight = $i;
+                $newSensorByNode->save();
+
+                $i++;
+            }
+            die;*/
+
+        }
+        //return redirect('mynodes');
     }
+
+    /*public function getSensorsByNode(){
+        return SensorsByNode::all();
+    }*/
 }

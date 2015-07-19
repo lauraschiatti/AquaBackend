@@ -10,7 +10,13 @@
         <!-- Tittle -->
         <div class="linker"><p class="light">Dashboard > Nodes > Edit </p></div>
         <h4 class="light">Edit Node</h4>
-        <div class="divider"></div>
+        <div class="divider"></div><br>
+
+        @if (session('error'))
+            <div class="warning-box">
+                <p><i class="material-icons">highlight_off</i><span class="ups">Wops!</span>{{session('error')}}</p>
+            </div>
+        @endif
 
         <!-- Form -->
         {!! Form::model($node,[
@@ -36,13 +42,56 @@
             </div>
         </div>
 
+        <h4 class="light">Edit Sensors</h4>
+        <div class="divider"></div>
+
+        <div class="col s12" id="delete">
+            <div class="col s4">
+                <br>
+                <h5 class="light left">Delete sensors</h5><br><br>
+
+                <ul class="collection">
+                    @for ($i = 0; $i < $size; $i++)
+                        <li class="collection-item avatar">
+                            <i class="material-icons circle red">settings_remote</i>
+                            <p class="light"><strong>Id </strong>{{$sensors[$i]["id"]}}</p>
+                            <p class="light"><strong>Type </strong> {{$sensors[$i]["type"]}} </p>
+                            <p class="light"><strong>Unit </strong> {{$sensors[$i]["unit"]}} </p>
+                            {{--{!! Form::open(['method' => 'DELETE', 'route'=>['sensorsbynode.destroy', $sensors[$i]["id"]]]) !!}--}}
+                                <button type="submit" class="secondary-content"><i class="material-icons">delete</i></button>
+                            {{--{!! Form::close() !!}--}}
+                        </li>
+                    @endfor
+                </ul>
+
+                <button type="submit" id="continue">Continue</button>
+            </div>
+        </div>
+
+        <div class="col s12" id="add" style="display: none;">
+            <div class="col s4">
+                <br>
+                <h5 class="light left">Add sensors</h5><br><br>
+
+                <dl name="sensors[]">
+                    @foreach($sensors_types as $sensors_type)
+                        <dt>{{$sensors_type}}</dt>
+                        @foreach($sensors_types_by_unit[$sensors_type] as $key => $value)
+                            <dd><input type="text" id="{{$value}}" name="sensors_units[]" value="{{$value}}" readonly></dd>
+                            <dd><input type="number" class="validate" id="{{$sensors_types_by_unit_number[$value][0]}}" name="sensors_number[]" value="{{$sensors_types_by_unit_number[$value][0]}}" min="{{$sensors_types_by_unit_number[$value][0]}}"></dd>
+                        @endforeach
+                        <br><br>
+                    @endforeach
+                </dl>
+            </div>
+        </div>
 
         <!-- FLOATING BUTTONS -->
-        <div class="fixed-action-btn" id="add">
-            <button type="submit" class="btn-floating btn-large waves-effect waves-circle waves-light"> <!-- Green -->
-                <i class="large material-icons">check</i>
+        <!--<div class="fixed-action-btn" id="ok" style="display: none;">
+            <button type="submit" class="btn-floating btn-large waves-effect waves-circle waves-light" id="create"> <!-- Green -->
+            <!--    <i class="large material-icons">navigate_next</i>
             </button>
-        </div>
+        </div>-->
         <!-- FLOATING BUTTONS -->
         {!! Form::close() !!}
 
@@ -53,67 +102,22 @@
             </a>
         </div>
         <!-- FLOATING BUTTONS -->
-
-        <h4 class="light">Edit Sensors</h4>
-        <div class="divider"></div>
-
-        <!-- Table -->
-        <div class="col s12">
-            <table class="striped">
-                <thead>
-                <tr>
-                    <th data-field="id">Id</th>
-                    <th data-field="name">Name</th>
-                    <th data-field="type">Type</th>
-                    <th data-field="unit">Unit</th>
-                    <th data-field="range">Range</th>
-                    <th data-field="action">Action</th>
-                </tr>
-                </thead>
-
-                <tbody>
-                @foreach ($sensors as $sensor)
-                    <tr>
-                        <td>{{ $sensor->id }}</td>
-                        <td>{{ $sensor->name }}</td>
-                        <td>{{ $sensor->type }}</td>
-                        <td>{{ $sensor->unit }}</td>
-                        <td>{{ $sensor->range }}</td>
-                        <td>
-                            <a class="modal-trigger" href="#modal2"><i class="material-icons">delete</i></a>
-                        </td>
-                    </tr>
-
-                    <!-- cancel modal Structure -->
-                    <div id="modal2" class="modal">
-                        <div class="modal-content center">
-                            <h6 class="light">This action can not be reversed, would you like to continue? </h6><br>
-                            <div class="modal-footer">
-                                <button type="submit" class="btn btn-flat">Yes</button>
-                                <button class="btn btn-flat modal-action modal-close">No</button>
-                            </div>
-                            <!--, $sensor->id, $node->id]-->
-                        </div>
-                    </div>
-                @endforeach
-                </tbody>
-            </table>
-        </div>
-
-        <!-- Modal Trigger -->
-        <br>
-        <a class="waves-effect waves-light btn btn-primary modal-trigger right" href="#modal1">Modal</a>
-
-        <!-- Modal Structure -->
-        <div id="modal1" class="modal bottom-sheet">
-            <div class="modal-content">
-                <h4>Modal Header</h4>
-                <p>A bunch of text</p>
-            </div>
-            <div class="modal-footer">
-                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-            </div>
-        </div>
     </div>
+@stop
 
+@section('javascript')
+    <!-- Example JavaScript files -->
+    <script type="text/javascript" src="/js/jq/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/js/jq/jquery.cookie.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#continue").click(function(e){
+                e.preventDefault();
+                $("#delete").hide();
+                $("#add").show();
+                $("#ok").show();
+            });
+        });
+    </script>
 @stop
