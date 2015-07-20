@@ -81,8 +81,8 @@ class SensorsByNodeController extends Controller
      */
     public function destroy($id)
     {
-        $sensor = SensorsByNode::where("id", "=", $id)->first();
-        return $sensor;
-        //return redirect()->back();
+        SensorsByNode::find($id)->delete();
+        return redirect()->back();
     }
+
 }

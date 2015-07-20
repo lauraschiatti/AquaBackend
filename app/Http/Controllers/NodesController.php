@@ -308,7 +308,6 @@ class NodesController extends Controller
                 }
                 $i++;
             }
-
             //return $sensors;
             return Redirect::route('order_update')->with('data', $sensors)
                                                   ->with('id', $id)
@@ -316,7 +315,10 @@ class NodesController extends Controller
                                                   ->with('latitude', $latitude)
                                                   ->with('longitude', $longitude);
         }else {
-            return redirect()->back()->with('error', ' NODE NAME EXISTS');
+            return redirect()->back()->with('error', ' NODE NAME EXISTS')
+                                     ->with('name', $name)
+                                     ->with('latitude', $latitude)
+                                     ->with('longitude', $longitude);
         }
     }
 
@@ -395,7 +397,43 @@ class NodesController extends Controller
             $node_id = $data["node_id"];
             $sensors_order = explode(',', $sensors_order);
 
-            $sensorsbynode = SensorsByNode::where('node_id', '=', $node_id)->first();
+            $sensors_order_number = count($sensors_order);
+
+            $sensorsbynode = SensorsByNode::where('node_id', '=', $node_id)->get()->toArray();
+            $sensorsbynode_number = count($sensorsbynode);
+
+            $sensors_types = Sensors::all();
+
+            foreach ($sensors_types as $sensor_type) {
+                $count = 0;
+                if(in_array($sensor_type->unit,$sensors_order)){
+                    for($i =0; $i < $sensors_order_number; $i++){
+                        if($sensors_order[$i] == $sensor_type->unit){
+                            $count+=1;
+                        }
+                    }
+                }
+
+                $sensors = Sensors::where('unit', '=', $sensor_type->unit)->first();
+                $sensor_id = $sensors->id;
+
+                $sensors_array = SensorsByNode::where('node_id', '=', $node_id)
+                                              ->Where('sensor_type_id', '=', $sensor_id)
+                                              ->get()->toArray();
+
+                $sensors_array_number = count($sensors_array);
+
+
+                $aux = $count - $sensors_array_number;
+
+                for($i = 0; $i < $aux; $i++){
+                        $newSensorByNode = new SensorsByNode();
+                        $newSensorByNode->node_id = $node_id;
+                        $newSensorByNode->sensor_type_id = $sensor_id;
+                        $newSensorByNode->weight = 0;
+                        $newSensorByNode->save();
+                }
+            }
 
             /*foreach ($sensorsbynode-> as $sensorbynode){
                 if(in_array($sensor->type, $sensors_types_by_unit)){
@@ -423,10 +461,8 @@ class NodesController extends Controller
             die;*/
 
         }
+        //return redirect()->back();
         //return redirect('mynodes');
-    }
-
-    /*public function getSensorsByNode(){
         return SensorsByNode::all();
-    }*/
+    }
 }

@@ -16,8 +16,8 @@
 @section('content')
     <div class="desktop row" id="nodes">
         <!-- Tittle -->
-        <div class="linker"><p class="light">Dashboard > Nodes > Create </p></div>
-        <h4 class="light">Created node info</h4>
+        <div class="linker"><p class="light">Dashboard > Nodes > Edit </p></div>
+        <h4 class="light">Updated node info</h4>
         <div class="divider"></div><br>
 
         @if (session('id'))

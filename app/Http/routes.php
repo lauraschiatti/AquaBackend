@@ -53,4 +53,8 @@ Route::resource('sensors', 'SensorsController');
 
 Route::resource('sensorsbynode', 'SensorsByNodeController');
 
+//Route::get('sensorsbynode/delete/{id}', 'SensorsByNodeController@deleteSensorByNode');
+/*Route::get('sensorsbynode/delete', function(){
+    return view('sensorsbynode.edit');
+});*/
 
