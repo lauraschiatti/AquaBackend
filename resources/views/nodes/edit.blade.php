@@ -69,28 +69,32 @@
         <h4 class="light">Edit Sensors</h4>
         <div class="divider"></div>
 
-        <div class="col s12" id="add" style="display: none;">
-            <div class="col s4">
-                <br>
-                <h5 class="light left">Add sensors</h5><br><br>
-
-                <dl name="sensors[]">
-                    @foreach($sensors_types as $sensors_type)
-                        <dt>{{$sensors_type}}</dt>
+        <div id="list">
+            <div class="row container" name="sensors[]" style="display: none;" id="add">
+                @foreach($sensors_types as $sensors_type)
+                    <div class="col s12 name">
+                        {{$sensors_type}}
+                    </div>
+                    <div class="col s12">
                         @foreach($sensors_types_by_unit[$sensors_type] as $key => $value)
-                            <dd><input type="text" id="{{$value}}" name="sensors_units[]" value="{{$value}}" readonly></dd>
-                            <dd><input type="number" class="validate" id="{{$sensors_types_by_unit_number[$value][0]}}" name="sensors_number[]" value="{{$sensors_types_by_unit_number[$value][0]}}" min="{{$sensors_types_by_unit_number[$value][0]}}"></dd>
+                            <div class="row">
+                                <div class="col s6">
+                                    <input style="color:#000000; text-align: center; font-size: 20px; " type="text" id="{{$value}}" name="sensors_units[]" value="{{$value}}" readonly>
+                                </div>
+                                <div class="col s6">
+                                    <input style="text-align: center; font-size: 20px;" type="number" class="validate"  id="{{$sensors_types_by_unit_number[$value][0]}}" name="sensors_number[]" value="{{$sensors_types_by_unit_number[$value][0]}}" min="{{$sensors_types_by_unit_number[$value][0]}}">
+                                </div>
+                            </div>
                         @endforeach
-                        <br><br>
-                    @endforeach
-                </dl>
+                    </div>
+                @endforeach
             </div>
         </div>
 
 
         <!-- FLOATING BUTTONS -->
         <div class="fixed-action-btn" id="ok" style="display: none;">
-            <button type="submit" class="btn-floating btn-large waves-effect waves-circle waves-light" id="create"> <!-- Green -->
+            <button type="submit" class="primary btn-floating btn-large waves-effect waves-circle waves-light" id="create"> <!-- Green -->
             <i class="large material-icons">navigate_next</i>
             </button>
         </div>
@@ -106,27 +110,24 @@
         <!-- FLOATING BUTTONS -->
 
 
-        <div class="col s12" id="delete">
-            <div class="col s4">
-                <br>
-                <h5 class="light left">Delete sensors</h5><br><br>
-
-                <ul class="collection">
-                    @for ($i = 0; $i < $size; $i++)
-                        <li class="collection-item avatar">
-                            <i class="material-icons circle red">settings_remote</i>
-                            <p class="light"><strong>Id </strong>{{$sensors[$i]["id"]}}</p>
-                            <p class="light"><strong>Type </strong> {{$sensors[$i]["type"]}} </p>
-                            <p class="light"><strong>Unit </strong> {{$sensors[$i]["unit"]}} </p>
+        <div class="col s12" id="delete"><br>
+            <ul class="collection">
+                @for ($i = 0; $i < $size; $i++)
+                    <li class="collection-item avatar">
+                        <i class="material-icons circle red">settings_remote</i>
+                        <p class="light"><strong>Id </strong>{{$sensors[$i]["id"]}}
                             {!! Form::open(['method' => 'DELETE', 'route'=>['sensorsbynode.destroy', $sensors[$i]["id"]]]) !!}
-                                <button type="submit" class="btn-flat"><i class="material-icons">delete</i></button>
+                            <button type="submit" class="btn btn-flat" style="float: right;"><i class="material-icons">delete</i></button>
                             {!! Form::close() !!}
-                            <!--<a class="right" href="{{--URL::to('sensorsbynode/delete/' . $sensors[$i]["id"])--}}"><i class="material-icons">delete</i></a>-->
-                        </li>
-                    @endfor
-                </ul>
-
-                <button type="submit" id="continue">Continue</button>
+                        <strong>Type </strong> {{$sensors[$i]["type"]}} <br/>
+                        <strong>Unit </strong> {{$sensors[$i]["unit"]}}
+                        <!--<a class="right" href="{{--URL::to('sensorsbynode/delete/' . $sensors[$i]["id"])--}}"><i class="material-icons">delete</i></a>-->
+                    </li>
+                @endfor
+            </ul>
+            <br/>
+            <div class="center">
+                <button type="submit" class="btn btn-primary" id="continue">Continue</button>
             </div>
         </div>
     </div>

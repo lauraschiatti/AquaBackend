@@ -49,34 +49,61 @@
             </div>
         @endif
 
-        <br><br>
+        <br/>
         <h4 class="light">Choose data sending schema</h4>
         <div class="divider"></div><br>
 
         <!-- Form -->
         {!! Form::open(array('url'=>'sensorsorder','method'=>'POST', 'id'=>'sensors')) !!}
-            <div id="center-wrapper">
-            <div class="dhe-example-section" id="ex-2-1">
-                <div class="dhe-example-section-content">
+            @if (session('data'))
+                <div id="center-wrapper">
+                    <div class="dhe-example-section" id="ex-2-1">
+                        <div class="dhe-example-section-content">
 
-                    <div id="example-2-1">
-                        <div class="column left first">
-                            <ul class="sortable-list">
-                                @if (session('data'))
-                                    @foreach(session('data') as $value)
-                                        <li class="sortable-item" id="{{$value}}">{{$value}}</li>
-                                    @endforeach
-                                @else
-                                    <p id="data_schema">NO SENSORS SELECTED</p>
-                                @endif
-                            </ul>
+                            <div id="example-2-1">
+                                <div class="column left first">
+                                    <ul class="sortable-list">
+                                        @if (session('data'))
+                                            @foreach(session('data') as $value)
+                                                <li class="sortable-item" id="{{$value}}">{{$value}}</li>
+                                            @endforeach
+                                        @endif
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="clearer">&nbsp;</div>
                         </div>
                     </div>
-                    <div class="clearer">&nbsp;</div>
                 </div>
-            </div>
-        </div>
+            @endif
 
+            @if (!session('data'))
+                <div id="center-wrapper" style="display:none;">
+                    <div class="dhe-example-section" id="ex-2-1">
+                        <div class="dhe-example-section-content">
+
+                            <div id="example-2-1">
+                                <div class="column left first">
+                                    <ul class="sortable-list">
+                                        @if (session('data'))
+                                            @foreach(session('data') as $value)
+                                                <li class="sortable-item" id="{{$value}}">{{$value}}</li>
+                                            @endforeach
+                                        @endif
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="clearer">&nbsp;</div>
+                        </div>
+                    </div>
+                </div>
+            @endif
+
+            @if (!session('data'))
+                <div class="warning-box">
+                    <p style="text-align: center;"><i class="material-icons">highlight_off</i><span class="ups">Wops!</span> NO SENSORS SELECTED</p>
+                </div>
+            @endif
 
         <!-- FLOATING BUTTONS -->
         <div class="fixed-action-btn" id="add">

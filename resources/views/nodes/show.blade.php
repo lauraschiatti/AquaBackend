@@ -37,13 +37,13 @@
             <h4 class="light">Sensors</h4>
             <div class="hide-on-med-and-down divider"></div><br/>
 
-            <div class="collection">
+            <ul class="collection">
                 @foreach($sensors_types as $sensors_type)
                     @foreach($sensors_types_by_unit[$sensors_type] as $key => $value)
-                        <a href="#!" class="collection-item"><strong>{{strtoupper($sensors_type)}}  </strong>in {{$value}}<span class="badge">{{$sensors_types_by_unit_number[$value][0]}}</span></a>
+                        <li class="collection-item"><strong>{{strtoupper($sensors_type)}}  </strong>in {{$value}}<span class="badge">{{$sensors_types_by_unit_number[$value][0]}}</span></li>
                     @endforeach
                 @endforeach
-            </div>
+            </ul>
 
             <br><br>
 

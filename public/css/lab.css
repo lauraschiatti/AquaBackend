@@ -19,33 +19,56 @@
   -webkit-box-shadow:none !important;
 }
 
+.name {
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    margin-top: 50px;
+    font-size: 20px;
+    color: #039BE5;
+}
+
+
 /***** Desktop Media *****/
 @media only screen and (min-width : 992px) {
   /* General */
   .desktop {
     margin-left: 280px;
-    margin-right: 40px;
+    margin-right: 20px;
     margin-top: 30px;
   }
 
   .desktop h4 { margin-left: 20px; }
+
 
   /* Show - Create pages */
   #add { top: 140px; right: 60px; }
   #cancel { top: 140px; right: 130px; }
   #add .btn-floating { background: #007EE5; }
   #cancel .btn-floating { background: #F44336; }
+    #list .container{
+        width: 40%;
+    }
 }
 
 /***** Tablet & Mobile Media *****/
 @media only screen and (max-width : 992px) {
    /* General */
-   .desktop h4 /*, .linker*/ { display: none; }
+   .desktop h4, .divider, .linker { display: none; }
 
    /* Show - Create pages */
    #add { bottom: 45px; right: 20px;}
    #add .btn-floating { background: #F44336; }
    #cancel { display: none; }
+    #list .container {
+        width: 60%;
+    }
+}
+
+@media only screen and (max-width: 600px){
+    #list .container {
+        width: 80%;
+    }
 }
 
 /***** Large/Small Top Nav Bar Reset *****/
@@ -144,8 +167,8 @@ td .buttons .btn-flat,
 input[type=text]:focus:not([readonly]) + label,
 input[type=email]:focus:not([readonly]) + label,
 input[type=number]:focus:not([readonly]) + label {
-   color: #9E9E9E;                               /*Gray for inputs*/
-}
+     color: #9E9E9E;                               /*Gray for inputs*/
+ }
 
 input[type=text], input[type=email], input[type=number] { color: #9E9E9E; border-bottom: 1px solid #9E9E9E; }
 
@@ -154,6 +177,13 @@ input[type=email]:focus:not([readonly]),
 input[type=number]:focus:not([readonly]){
   color: #9E9E9E;
   border-bottom: 1px solid #007EE5;
+}
+
+input[type=text].valid, input[type=text]:focus.valid,
+input[type=email].valid, input[type=email]:focus.valid,
+input[type=number].valid, input[type=number]:focus.valid {
+    border-bottom: 1px solid #039BE5;
+    box-shadow: 0 1px 0 0 #039BE5;
 }
 
 [type="checkbox"]:checked + label:before { border-right: 2px solid #039BE5; border-bottom: 2px solid #039BE5; }

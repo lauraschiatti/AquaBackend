@@ -399,66 +399,46 @@ class NodesController extends Controller
 
             $sensors_order_number = count($sensors_order);
 
-            $sensorsbynode = SensorsByNode::where('node_id', '=', $node_id)->get()->toArray();
-            $sensorsbynode_number = count($sensorsbynode);
-
             $sensors_types = Sensors::all();
 
             foreach ($sensors_types as $sensor_type) {
                 $count = 0;
-                if(in_array($sensor_type->unit,$sensors_order)){
-                    for($i =0; $i < $sensors_order_number; $i++){
-                        if($sensors_order[$i] == $sensor_type->unit){
-                            $count+=1;
-                        }
+                for($i =0; $i < $sensors_order_number; $i++){
+                    if($sensors_order[$i] == $sensor_type->unit){
+                        $count+=1;
                     }
                 }
 
-                $sensors = Sensors::where('unit', '=', $sensor_type->unit)->first();
-                $sensor_id = $sensors->id;
-
-                $sensors_array = SensorsByNode::where('node_id', '=', $node_id)
-                                              ->Where('sensor_type_id', '=', $sensor_id)
+                $sensorsbynode = SensorsByNode::where('node_id', '=', $node_id)
+                                              ->Where('sensor_type_id', '=', $sensor_type->id)
                                               ->get()->toArray();
 
-                $sensors_array_number = count($sensors_array);
+                $sensorsbynode_number = count($sensorsbynode);
 
-
-                $aux = $count - $sensors_array_number;
+                $aux = $count - $sensorsbynode_number;
 
                 for($i = 0; $i < $aux; $i++){
-                        $newSensorByNode = new SensorsByNode();
-                        $newSensorByNode->node_id = $node_id;
-                        $newSensorByNode->sensor_type_id = $sensor_id;
-                        $newSensorByNode->weight = 0;
-                        $newSensorByNode->save();
+                    $newSensorByNode = new SensorsByNode();
+                    $newSensorByNode->node_id = $node_id;
+                    $newSensorByNode->sensor_type_id = $sensor_type->id;
+                    $newSensorByNode->weight = 0;
+                    $newSensorByNode->save();
                 }
             }
 
-            /*foreach ($sensorsbynode-> as $sensorbynode){
-                if(in_array($sensor->type, $sensors_types_by_unit)){
+            //fill with -1
+            SensorsByNode::where("node_id", "=", $node_id)->update(['weight' => -1]);
 
-                }else{
-                    array_push($sensors_types_by_unit,$sensor->type);
-                    array_push($sensors_types,$sensor->type);
-                }
-            }*/
-
-            //save sensors in a node
-            //$i = 0;
-            /*while($i < count($sensors_order)){
-                $sensor = Sensors::where('unit', '=', $sensors_order[$i])->first();
-                $sensor_id = $sensor->id;
-
-                $newSensorByNode = new SensorsByNode();
-                $newSensorByNode->node_id = $node_id;
-                $newSensorByNode->sensor_type_id = $sensor_id;
-                $newSensorByNode->weight = $i;
-                $newSensorByNode->save();
-
-                $i++;
+            //update weight
+            for($i = 0; $i < $sensors_order_number ; $i++){
+                
+                $sensorsbynode = SensorsByNode::where('node_id', '=', $node_id)
+                                              ->Where('sensor_type_id', '=', $sensors_order[$i])
+                                             // ->Where('weight', '>', 0)
+                                              ->first();
+                $sensorsbynode->update(['weight' => $i]);
             }
-            die;*/
+
 
         }
         //return redirect()->back();
