@@ -431,7 +431,7 @@ class NodesController extends Controller
 
             //update weight
             for($i = 0; $i < $sensors_order_number ; $i++){
-                
+
                 $sensorsbynode = SensorsByNode::where('node_id', '=', $node_id)
                                               ->Where('sensor_type_id', '=', $sensors_order[$i])
                                              // ->Where('weight', '>', 0)

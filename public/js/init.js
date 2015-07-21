@@ -20,4 +20,23 @@ $(document).ready(function(){
     });
 });
 
+/* scrollspy */
+$(document).ready(function(){
+    $('.scrollspy').scrollSpy();
+});
+
+/* Tooltip */
+$(document).ready(function(){
+    $('.tooltipped').tooltip({delay: 50});
+});
+
+/* Parallax */
+$(document).ready(function(){
+    $('.parallax').parallax();
+});
+
+/* Modal */
+$(document).ready(function(){
+    $('.modal-trigger').leanModal();
+});
 

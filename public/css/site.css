@@ -1,115 +1,285 @@
 /********************************************
 				        DEFAULT SETTINGS
  ********************************************/
+/***** General *****/
+* { box-sizing: border-box; }
+
 body {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }
 
 main {
-  flex: 1 0 auto;
-}
-
-/***** Media Queries *****/
-@media only screen and (max-width : 665px) {
-  #tittle h2 {
-    font-size: 40px;
-  }
-}
-
-@media only screen and (max-width : 550px) {
-  #tittle h2 {
-    font-size: 30px;
-  }
-
-  #tittle h5 {
-    font-size: 15px;
-  }
+    flex: 1 0 auto;
 }
 
 /***** Palette *****/
 .primary { background: #007EE5 !important; }
-.secundary { background: #263238 !important; }
-.footer-copyright { background: #151F24 !important; }
 
 /***** Button Settings *****/
 .btn-primary, .btn-primary:hover, .btn-primary:focus {
-  background: #FFFFFF;
-  color: #1976D2;
+    background: #007EE5;
+    color: #FFFFFF;
 }
 
 .btn-secundary, .btn-secundary:hover, .btn-secundary:focus {
-  background: #007EE5;
-  color: #FFFFFF;
+    background: #FFFFFF;
+    color: #1976D2;
+    border-radius: 20px;
 }
 
 .btn-flat, .btn-flat:hover, .btn-flat:focus {
-  background: none;
-  color: #FFFFFF;
-  box-shadow: none !important;
-  -webkit-box-shadow:none !important;
+    background: none;
+    color: #FFFFFF;
+    box-shadow: none !important;
+    -webkit-box-shadow:none !important;
 }
 
-/***** NAVBAR *****/
+/***** Navbar *****/
 nav {
-  box-shadow: none !important;
-  -webkit-box-shadow:none !important;
+    background: #007EE5;
+    box-shadow: none !important;
+    -webkit-box-shadow:none !important;
 }
 
-.brand img {
-  width: 150px;
-  margin-left: 30px;
-  margin-top: 5px;
-}
-
+/***** Navbar Mobile & Tablet *****/
 .nav-wrapper .button-collapse i {
-  font-size: 25px;
-  margin-left: 30px;
+    font-size: 25px;
+    margin-left: 30px;
 }
 
-.nav-wrapper .hide-on-med-and-down {
-  margin-right: 30px;
-}
-.nav-wrapper .hide-on-med-and-down li:hover {
-  background: none;
+/***** Navbar Desktop *****/
+.nav-wrapper .hide-on-med-and-down {  margin-right: 30px; }
+.nav-wrapper .hide-on-med-and-down li:hover, .nav-wrapper .hide-on-med-and-down li:focus { background: none !important; }
+.nav-wrapper .hide-on-med-and-down li a.btn-flat { margin-right: 5px; }
+
+.nav-wrapper .brand img {
+    width: 150px;
+    margin-left: 30px;
+    margin-top: 5px;
 }
 
-/***** Side Menu *****/
-.menu-header {
-  text-align: center;
-  background: #007EE5;
-}
+/***** Navbar Mobile *****/
+.side-nav .menu-header { text-align: center; background: #007EE5; }
+.side-nav .menu-header img { width: 100px; margin-top: 30px; }
 
-.menu-header img {
-  width: 100px;
-  margin-top: 30px;
+.side-nav li {
+    font-size: 14px;
+    height: 50px;
+    line-height: 50px;
+    padding: 0 15px;
 }
 
 /********************************************
-                  SECTIONS
+				        SECTIONS
  ********************************************/
-/***** BANNER *****/
-#banner {
-  min-height: 620px;
-  max-height: 820px;
-  position: relative;
+i.medium {
+    font-size: 40px;
 }
 
-#tittle {
-  text-align: center;
-  margin-top: 50px;
+/***** Divisor *****/
+.divisor{
+    background: #ECEFF1;;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top: 2px solid #EEE;
+    border-bottom: 1px solid #EEE;
 }
 
-#tittle h2 {
-  margin-bottom: 0px;
+.box {
+    display: inline-block;
+    margin-top: 30px;
 }
 
-#tittle h5 {
-  margin-bottom: 40px;
+/* Media For Desktop & Tablet Devices*/
+@media only screen and (min-width : 992px), (max-width : 992px) {
+    .divisor img {  margin-right: 20px; }
+    .box img { max-width: 60px; max-height: 60px; }
 }
 
-#tittle p {
-  font-size: 11px;
-  margin-top: 8px;
+/* Media For Small Mobile Devices*/
+@media only screen and (max-width : 500px) {
+    .divisor img {  margin-right: 5px; }
+    .box img { max-width: 40px; max-height: 40px; }
+}
+
+
+/***** Home *****/
+#title h2 { margin-bottom: 0px; }
+#title h5 { margin-bottom: 20px; }
+#title p { font-size: 11px;  margin-top: 8px; }
+
+/* Media For Desktop & Tablet Devices*/
+@media only screen and (min-width : 992px), (max-width : 992px) {
+    #home {
+        padding: 70px 0 0;
+        text-align: center;
+        margin: 0;
+        overflow: hidden;
+        position: relative;
+    }
+
+    #home img {
+        display: inline-block;
+        max-width: 95%;
+        height: auto;
+        margin-top: 30px;
+        margin-bottom: -20px;
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)
+    }
+
+    #title h2 { font-size: 3.56rem; }
+}
+
+/* Media For Extra Small Devices*/
+@media only screen and (max-width : 500px) {
+    #home {
+        width: 100%;
+        padding: 0 7%;
+        display: table;
+        margin: 0;
+        max-width: none;
+        height: 100vh;
+    }
+
+    #home img { display: none; }
+    #title h2 { margin-top: 40%; font-size: 2.5rem;}
+}
+
+/***** About *****/
+#meet {
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 80px;
+    height: auto;
+    border-top: 2px solid #EEE;
+    border-bottom: 2px solid #EEE;
+}
+
+/***** Contribute *****/
+#cont {
+    margin: 0px;
+    padding: 80px 0 0 0;
+}
+
+#cont h2 { margin-bottom: 0px; }
+#cont h5 { margin-bottom: 20px; }
+#lab { border-bottom: 2px solid #EEE;}
+
+/* Media For Desktop & Tablet Devices*/
+@media only screen and (min-width : 992px), (max-width : 992px) {
+    #cont img {
+        display: inline-block;
+        max-width: 80%;
+        height: auto;
+        border-radius: 10px;
+        margin-top: 20px;
+        margin-bottom: -120px;
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    }
+
+    #title h2 { font-size: 3.56rem; }
+    #lab { margin-top: 150px; }
+}
+
+/* Media For Extra Small Devices*/
+@media only screen and (max-width : 500px) {
+    #cont img { display: none; }
+    #lab { margin-top: 0px; }
+}
+
+/***** Team *****/
+#team {
+    padding: 20px 0 40px;
+    border-bottom: 2px solid #EEE;
+}
+
+/***** Help *****/
+#help {
+    padding: 50px 0 50px 0;
+}
+
+#help .buttons {
+    margin-top: 10px;
+    display:inline-block;
+    vertical-align: middle;
+}
+
+#help .buttons .btn { text-transform: capitalize; }
+
+#help .buttons .btn-primary,
+#help .buttons .btn-primary:hover,
+#help .buttons .btn-primary:focus {
+    background: #EA5929;
+    color: #FFFFFF;
+    border-radius: 20px;
+    margin-right: 10px;
+    box-shadow: none !important;
+    -webkit-box-shadow:none !important;
+}
+
+#help .buttons .btn-secundary,
+#help .buttons .btn-secundary:hover,
+#help .buttons .btn-secundary:focus {
+    background: #007EE5;
+    color: #FFFFFF;
+    border-radius: 20px;
+    box-shadow: none !important;
+    -webkit-box-shadow:none !important;
+}
+
+/***** Map *****/
+.parallax-container { height: 280px;}
+
+/***** Footer *****/
+#footer { background: #36474F; margin: 0px; /*font-family: 'Questrial', sans-serif; */}
+#footer .container { width: 92%; }
+#footer li, #footer a { color: #A5B6C3; }
+#footer h5, #footer a:hover { color: #F9F9FA; }
+#footer .footer-copyright { color: #A5B6C3; background-color: rgba(51, 51, 51, 0.09); }
+
+@media only screen and (max-width : 400px) {
+    .footer-copyright { font-size: 10px; }
+}
+
+
+#footer #details li { font-size: 11px; }
+#footer #details img { margin-top: 30px; }
+#footer h5 { font-size: 1.4rem; }
+#links { margin-top: 10px; }
+
+#footer #brand-utb {
+    margin-top: 30px;
+    background: url("../img/utb-logo-01.png") no-repeat;
+    min-width: 300px;
+    min-height: 81px;
+}
+
+#footer #brand-utb:hover {
+    background: url("../img/utb-logo-02.png") no-repeat;
+    min-width: 300px;
+    min-height: 81px;
+}
+
+/********************************************
+                GENERAL USAGE EFFECTS SETTINGS
+ ********************************************/
+/***** Grow *****/
+.grow {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-transition-duration: 0.1s;
+    transition-duration: 0.1s;
+    -webkit-transition-property: transform;
+    transition-property: transform;
+}
+.grow:hover, .grow:focus, .grow:active {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
 }
