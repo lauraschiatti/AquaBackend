@@ -9,82 +9,80 @@
 @stop
 
 @section('title')
-    <!--<a href="#" class="mobile-tittle">New Node</a>-->
-    <!--<a href="{{-- url('nodes')--}}" class="mobile-right"><i class="material-icons">close</i></a>-->
+    <a href="#" class="mobile-tittle">Update Node</a>
+    <a href="{{ url('nodes')}}" class="mobile-right"><i class="material-icons">close</i></a>
 @stop
 
 @section('content')
     <div class="desktop row" id="nodes">
         <!-- Tittle -->
         <div class="linker"><p class="light">Dashboard > Nodes > Edit </p></div>
-        <h4 class="light">Updated node info</h4>
-        <div class="divider"></div><br>
-
-        @if (session('id'))
-            <div class="input-field col s12">
-                <i class="material-icons prefix">play_for_work</i>
-                <input type="text" id="id" value="{{session('id')}}" readonly>
-                <label for="id">Id</label>
-            </div>
-        @endif
-        @if (session('name'))
-            <div class="input-field col s12">
-                <i class="material-icons prefix">play_for_work</i>
-                <input id="name" type="text" value="{{session('name')}}" readonly>
-                <label for="name">Name</label>
-            </div>
-        @endif
-        @if (session('longitude'))
-            <div class="input-field col s12">
-                <i class="material-icons prefix">swap_vert</i>
-                <input id="longitude" type="text" id="id" value="{{session('longitude')}}" readonly>
-                <label for="longitude">Longitude</label>
-            </div>
-        @endif
-        @if (session('latitude'))
-            <div class="input-field col s12">
-                <i class="material-icons prefix">swap_horiz</i>
-                <input id="latitude" type="text" id="id" value="{{session('latitude')}}" readonly>
-                <label for="latitude">Latitude</label>
-            </div>
-        @endif
-
-        <br><br>
         <h4 class="light">Choose data sending schema</h4>
         <div class="divider"></div><br>
 
+        @if (session('id'))
+            <input type="hidden" id="id" value="{{session('id')}}">
+        @endif
+
         <!-- Form -->
         {!! Form::open(array('url'=>'sensorsorderupdate','method'=>'POST', 'id'=>'sensors')) !!}
-        <div id="center-wrapper">
-            <div class="dhe-example-section" id="ex-2-1">
-                <div class="dhe-example-section-content">
+            @if (session('data'))
+                <div id="center-wrapper">
+                    <div class="dhe-example-section" id="ex-2-1">
+                        <div class="dhe-example-section-content">
 
-                    <div id="example-2-1">
-                        <div class="column left first">
-                            <ul class="sortable-list">
-                                @if (session('data'))
-                                    @foreach(session('data') as $value)
-                                        <li class="sortable-item" id="{{$value}}">{{$value}}</li>
-                                    @endforeach
-                                @else
-                                    <p id="data_schema">NO SENSORS SELECTED</p>
-                                @endif
-                            </ul>
+                            <div id="example-2-1">
+                                <div class="column left first">
+                                    <ul class="sortable-list">
+                                        @if (session('data'))
+                                            @foreach(session('data') as $value)
+                                                <li class="sortable-item" id="{{$value}}">{{$value}}</li>
+                                            @endforeach
+                                        @endif
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="clearer">&nbsp;</div>
                         </div>
                     </div>
-                    <div class="clearer">&nbsp;</div>
                 </div>
+            @endif
+
+            @if (!session('data'))
+                <div id="center-wrapper" style="display:none;">
+                    <div class="dhe-example-section" id="ex-2-1">
+                        <div class="dhe-example-section-content">
+
+                            <div id="example-2-1">
+                                <div class="column left first">
+                                    <ul class="sortable-list">
+                                        @if (session('data'))
+                                            @foreach(session('data') as $value)
+                                                <li style=" text-transform: uppercase;" class="sortable-item" id="{{$value}}">{{$value}}</li>
+                                            @endforeach
+                                        @endif
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="clearer">&nbsp;</div>
+                        </div>
+                    </div>
+                </div>
+            @endif
+
+            @if (!session('data'))
+                <div class="warning-box">
+                    <p style="text-align: center;"><i class="material-icons">highlight_off</i><span class="ups">Wops!</span> NO SENSORS SELECTED</p>
+                </div>
+            @endif
+
+            <!-- FLOATING BUTTONS -->
+            <div class="fixed-action-btn" id="add">
+                <button type="submit" class="btn-floating btn-large waves-effect waves-circle waves-light" id="btn-get"> <!-- Green -->
+                    <i class="large material-icons">check</i>
+                </button>
             </div>
-        </div>
-
-
-        <!-- FLOATING BUTTONS -->
-        <div class="fixed-action-btn" id="add">
-            <button type="submit" class="btn-floating btn-large waves-effect waves-circle waves-light" id="btn-get"> <!-- Green -->
-                <i class="large material-icons">check</i>
-            </button>
-        </div>
-        <!-- FLOATING BUTTONS -->
+            <!-- FLOATING BUTTONS -->
 
         {!! Form::close() !!}
 
@@ -125,6 +123,7 @@
                     type: "post",
                     data: {'order': sensors_order, 'node_id' : node_id},//, '_token' : token},
                     success: function(data){
+                        //alert(data);
                         console.log(data);
                     }
                 });

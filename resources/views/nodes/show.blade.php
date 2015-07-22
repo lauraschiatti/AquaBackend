@@ -11,7 +11,8 @@
         <!-- Tittle -->
         <div class="linker"><p class="light">Dashboard > Nodes > Show </p></div>
         <h4 class="light">Node Info</h4>
-        <div class="hide-on-med-and-down divider"></div>
+        <div class="hide-on-med-and-down divider"></div><br>
+
         <div class="input-field col s12">
             <i class="material-icons prefix">play_for_work</i>
             <input type="text" id="id" value="{{$node->id}}" readonly>
@@ -37,7 +38,7 @@
             <h4 class="light">Sensors</h4>
             <div class="hide-on-med-and-down divider"></div><br/>
 
-            <ul class="collection">
+                <ul class="collection">
                 @foreach($sensors_types as $sensors_type)
                     @foreach($sensors_types_by_unit[$sensors_type] as $key => $value)
                         <li class="collection-item"><strong>{{strtoupper($sensors_type)}}  </strong>in {{$value}}<span class="badge">{{$sensors_types_by_unit_number[$value][0]}}</span></li>
@@ -45,9 +46,9 @@
                 @endforeach
             </ul>
 
-            <br><br>
+            <br>
 
-            <h4 class="light">Sensors List Info</h4>
+            <h4 class="light">Sensors Data Sending Schema</h4>
             <div class="hide-on-med-and-down divider"></div><br/>
 
            <ul class="collection">

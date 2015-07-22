@@ -68,10 +68,32 @@
 
         <h4 class="light">Edit Sensors</h4>
         <div class="divider"></div>
-
-        <div id="list">
-            <div class="row container" name="sensors[]" style="display: none;" id="add">
+        <div id="add" style="display: none;">
+            <div class="row container" name="sensors[]">
                 @foreach($sensors_types as $sensors_type)
+                    <div class="col s12 name">
+                        {{$sensors_type}}
+                    </div>
+                    <div class="col s12">
+                        @foreach($sensors_types_by_unit[$sensors_type] as $sensor_type_by_unit[$sensors_type] )
+                            <div class="row">
+                                <div class="col s6">
+                                    <input style="color:#000000; text-align: center; font-size: 20px; " type="hidden" id="{{$sensor_type_by_unit[$sensors_type]}}" name="sensors_units[]" value="{{$sensors_type. "_".$sensor_type_by_unit[$sensors_type]}}">
+                                    <p style="font-size: 1.4em;">{{$sensor_type_by_unit[$sensors_type]}}</p>
+                                </div>
+                                <div class="col s6">
+                                    <input style="text-align: center; font-size: 20px;" type="number" class="validate" id="{{$sensor_type_by_unit[$sensors_type]}}" name="sensors_number[]" value="0" min="0">
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                @endforeach
+            </div>
+        </div>
+
+        <!--<div id="list">
+            <div class="row container" name="sensors[]" style="display: none;" id="add">
+                {{--@foreach($sensors_types as $sensors_type)
                     <div class="col s12 name">
                         {{$sensors_type}}
                     </div>
@@ -87,15 +109,15 @@
                             </div>
                         @endforeach
                     </div>
-                @endforeach
+                @endforeach--}}
             </div>
-        </div>
+        </div>-->
 
 
         <!-- FLOATING BUTTONS -->
-        <div class="fixed-action-btn" id="ok" style="display: none;">
-            <button type="submit" class="primary btn-floating btn-large waves-effect waves-circle waves-light" id="create"> <!-- Green -->
-            <i class="large material-icons">navigate_next</i>
+        <div class="fixed-action-btn" id="add">
+            <button type="submit" class="btn-floating btn-large waves-effect waves-circle waves-light" id="create"> <!-- Green -->
+                <i class="large material-icons">navigate_next</i>
             </button>
         </div>
         <!-- FLOATING BUTTONS -->
@@ -109,10 +131,16 @@
         </div>
         <!-- FLOATING BUTTONS -->
 
+        <br>
+        <div class="warning-box" id="delete">
+            <p><i class="material-icons">highlight_off</i><span class="ups">Warning!</span> If you continue the sensors data sending schema of the node will be deleted </p>
+            <p><strong>It´s recommended to create other node</strong></p>
+        </div>
 
-        <div class="col s12" id="delete"><br>
+        <br><br>
+        <!--<div class="col s12" id="delete"><br>
             <ul class="collection">
-                @for ($i = 0; $i < $size; $i++)
+                {{--@for ($i = 0; $i < $size; $i++)
                     <li class="collection-item avatar">
                         <i class="material-icons circle red">settings_remote</i>
                         <p class="light"><strong>Id </strong>{{$sensors[$i]["id"]}}
@@ -121,14 +149,13 @@
                             {!! Form::close() !!}
                         <strong>Type </strong> {{$sensors[$i]["type"]}} <br/>
                         <strong>Unit </strong> {{$sensors[$i]["unit"]}}
-                        <!--<a class="right" href="{{--URL::to('sensorsbynode/delete/' . $sensors[$i]["id"])--}}"><i class="material-icons">delete</i></a>-->
                     </li>
-                @endfor
+                @endfor--}}
             </ul>
             <br/>
-            <div class="center">
-                <button type="submit" class="btn btn-primary" id="continue">Continue</button>
-            </div>
+        </div>-->
+        <div class="center">
+            <button type="submit" class="btn btn-primary" id="continue">Continue</button>
         </div>
     </div>
 @stop
@@ -141,7 +168,7 @@
                 e.preventDefault();
                 $("#delete").hide();
                 $("#add").show();
-                $("#ok").show();
+                $("#continue").hide();
             });
         });
     </script>

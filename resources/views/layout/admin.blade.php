@@ -70,16 +70,22 @@
                     <div class="menu-desktop">
                         <li class="etiquette">General</li>
                         <li><a href="{{url('/dashboard')}}"><i class="material-icons left">widgets</i>Dashboard</a></li>
-                        <ul class="collapsible collapsible-accordion">
-                            <li><a class="collapsible-header"><i class="material-icons left">games</i>Nodes</a>
-                                <div class="collapsible-body">
-                                    <ul>
-                                        <li><a href="{{url('/mynodes')}}"><i class="material-icons left">flag</i>My Nodes</a></li>
-                                        <li><a href="{{url('/nodes')}}"><i class="material-icons left">toys</i>All Nodes</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                        </ul>
+                        @if(Auth::check() and Auth::user()->role == 'superadmin')
+                            <ul class="collapsible collapsible-accordion">
+                                <li><a class="collapsible-header"><i class="material-icons left">games</i>Nodes</a>
+                                    <div class="collapsible-body">
+                                        <ul>
+                                            <li><a href="{{url('/mynodes')}}"><i class="material-icons left">flag</i>My Nodes</a></li>
+                                            <li><a href="{{url('/nodes')}}"><i class="material-icons left">toys</i>All Nodes</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        @endif
+
+                        @if(Auth::check() and Auth::user()->role == 'provider')
+                            <li><a href="{{url('/mynodes')}}"><i class="material-icons left">flag</i>Nodes</a></li>
+                        @endif
                         <li><a href="{{url('/sensors')}}"><i class="material-icons left">place</i>Sensors</a></li>
                         <li><a href="{{url('/users')}}"><i class="material-icons left">people</i>Users</a></li>
                         <li class="etiquette">Configurations</li>
@@ -98,16 +104,24 @@
                     <div class="menu-mobile">
                         <li class="etiquette">General</li>
                         <li><a href="{{url('/dashboard')}}"><i class="material-icons left">widgets</i>Dashboard</a></li>
-                        <ul class="collapsible collapsible-accordion">
-                            <li><a class="collapsible-header"><i class="material-icons left">games</i>Nodes</a>
-                                <div class="collapsible-body">
-                                    <ul>
-                                        <li><a href="{{url('/mynodes')}}"><i class="material-icons left">flag</i>My Nodes</a></li>
-                                        <li><a href="{{url('/nodes')}}"><i class="material-icons left">toys</i>All Nodes</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                        </ul>
+
+                        @if(Auth::check() and Auth::user()->role == 'superadmin')
+                            <ul class="collapsible collapsible-accordion">
+                                <li><a class="collapsible-header"><i class="material-icons left">games</i>Nodes</a>
+                                    <div class="collapsible-body">
+                                        <ul>
+                                            <li><a href="{{url('/mynodes')}}"><i class="material-icons left">flag</i>My Nodes</a></li>
+                                            <li><a href="{{url('/nodes')}}"><i class="material-icons left">toys</i>All Nodes</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        @endif
+
+                        @if(Auth::check() and Auth::user()->role == 'provider')
+                            <li><a href="{{url('/mynodes')}}"><i class="material-icons left">flag</i>Nodes</a></li>
+                        @endif
+
                         <li><a href="{{url('/sensors')}}"><i class="material-icons left">place</i>Sensors</a></li>
                         <li><a href="{{url('/users')}}"><i class="material-icons left">people</i>Users</a></li>
                         <li class="etiquette">Configurations</li>

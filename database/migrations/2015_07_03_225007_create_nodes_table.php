@@ -13,7 +13,7 @@ class CreateNodesTable extends Migration
     public function up()
     {
         Schema::create('nodes', function (Blueprint $table) {
-            $table->increments('id');
+            $table->string('id', 8);
             $table->integer('user_id')->unsigned();
             $table->string('name');
             $table->double('longitude');

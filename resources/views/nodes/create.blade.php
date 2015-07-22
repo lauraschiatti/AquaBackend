@@ -75,7 +75,8 @@
                     @foreach($sensors_types_by_unit[$sensors_type] as $sensor_type_by_unit[$sensors_type] )
                     <div class="row">
                         <div class="col s6">
-                            <input style="color:#000000; text-align: center; font-size: 20px; " type="text" id="{{$sensor_type_by_unit[$sensors_type]}}" name="sensors_units[]" value="{{$sensor_type_by_unit[$sensors_type]}}"  readonly>
+                            <input style="color:#000000; text-align: center; font-size: 20px; " type="hidden" id="{{$sensor_type_by_unit[$sensors_type]}}" name="sensors_units[]" value="{{$sensors_type. "_".$sensor_type_by_unit[$sensors_type]}}">
+                            <p style="font-size: 1.4em;">{{$sensor_type_by_unit[$sensors_type]}}</p>
                         </div>
                         <div class="col s6">
                             <input style="text-align: center; font-size: 20px;" type="number" class="validate" id="{{$sensor_type_by_unit[$sensors_type]}}" name="sensors_number[]" value="0" min="0">
@@ -85,7 +86,7 @@
                 </div>
                 @endforeach
             </div>
-        </div>
+        </div><br><br>
         <div class="container center">
             <a class="btn btn-primary center" href="{{url('/sensors/create')}}">ADD NEW TYPE</a>
         </div>
