@@ -129,10 +129,10 @@ class AuthController extends Controller
                 $newUser->role = "user";
                 $newUser->save();
 
-                //@todo iniciar sesion automaticamente
-                //Auth::loginUsingId(1);
+                //iniciar sesion automaticamente
                 Auth::login($newUser);
-                return redirect('app');
+
+                return redirect('home');
             }else {
                 $error = "PASSWORDS DON´T MATCH";
                 return view('auth.register', compact('error', 'name', 'email'));

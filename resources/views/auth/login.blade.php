@@ -46,15 +46,19 @@
             </div>-->
 
             <!-- Forgot -->
-            <div class="col s12 left">
+            <div class="col s12 center">
                 <a class="light white-text" href="#">Forgot password?</a>
+                <br>
+                <button class="btn btn-secundary waves-effect waves-light" style="margin-top: 20px;">Log in</button>
             </div>
 
             <!-- Buttons-->
-            <div class="col s12 center" style="margin-top: 20px;">
-                <a href="{{ url('register')}}" class="btn btn-primary primary waves-effect waves-light">Sign up</a>
-                <button class="btn btn-secundary waves-effect waves-light">Sign in</button>
+            <div class="center">
+                <!--<a href="{{-- url('register')--}}" class="btn btn-primary primary waves-effect waves-light">Sign up</a>-->
+                <br><a class="light white-text" href="{{ url('register')}}">Don´t have an account? <span><strong>Sign up for AquAPP</strong></span></a>
             </div>
+
+
     {!! Form::close() !!}
 
 

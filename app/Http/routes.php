@@ -14,9 +14,10 @@ Route::get('/', function () {
     return view('layout.home');
 });
 
-Route::get('app', function () {
-    return view('layout.app');
+Route::get('/contribute', function(){
+   return view('layout.contribute');
 });
+
 
 Route::get('dashboard', function () {
     return view('layout.dashboard');
@@ -24,7 +25,7 @@ Route::get('dashboard', function () {
 
 // Authentication routes...
 Route::get('login', 'Auth\AuthController@getLogin');
-Route:post('login', 'Auth\AuthController@postLogin');
+Route::post('login', 'Auth\AuthController@postLogin');
 Route::get('logout', 'Auth\AuthController@getLogout');
 
 // Registration routes...
@@ -50,11 +51,4 @@ Route::post('sensorsorderupdate', 'NodesController@updateSensorsByNode');
 Route::get('mynodes', 'NodesController@getMyNodes');
 
 Route::resource('sensors', 'SensorsController');
-
-Route::resource('sensorsbynode', 'SensorsByNodeController');
-
-//Route::get('sensorsbynode/delete/{id}', 'SensorsByNodeController@deleteSensorByNode');
-/*Route::get('sensorsbynode/delete', function(){
-    return view('sensorsbynode.edit');
-});*/
 

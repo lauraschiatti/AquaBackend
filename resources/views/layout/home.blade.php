@@ -1,4 +1,4 @@
-<!-- Login Page -->
+<!-- Index Page -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,42 +12,62 @@
     <link href="/css/site.css" rel="stylesheet">                         						         <!-- Site core CSS -->
     <link href="/css/materialicons.css" rel="stylesheet">	 <!-- Material Icons -->
 
+    <script type="text/javascript" src="/js/jq/jquery.min.js"></script>						           <!-- Jquery core JS -->
+    <script type="text/javascript" src="/js/highcharts.js"></script>  <!-- HighCharts core JS -->
+    <script type="text/javascript" src="/js/graph.js"></script>                               <!-- Graphs core JS -->
 </head>
 <body>
-
 
 <!-- === NAVBAR === -->
 <header class="primary">
     <div class="navbar-fixed">
         <nav>
             <div class="nav-wrapper">
-                <a href="#" class="brand hide-on-med-and-down"><img src="/img/brand.png" alt="..."/></a>
-                <a href="#" data-activates="mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+                <a href="{{ url('/')}}" class="brand hide-on-med-and-down"><img src="/img/brand.png" alt="..."/></a>
+                <a href="#"href="{{ url('/')}}" data-activates="mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
 
                 <ul class="right hide-on-med-and-down">
-                    <li><a href="#home" class="grow">Home</a></li>
+                    <li><a href="{{ url('/')}}" class="grow">Home</a></li>
                     <li><a href="#about" class="grow">About</a></li>
-                    <li><a href="#contribute" class="grow">Contribute</a></li>
-                    <li><a href="#te" class="grow">Team</a></li>
-                    <li><a href="#wiki" class="grow">Wiki | Contact</a></li>
+                    <li><a href="{{ url('contribute')}}" class="grow">Contribute</a></li>
+                    <li><a href="#" class="grow">Team</a></li>
+                    <li><a href="#" class="grow">Wiki</a></li>
+                    <li><a href="#" class="grow">Contact</a></li>
 
                     <!-- Sign up-in Buttons -->
-                    <li><a href="#" class="grow btn-flat waves-effect waves-light btn">Sign up</a></li>
-                    <li><a href="#" class="btn btn-primary waves-effect waves-dark">Login</a></li>
+                    @if(Auth::check())
+                        <li><a href="#">Logged as <span>{{(Auth::user()->name)}}</span></a> </li>
+                        <li>|</li>
+                        <li><a href="#"><i class="material-icons">tune</i></a></li>
+                        <li>|</li>
+                        <li><a href="{{ url('logout')}}"><i class="material-icons">power_settings_new</i></a></li>
+                    @else
+                        <li><a href="{{ url('register')}}" class="grow btn-flat waves-effect waves-light btn">Sign up</a></li>
+                        <li><a href="{{ url('login')}}" class="btn btn-primary waves-effect waves-dark">Login</a></li>
+                    @endif
+
                 </ul>
 
                 <ul class="side-nav center" id="mobile">
                     <section class="menu-header">
                         <img src="/img/brand-no-back.png" alt="...">
                     </section>
-                    <li><a href="#">Home</a></li>
+                    <li><a href="{{ url('/')}}">Home</a></li>
                     <li><a href="#">About</a></li>
-                    <li><a href="#">Contribute</a></li>
+                    <li><a href="{{ url('contribute')}}">Contribute</a></li>
                     <li><a href="#">Team</a></li>
-                    <li><a href="#">Wiki | Contact</a></li>
+                    <li><a href="#">Wiki</a></li>
+                    <li><a href="#">Contact</a></li>
                     <div class="divider"></div>
-                    <li><a href="#">Sign up</a></li>
-                    <li><a href="#">Login</a></li>
+
+                    @if(Auth::check())
+                        <li><a href="#">Logged as <span style="font-size: 2em;">{{(Auth::user()->name)}}</span></a></li>
+                        <li><a href="#">tune</a></li>
+                        <li><a href="{{ url('logout')}}">Login</a></li>
+                    @else
+                        <li><a href="{{ url('register')}}">Sign up</a></li>
+                        <li><a href="{{ url('login')}}">Login</a></li>
+                    @endif
 
                 </ul>
             </div>
@@ -59,13 +79,28 @@
 <main>
     <!-- === HOME === -->
     <section class="primary section scrollspy" id="home">
-        <div class="container white-text" id="title">
+        <div class="white-text" id="title">
             <h2 class="light">Cross-Browsers Platform</h2>
             <h5 class="light">for <strong>real time statistics</strong> of Cities Bays</h5>
-            <a target="_blank" href="#"><button class="btn btn-secundary waves-effect waves-dark">Try it Now!</button></a><p>
-            <p> Chrome | Firefox | Safari | Opera </p>
         </div>
-        <img src="/img/screenshot.png" alt="..." width="988" height="370"/>
+
+
+        <div id="graph01" class="col s12"><div id="graph"></div></div>
+        <div id="graph02" class="col s12"><div id="graph"></div></div>
+        <div id="graph03" class="col s12"><div id="graph"></div></div>
+        <div id="graph04" class="col s12"><div id="graph"></div></div>
+
+        <div class="row" id="tabs">
+            <div class="col s12">
+                <ul class="tabs">
+                    <li class="tab col s3"><a class="active" href="#graph01">Graph1</a></li>
+                    <li class="tab col s3"><a href="#graph02">Graph2</a></li>
+                    <li class="tab col s3"><a href="#graph03">Graph3</a></li>
+                    <li class="tab col s3"><a href="#graph04">Graph4</a></li>
+                </ul>
+            </div>
+        </div>
+
     </section>
     <!-- === HOME === -->
 
@@ -78,7 +113,7 @@
             <img class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="JavaScript" src="/img/brand/js.png">
             <img class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Jquery" src="/img/brand/jquery.png">
             <img class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Laravel" src="/img/brand/laravel.png">
-            <!--<img class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="PHP" src="img/brand/php.png">-->
+            <img class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="HighCharts" src="/img/brand/highcharts.png">
             <h6 class="light">Developed with The Best Web Design Technologies</h6>
         </div>
 
@@ -86,11 +121,11 @@
     <!-- === DIVISOR === -->
 
     <!-- === ABOUT === -->
-    <section class="center">
+    <section class="center section scrollspy" id="about">
         <h3>Not just Cities Bays Statitics</h3>
         <h5 class="light">Beautiful and simple, yet immensely effective</h5>
 
-        <div class="section scrollspy row" id="about">
+        <div class="row">
             <!--   Features Section   -->
             <div class="container">
                 <div class="row">
@@ -204,154 +239,14 @@
     </section>
     <!-- === HOW IT WORKS === -->
 
-    <!-- === DIVISOR === -->
-    <div class="divisor center">
-        <div  class="box">
-            <img class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Google Chrome" src="/img/brand/chrome.png">
-            <img class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Mozilla Firefox" src="/img/brand/firefox.png">
-            <img class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Safari" src="/img/brand/safari.png">
-            <img class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Opera" src="/img/brand/opera.png">
-            <h6 class="light">Cross-Browsers Compatible</h6>
-        </div>
-    </div>
-    <!-- === DIVISOR === -->
-
-    <!-- === CONTRIBUTE === -->
-    <section class="primary center" id="cont">
-        <div class="container white-text">
-            <h3 class="light">How can I contribute? </h3>
-            <h5 class="light">What If i told you that you can have your own nodes and sensors?</h5>
-            <div class="section scrollspy" id="contribute"></div>
-            <img src="/img/screenshot02.png" alt=""  width="800" height="300" />
-        </div>
-    </section>
-    <!-- === CONTRIBUTE === -->
-
-    <section class="center" id="lab">
-        <h3>Aqualab</h3>
-        <p class="light">Is the place that we've designed for providers with special features where you can <span class="blue-text strong">feed the System..</span></p>
-        <div class="container">
-            <div class="row">
-                <div class="col s12 m4">
-                    <div>
-                        <h3><i class="medium material-icons">flip_to_front</i></h3>
-                        <h4 class="center">Funtional</h4>
-                        <p class="light">You can Create, Edit, Update and Delete Nodes, sensors and users. </p>
-                    </div>
-                </div>
-
-                <div class="col s12 m4">
-                    <div>
-                        <h3><i class="medium material-icons">trending_up</i></h3>
-                        <h4 class="center">Dashboard </h4>
-                        <p class="light">Follow real time statistics from Nodes, Sensors, User, Downloads and more in an integrated dashboard section. </p>
-                    </div>
-                </div>
-
-                <div class="col s12 m4">
-                    <div>
-                        <h3><i class="medium material-icons">swap_horiz</i></h3>
-                        <h4 class="center">Schema</h4>
-                        <p class="light">You can choose your more convinient order of data sending schema from sensors information in nodes.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col s12 m4">
-                    <div>
-                        <h3><i class="medium material-icons">system_update_alt</i></h3>
-                        <h4 class="center">Download </h4>
-                        <p class="light">You can get chart files and also nodes, sensors or user tables for printing or storing.</p>
-                    </div>
-                </div>
-
-                <div class="col s12 m4">
-                    <div>
-                        <h3><i class="medium material-icons">portrait</i></h3>
-                        <h4 class="center">Users </h4>
-                        <p class="light">It's possible to add new providers or normal users with your account. </p>
-                    </div>
-                </div>
-
-                <div class="col s12 m4">
-                    <div>
-                        <h3><i class="medium material-icons">settings_ethernet</i></h3>
-                        <h4 class="center">Help &#38; Feed</h4>
-                        <p class="light">If you have problems you can contact Support quickly. Off course you can for report bugs too.y</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- === TEAM === -->
-    <section class="center" id="team">
-        <h3>Meet The Team</h3>
-        <h5 class="light">Human conection is better.</h5>
-        <div class="row">
-            <div class="col s12 m3 l3 section scrollspy" id="te">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="/img/03.jpg">
-                    </div>
-                    <div class="card-content center">
-                        <h4 class="light">Name</h4>
-                        <h6 class="blue-text solid">Role</h6>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col s12 m3 l3">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="/img/03.jpg">
-
-                    </div>
-                    <div class="card-content center">
-                        <h4 class="light">Name</h4>
-                        <h6 class="blue-text solid">Role</h6>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col s12 m3 l3">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="/img/03.jpg">
-
-                    </div>
-                    <div class="card-content center">
-                        <h4 class="light">Name</h4>
-                        <h6 class="blue-text solid">Role</h6>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col s12 m3 l3">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="/img/03.jpg">
-
-                    </div>
-                    <div class="card-content center">
-                        <h4 class="light">Name</h4>
-                        <h6 class="blue-text solid">Role</h6>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-    <!-- === TEAM === -->
-
     <!-- === WIKI | CONTACT === -->
     <section id="help">
+        <div class="container divider"></div>
         <div class="center">
             <h4 class="light">Got Questions? <span>We've got answers</span></h4>
             <p class="light">We've designed a special place where u can find all the <a href="" class="blue-light">Faqs</a>
                 and the APP documentation. Take a look...</p>
-            <div class="buttons section scrollspy" id="wiki">
+            <div class="buttons">
                 <a href="#" class="btn btn-primary waves-effect waves-light">Read our Wiki</a>
                 <a class="btn btn-secundary waves-effect waves-light">Contact Support</a></a>
             </div>
@@ -359,11 +254,19 @@
     </section>
     <!-- === WIKI | CONTACT === -->
 
-    <!-- === MAP === -->
-    <div class="parallax-container">
-        <div class="parallax"><img src="/img/map.png" alt="..."></div>
-    </div>
-    <!-- === MAP === -->
+
+    <!-- === DIVISOR === -->
+    <!--
+    <div class="divisor center">
+      <div  class="box">
+       <img class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Google Chrome" src="img/brand/chrome.png">
+       <img class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Mozilla Firefox" src="img/brand/firefox.png">
+       <img class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Safari" src="img/brand/safari.png">
+       <img class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Opera" src="img/brand/opera.png">
+       <h6 class="light">Cross-Browsers Compatible</h6>
+      </div>
+    </div>-->
+    <!-- === DIVISOR === -->
 
 </main>
 <!-- === FOOTER === -->
@@ -451,9 +354,8 @@
 </footer>
 <!-- === FOOTER === -->
 
-
-<script src="/js/jq/jquery.min.js" type="text/javascript"></script>						<!-- Jquery core JS -->
 <script src="/js/materialize.min.js" type="text/javascript"></script> 					<!-- Materialize core JS -->
 <script src="/js/init.js" type="text/javascript"></script> 					          <!-- Init core JS -->
+
 </body>
 </html>
