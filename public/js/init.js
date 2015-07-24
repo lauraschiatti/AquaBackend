@@ -14,6 +14,11 @@ checkboxes.click(function() {
     submitButt.attr("disabled", !checkboxes.is(":checked"));
 });*/
 
+$('#close').click(function(){
+    $("#modal1").modal("hide");
+});
+
+
 $(document).ready(function(){
     $('.collapsible').collapsible({
         accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style

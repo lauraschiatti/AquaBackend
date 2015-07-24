@@ -52,3 +52,10 @@ Route::get('mynodes', 'NodesController@getMyNodes');
 
 Route::resource('sensors', 'SensorsController');
 
+
+//Route::group(['middleware' => 'filter'], function () {
+    Route::post('sync/{data}', 'SyncController@postData');
+//});
+
+
+
