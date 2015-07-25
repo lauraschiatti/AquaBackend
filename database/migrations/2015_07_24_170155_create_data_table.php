@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSensorsbynodeTable extends Migration
+class CreateDataTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,15 +12,16 @@ class CreateSensorsbynodeTable extends Migration
      */
     public function up()
     {
-        Schema::create('sensorsbynode', function (Blueprint $table) {
+        Schema::create('data', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('node_id')->unsigned();
-            $table->string('sensor_type_id')->unsigned();
-            $table->integer('weight')->unsigned();
+            $table->string('node_id');
+            $table->integer('sensorbynode_id');
+            $table->dateTime('time');
+            $table->float('value');
             $table->timestamps();
 
             $table->foreign('node_id')->references('id')->on('nodes');
-            $table->foreign('sensor_type_id')->references('id')->on('sensors');
+            $table->foreign('sensorbynode_id')->references('id')->on('sensorsbynode');
         });
     }
 
@@ -31,6 +32,6 @@ class CreateSensorsbynodeTable extends Migration
      */
     public function down()
     {
-        Schema::drop('sensorsbynode');
+        Schema::drop('data');
     }
 }

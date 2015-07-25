@@ -16,6 +16,7 @@ class UserTableSeeder extends Seeder
             'email'    => 'lauri_cdd@hotmail.com',
             'password' => bcrypt('123456'),
             'role' => 'superadmin',
+            'timezone' => 'America/Bogota'
        ]);
     }
 }

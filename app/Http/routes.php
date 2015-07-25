@@ -52,10 +52,19 @@ Route::get('mynodes', 'NodesController@getMyNodes');
 
 Route::resource('sensors', 'SensorsController');
 
+Route::post('sync/{data}', 'SyncController@postData');
+//Route::get('sync', 'SyncController@postData');
 
-//Route::group(['middleware' => 'filter'], function () {
-    Route::post('sync/{data}', 'SyncController@postData');
-//});
+
+Route::get('sensorsbynode', function(){
+    return \App\SensorsByNode::all();
+});
+
+Route::get('timezone', function(){
+    return config('app.timezone');
+});
+
+
 
 
 
