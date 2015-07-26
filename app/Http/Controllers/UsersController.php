@@ -28,7 +28,38 @@ class UsersController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        $zones_array = array();
+        $timestamp = time();
+        foreach(timezone_identifiers_list() as $key => $zone) {
+            date_default_timezone_set($zone);
+            $zones_array[$key]['zone'] = $zone;
+            $zones_array[$key]['diff_from_GMT'] = 'UTC/GMT ' . date('P', $timestamp);
+        }
+
+        $zones = timezone_identifiers_list();
+
+        foreach ($zones as $zone)
+        {
+            $zoneExploded = explode('/', $zone); // 0 => Continent, 1 => City
+
+            // Only use "friendly" continent names
+            if ($zoneExploded[0] == 'Africa' || $zoneExploded[0] == 'America' || $zoneExploded[0] == 'Antarctica' || $zoneExploded[0] == 'Arctic' || $zoneExploded[0] == 'Asia' || $zoneExploded[0] == 'Atlantic' || $zoneExploded[0] == 'Australia' || $zoneExploded[0] == 'Europe' || $zoneExploded[0] == 'Indian' || $zoneExploded[0] == 'Pacific')
+            {
+                if (isset($zoneExploded[1]) != '')
+                {
+                    $area = str_replace('_', ' ', $zoneExploded[1]);
+
+                    if (!empty($zoneExploded[2]))
+                    {
+                        $area = $area . ' (' . str_replace('_', ' ', $zoneExploded[2]) . ')';
+                    }
+
+                    $locations[$zoneExploded[0]][$zone] = $area; // Creates array(DateTimeZone => 'Friendly name')
+                }
+            }
+        }
+
+        return view('users.create', compact('zones_array'));
     }
 
     /**
@@ -41,9 +72,9 @@ class UsersController extends Controller
         $name = trim(Input::get('name'));
         $email = trim(Input::get('email'));
         $role = trim(Input::get('role'));
+        $timezone = Input::get('timezone');
 
         $user = User::where("email", "=", $email)->first();
-        //$user = Request::all();
 
         if($user == null){
             $newUser = new User;
@@ -51,6 +82,7 @@ class UsersController extends Controller
             $newUser->email = $email;
             $newUser->password = bcrypt("123456");
             $newUser->role = $role;
+            $newUser->timezone = $timezone;
             $newUser->save();
 
             //profile picture
@@ -75,8 +107,8 @@ class UsersController extends Controller
                     //return var_dump('filenot downloaded.......');
                 }
             }*/
-            return redirect('users');
-            //return $user;
+            //return redirect('users');
+            return $newUser;
 
         }else{
             return redirect('users/create')->with('error', ' USER EXISTS')

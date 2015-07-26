@@ -54,6 +54,10 @@ Route::resource('sensors', 'SensorsController');
 
 Route::get('sync/{data}', 'SyncController@postData');
 
+Route::get('sync', function(){
+    return \App\Data::all();
+});
+
 Route::get('sensorsbynode', function(){
     return \App\SensorsByNode::all();
 });

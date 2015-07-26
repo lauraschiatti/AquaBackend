@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use Illuminate\Support\Facades\Config;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -79,15 +80,23 @@ class AuthController extends Controller
         $password = trim(Input::get('password'));
 
         if (Auth::attempt(['email' => $email, 'password' => $password, 'role' => 'user'])) {
-            // Authentication passed...
-            //@todo: mostrar usuario que inicio sesion
-            $user = $email;
-            return view('layout.app');
+            //change app timezone
+            $userTimezone = Auth::user()->timezone;
+            date_default_timezone_set($userTimezone);
+            Config::set('app.timezone', $userTimezone);
+
+            return view('layout.home');
         }
 
         if (Auth::attempt(['email' => $email, 'password' => $password, 'role' => 'provider']) ||
             Auth::attempt(['email' => $email, 'password' => $password, 'role' => 'superadmin'])) {
             // Authentication passed...
+
+            //change app timezone
+            $userTimezone = Auth::user()->timezone;
+            date_default_timezone_set($userTimezone);
+            Config::set('app.timezone', $userTimezone);
+
             //@todo: mostrar usuario que inicio sesion
             return view('layout.dashboard');
         }
@@ -127,6 +136,7 @@ class AuthController extends Controller
                 $newUser->email = $email;
                 $newUser->password = bcrypt($password);
                 $newUser->role = "user";
+                $newUser->timezone = 'America/Bogota';
                 $newUser->save();
 
                 //iniciar sesion automaticamente

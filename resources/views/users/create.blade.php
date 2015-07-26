@@ -47,12 +47,19 @@
                 </div>
             @endif
 
+            <div class="col s12">
+                <br>
+                <label>Select timezone</label>
+                <div class="input-field col s12">
+                    <select name="timezone">
+                        <option value="America/Bogota">UTC/GMT -05:00 America/Bogota</option>
+                        @foreach($zones_array as $t)
+                            <option value="{{$t['zone']}}">{{$t['diff_from_GMT'] . ' - ' . $t['zone']}}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
 
-            <!--<div class="input-field col s12">
-                <i class="material-icons prefix">link</i>
-                <input id="icon_swap_horiz" class="validate"  name="URL" type="text" id="URL">
-                <label for="icon_swap_horiz">Profile picture URL</label>
-            </div>-->
             <div class="col s12">
                 <br>
                 <label>Select user type</label>
@@ -76,15 +83,15 @@
                     @endif
                 </div>
             </div>
-        </div>
 
-        <!-- FLOATING BUTTONS -->
-        <div class="fixed-action-btn" id="add">
-            <button type="submit" class="btn-floating btn-large waves-effect waves-circle waves-light"> <!-- Green -->
-                <i class="large material-icons">check</i>
-            </button>
-        </div>
-        <!-- FLOATING BUTTONS -->
+
+            <!-- FLOATING BUTTONS -->
+            <div class="fixed-action-btn" id="add">
+                <button type="submit" class="btn-floating btn-large waves-effect waves-circle waves-light"> <!-- Green -->
+                    <i class="large material-icons">check</i>
+                </button>
+            </div>
+            <!-- FLOATING BUTTONS -->
         {!! Form::close() !!}
 
         <!-- FLOATING BUTTONS -->
@@ -96,3 +103,4 @@
         <!-- FLOATING BUTTONS -->
     </div>
 @stop
+

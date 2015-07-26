@@ -45,3 +45,7 @@ $(document).ready(function(){
     $('.modal-trigger').leanModal();
 });
 
+/*Select*/
+$(document).ready(function() {
+    $('select').material_select();
+});
