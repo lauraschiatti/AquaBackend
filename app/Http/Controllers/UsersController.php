@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redirect;
+use Monolog\Handler\ElasticSearchHandlerTest;
 use Request;
 use App\Http\Requests;
 use App\User;
@@ -34,29 +37,6 @@ class UsersController extends Controller
             date_default_timezone_set($zone);
             $zones_array[$key]['zone'] = $zone;
             $zones_array[$key]['diff_from_GMT'] = 'UTC/GMT ' . date('P', $timestamp);
-        }
-
-        $zones = timezone_identifiers_list();
-
-        foreach ($zones as $zone)
-        {
-            $zoneExploded = explode('/', $zone); // 0 => Continent, 1 => City
-
-            // Only use "friendly" continent names
-            if ($zoneExploded[0] == 'Africa' || $zoneExploded[0] == 'America' || $zoneExploded[0] == 'Antarctica' || $zoneExploded[0] == 'Arctic' || $zoneExploded[0] == 'Asia' || $zoneExploded[0] == 'Atlantic' || $zoneExploded[0] == 'Australia' || $zoneExploded[0] == 'Europe' || $zoneExploded[0] == 'Indian' || $zoneExploded[0] == 'Pacific')
-            {
-                if (isset($zoneExploded[1]) != '')
-                {
-                    $area = str_replace('_', ' ', $zoneExploded[1]);
-
-                    if (!empty($zoneExploded[2]))
-                    {
-                        $area = $area . ' (' . str_replace('_', ' ', $zoneExploded[2]) . ')';
-                    }
-
-                    $locations[$zoneExploded[0]][$zone] = $area; // Creates array(DateTimeZone => 'Friendly name')
-                }
-            }
         }
 
         return view('users.create', compact('zones_array'));
@@ -149,11 +129,35 @@ class UsersController extends Controller
      */
     public function update($id)
     {
-        $userUpdate=Request::all();
+        $name = trim(Input::get('name'));
+        $current_password = trim(Input::get('last-pass'));
+        $password = Input::get('pass');
+        $password2 = Input::get('pass2');
 
-        $user=User::find($id);
-        $user->update($userUpdate);
-        return redirect('users');
+        $user = User::where("id", "=", $id)->first();
+
+
+        if (strlen($current_password) > 0 && !Hash::check($current_password, $user->password)) {
+            return Redirect::back()->with('error', ' Please specify the good current password');
+
+            if($password == $password2) {
+                $newUser = new User;
+                $newUser->name = $name;
+                $newUser->email = $email;
+                $newUser->password = bcrypt($password);
+                $newUser->role = "user";
+                $newUser->timezone = 'America/Bogota';
+                $newUser->save();
+
+                //iniciar sesion automaticamente
+                Auth::login($newUser);
+
+                return redirect('home');
+            }else {
+                $error = "PASSWORDS DON´T MATCH";
+                return view('auth.register', compact('error', 'name', 'email'));
+            }
+        }
 
     }
 
@@ -168,4 +172,5 @@ class UsersController extends Controller
         User::find($id)->delete();
         return redirect('users');
     }
+
 }

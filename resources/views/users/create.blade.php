@@ -51,7 +51,7 @@
                 <br>
                 <label>Select timezone</label>
                 <div class="input-field col s12">
-                    <select name="timezone">
+                    <select name="timezone" class="browser-default">
                         <option value="America/Bogota">UTC/GMT -05:00 America/Bogota</option>
                         @foreach($zones_array as $t)
                             <option value="{{$t['zone']}}">{{$t['diff_from_GMT'] . ' - ' . $t['zone']}}</option>

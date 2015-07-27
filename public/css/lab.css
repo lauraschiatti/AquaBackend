@@ -1,5 +1,5 @@
 /********************************************
-				    LAYOUT GENERAL SETTINGS
+			LAYOUT GENERAL SETTINGS
  ********************************************/
  #modal1 { max-width: 450px; }
 
@@ -136,7 +136,7 @@
 .side-nav .menu-desktop ul.collapsible-accordion, .side-nav .menu-mobile ul.collapsible-accordion { margin-left: -8px; }
 
 /********************************************
- 				      DASHBOARD SETTINGS
+   	        DASHBOARD SETTINGS
 ********************************************/
 .mobile-tittle {
   margin-left: 20px;
@@ -152,12 +152,12 @@ td .buttons .btn-flat,
 .buttons button[type=submit]{ padding: 3px; }
 
 /********************************************
-				      SHOW SETTINGS
+			SHOW SETTINGS
  ********************************************/
 .show { margin-top: 40px;}
 
 /********************************************
- 				      CREATE SETTINGS
+ 			CREATE SETTINGS
 ********************************************/
 /***** Form *****/
 .input-field { margin-bottom: 10px; }
@@ -166,14 +166,16 @@ td .buttons .btn-flat,
 .input-field label { color: #9E9E9E; }
 input[type=text]:focus:not([readonly]) + label,
 input[type=email]:focus:not([readonly]) + label,
+input[type=password]:focus:not([readonly]) + label,
 input[type=number]:focus:not([readonly]) + label {
      color: #9E9E9E;                               /*Gray for inputs*/
  }
 
-input[type=text], input[type=email], input[type=number] { color: #9E9E9E; border-bottom: 1px solid #9E9E9E; }
+input[type=text], input[type=email], input[type=password], input[type=number] { color: #9E9E9E; border-bottom: 1px solid #9E9E9E; }
 
 input[type=text]:focus:not([readonly]),
 input[type=email]:focus:not([readonly]),
+input[type=password]:focus:not([readonly]),
 input[type=number]:focus:not([readonly]){
   color: #9E9E9E;
   border-bottom: 1px solid #007EE5;
@@ -181,6 +183,7 @@ input[type=number]:focus:not([readonly]){
 
 input[type=text].valid, input[type=text]:focus.valid,
 input[type=email].valid, input[type=email]:focus.valid,
+input[type=password].valid, input[type=email]:focus.valid,
 input[type=number].valid, input[type=number]:focus.valid {
     border-bottom: 1px solid #039BE5;
     box-shadow: 0 1px 0 0 #039BE5;
@@ -212,4 +215,20 @@ input[type=number].valid, input[type=number]:focus.valid {
 .warning-box span.ups {
     font-weight: bold;
     font-size: 18px;
+}
+
+/********************************************
+ 			PROFILE SETTINGS
+********************************************/
+
+@media only screen and (min-width : 992px) {
+  #profile { margin-top: 50px; }
+}
+
+@media only screen and (max-width : 992px) {
+  #profile { margin-top: 30px; }
+}
+
+@media only screen and (max-width: 600px){
+  #profile { margin-top: 0px;}
 }

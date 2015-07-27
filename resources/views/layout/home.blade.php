@@ -28,7 +28,7 @@
 
                 <ul class="right hide-on-med-and-down">
                     <li><a href="{{ url('/')}}" class="grow">Home</a></li>
-                    <li><a href="#about" class="grow">About</a></li>
+                    <li><a href="#grahics" class="grow">Graphics</a></li>
                     <li><a href="{{ url('contribute')}}" class="grow">Contribute</a></li>
                     <li><a href="#" class="grow">Team</a></li>
                     <li><a href="#" class="grow">Wiki</a></li>
@@ -36,11 +36,19 @@
 
                     <!-- Sign up-in Buttons -->
                     @if(Auth::check())
-                        <li><a href="#">Logged as <span>{{(Auth::user()->name)}}</span></a> </li>
-                        <li>|</li>
-                        <li><a href="#"><i class="material-icons">tune</i></a></li>
-                        <li>|</li>
-                        <li><a href="{{ url('logout')}}"><i class="material-icons">power_settings_new</i></a></li>
+                        <li><a class="dropdown-button" href="#" data-beloworigin="true" data-activates="dropdown1"><i class="material-icons right">arrow_drop_down</i>Hi <span style="text-transform: capitalize;">{{(Auth::user()->name)}}</span></a></li>
+                        <!-- Dropdown Structure -->
+                        <ul id="dropdown1" class="dropdown-content">
+                            @if(Auth::check() and Auth::user()->role == 'superadmin')
+                                <li><a href="{{url('settings/'.Auth::user()->id)}}">Profile</a></li>
+                            @else
+                                <li><a href="#">Profile</a></li>
+                            @endif
+                            @if(Auth::check() and Auth::user()->role == 'superadmin')
+                                <li><a href="{{ url('dashboard')}}">Dashboard</a></li>
+                            @endif
+                            <li><a href="{{ url('logout')}}">Log out</a></li>
+                        </ul>
                     @else
                         <li><a href="{{ url('register')}}" class="grow btn-flat waves-effect waves-light btn">Sign up</a></li>
                         <li><a href="{{ url('login')}}" class="btn btn-primary waves-effect waves-dark">Login</a></li>
@@ -53,7 +61,7 @@
                         <img src="/img/brand-no-back.png" alt="...">
                     </section>
                     <li><a href="{{ url('/')}}">Home</a></li>
-                    <li><a href="#">About</a></li>
+                    <li><a href="#">Graphics</a></li>
                     <li><a href="{{ url('contribute')}}">Contribute</a></li>
                     <li><a href="#">Team</a></li>
                     <li><a href="#">Wiki</a></li>
@@ -121,7 +129,7 @@
     <!-- === DIVISOR === -->
 
     <!-- === ABOUT === -->
-    <section class="center section scrollspy" id="about">
+    <section class="center" id="about">
         <h3>Not just Cities Bays Statitics</h3>
         <h5 class="light">Beautiful and simple, yet immensely effective</h5>
 

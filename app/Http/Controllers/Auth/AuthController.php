@@ -142,7 +142,7 @@ class AuthController extends Controller
                 //iniciar sesion automaticamente
                 Auth::login($newUser);
 
-                return redirect('home');
+                return redirect('/');
             }else {
                 $error = "PASSWORDS DON´T MATCH";
                 return view('auth.register', compact('error', 'name', 'email'));

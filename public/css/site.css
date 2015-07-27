@@ -68,9 +68,18 @@ nav {
 /********************************************
 				        SECTIONS
  ********************************************/
- i.medium {
-   font-size: 40px;
- }
+.dropdown-content li > a { font-size: 1rem; color: #007EE5; }
+i.medium { font-size: 40px; }
+
+.dropdown-content {
+    background-color: #fff;
+    margin: 0;
+    display: none;
+    min-width: 100px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
 
 /***** Divisor *****/
 .divisor{
@@ -119,8 +128,6 @@ nav {
   #title h2 { font-size: 2rem;}
   #title h5 { font-size: 1rem; }
 }
-
-
 #graph {
   width: 95%;
   height: 60vh;

@@ -18,10 +18,25 @@ Route::get('/contribute', function(){
    return view('layout.contribute');
 });
 
-
 Route::get('dashboard', function () {
     return view('layout.dashboard');
 });
+
+Route::get('settings/{id}', function($id){
+    $user = \App\User::where("id", "=", $id)->first();
+
+    $zones_array = array();
+    $timestamp = time();
+    foreach(timezone_identifiers_list() as $key => $zone) {
+        date_default_timezone_set($zone);
+        $zones_array[$key]['zone'] = $zone;
+        $zones_array[$key]['diff_from_GMT'] = 'UTC/GMT ' . date('P', $timestamp);
+    }
+
+    return view('layout.settings', compact('user', 'zones_array'));
+});
+
+Route::post('settings/{id}', 'UsersController@settings');
 
 // Authentication routes...
 Route::get('login', 'Auth\AuthController@getLogin');

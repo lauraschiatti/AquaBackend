@@ -32,6 +32,8 @@
     <meta name="msapplication-TileImage" content="/img/favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 
+    <script src="/js/jq/jquery.min.js" type="text/javascript"></script>						<!-- Jquery core JS -->
+
     @yield('css')
 </head>
 <body>
@@ -69,6 +71,7 @@
                     <!--<div class="container">-->
                     <div class="menu-desktop">
                         <li class="etiquette">General</li>
+                        <li><a href="{{url('/')}}"><i class="material-icons left">home</i>Home</a></li>
                         <li><a href="{{url('/dashboard')}}"><i class="material-icons left">widgets</i>Dashboard</a></li>
                         @if(Auth::check() and Auth::user()->role == 'superadmin')
                             <ul class="collapsible collapsible-accordion">
@@ -89,7 +92,7 @@
                         <li><a href="{{url('/sensors')}}"><i class="material-icons left">place</i>Sensors</a></li>
                         <li><a href="{{url('/users')}}"><i class="material-icons left">people</i>Users</a></li>
                         <li class="etiquette">Configurations</li>
-                        <li><a href="#"><i class="material-icons left">settings</i>Settings</a></li>
+                        <li><a href="{{url('/settings/'.Auth::user()->id)}}"><i class="material-icons left">settings</i>Settings</a></li>
                         <li><a href="#"><i class="material-icons left">turned_in</i>Help &amp; Feed</a></li>
                         <li><a class="modal-trigger" href="#modal1"><i class="material-icons left">power_settings_new</i>Log out</a></li>
                     </div>
@@ -123,9 +126,13 @@
                         @endif
 
                         <li><a href="{{url('/sensors')}}"><i class="material-icons left">place</i>Sensors</a></li>
-                        <li><a href="{{url('/users')}}"><i class="material-icons left">people</i>Users</a></li>
+
+                        @if(Auth::check() and Auth::user()->role == 'superadmin')
+                            <li><a href="{{url('/users')}}"><i class="material-icons left">people</i>Users</a></li>
+                        @endif
+
                         <li class="etiquette">Configurations</li>
-                        <li><a href="#"><i class="material-icons left">settings</i>Settings</a></li>
+                        <li><a href="{{url('/settings')}}"><i class="material-icons left">settings</i>Settings</a></li>
                         <li><a href="#"><i class="material-icons left">turned_in</i>Help &amp; Feed</a></li>
                         <li><a class="modal-trigger" href="#modal1"><i class="material-icons left">power_settings_new</i>Log out</a></li>
                     </div>
@@ -144,12 +151,11 @@
 <div id="modal1" class="modal">
     <div class="modal-content center">
         <h6 class="light">Would you like to close admin session? </h6><br>
-        <a href="#!" class="btn btn-flat modal-action modal-close">No</a>
+        <a href="" class=" modal-action modal-close btn-flat">No</a>
         <a href="{{url('/logout')}}" class="btn primary">Yes</a>
     </div>
 </div>
 
-<script src="/js/jq/jquery.min.js" type="text/javascript"></script>						<!-- Jquery core JS -->
 <script src="/js/materialize.min.js" type="text/javascript"></script> 					<!-- Materialize core JS -->
 <script src="/js/init.js" type="text/javascript"></script> 					          <!-- Init core JS -->
 

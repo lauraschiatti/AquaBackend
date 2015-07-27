@@ -56,8 +56,8 @@
 
             <div class="col s12 white-text">
                 <p class="center">
-                    <input type="checkbox" id="check"/> <!--required-->
-                    <label for="check">I'm agree with Terms &#38; Conditions</label>
+                    <input type="checkbox" required id="check" checked="checked"/>
+                    <label for="check">I'm agree with <a href="#" class="white-text"><strong>Terms &#38; Conditions</strong></a></label>
                 </p>
             </div>
             <div class="input-field col s12">

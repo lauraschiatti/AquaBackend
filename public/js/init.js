@@ -3,8 +3,8 @@ $(".button-collapse").sideNav();
 
 /* Modal */
 $(document).ready(function(){
-  // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-  $('.modal-trigger').leanModal();
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal-trigger').leanModal();
 });
 
 /*Sensors checkboxes: at least one selected before saving node*/
@@ -13,10 +13,6 @@ $(document).ready(function(){
 checkboxes.click(function() {
     submitButt.attr("disabled", !checkboxes.is(":checked"));
 });*/
-
-$('#close').click(function(){
-    $("#modal1").modal("hide");
-});
 
 
 $(document).ready(function(){
@@ -38,11 +34,6 @@ $(document).ready(function(){
 /* Parallax */
 $(document).ready(function(){
     $('.parallax').parallax();
-});
-
-/* Modal */
-$(document).ready(function(){
-    $('.modal-trigger').leanModal();
 });
 
 /*Select*/
