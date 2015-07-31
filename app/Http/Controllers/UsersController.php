@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
-use Monolog\Handler\ElasticSearchHandlerTest;
+use Auth;
 use Request;
 use App\Http\Requests;
 use App\User;
@@ -133,32 +133,33 @@ class UsersController extends Controller
         $current_password = trim(Input::get('last-pass'));
         $password = Input::get('pass');
         $password2 = Input::get('pass2');
+        $timezone = Input::get('timezone');
 
         $user = User::where("id", "=", $id)->first();
 
+        if(($current_password != "" && $password != "" && $password2 != "")){
+            //change password
+            if (strlen($current_password) > 0 && !Hash::check($current_password, $user->password)) {
+                return Redirect::back()->with('error', ' PLEASE SPECIFY THE CORRECT CURRENT PASSWORD');
+            }else{
+                if($password == $password2) {
+                    User::where('id', '=', $id)->update(['password' => bcrypt($password)]);
+                    return redirect('');
+                    //return User::where("id", "=", $id)->first();
 
-        if (strlen($current_password) > 0 && !Hash::check($current_password, $user->password)) {
-            return Redirect::back()->with('error', ' Please specify the good current password');
-
-            if($password == $password2) {
-                $newUser = new User;
-                $newUser->name = $name;
-                $newUser->email = $email;
-                $newUser->password = bcrypt($password);
-                $newUser->role = "user";
-                $newUser->timezone = 'America/Bogota';
-                $newUser->save();
-
-                //iniciar sesion automaticamente
-                Auth::login($newUser);
-
-                return redirect('home');
-            }else {
-                $error = "PASSWORDS DON´T MATCH";
-                return view('auth.register', compact('error', 'name', 'email'));
+                }else {
+                    return Redirect::back()->with('error', ' PASSWORDS DON´T MATCH');
+                }
             }
         }
 
+        //change timezone
+        if($user->timezone != $timezone){
+            User::where('id', '=', $id)->update(['timezone' => $timezone]);
+            return redirect('');
+        }
+
+        return redirect('dashboard');
     }
 
     /**
@@ -169,8 +170,21 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
+        //$user_role = User::where("id", "=", $id)->first()->role;
+
         User::find($id)->delete();
-        return redirect('users');
+
+        /*switch($user_role) {
+            case "user":
+                return redirect('/');
+                break;
+            case "provider":
+                return redirect('/');
+                break;
+            case "superadmin":
+                return redirect('users');
+                break;
+        }*/
     }
 
 }

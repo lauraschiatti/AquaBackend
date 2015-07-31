@@ -40,9 +40,9 @@
                         <!-- Dropdown Structure -->
                         <ul id="dropdown1" class="dropdown-content">
                             @if(Auth::check() and Auth::user()->role == 'superadmin')
-                                <li><a href="{{url('settings/'.Auth::user()->id)}}">Profile</a></li>
+                                <li><a href="{{url('settings/'.Auth::user()->id)}}">Settings</a></li>
                             @else
-                                <li><a href="#">Profile</a></li>
+                                <li><a href="#">Settings</a></li>
                             @endif
                             @if(Auth::check() and Auth::user()->role == 'superadmin')
                                 <li><a href="{{ url('dashboard')}}">Dashboard</a></li>

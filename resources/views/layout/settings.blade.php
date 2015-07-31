@@ -1,7 +1,7 @@
 @extends('layout.admin')
 
 @section('title')
-    <a href="#" class="mobile-tittle">Profile</a>
+    <a href="#" class="mobile-tittle">Settings</a>
     <a href="{{ url('dashboard')}}" class="mobile-right"><i class="material-icons">close</i></a>
 @stop
 
@@ -13,29 +13,47 @@
         <h4 class="light">Profile Settings</h4>
         <div class="hide-on-med-and-down divider"></div>
 
-            <div class="row" id="profile">
-                <div class="col s12 m4 l4 center" id="main">
-                    <img src="/img/face.jpg" alt="" class="circle" width="100px">
-                    <ul class="light">
-                        <li>{{$user->name}}</li>
-                        <li>{{$user->email}}</li>
-                        <li>{{$user->role}}</li>
-                    </ul>
+        <main>
+            <section class="row" id="profile">
+                <div class="row col s12">
+                    <!-- Left -->
+                    <div class="col s12 m4 l4">
+                        <div class="center">
+                            <br><br><br>
+                            <img class="circle" src="/img/face.jpg" alt=""/>
+                            <h5>{{$user->name}}</h5>
+                            <h6 class="light">{{$user->email}}</h6>
+                            <span class="light" style="text-transform: uppercase;"><strong>{{$user->role}}</strong></span>
+                            <br><br>
+                            <div class="divider"></div>
+                            <br>
+                            <h6 class="light"><strong>100</strong> Downloads</h6>
+                            <br>
+                            <div class="divider"></div>
+                            <br>
 
-                </div>
-                <div class="col s12 m8 l8 container" id="options">
-                    @if (session('error'))
-                        <div class="warning-box">
-                            <p><i class="material-icons">highlight_off</i><span class="ups">Wops!</span>{{session('error')}}</p>
+                            {!! Form::open(['method' => 'DELETE', 'route'=>['users.destroy', $user->id]])!!}
+                                <button type="submit" class="btn btn-medium waves-effect waves-light red"><i class="material-icons">delete</i></button>
+                            {!! Form::close() !!}
+
                         </div>
-                    @endif
-                    <br>
+                    </div>
 
-                    <!-- Form -->
-                    {!! Form::model($user,[
-                    'method' => 'PUT',
-                    'route'=>['users.update',$user->id]
-                    ]) !!}
+                    <!-- Right -->
+                    <div class="col s12 m8 l8" id="right">
+                        @if (session('error'))
+                            <div class="warning-box">
+                                <p><i class="material-icons">highlight_off</i><span class="ups">Wops!</span>{{session('error')}}</p>
+                            </div>
+                        @endif
+                        <br><br>
+
+
+                        <!-- Form -->
+                        {!! Form::model($user,[
+                        'method' => 'PUT',
+                        'route'=>['users.update',$user->id]
+                        ]) !!}
                         <div class="input-field col s12">
                             <i class="material-icons prefix">person</i>
                             <input id="name" type="text" class="validate" name="name" value="{{$user->name}}">
@@ -60,6 +78,10 @@
                             <label for="pass2">Repeat Password</label>
                         </div>
 
+                        <div class="hide-on-med-and-up white-text">
+                            <button type="button" class="btn btn-primary waves-effect waves-dark hide-on-med-and-up">Delete User</button>
+                        </div>
+
                         <div class="col s12">
                             <br>
                             <label>Select new timezone</label>
@@ -81,8 +103,10 @@
                         </div>
                         <!-- FLOATING BUTTONS -->
                         {!! Form::close() !!}
+                    </div>
 
                 </div>
-            </div>
+            </section>
+        </main>
    </div>
 @stop
