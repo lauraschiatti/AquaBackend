@@ -42,7 +42,7 @@
                             @if(Auth::check() and Auth::user()->role == 'superadmin')
                                 <li><a href="{{url('settings/'.Auth::user()->id)}}">Settings</a></li>
                             @else
-                                <li><a href="#">Settings</a></li>
+                                <li><a href="{{url('profile/settings/'.Auth::user()->id)}}">Settings</a></li>
                             @endif
                             @if(Auth::check() and Auth::user()->role == 'superadmin')
                                 <li><a href="{{ url('dashboard')}}">Dashboard</a></li>

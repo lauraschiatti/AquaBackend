@@ -35,7 +35,6 @@
                             {!! Form::open(['method' => 'DELETE', 'route'=>['users.destroy', $user->id]])!!}
                                 <button type="submit" class="btn btn-medium waves-effect waves-light red"><i class="material-icons">delete</i></button>
                             {!! Form::close() !!}
-
                         </div>
                     </div>
 
@@ -76,10 +75,6 @@
                             <i class="material-icons prefix">vpn_key</i>
                             <input id="pass2" type="password" class="validate" name="pass2">
                             <label for="pass2">Repeat Password</label>
-                        </div>
-
-                        <div class="hide-on-med-and-up white-text">
-                            <button type="button" class="btn btn-primary waves-effect waves-dark hide-on-med-and-up">Delete User</button>
                         </div>
 
                         <div class="col s12">

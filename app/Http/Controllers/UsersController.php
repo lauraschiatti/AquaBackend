@@ -1,14 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
-use Auth;
 use Request;
 use App\Http\Requests;
 use App\User;
+use Auth;
 use Illuminate\Support\Facades\Input;
 
 class UsersController extends Controller
@@ -133,7 +131,10 @@ class UsersController extends Controller
         $current_password = trim(Input::get('last-pass'));
         $password = Input::get('pass');
         $password2 = Input::get('pass2');
-        $timezone = Input::get('timezone');
+
+        if(Auth::user()->role != "user") {
+            $timezone = Input::get('timezone');
+        }
 
         $user = User::where("id", "=", $id)->first();
 
@@ -153,13 +154,21 @@ class UsersController extends Controller
             }
         }
 
-        //change timezone
-        if($user->timezone != $timezone){
-            User::where('id', '=', $id)->update(['timezone' => $timezone]);
+        //change name
+        if($user->name != $name){
+            User::where('id', '=', $id)->update(['name' => $name]);
             return redirect('');
         }
 
-        return redirect('dashboard');
+        //change timezone
+        if(Auth::user()->role != "user") {
+            if($user->timezone != $timezone){
+                User::where('id', '=', $id)->update(['timezone' => $timezone]);
+                return redirect('');
+            }
+        }
+
+        return Redirect()->back();
     }
 
     /**
@@ -170,21 +179,15 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //$user_role = User::where("id", "=", $id)->first()->role;
+        $user = User::where("id", "=", $id)->first();
 
         User::find($id)->delete();
 
-        /*switch($user_role) {
-            case "user":
-                return redirect('/');
-                break;
-            case "provider":
-                return redirect('/');
-                break;
-            case "superadmin":
-                return redirect('users');
-                break;
-        }*/
+        if($user->role == "superadmin") {
+            return redirect('users');
+        }else{
+            return redirect('/');
+        }
     }
 
 }
