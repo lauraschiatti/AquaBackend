@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Contact;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Request;
@@ -188,6 +189,23 @@ class UsersController extends Controller
         }else{
             return redirect('/');
         }
+    }
+
+    /*
+     * Recibir mensaje de contacto
+     */
+    public function contact(){
+        $message = Request::all();
+        Contact::create($message);
+
+        /*$contact = new Contact();
+        $contact->sender_name = Input::get('name');
+        $contact->sender_email = Input::get('email');;
+        $contact->type = Input::get('type');;
+        $contact->message = Input::get('message');;
+        $contact->save();*/
+
+        return $message;//redirect('books');
     }
 
 }

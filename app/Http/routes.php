@@ -18,6 +18,12 @@ Route::get('contribute', function(){
    return view('layout.contribute');
 });
 
+Route::get('contact', function(){
+    return view('layout.contact');
+});
+
+Route::post('contact', 'UsersController@contact');
+
 Route::get('dashboard', function () {
     return view('layout.dashboard');
 });
@@ -85,6 +91,9 @@ Route::get('timezone', function(){
     return config('app.timezone');
 });
 
+Route::get('messages', function(){
+    return \App\Contact::all();
+});
 
 
 

@@ -28,11 +28,10 @@
 
                 <ul class="right hide-on-med-and-down">
                     <li><a href="{{ url('/')}}" class="grow">Home</a></li>
-                    <li><a href="#grahics" class="grow">Graphics</a></li>
                     <li><a href="{{ url('contribute')}}" class="grow">Contribute</a></li>
                     <li><a href="#" class="grow">Team</a></li>
                     <li><a href="#" class="grow">Wiki</a></li>
-                    <li><a href="#" class="grow">Contact</a></li>
+                    <li><a href="{{ url('contact')}}" class="grow">Contact</a></li>
 
                     <!-- Sign up-in Buttons -->
                     @if(Auth::check())
@@ -61,11 +60,10 @@
                         <img src="/img/brand-no-back.png" alt="...">
                     </section>
                     <li><a href="{{ url('/')}}">Home</a></li>
-                    <li><a href="#">Graphics</a></li>
                     <li><a href="{{ url('contribute')}}">Contribute</a></li>
                     <li><a href="#">Team</a></li>
                     <li><a href="#">Wiki</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="{{ url('contribute')}}">Contact</a></li>
                     <div class="divider"></div>
 
                     @if(Auth::check())
