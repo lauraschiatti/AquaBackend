@@ -77,7 +77,7 @@ class AuthController extends Controller
     public function postLogin()
     {
         $email = trim(Input::get('email'));
-        $password = trim(Input::get('password'));
+        $password = Input::get('password');
 
         if (Auth::attempt(['email' => $email, 'password' => $password, 'role' => 'user'])) {
             //change app timezone
@@ -99,11 +99,13 @@ class AuthController extends Controller
 
             //@todo: mostrar usuario que inicio sesion
             return view('layout.dashboard');
+
         }
 
         if(!(Auth::attempt(['email' => $email, 'password' => $password]))){
             $error = "WRONG USER OR PASSWORD";
             return view('auth.login', compact('error'));
+            //return User::where("email", "=", $email)->first();
         }
     }
 

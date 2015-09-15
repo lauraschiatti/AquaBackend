@@ -1,14 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Contracts\Validation\Validator;
+use App\Contact;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
-use Monolog\Handler\ElasticSearchHandlerTest;
 use Request;
 use App\Http\Requests;
 use App\User;
+use Auth;
 use Illuminate\Support\Facades\Input;
 
 class UsersController extends Controller
@@ -134,31 +133,43 @@ class UsersController extends Controller
         $password = Input::get('pass');
         $password2 = Input::get('pass2');
 
+        if(Auth::user()->role != "user") {
+            $timezone = Input::get('timezone');
+        }
+
         $user = User::where("id", "=", $id)->first();
 
+        if(($current_password != "" && $password != "" && $password2 != "")){
+            //change password
+            if (strlen($current_password) > 0 && !Hash::check($current_password, $user->password)) {
+                return Redirect::back()->with('error', ' PLEASE SPECIFY THE CORRECT CURRENT PASSWORD');
+            }else{
+                if($password == $password2) {
+                    User::where('id', '=', $id)->update(['password' => bcrypt($password)]);
+                    return redirect('');
+                    //return User::where("id", "=", $id)->first();
 
-        if (strlen($current_password) > 0 && !Hash::check($current_password, $user->password)) {
-            return Redirect::back()->with('error', ' Please specify the good current password');
-
-            if($password == $password2) {
-                $newUser = new User;
-                $newUser->name = $name;
-                $newUser->email = $email;
-                $newUser->password = bcrypt($password);
-                $newUser->role = "user";
-                $newUser->timezone = 'America/Bogota';
-                $newUser->save();
-
-                //iniciar sesion automaticamente
-                Auth::login($newUser);
-
-                return redirect('home');
-            }else {
-                $error = "PASSWORDS DON´T MATCH";
-                return view('auth.register', compact('error', 'name', 'email'));
+                }else {
+                    return Redirect::back()->with('error', ' PASSWORDS DON´T MATCH');
+                }
             }
         }
 
+        //change name
+        if($user->name != $name){
+            User::where('id', '=', $id)->update(['name' => $name]);
+            return redirect('');
+        }
+
+        //change timezone
+        if(Auth::user()->role != "user") {
+            if($user->timezone != $timezone){
+                User::where('id', '=', $id)->update(['timezone' => $timezone]);
+                return redirect('');
+            }
+        }
+
+        return Redirect()->back();
     }
 
     /**
@@ -169,8 +180,32 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
+        $user = User::where("id", "=", $id)->first();
+
         User::find($id)->delete();
-        return redirect('users');
+
+        if($user->role == "superadmin") {
+            return redirect('users');
+        }else{
+            return redirect('/');
+        }
+    }
+
+    /*
+     * Recibir mensaje de contacto
+     */
+    public function contact(){
+        $message = Request::all();
+        Contact::create($message);
+
+        /*$contact = new Contact();
+        $contact->sender_name = Input::get('name');
+        $contact->sender_email = Input::get('email');;
+        $contact->type = Input::get('type');;
+        $contact->message = Input::get('message');;
+        $contact->save();*/
+
+        return $message;//redirect('books');
     }
 
 }

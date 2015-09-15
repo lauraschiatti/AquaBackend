@@ -151,7 +151,11 @@
 <div id="modal1" class="modal">
     <div class="modal-content center">
         <h6 class="light">Would you like to close admin session? </h6><br>
-        <a href="" class=" modal-action modal-close btn-flat">No</a>
+        @if(Auth::check() and Auth::user()->role == 'superadmin')
+            <a href="{{url('/dashboard')}}" class=" modal-action modal-close btn-flat">No</a>
+        @else
+            <a href="{{url('/')}}" class=" modal-action modal-close btn-flat">No</a>
+        @endif
         <a href="{{url('/logout')}}" class="btn primary">Yes</a>
     </div>
 </div>

@@ -14,9 +14,15 @@ Route::get('/', function () {
     return view('layout.home');
 });
 
-Route::get('/contribute', function(){
+Route::get('contribute', function(){
    return view('layout.contribute');
 });
+
+Route::get('contact', function(){
+    return view('layout.contact');
+});
+
+Route::post('contact', 'UsersController@contact');
 
 Route::get('dashboard', function () {
     return view('layout.dashboard');
@@ -36,7 +42,11 @@ Route::get('settings/{id}', function($id){
     return view('layout.settings', compact('user', 'zones_array'));
 });
 
-Route::post('settings/{id}', 'UsersController@settings');
+Route::get('profile/settings/{id}', function($id){
+    $user = \App\User::where("id", "=", $id)->first();
+
+    return view('layout.user_settings', compact('user'));
+});
 
 // Authentication routes...
 Route::get('login', 'Auth\AuthController@getLogin');
@@ -81,6 +91,9 @@ Route::get('timezone', function(){
     return config('app.timezone');
 });
 
+Route::get('messages', function(){
+    return \App\Contact::all();
+});
 
 
 

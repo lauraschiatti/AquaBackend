@@ -19,6 +19,7 @@
     <div class="box-header">
         <img src="/img/brand-no-back.png" alt="brand">
     </div>
+</div>
 <!-- Content -->
 <div class="box-content container">
     <p id="alert">{{$error or ""}}</p>
@@ -68,7 +69,7 @@
 
 <div class="footer light">
     <p>Help? Try <a class="light" href="#"><strong>reading our wiki</strong></a> or
-        <a class="light" href="#"><strong>contacting an human</strong></a></p>
+        <a class="light" href="{{ url('contact')}}"><strong>contacting a human</strong></a></p>
 </div>
 
 <script src="/js/jq/jquery.min.js" type="text/javascript"></script>						<!-- Jquery core JS -->

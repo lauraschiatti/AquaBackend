@@ -60,8 +60,10 @@
                     <label for="check">I'm agree with <a href="#" class="white-text"><strong>Terms &#38; Conditions</strong></a></label>
                 </p>
             </div>
+
             <div class="input-field col s12">
-                <button type="submit" class="waves-effect waves-dark btn btn-primary">Sign in</button>
+                <br>
+                <button type="submit" class="waves-effect waves-dark btn btn-primary">Sign up</button>
             </div>
         {!! Form::close() !!}
     </div>
