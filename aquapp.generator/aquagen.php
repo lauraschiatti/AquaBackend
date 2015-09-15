@@ -35,5 +35,5 @@ for($i = 0; $i < 3; $i++){
         $data = $data . "\t" . $value;
     }
     fwrite($handle, $data);
-    echo 'Generado el archivo '.$file.'\n';
+    echo "Generado el archivo $file \n";
 }

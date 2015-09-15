@@ -30,7 +30,7 @@ function spoolProcess() {
 			)
 		) {
 			rename($spool.$file,$sent.$file);
-			echo 'Enviado el archivo '.$spool.$file.' : $data \n';
+			echo "Enviado el archivo $file : $data \n";
 		}
 	}
 }
