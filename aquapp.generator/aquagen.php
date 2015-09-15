@@ -25,7 +25,7 @@ for($i = 0; $i < 3; $i++){
     }
     $TEMP = 25.0;
     $stamp = date('YmdHis');
-    $file =  getcwd().'/spool/'.$node_id.'-'.$stamp .'.txt';
+    $file =  dirname(__FILE__).'/spool/'.$node_id.'-'.$stamp .'.txt';
     $handle = fopen($file, 'a') or die('Cannot open file:  '.$file);
     $data = "" . $node_id."\t". $stamp;
     $value = 0;
