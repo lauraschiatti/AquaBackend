@@ -25,7 +25,7 @@ function spoolProcess() {
 		if(pushData(
 			implode(";",
 				explode("\t",
-					file_get_contents($spol.$file))
+					file_get_contents($spool.$file))
 				)
 			)
 		) {
