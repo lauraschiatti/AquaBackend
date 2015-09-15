@@ -11,7 +11,7 @@ function pushData($data) {
 		echo "error ".curl_error($ch)."\n";
 		return false;
 	}else{
-		echo $data."\n";
+		//echo $data."\n";
 		return true;
 	}
 	curl_close($ch);
@@ -30,7 +30,7 @@ function spoolProcess() {
 			)
 		) {
 			rename($spool.$file,$sent.$file);
-			echo 'Enviado el archivo '.$spool.$file.'\n';
+			echo 'Enviado el archivo '.$spool.$file.' : $data \n';
 		}
 	}
 }
