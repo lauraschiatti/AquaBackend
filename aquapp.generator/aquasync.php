@@ -19,7 +19,7 @@ function pushData($data) {
 
 function spoolProcess() {
 	$cwd = getcwd();
-	$directory    = getcwd()."/spool";
+	$directory    = dirname(__FILE__)."/spool";
 	$fileList = array_diff(scandir($directory), array('..', '.'));
 	foreach($fileList as  $id => $file){
 		if(pushData(
