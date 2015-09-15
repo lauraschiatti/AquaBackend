@@ -18,17 +18,18 @@ function pushData($data) {
 }
 
 function spoolProcess() {
-	$directory    = dirname(__FILE__)."/spool/";
-	$fileList = array_diff(scandir($directory), array('..', '.','.spool'));
+	$spool = dirname(__FILE__)."/spool/";
+	$sent  = dirname(__FILE__)."/sent/";
+	$fileList = array_diff(scandir($spool), array('..', '.','.spool'));
 	foreach($fileList as  $id => $file){
 		if(pushData(
 			implode(";",
 				explode("\t",
-					file_get_contents($directory.$file))
+					file_get_contents($spol.$file))
 				)
 			)
 		) {
-			rename($directory."/spool/".$file,$directory."/sent/".$file);
+			rename($spool.$file,$sent.$file);
 		}
 	}
 }
