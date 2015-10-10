@@ -18,9 +18,9 @@ main {
 .primary { background: #007EE5 !important; }
 
 /***** Button Settings *****/
-.btn-primary, .btn-primary:hover, .btn-primary:focus {
-    background: #007EE5;
-    color: #FFFFFF;
+.btn-log, .btn-log:hover, .btn-log:focus {
+   background: #FFFFFF;
+   color: #007EE5;
 }
 
 .btn-flat, .btn-flat:hover, .btn-flat:focus {
@@ -52,26 +52,6 @@ nav {
     width: 150px;
     margin-left: 30px;
     margin-top: 5px;
-}
-
-/***** Grow *****/
-.grow {
-    display: inline-block;
-    vertical-align: middle;
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-transition-duration: 0.1s;
-    transition-duration: 0.1s;
-    -webkit-transition-property: transform;
-    transition-property: transform;
-}
-
-.grow:hover, .grow:focus, .grow:active {
-    -webkit-transform: scale(1.1);
-    transform: scale(1.1);
 }
 
 /***** Navbar Mobile *****/
@@ -195,11 +175,11 @@ i.medium { font-size: 40px; }
 }
 
 /***** Footer *****/
-#footer { background: #36474F; margin: 0px; /*font-family: 'Questrial', sans-serif; */}
+#footer { background: #343E4C; margin: 0px; /*font-family: 'Questrial', sans-serif; */}
 #footer .container { width: 92%; }
 #footer li, #footer a { color: #A5B6C3; }
-#footer h5, #footer a:hover { color: #F9F9FA; }
-#footer .footer-copyright { color: #A5B6C3; background-color: rgba(51, 51, 51, 0.09); }
+#footer h5 { color: #F2F8F8; }
+#footer .footer-copyright { color: #F2F8F8; background-color: rgba(51, 51, 51, 0.09); }
 
 @media only screen and (max-width : 400px) {
     .footer-copyright { font-size: 10px; }
@@ -213,12 +193,6 @@ i.medium { font-size: 40px; }
 #footer #brand-utb {
     margin-top: 30px;
     background: url("../img/utb-logo-01.png") no-repeat;
-    min-width: 300px;
-    min-height: 81px;
-}
-
-#footer #brand-utb:hover {
-    background: url("../img/utb-logo-02.png") no-repeat;
     min-width: 300px;
     min-height: 81px;
 }
@@ -268,7 +242,7 @@ i.medium { font-size: 40px; }
 }
 
 /********************************************
-                           TEAM
+                  TEAM
  ********************************************/
 #team {
     width: 100%;
@@ -352,10 +326,6 @@ i.medium { font-size: 40px; }
 				          INPUTS
  ********************************************/
 
-/*
- * Put this on reg.css and login.css
- */
-
 .input-field label,
 .input-field .prefix.active,
 input[type=text]:focus:not([readonly]) + label,
@@ -376,8 +346,8 @@ input[type=text].valid, input[type=text]:focus.valid,
 input[type=email].valid, input[type=email]:focus.valid,
 input[type=password].valid, input[type=password]:focus.valid,
 textarea.materialize-textarea.valid, textarea.materialize-textarea:focus.valid {
-    border-bottom: 1px solid #039BE5;
-    box-shadow: 0 1px 0 0 #039BE5;
+    border-bottom: 1px solid #4FCA1E;
+    box-shadow: 0 1px 0 0 #4FCA1E;
 }
 
 input[type=text]:focus:not([readonly]),

@@ -8,13 +8,13 @@
     <meta name="author" content="">
     <title> AquApp | Site </title>
 
-    <link href="/css/materialize.min.css" rel="stylesheet">               					           <!-- Materialize core CSS -->
-    <link href="/css/site.css" rel="stylesheet">                         						         <!-- Site core CSS -->
-    <link href="/css/materialicons.css" rel="stylesheet">	 <!-- Material Icons -->
+    <link href="/css/materialize.min.css" rel="stylesheet">               			<!-- Materialize core CSS -->
+    <link href="/css/site.css" rel="stylesheet">                         				<!-- Site core CSS -->
+    <link href="/css/materialicons.css" rel="stylesheet">	                      <!-- Material Icons -->
 
-    <script type="text/javascript" src="/js/jq/jquery.min.js"></script>						           <!-- Jquery core JS -->
-    <script type="text/javascript" src="/js/highcharts.js"></script>  <!-- HighCharts core JS -->
-    <script type="text/javascript" src="/js/graph.js"></script>                               <!-- Graphs core JS -->
+    <script type="text/javascript" src="/js/jq/jquery.min.js"></script>					<!-- Jquery core JS -->
+    <script type="text/javascript" src="/js/highcharts.js"></script>            <!-- HighCharts core JS -->
+    <script type="text/javascript" src="/js/graph.js"></script>                 <!-- Graphs core JS -->
 </head>
 <body>
 
@@ -27,11 +27,11 @@
                 <a href="#"href="{{ url('/')}}" data-activates="mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
 
                 <ul class="right hide-on-med-and-down">
-                    <li><a href="{{ url('/')}}" class="grow">Home</a></li>
-                    <li><a href="{{ url('contribute')}}" class="grow">Contribute</a></li>
-                    <li><a href="#" class="grow">Team</a></li>
-                    <li><a href="#" class="grow">Wiki</a></li>
-                    <li><a href="{{ url('contact')}}" class="grow">Contact</a></li>
+                    <li><a href="{{ url('/')}}">Home</a></li>
+                    <li><a href="{{ url('contribute')}}">Contribute</a></li>
+                    <li><a href="{{ url('team')}}">Team</a></li>
+                    <li><a href="#">Wiki</a></li>
+                    <li><a href="{{ url('contact')}}">Contact</a></li>
 
                     <!-- Sign up-in Buttons -->
                     @if(Auth::check())
@@ -49,8 +49,8 @@
                             <li><a href="{{ url('logout')}}">Log out</a></li>
                         </ul>
                     @else
-                        <li><a href="{{ url('register')}}" class="grow btn-flat waves-effect waves-light btn">Sign up</a></li>
-                        <li><a href="{{ url('login')}}" class="btn btn-primary waves-effect waves-dark">Login</a></li>
+                        <li><a href="{{ url('register')}}" class="btn-flat waves-effect waves-light btn">Sign up</a></li>
+                        <li><a href="{{ url('login')}}" class="btn btn-log waves-effect waves-dark">Login</a></li>
                     @endif
 
                 </ul>
@@ -259,20 +259,6 @@
         </div>
     </section>
     <!-- === WIKI | CONTACT === -->
-
-
-    <!-- === DIVISOR === -->
-    <!--
-    <div class="divisor center">
-      <div  class="box">
-       <img class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Google Chrome" src="img/brand/chrome.png">
-       <img class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Mozilla Firefox" src="img/brand/firefox.png">
-       <img class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Safari" src="img/brand/safari.png">
-       <img class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Opera" src="img/brand/opera.png">
-       <h6 class="light">Cross-Browsers Compatible</h6>
-      </div>
-    </div>-->
-    <!-- === DIVISOR === -->
 
 </main>
 <!-- === FOOTER === -->

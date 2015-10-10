@@ -18,6 +18,10 @@ Route::get('contribute', function(){
    return view('layout.contribute');
 });
 
+Route::get('team', function(){
+    return view('layout.team');
+});
+
 Route::get('contact', function(){
     return view('layout.contact');
 });
@@ -94,7 +98,3 @@ Route::get('timezone', function(){
 Route::get('messages', function(){
     return \App\Contact::all();
 });
-
-
-
-
