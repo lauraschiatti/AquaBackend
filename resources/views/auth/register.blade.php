@@ -11,12 +11,31 @@
     <link href="/css/materialize.min.css" rel="stylesheet">               					           <!-- Materialize core CSS -->
     <link href="/css/reg.css" rel="stylesheet">                         						           <!-- Reg core CSS -->
     <link href="/css/materialicons.css" rel="stylesheet">	 <!-- Material Icons -->
+
+    <!--favicon-->
+    <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
 </head>
 <body>
 <header>
     <nav class="primary" role="navigation">
         <div class="nav-wrapper">
-            <a href="#" class="brand hide-on-small-only"><img src="/img/brand.png" alt="..."/></a>
+            <a href="{{ url('/')}}" class="brand hide-on-small-only"><img src="/img/brand.png" alt="..."/></a>
             <ul class="right hide-on-small-only">
                 <li><a href="{{ url('login')}}">Have an account? <span><strong>Log in</strong></span></a></li>
             </ul>
@@ -57,7 +76,7 @@
             <div class="col s12 white-text">
                 <p class="center">
                     <input type="checkbox" required id="check" checked="checked"/>
-                    <label for="check">I'm agree with <a href="#" class="white-text"><strong>Terms &#38; Conditions</strong></a></label>
+                    <label for="check">I'm agree with <a href="{{ url('terms')}}" class="white-text"><strong>Terms &#38; Conditions</strong></a></label>
                 </p>
             </div>
 
@@ -70,14 +89,14 @@
 
 </main>
 
-<footer class="page-footer">
+<footer class="page-footer hide-on-small-only">
     <div class="left">
         <a class="light">© 2015 All rights reserved</a>
     </div>
     <div class="right">
         <a href="#!">Wiki</a>
-        <a href="#!">Contact us</a>
-        <a href="#!">Terms</a>
+        <a href="{{ url('contact')}}">Contact</a>
+        <a href="{{ url('terms')}}">Terms</a>
     </div>
 </footer>
 

@@ -22,6 +22,10 @@ Route::get('team', function(){
     return view('layout.team');
 });
 
+Route::get('terms', function(){
+    return view('layout.terms');
+});
+
 Route::get('contact', function(){
     return view('layout.contact');
 });

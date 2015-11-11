@@ -14,7 +14,26 @@
 
     <script type="text/javascript" src="/js/jq/jquery.min.js"></script>					<!-- Jquery core JS -->
     <script type="text/javascript" src="/js/highcharts.js"></script>            <!-- HighCharts core JS -->
-    <script src="http://code.highcharts.com/highcharts-more.js"></script>                    <!-- HighCharts-more core JS -->
+    <script src="http://code.highcharts.com/highcharts-more.js"></script>       <!-- HighCharts-more core JS -->
+
+    <!--favicon-->
+    <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
 </head>
 <body>
 
@@ -105,105 +124,104 @@
 
 
 
-    <!-- === WIKI | CONTACT === -->
-    <section id="help">
-        <div class="container divider"></div>
-        <div class="center">
-            <h4 class="light">Got Questions? <span>We've got answers</span></h4>
-            <p class="light">We've designed a special place where u can find all the <a href="" class="blue-light">Faqs</a>
-                and the APP documentation. Take a look...</p>
-            <div class="buttons">
-                <a href="#" class="btn btn-primary waves-effect waves-light">Read our Wiki</a>
-                <a class="btn btn-secundary waves-effect waves-light">Contact Support</a></a>
-            </div>
-        </div>
-    </section>
-    <!-- === WIKI | CONTACT === -->
+  <!-- === WIKI | CONTACT === -->
+  <section id="help">
+      <div class="container divider"></div>
+      <div class="center">
+          <h4 class="light">Got Questions? <span>We've got answers</span></h4>
+          <p class="light">We've designed a special place where u can find all the <a href="" class="blue-light">Faqs</a>
+              and the APP documentation. Take a look...</p>
+          <div class="buttons">
+              <a href="#" class="btn btn-primary waves-effect waves-light">Read our Wiki</a>
+              <a href="{{ url('contact')}}"class="btn btn-secundary waves-effect waves-light">Contact Support</a>
+          </div>
+      </div>
+  </section>
+  <!-- === WIKI | CONTACT === -->
 
 </main>
-
 <!-- === FOOTER === -->
 <footer class="page-footer" id="footer">
-    <div class="container">
-        <div class="row">
-            <!-- Address -->
-            <div class="col m3 l3 hide-on-small-only" id="details">
-                <h5>Address</h5>
-                <ul>
-                    <li><strong>Campus Tecnológico</strong></li>
-                    <li>Parque Industrial y Tecnológico Carlos Vélez Pombo</li>
-                    <li>Km 1 Vía Turbaco - Tel: (57) 5 6535200  </li>
-                    <li>Morning: lunes a viernes de 8:00 a.m. a 12:00 p.m.</li>
-                    <li>Afternoon: lunes a viernes de 1:00 p.m a 5:00 p.m. </li>
-                </ul>
-            </div>
-            <!-- Address -->
-            <!-- Links -->
-            <div class="col s12 m9 l5" id="links">
+  <div class="container">
+      <div class="row">
+          <!-- Address -->
+          <div class="col m3 l3 hide-on-small-only" id="details">
+              <h5>Address</h5>
+              <ul>
+                  <li><strong>Campus Tecnológico</strong></li>
+                  <li>Parque Industrial y Tecnológico Carlos Vélez Pombo</li>
+                  <li>Km 1 Vía Turbaco - Tel: (57) 5 6535200  </li>
+                  <li>Morning: lunes a viernes de 8:00 a.m. a 12:00 p.m.</li>
+                  <li>Afternoon: lunes a viernes de 1:00 p.m a 5:00 p.m. </li>
+              </ul>
+          </div>
+          <!-- Address -->
+          <!-- Links -->
+          <div class="col s12 m9 l5" id="links">
 
-                <div class="col s4">
+              <div class="col s4">
 
-                    <h5>Support</h5>
-                    <ul>
-                        <li><a href="#!">Wiki</a></li>
-                        <li><a href="#!">Contact</a></li>
-                        <li><a href="#!">Team</a></li>
-                    </ul>
-                </div>
+                  <h5>Support</h5>
+                  <ul>
+                      <li><a href="#!">Wiki</a></li>
+                      <li><a href="{{ url('contact')}}">Contact</a></li>
+                      <li><a href="{{ url('terms')}}">Team</a></li>
+                  </ul>
+              </div>
 
-                <div class="col s4">
+              <div class="col s4">
 
-                    <h5>Contribute</h5>
-                    <ul>
-                        <li><a href="#!">Github</a></li>
-                        <li><a href="#!">Twitter</a></li>
-                        <li><a href="#!">Google</a></li>
-                    </ul>
-                </div>
+                  <h5>Contribute</h5>
+                  <ul>
+                      <li><a href="https://github.com/IngenieriaDeSistemasUTB/AquaBackend.git">Github</a></li>
+                      <li><a href="#!">Twitter</a></li>
+                      <li><a href="#!">Google</a></li>
+                  </ul>
+              </div>
 
-                <div class="col s4">
+              <div class="col s4">
 
-                    <h5>Product</h5>
-                    <ul>
-                        <li><a href="#!">About</a></li>
-                        <li><a href="#!">Project</a></li>
-                        <li><a href="#!">Feedback</a></li>
-                    </ul>
-                </div>
-            </div>
-            <!-- Links -->
-            <!-- Small -->
-            <div class="col s12 show-on-small hide-on-med-and-up center" id="details">
-                <div class="container">
-                    <img src="img/utb-logo-03.png" alt=""/>
-                </div>
-                <ul class="light">
-                    <li><strong>Campus Tecnológico</strong></li>
-                    <li>Parque Industrial y Tecnológico Carlos Vélez Pombo</li>
-                    <li>Km 1 Vía Turbaco - Tel: (57) 5 6535200  </li>
-                    <li>Morning: lunes a viernes de 8:00 a.m. a 12:00 p.m.</li>
-                    <li>Afternoon: lunes a viernes de 1:00 p.m a 5:00 p.m. </li>
-                </ul>
-            </div>
-            <!-- Small -->
-            <!-- Brand -->
-            <div class="col l4 hide-on-med-and-down">
-                <div class="container">
-                    <a target="_blank" href="http://www.unitecnologica.edu.co/"><div id="brand-utb"></div></a>
-                </div>
-            </div>
-            <!-- Brand -->
+                  <h5>Product</h5>
+                  <ul>
+                      <li><a href="{{ url('terms')}}">About</a></li>
+                      <li><a href="https://github.com/IngenieriaDeSistemasUTB/AquaBackend.git">Project</a></li>
+                      <li><a href="{{ url('terms')}}">Terms</a></li>
+                  </ul>
+              </div>
+          </div>
+          <!-- Links -->
+          <!-- Small -->
+          <div class="col s12 show-on-small hide-on-med-and-up center" id="details">
+              <div class="container">
+                  <img src="/img/utb-logo-03.png" alt=""/>
+              </div>
+              <ul class="light">
+                  <li><strong>Campus Tecnológico</strong></li>
+                  <li>Parque Industrial y Tecnológico Carlos Vélez Pombo</li>
+                  <li>Km 1 Vía Turbaco - Tel: (57) 5 6535200  </li>
+                  <li>Morning: lunes a viernes de 8:00 a.m. a 12:00 p.m.</li>
+                  <li>Afternoon: lunes a viernes de 1:00 p.m a 5:00 p.m. </li>
+              </ul>
+          </div>
+          <!-- Small -->
+          <!-- Brand -->
+          <div class="col l4 hide-on-med-and-down">
+              <div class="container">
+                  <a target="_blank" href="http://www.unitecnologica.edu.co/"><div id="brand-utb"></div></a>
+              </div>
+          </div>
+          <!-- Brand -->
 
-        </div>
-    </div>
+      </div>
+  </div>
 
-    <!-- Footer -->
-    <div class="footer-copyright center">
-        <div class="container light">
-            &#60;&#47;&#62; with <span class="red-text">&#10084;</span> in Cartagena de Indias, D.T. y C. - Colombia
-            <a class="right hide-on-small-only" href="#contribute">Back to top</a>
-        </div>
-    </div>
+  <!-- Footer -->
+  <div class="footer-copyright center">
+      <div class="container light">
+          &#60;&#47;&#62; with <span class="red-text">&#10084;</span> in Cartagena de Indias, D.T. y C. - Colombia
+          <a class="right hide-on-small-only" href="#home">Back to top</a>
+      </div>
+  </div>
 </footer>
 <!-- === FOOTER === -->
 

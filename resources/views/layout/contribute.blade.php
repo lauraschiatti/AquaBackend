@@ -11,6 +11,25 @@
     <link href="/css/materialize.min.css" rel="stylesheet">               					           <!-- Materialize core CSS -->
     <link href="/css/site.css" rel="stylesheet">                         						         <!-- Site core CSS -->
     <link href="/css/materialicons.css" rel="stylesheet">	 <!-- Material Icons -->
+
+    <!--favicon-->
+    <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
 </head>
 <body>
 
@@ -127,14 +146,13 @@
                 and the APP documentation. Take a look...</p>
             <div class="buttons">
                 <a href="#" class="btn btn-primary waves-effect waves-light">Read our Wiki</a>
-                <a class="btn btn-secundary waves-effect waves-light">Contact Support</a></a>
+                <a href="{{ url('contact')}}"class="btn btn-secundary waves-effect waves-light">Contact Support</a>
             </div>
         </div>
     </section>
     <!-- === WIKI | CONTACT === -->
 
 </main>
-
 <!-- === FOOTER === -->
 <footer class="page-footer" id="footer">
     <div class="container">
@@ -159,8 +177,8 @@
                     <h5>Support</h5>
                     <ul>
                         <li><a href="#!">Wiki</a></li>
-                        <li><a href="#!">Contact</a></li>
-                        <li><a href="#!">Team</a></li>
+                        <li><a href="{{ url('contact')}}">Contact</a></li>
+                        <li><a href="{{ url('terms')}}">Team</a></li>
                     </ul>
                 </div>
 
@@ -168,7 +186,7 @@
 
                     <h5>Contribute</h5>
                     <ul>
-                        <li><a href="#!">Github</a></li>
+                        <li><a href="https://github.com/IngenieriaDeSistemasUTB/AquaBackend.git">Github</a></li>
                         <li><a href="#!">Twitter</a></li>
                         <li><a href="#!">Google</a></li>
                     </ul>
@@ -178,9 +196,9 @@
 
                     <h5>Product</h5>
                     <ul>
-                        <li><a href="#!">About</a></li>
-                        <li><a href="#!">Project</a></li>
-                        <li><a href="#!">Feedback</a></li>
+                        <li><a href="{{ url('terms')}}">About</a></li>
+                        <li><a href="https://github.com/IngenieriaDeSistemasUTB/AquaBackend.git">Project</a></li>
+                        <li><a href="{{ url('terms')}}">Legal</a></li>
                     </ul>
                 </div>
             </div>
@@ -188,7 +206,7 @@
             <!-- Small -->
             <div class="col s12 show-on-small hide-on-med-and-up center" id="details">
                 <div class="container">
-                    <img src="img/utb-logo-03.png" alt=""/>
+                    <img src="/img/utb-logo-03.png" alt=""/>
                 </div>
                 <ul class="light">
                     <li><strong>Campus Tecnológico</strong></li>
@@ -214,7 +232,7 @@
     <div class="footer-copyright center">
         <div class="container light">
             &#60;&#47;&#62; with <span class="red-text">&#10084;</span> in Cartagena de Indias, D.T. y C. - Colombia
-            <a class="right hide-on-small-only" href="#contribute">Back to top</a>
+            <a class="right hide-on-small-only" href="#home">Back to top</a>
         </div>
     </div>
 </footer>

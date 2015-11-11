@@ -246,7 +246,6 @@ i.medium { font-size: 40px; }
  ********************************************/
 #team {
     width: 100%;
-    max-width: none;
     padding: 0 7%;
     display: table;
     margin: 0;
@@ -256,20 +255,20 @@ i.medium { font-size: 40px; }
 
 #team-graph {
     height: 60vh;
-    min-width: 100%;
+    width: 95%;
     height: 400px;
     margin: 0 auto;
 }
 
 /* Media For Desktop Devices*/
 @media only screen and (min-width : 992px) {
-  .cards { margin-left: 12%; }
+  .cards { margin-left: 14%; }
 }
 
-.cards { margin-top: 40px; }
+.cards { margin-top: 80px; }
 .tcard img { width: 120px; }
 .tcard h3 { font-size: 20px; }
-.tcard h5 { color: grey; font-size: 15px; }
+.tcard h5 { color: grey; font-size: 15px;}
 
 /********************************************
 				          CONTACT
@@ -331,6 +330,25 @@ i.medium { font-size: 40px; }
     #right { margin-top: 10px; }
 }
 
+/********************************************
+				          Terms
+ ********************************************/
+ #terms {
+     width: 100%;
+     max-width: none;
+     display: table;
+     margin: 0;
+     height: 100vh;
+ }
+
+ .justify {
+   text-align : justify;
+ }
+
+
+ #terms h2 {
+   margin-bottom: 50px;
+ }
 
 /********************************************
 				          INPUTS
