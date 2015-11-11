@@ -14,15 +14,6 @@
 </head>
 <body>
 
-<!-- Dropdown Structure -->
-<ul id="dropdown1" class="dropdown-content">
-    <li><a href="{{ url('/')}}">Home</a></li>
-    <li><a href="#">About</a></li>
-    <li><a href="{{ url('contribute')}}">Contribute</a></li>
-    <li><a href="#">Team</a></li>
-    <li><a href="#">Wiki</a></li>
-</ul>
-
 <!-- === NAVBAR === -->
 <header class="primary">
     <div class="navbar-fixed">
@@ -32,7 +23,7 @@
                 <a href="#" data-activates="mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
 
                 <ul class="right hide-on-med-and-down">
-                    <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><i class="material-icons right">arrow_drop_down</i>Contact</a></li>
+                    <li><a href="{{ url('/')}}" class="grow">Back Home</a></li>
                 </ul>
 
                 <ul class="side-nav center" id="mobile">

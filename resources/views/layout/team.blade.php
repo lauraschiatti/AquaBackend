@@ -67,6 +67,39 @@
   <!-- === TEAM === -->
   <section class="center"><br>
     <h2 class="light">Meet The Team</h2>
+
+    <div class="row cards">
+      <div class="tcard col s12 m3 l2 center">
+        <img src="/img/face.jpg" alt="" />
+        <h3>Laura Schiatti</h3>
+        <h5 class="light">Back-End Developer</h5>
+      </div>
+
+      <div class="tcard col s12 m3 l2 center">
+        <img src="/img/face.jpg" alt="" />
+        <h3>Yefferson Marín</h3>
+        <h5 class="light">Front-End Developer</h5>
+      </div>
+
+      <div class="tcard col s12 m3 l2 center">
+        <img src="/img/face.jpg" alt="" />
+        <h3>Juan Martínez</h3>
+        <h5 class="light">Investigator</h5>
+      </div>
+      <div class="tcard col s12 m3 l2 center">
+        <img src="/img/face.jpg" alt="" />
+        <h3>Oscar Acevedo</h3>
+        <h5 class="light">Investigator</h5>
+      </div>
+      <div class="tcard col s12 m3 l2 center">
+        <img src="/img/face.jpg" alt="" />
+        <h3>Jairo Serrano</h3>
+        <h5 class="light">Investigator</h5>
+      </div>
+    </div>
+
+
+
   </section>
   <!-- === TEAM === -->
 

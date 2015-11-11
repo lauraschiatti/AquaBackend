@@ -261,6 +261,16 @@ i.medium { font-size: 40px; }
     margin: 0 auto;
 }
 
+/* Media For Desktop Devices*/
+@media only screen and (min-width : 992px) {
+  .cards { margin-left: 12%; }
+}
+
+.cards { margin-top: 40px; }
+.tcard img { width: 120px; }
+.tcard h3 { font-size: 20px; }
+.tcard h5 { color: grey; font-size: 15px; }
+
 /********************************************
 				          CONTACT
  ********************************************/
