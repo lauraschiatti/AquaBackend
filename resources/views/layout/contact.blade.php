@@ -92,7 +92,7 @@
                             <select name="type" required>
                                 <option value="general_purpose">Say hello!</option>
                                 <option value="be_provider">Be provider</option>
-                                <option value="report_bug">Report a bug</option>
+                                <option value="report_bug">Feedback and Report a bug</option>
                             </select>
                             <label>I'm writting to..</label>
                         </div>

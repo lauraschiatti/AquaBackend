@@ -94,7 +94,7 @@
                         <li><a href="{{url('/users')}}"><i class="material-icons left">people</i>Users</a></li>
                         <li class="etiquette">Configurations</li>
                         <li><a href="{{url('/settings/'.Auth::user()->id)}}"><i class="material-icons left">settings</i>Settings</a></li>
-                        <li><a href="#"><i class="material-icons left">turned_in</i>Help &amp; Feed</a></li>
+                        <li><a href="{{url('/contact')}}"><i class="material-icons left">turned_in</i>Help &amp; Feed</a></li>
                         <li><a class="modal-trigger" href="#modal1"><i class="material-icons left">power_settings_new</i>Log out</a></li>
                     </div>
                 </ul>
@@ -134,7 +134,7 @@
 
                         <li class="etiquette">Configurations</li>
                         <li><a href="{{url('/settings')}}"><i class="material-icons left">settings</i>Settings</a></li>
-                        <li><a href="#"><i class="material-icons left">turned_in</i>Help &amp; Feed</a></li>
+                        <li><a href="{{url('/contact')}}"><i class="material-icons left">turned_in</i>Help &amp; Feed</a></li>
                         <li><a class="modal-trigger" href="#modal1"><i class="material-icons left">power_settings_new</i>Log out</a></li>
                     </div>
                 </ul>
@@ -143,7 +143,7 @@
     </div>
 </header>
 <!-- === NAV BAR === -->
-
+<main>
 <!-- DESKTOP -->
 @yield('content')
 <!-- DESKTOP -->
@@ -160,7 +160,7 @@
         <a href="{{url('/logout')}}" class="btn primary">Yes</a>
     </div>
 </div>
-
+</main>
 <script src="/js/materialize.min.js" type="text/javascript"></script> 					<!-- Materialize core JS -->
 <script src="/js/init.js" type="text/javascript"></script> 					          <!-- Init core JS -->
 
