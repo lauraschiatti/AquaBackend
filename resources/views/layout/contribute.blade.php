@@ -49,14 +49,14 @@
                     <section class="menu-header">
                         <img src="/img/brand-no-back.png" alt="...">
                     </section>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Contribute</a></li>
-                    <li><a href="#">Team</a></li>
+                    <li><a href="{{ url('/')}}">Home</a></li>
+                    <li><a href="{{ url('contribute')}}">Contribute</a></li>
+                    <li><a href="{{ url('team')}}">Team</a></li>
                     <li><a href="#">Wiki</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="{{ url('contact')}}">Contact</a></li>
                     <div class="divider"></div>
-                    <li><a href="#">Sign up</a></li>
-                    <li><a href="#">Login</a></li>
+                    <li><a href="{{ url('register')}}">Sign up</a></li>
+                    <li><a href="{{ url('login')}}">Login</a></li>
 
                 </ul>
             </div>
@@ -145,7 +145,7 @@
             <p class="light">We've designed a special place where u can find all the <a href="" class="blue-light">Faqs</a>
                 and the APP documentation. Take a look...</p>
             <div class="buttons">
-                <a href="#" class="btn btn-primary waves-effect waves-light">Read our Wiki</a>
+                <a href="https://github.com/IngenieriaDeSistemasUTB/AquaBackend'" class="btn btn-primary waves-effect waves-light">Read our Wiki</a>
                 <a href="{{ url('contact')}}"class="btn btn-secundary waves-effect waves-light">Contact Support</a>
             </div>
         </div>
@@ -178,7 +178,7 @@
                     <ul>
                         <li><a href="#!">Wiki</a></li>
                         <li><a href="{{ url('contact')}}">Contact</a></li>
-                        <li><a href="{{ url('terms')}}">Team</a></li>
+                        <li><a href="{{ url('team')}}">Team</a></li>
                     </ul>
                 </div>
 

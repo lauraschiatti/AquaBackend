@@ -60,15 +60,14 @@
                     <section class="menu-header">
                         <img src="/img/brand-no-back.png" alt="...">
                     </section>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Contribute</a></li>
-                    <li><a href="#">Team</a></li>
+                    <li><a href="{{ url('/')}}">Home</a></li>
+                    <li><a href="{{ url('contribute')}}">Contribute</a></li>
+                    <li><a href="{{ url('team')}}">Team</a></li>
                     <li><a href="#">Wiki</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="{{ url('contact')}}">Contact</a></li>
                     <div class="divider"></div>
-                    <li><a href="#">Sign up</a></li>
-                    <li><a href="#">Login</a></li>
-
+                    <li><a href="{{ url('register')}}">Sign up</a></li>
+                    <li><a href="{{ url('login')}}">Login</a></li>
                 </ul>
             </div>
         </nav>
@@ -103,7 +102,6 @@
                     <p><i class="material-icons">highlight_off</i>{{session('error')}}</p>
                 @endif
                 <br><br>
-
 
                 <!-- Form -->
                 {!! Form::model($user,[

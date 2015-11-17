@@ -14,6 +14,10 @@ Route::get('/', function () {
     return view('layout.home');
 });
 
+Route::get('home', function () {
+    return view('layout.home');
+});
+
 Route::get('contribute', function(){
    return view('layout.contribute');
 });
@@ -33,7 +37,33 @@ Route::get('contact', function(){
 Route::post('contact', 'UsersController@contact');
 
 Route::get('dashboard', function () {
-    return view('layout.dashboard');
+    $user_id = Auth::user()->id;
+
+    $sensors = \App\Sensors::all();
+    $i_sensors = 0;
+    foreach ($sensors as $sensor) {
+        $i_sensors += 1;
+    }
+
+    $nodes = \App\Nodes::all();
+    $i_nodes = 0;
+    foreach ($nodes as $node) {
+        $i_nodes += 1;
+    }
+
+    $mynodes= \App\Nodes::where("user_id", "=", $user_id)->get();
+    $i_mynodes = 0;
+    foreach ($mynodes as $mynode) {
+        $i_mynodes += 1;
+    }
+
+    $users= \App\User::all();
+    $i_users = 0;
+    foreach ($users as $user) {
+        $i_users += 1;
+    }
+
+    return view('layout.dashboard', compact('i_sensors', 'i_nodes','i_mynodes','i_users'));
 });
 
 Route::get('settings/{id}', function($id){

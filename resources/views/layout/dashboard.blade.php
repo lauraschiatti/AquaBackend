@@ -56,7 +56,7 @@
 
         <!-- ************** This for admin ***************** -->
        <div class="col s6 m2 l2" id="boxes">
-         <h2 class="light title">30</h2>   <!-- Here all Sensors created -->
+         <h2 class="light title">{{$i_sensors}}</h2>   <!-- Here all Sensors created -->
          <div id="box1">
            <div class="progress">
               <div class="determinate" style="width: 20%"></div>
@@ -66,17 +66,17 @@
 
        </div>
        <div class="col s6 m2 l2" id="boxes">
-         <h2 class="light title">10</h2>  <!-- Here My Nodes -->
+         <h2 class="light title">{{$i_mynodes}}</h2>  <!-- Here My Nodes -->
          <div id="box2">
            <div class="progress">
               <div class="determinate" style="width: 20%"></div>
            </div>
-           <h6 class="light" class="content"> Nodes </h6>
+           <h6 class="light" class="content"> My Nodes </h6>
          </div>
        </div>
 
        <div class="col s6 m2 l2" id="boxes">
-         <h2 class="light title">120</h2>  <!-- Here all Nodes -->
+         <h2 class="light title">{{$i_nodes}}</h2>  <!-- Here all Nodes -->
          <div id="box3">
            <div class="progress">
               <div class="determinate" style="width: 20%"></div>
@@ -86,7 +86,7 @@
        </div>
 
       <div class="col s6 m2 l2" id="boxes">
-         <h2 class="light title">52</h2>  <!-- Here all Downloads -->
+         <h2 class="light title">{{$i_users}}</h2>  <!-- Here all Downloads -->
          <div id="box4">
            <div class="progress">
               <div class="determinate" style="width: 20%"></div>

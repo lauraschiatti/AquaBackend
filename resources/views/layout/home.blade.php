@@ -48,7 +48,7 @@
                     <li><a href="{{ url('/')}}">Home</a></li>
                     <li><a href="{{ url('contribute')}}">Contribute</a></li>
                     <li><a href="{{ url('team')}}">Team</a></li>
-                    <li><a href="#">Wiki</a></li>
+                    <li><a href="https://github.com/IngenieriaDeSistemasUTB/AquaBackend.git">Wiki</a></li>
                     <li><a href="{{ url('contact')}}">Contact</a></li>
 
                     <!-- Sign up-in Buttons -->
@@ -80,7 +80,7 @@
                     <li><a href="{{ url('/')}}">Home</a></li>
                     <li><a href="{{ url('contribute')}}">Contribute</a></li>
                     <li><a href="#">Team</a></li>
-                    <li><a href="#">Wiki</a></li>
+                    <li><a href="https://github.com/IngenieriaDeSistemasUTB/AquaBackend.git">Wiki</a></li>
                     <li><a href="{{ url('contribute')}}">Contact</a></li>
                     <div class="divider"></div>
 
@@ -268,7 +268,7 @@
         <div class="container divider"></div>
         <div class="center">
             <h4 class="light">Got Questions? <span>We've got answers</span></h4>
-            <p class="light">We've designed a special place where u can find all the <a href="" class="blue-light">Faqs</a>
+            <p class="light">We've designed a special place where u can find all the <a href="#!" class="blue-light">FAQs</a>
                 and the APP documentation. Take a look...</p>
             <div class="buttons">
                 <a href="#" class="btn btn-primary waves-effect waves-light">Read our Wiki</a>
