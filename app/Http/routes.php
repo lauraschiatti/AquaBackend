@@ -39,31 +39,15 @@ Route::post('contact', 'UsersController@contact');
 Route::get('dashboard', function () {
     $user_id = Auth::user()->id;
 
-    $sensors = \App\Sensors::all();
-    $i_sensors = 0;
-    foreach ($sensors as $sensor) {
-        $i_sensors += 1;
-    }
+    $sensors = \App\Sensors::all()->count();
 
-    $nodes = \App\Nodes::all();
-    $i_nodes = 0;
-    foreach ($nodes as $node) {
-        $i_nodes += 1;
-    }
+    $nodes = \App\Nodes::all()->count();
 
-    $mynodes= \App\Nodes::where("user_id", "=", $user_id)->get();
-    $i_mynodes = 0;
-    foreach ($mynodes as $mynode) {
-        $i_mynodes += 1;
-    }
+    $mynodes= \App\Nodes::where("user_id", "=", $user_id)->get()->count();
 
-    $users= \App\User::all();
-    $i_users = 0;
-    foreach ($users as $user) {
-        $i_users += 1;
-    }
+    $users= \App\User::all()->count();
 
-    return view('layout.dashboard', compact('i_sensors', 'i_nodes','i_mynodes','i_users'));
+    return view('layout.dashboard', compact('sensors', 'nodes','mynodes','users'));
 });
 
 Route::get('settings/{id}', function($id){

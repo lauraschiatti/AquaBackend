@@ -77,7 +77,6 @@
 
 <main>
     <section class="row primary" id="profile">
-
         <div class="row col s12">
             <!-- Left -->
             <div class="col s12 m4 l4">
