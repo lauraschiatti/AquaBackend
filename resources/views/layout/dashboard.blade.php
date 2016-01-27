@@ -12,7 +12,7 @@
      <!-- GRAPH -->
      <!-- ALERT - Use #dash_graph for link the graph in .js file -->
      <div class="col s12" id="dash_graph">
-         <h2 class="white-text">HERE GOES A GRAPH THAT DEPENDS ON THE ROOL</h2>
+         <h2 class="white-text">HERE GOES A GRAPH THAT DEPENDS ON THE ROL</h2>
      </div>
      <!-- GRAPH -->
 
@@ -100,7 +100,7 @@
           <div class="progress">
              <div class="determinate" style="width: 20%"></div>
           </div>
-          <h6 class="light" class="content">Downloads</h6>
+          <h6 class="light" class="content">{{trans('dashboard.download')}}</h6>
         </div>
     </div>
      <!-- ************** This for admin ***************** -->

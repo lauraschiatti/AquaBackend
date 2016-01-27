@@ -36,19 +36,7 @@ Route::get('contact', function(){
 
 Route::post('contact', 'UsersController@contact');
 
-Route::get('dashboard', function () {
-    $user_id = Auth::user()->id;
-
-    $sensors = \App\Sensors::all()->count();
-
-    $nodes = \App\Nodes::all()->count();
-
-    $mynodes= \App\Nodes::where("user_id", "=", $user_id)->get()->count();
-
-    $users= \App\User::all()->count();
-
-    return view('layout.dashboard', compact('sensors', 'nodes','mynodes','users'));
-});
+Route::get('dashboard', 'DashboardController@showData');
 
 Route::get('settings/{id}', function($id){
     $user = \App\User::where("id", "=", $id)->first();

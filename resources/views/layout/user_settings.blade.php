@@ -81,7 +81,7 @@
             <!-- Left -->
             <div class="col s12 m4 l4">
                 <div class="center white-text">
-                    <img class="circle" src="/img/face.jpg" alt=""/>
+                    <img id="profile_pic" class="circle" src="/img/face.jpg" alt=""/>
                     <h5>{{$user->name}}</h5>
                     <h6 class="light">{{$user->email}}</h6>
                     <span class="light" style="text-transform: uppercase;"><strong>{{$user->role}}</strong></span>

@@ -74,6 +74,6 @@
             </li>
         </ul>
 
-        <a href="{{ url('nodes')}}" class="btn btn-primary right hide-on-med-and-down">Back</a>
+        <a href="{{url('nodes')}}" class="btn btn-primary right hide-on-med-and-down">Back</a>
     </div>
 @stop

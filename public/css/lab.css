@@ -255,3 +255,5 @@ input[type=number].valid, input[type=number]:focus.valid {
 @media only screen and (max-width: 600px){
   #profile { margin-top: 0px;}
 }
+
+#profile_pic{ width: 128px;}

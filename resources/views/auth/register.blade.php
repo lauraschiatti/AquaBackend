@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="description" content="AquApp">
     <meta name="author" content="">
-    <title> AquApp | Sign up </title>
+    <title> AquApp | {{ trans('general.sign up') }} </title>
 
     <link href="/css/materialize.min.css" rel="stylesheet">               					           <!-- Materialize core CSS -->
     <link href="/css/reg.css" rel="stylesheet">                         						           <!-- Reg core CSS -->
@@ -37,7 +37,7 @@
         <div class="nav-wrapper">
             <a href="{{ url('/')}}" class="brand hide-on-small-only"><img src="/img/brand.png" alt="..."/></a>
             <ul class="right hide-on-small-only">
-                <li><a href="{{ url('login')}}">Have an account? <span><strong>Log in</strong></span></a></li>
+                <li><a href="{{ url('login')}}">{{ trans('register.have an account') }}<span><strong>{{ trans('general.log in') }}</strong></span></a></li>
             </ul>
         </div>
     </nav>
@@ -45,58 +45,57 @@
 
 <main>
     <div class="content center white-text">
-        <h4 class="light">Create New User</h4>
+        <h4 class="light">{{ trans('register.create new user') }}</h4>
         <p id="login_error">{{$error or ""}}</p>
         <!-- Form -->
         {!! Form::open(['url' => 'register', 'class' => 'row white-text', 'id' => 'register']) !!}
             <div class="input-field col s12">
                 <i class="material-icons prefix">person</i>
                 <input id="name" type="text" class="validate" name="name" value="{{$name or ""}}" required>
-                <label for="name">Name</label>
+                <label for="name">{{ trans('general.name') }}</label>
             </div>
 
             <div class="input-field col s12">
                 <i class="material-icons prefix">email</i>
                 <input id="email" type="email" class="validate" name="email" value="{{$email or ""}}" required>
-                <label for="email">Email</label>
+                <label for="email">{{ trans('general.email') }}</label>
             </div>
 
             <div class="input-field col s12">
                 <i class="material-icons prefix">lock</i>
                 <input id="pass" type="password" class="validate" name="pass" required>
-                <label for="pass">Password</label>
+                <label for="pass">{{ trans('general.password') }}</label>
             </div>
 
             <div class="input-field col s12">
                 <i class="material-icons prefix">vpn_key</i>
                 <input id="pass2" type="password" class="validate" name="pass2" required>
-                <label for="pass2">Repeat Password</label>
+                <label for="pass2">{{ trans('general.repeat password') }}</label>
             </div>
 
             <div class="col s12 white-text">
                 <p class="center">
                     <input type="checkbox" required id="check" checked="checked"/>
-                    <label for="check">I'm agree with <a href="{{ url('terms')}}" class="white-text"><strong>Terms &#38; Conditions</strong></a></label>
+                    <label for="check">{{ trans('register.agree with') }} <a href="{{ url('terms')}}" class="white-text"><strong>{{ trans('register.terms and conditions') }}</strong></a></label>
                 </p>
             </div>
 
             <div class="input-field col s12">
                 <br>
-                <button type="submit" class="waves-effect waves-dark btn btn-primary">Sign up</button>
+                <button type="submit" class="waves-effect waves-dark btn btn-primary">{{ trans('general.sign up') }}</button>
             </div>
         {!! Form::close() !!}
     </div>
-
 </main>
 
 <footer class="page-footer hide-on-small-only">
     <div class="left">
-        <a class="light">© 2015 All rights reserved</a>
+        <a class="light">© 2015 {{ trans('general.all rights reserved') }}</a>
     </div>
     <div class="right">
-        <a href="#!">Wiki</a>
-        <a href="{{ url('contact')}}">Contact</a>
-        <a href="{{ url('terms')}}">Terms</a>
+        <a href="#!">{{ trans('general.wiki') }}</a>
+        <a href="{{ url('contact')}}">{{ trans('general.contact') }}</a>
+        <a href="{{ url('terms')}}">{{ trans('general.terms') }}</a>
     </div>
 </footer>
 
