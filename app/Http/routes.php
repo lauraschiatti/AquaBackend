@@ -87,6 +87,7 @@ Route::get('mynodes', 'NodesController@getMyNodes');
 
 Route::resource('sensors', 'SensorsController');
 
+//Sync random generated data routes
 Route::get('sync/{data}', 'SyncController@postData');
 
 Route::get('sync', function(){

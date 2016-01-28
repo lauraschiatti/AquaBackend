@@ -81,7 +81,6 @@
             </div>
 
             <div class="input-field col s12">
-                <br>
                 <button type="submit" class="waves-effect waves-dark btn btn-primary">{{ trans('general.sign up') }}</button>
             </div>
         {!! Form::close() !!}
@@ -98,7 +97,6 @@
         <a href="{{ url('terms')}}">{{ trans('general.terms') }}</a>
     </div>
 </footer>
-
 
 <script src="/js/jq/jquery.min.js" type="text/javascript"></script>						<!-- Jquery core JS -->
 <script src="/js/materialize.min.js" type="text/javascript"></script> 					<!-- Materialize core JS -->

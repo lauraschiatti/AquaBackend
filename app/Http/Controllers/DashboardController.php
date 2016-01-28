@@ -15,12 +15,14 @@ class DashboardController extends Controller
      * Display data in dashboard
      */
     public function showData(){
-        $sensors = 0;
-        $mynodes = 0;
-        $nodes = 0;
-        $users = 0;
 
-        /*if(Auth::check()){
+        if(Auth::check()){
+            $user = Auth::user()->name;
+        }else{
+            $user = "user";
+        }
+
+        if(Auth::check()){
             $mynodes = Nodes::where("user_id", "=", Auth::user()->id)->get()->count();
         }else{
             $mynodes = 0;
@@ -42,8 +44,8 @@ class DashboardController extends Controller
 
         if ($users == null){
             $users = 0;
-        }*/
+        }
 
-        return view('layout.dashboard', compact('sensors', 'nodes','mynodes','users'));
+        return view('layout.dashboard', compact('user', 'sensors', 'nodes','mynodes','users'));
     }
 }

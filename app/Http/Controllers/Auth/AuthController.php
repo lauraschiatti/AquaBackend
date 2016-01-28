@@ -97,8 +97,7 @@ class AuthController extends Controller
             date_default_timezone_set($userTimezone);
             Config::set('app.timezone', $userTimezone);
 
-            //@todo: mostrar usuario que inicio sesion
-            return view('layout.dashboard');
+            return redirect()->action('DashboardController@showData');
 
         }
 

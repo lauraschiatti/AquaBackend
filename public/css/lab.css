@@ -257,3 +257,27 @@ input[type=number].valid, input[type=number]:focus.valid {
 }
 
 #profile_pic{ width: 128px;}
+
+/********************************************
+ 			DASHBOARD SETTINGS
+********************************************/
+.chip {
+    display: inline-block;
+    height: 32px;
+    font-size: 17px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.6);
+    line-height: 32px;
+    padding: 0 12px;
+    border-radius: 16px;
+    background-color: #e4e4e4;
+    margin-bottom: 25px;
+}
+
+.chip img {
+    float: left;
+    margin: 0 8px 0 -12px;
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+}

@@ -304,7 +304,7 @@
                     <ul>
                         <li><a href="#!">Wiki</a></li>
                         <li><a href="{{ url('contact')}}">Contact</a></li>
-                        <li><a href="{{ url('terms')}}">Team</a></li>
+                        <li><a href="{{ url('team')}}">Team</a></li>
                     </ul>
                 </div>
 
