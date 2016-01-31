@@ -98,7 +98,7 @@
 
 <footer class="page-footer hide-on-small-only">
     <div class="left">
-        <a class="light">© 2015 {{ trans('general.all rights reserved') }}</a>
+        <a class="light">{{ trans('general.all rights reserved') }}</a>
     </div>
     <div class="right">
         <a href="#!">{{ trans('general.wiki') }}</a>

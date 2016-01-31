@@ -12,7 +12,7 @@ return [
     | you want to customize your views to better match your application.
     |
     */
-
+    //PARA LOGIN.BLADE.PHP AND REGISTER.BLADE.PHP
     'sign up' => 'Registrar',
     'name' => 'Nombre',
     'email' => 'Correo',
@@ -22,6 +22,40 @@ return [
     'wiki' => 'Wiki',
     'contact' => 'Contacto',
     'terms' => 'Términos y Condiciones',
-    'all rights reserved' => 'Todos los Derechos reservados',
+    'all rights reserved' => '&copy; 2015 Todos los Derechos reservados',
 
+    //PARA ADMIN.BLADE.PHP
+    'dashboard' => 'Panel administrativo',
+    'general' => 'General',
+    'home' => 'Home',
+    'nodes' => 'Nodos',
+    'sensors' => 'Sensores',
+    'users' => 'Usuarios',
+    'settings' => 'Configuración',
+    'help &amp; feed' => 'Ayuda',
+    'log out' => 'Cerrar sesión',
+    'would you like to close admin session?' => '¿Desea cerrar sesión?',
+    'yes' => 'Sí',
+
+    //FOR NAVBAR
+    'contribute' => 'Contribuye',
+    'team' => 'Equipo',
+
+    //FOR BOTTOM MENUS AND FOOTER
+    'contact support' => 'Soporte',
+    'read our wiki' => 'Lee nuestra wiki',
+    'address' => 'Dirección',
+    'technological campus' => 'Campus Tecnológico',
+    'park' => 'Paque Industrial y Tecnológico Carlos Vélez Pombo',
+    'turbaco' => 'Km 1 Vía',
+    'morning' => 'Mañana: Lunes a Viernes',
+    'afternoon' => 'Tarde: Lunes a Viernes',
+    'support' => 'Soporte',
+    'about' => 'Acerca',
+    'project' => 'Proyecto',
+    'legal' => 'Legal',
+    'with' => 'con',
+    'in' => 'en',
+    'and' => 'y',
+    'back to top' => 'Regreso al Inicio',
 ];

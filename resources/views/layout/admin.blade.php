@@ -7,7 +7,7 @@
     <meta name="description" content="AquApp">
     <meta name="author" content="">
     @yield('meta')
-    <title> AquAPP Admin | Dashboard </title>
+    <title> AquAPP Admin | {{ trans("general.dashboard") }} </title>
 
     <link href="/css/materialize.min.css" rel="stylesheet">               					           <!-- Materialize core CSS -->
     <link href="/css/lab.css" rel="stylesheet">                         						           <!-- Lab core CSS -->
@@ -71,16 +71,16 @@
                     <!--Options-->
                     <!--<div class="container">-->
                     <div class="menu-desktop">
-                        <li class="etiquette">General</li>
-                        <li><a href="{{url('/')}}"><i class="material-icons left">home</i>Home</a></li>
-                        <li><a href="{{url('/dashboard')}}"><i class="material-icons left">widgets</i>Dashboard</a></li>
+                        <li class="etiquette">{{ trans("general.general") }}</li>
+                        <li><a href="{{url('/')}}"><i class="material-icons left">home</i>{{ trans("general.home") }}</a></li>
+                        <li><a href="{{url('/dashboard')}}"><i class="material-icons left">widgets</i>{{ trans("general.dashboard") }}</a></li>
                         @if(Auth::check() and Auth::user()->role == 'superadmin')
                             <ul class="collapsible collapsible-accordion">
-                                <li><a class="collapsible-header"><i class="material-icons left">games</i>Nodes</a>
+                                <li><a class="collapsible-header"><i class="material-icons left">games</i>{{ trans("general.nodes") }}</a>
                                     <div class="collapsible-body">
                                         <ul>
-                                            <li><a href="{{url('/mynodes')}}"><i class="material-icons left">flag</i>My Nodes</a></li>
-                                            <li><a href="{{url('/nodes')}}"><i class="material-icons left">toys</i>All Nodes</a></li>
+                                            <li><a href="{{url('/mynodes')}}"><i class="material-icons left">flag</i>{{ trans("nodes.my nodes") }}</a></li>
+                                            <li><a href="{{url('/nodes')}}"><i class="material-icons left">toys</i>{{ trans("nodes.all nodes") }}</a></li>
                                         </ul>
                                     </div>
                                 </li>
@@ -88,14 +88,14 @@
                         @endif
 
                         @if(Auth::check() and Auth::user()->role == 'provider')
-                            <li><a href="{{url('/mynodes')}}"><i class="material-icons left">flag</i>Nodes</a></li>
+                            <li><a href="{{url('/mynodes')}}"><i class="material-icons left">flag</i>{{ trans("general.nodes") }}</a></li>
                         @endif
-                        <li><a href="{{url('/sensors')}}"><i class="material-icons left">place</i>Sensors</a></li>
-                        <li><a href="{{url('/users')}}"><i class="material-icons left">people</i>Users</a></li>
+                        <li><a href="{{url('/sensors')}}"><i class="material-icons left">place</i>{{ trans("general.sensors") }}</a></li>
+                        <li><a href="{{url('/users')}}"><i class="material-icons left">people</i>{{ trans("general.users") }}</a></li>
                         <li class="etiquette">Configurations</li>
-                        <li><a href="{{url('/settings/'.Auth::user()->id)}}"><i class="material-icons left">settings</i>Settings</a></li>
-                        <li><a href="{{url('/contact')}}"><i class="material-icons left">turned_in</i>Help &amp; Feed</a></li>
-                        <li><a class="modal-trigger" href="#modal1"><i class="material-icons left">power_settings_new</i>Log out</a></li>
+                        <li><a href="{{url('/settings/'.Auth::user()->id)}}"><i class="material-icons left">settings</i>{{ trans("general.settings") }}</a></li>
+                        <li><a href="{{url('/contact')}}"><i class="material-icons left">turned_in</i>{{ trans("general.help &amp; feed") }}</a></li>
+                        <li><a class="modal-trigger" href="#modal1"><i class="material-icons left">power_settings_new</i>{{ trans("general.log out") }}</a></li>
                     </div>
                 </ul>
 
@@ -107,15 +107,15 @@
                     <!--Options-->
                     <div class="menu-mobile">
                         <li class="etiquette">General</li>
-                        <li><a href="{{url('/dashboard')}}"><i class="material-icons left">widgets</i>Dashboard</a></li>
+                        <li><a href="{{url('/dashboard')}}"><i class="material-icons left">widgets</i>{{ trans("general.dashboard") }}</a></li>
 
                         @if(Auth::check() and Auth::user()->role == 'superadmin')
                             <ul class="collapsible collapsible-accordion">
-                                <li><a class="collapsible-header"><i class="material-icons left">games</i>Nodes</a>
+                                <li><a class="collapsible-header"><i class="material-icons left">games</i>{{ trans("general.nodes") }}</a>
                                     <div class="collapsible-body">
                                         <ul>
-                                            <li><a href="{{url('/mynodes')}}"><i class="material-icons left">flag</i>My Nodes</a></li>
-                                            <li><a href="{{url('/nodes')}}"><i class="material-icons left">toys</i>All Nodes</a></li>
+                                            <li><a href="{{url('/mynodes')}}"><i class="material-icons left">flag</i>{{ trans("general.my nodes") }}</a></li>
+                                            <li><a href="{{url('/nodes')}}"><i class="material-icons left">toys</i>{{ trans("general.all nodes") }}</a></li>
                                         </ul>
                                     </div>
                                 </li>
@@ -123,19 +123,19 @@
                         @endif
 
                         @if(Auth::check() and Auth::user()->role == 'provider')
-                            <li><a href="{{url('/mynodes')}}"><i class="material-icons left">flag</i>Nodes</a></li>
+                            <li><a href="{{url('/mynodes')}}"><i class="material-icons left">flag</i>{{ trans("general.nodes") }}</a></li>
                         @endif
 
-                        <li><a href="{{url('/sensors')}}"><i class="material-icons left">place</i>Sensors</a></li>
+                        <li><a href="{{url('/sensors')}}"><i class="material-icons left">place</i>{{ trans("general.sensors") }}</a></li>
 
                         @if(Auth::check() and Auth::user()->role == 'superadmin')
-                            <li><a href="{{url('/users')}}"><i class="material-icons left">people</i>Users</a></li>
+                            <li><a href="{{url('/users')}}"><i class="material-icons left">people</i>{{ trans("general.users") }}</a></li>
                         @endif
 
                         <li class="etiquette">Configurations</li>
-                        <li><a href="{{url('/settings')}}"><i class="material-icons left">settings</i>Settings</a></li>
-                        <li><a href="{{url('/contact')}}"><i class="material-icons left">turned_in</i>Help &amp; Feed</a></li>
-                        <li><a class="modal-trigger" href="#modal1"><i class="material-icons left">power_settings_new</i>Log out</a></li>
+                        <li><a href="{{url('/settings')}}"><i class="material-icons left">settings</i>{{ trans("general.settings") }}</a></li>
+                        <li><a href="{{url('/contact')}}"><i class="material-icons left">turned_in</i>{{ trans("general.help &amp; feed") }}</a></li>
+                        <li><a class="modal-trigger" href="#modal1"><i class="material-icons left">power_settings_new</i>{{ trans("general.log out") }}</a></li>
                     </div>
                 </ul>
             </div>
@@ -151,13 +151,13 @@
 <!-- Log out modal Structure -->
 <div id="modal1" class="modal">
     <div class="modal-content center">
-        <h6 class="light">Would you like to close admin session? </h6><br>
+        <h6 class="light">{{ trans("general.would you like to close admin session?") }} </h6><br>
         @if(Auth::check() and Auth::user()->role == 'superadmin')
             <a href="{{url('/dashboard')}}" class=" modal-action modal-close btn-flat">No</a>
         @else
             <a href="{{url('/')}}" class=" modal-action modal-close btn-flat">No</a>
         @endif
-        <a href="{{url('/logout')}}" class="btn primary">Yes</a>
+        <a href="{{url('/logout')}}" class="btn primary">{{ trans("general.yes") }}</a>
     </div>
 </div>
 </main>
