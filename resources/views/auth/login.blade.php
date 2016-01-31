@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="description" content="AquApp">
     <meta name="author" content="">
-    <title> AquApp | {{ trans('basics.sign in') }} </title>
+    <title> AquApp | {{ trans('general.login') }} </title>
 
     <link href="/css/materialize.min.css" rel="stylesheet">               					           <!-- Materialize core CSS -->
     <link href="/css/log.css" rel="stylesheet">                         						           <!-- Log core CSS -->
@@ -69,7 +69,7 @@
             <div class="col s12 center">
                 <a class="light white-text" href="#">{{ trans('login.forgot your password') }}</a>
                 <br>
-                <button class="btn btn-secundary waves-effect waves-light" style="margin-top: 20px;">{{ trans('general.log in') }}</button>
+                <button class="btn btn-secundary waves-effect waves-light" style="margin-top: 20px;">{{ trans('general.login') }}</button>
             </div>
 
             <!-- Buttons-->

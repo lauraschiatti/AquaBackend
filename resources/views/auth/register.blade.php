@@ -30,6 +30,15 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
+
+    <script>
+        function validateIfChecked(checkbox) {
+            if (checkbox.checked)
+                document.getElementById('register_button').disabled = false;
+            else
+                document.getElementById('register_button').disabled = true;
+        }
+    </script>
 </head>
 <body>
 <header>
@@ -37,7 +46,7 @@
         <div class="nav-wrapper">
             <a href="{{ url('/')}}" class="brand hide-on-small-only"><img src="/img/brand.png" alt="..."/></a>
             <ul class="right hide-on-small-only">
-                <li><a href="{{ url('login')}}">{{ trans('register.have an account') }}<span><strong>{{ trans('general.log in') }}</strong></span></a></li>
+                <li><a href="{{ url('login')}}">{{ trans('register.have an account') }}<span><strong>{{ trans('general.login') }}</strong></span></a></li>
             </ul>
         </div>
     </nav>
@@ -49,40 +58,40 @@
         <p id="login_error">{{$error or ""}}</p>
         <!-- Form -->
         {!! Form::open(['url' => 'register', 'class' => 'row white-text', 'id' => 'register']) !!}
-            <div class="input-field col s12">
-                <i class="material-icons prefix">person</i>
-                <input id="name" type="text" class="validate" name="name" value="{{$name or ""}}" required>
-                <label for="name">{{ trans('general.name') }}</label>
-            </div>
+        <div class="input-field col s12">
+            <i class="material-icons prefix">person</i>
+            <input id="name" type="text" class="validate" name="name" value="{{$name or ""}}" required>
+            <label for="name">{{ trans('general.name') }}</label>
+        </div>
 
-            <div class="input-field col s12">
-                <i class="material-icons prefix">email</i>
-                <input id="email" type="email" class="validate" name="email" value="{{$email or ""}}" required>
-                <label for="email">{{ trans('general.email') }}</label>
-            </div>
+        <div class="input-field col s12">
+            <i class="material-icons prefix">email</i>
+            <input id="email" type="email" class="validate" name="email" value="{{$email or ""}}" required>
+            <label for="email">{{ trans('general.email') }}</label>
+        </div>
 
-            <div class="input-field col s12">
-                <i class="material-icons prefix">lock</i>
-                <input id="pass" type="password" class="validate" name="pass" required>
-                <label for="pass">{{ trans('general.password') }}</label>
-            </div>
+        <div class="input-field col s12">
+            <i class="material-icons prefix">lock</i>
+            <input id="pass" type="password" class="validate" name="pass" required>
+            <label for="pass">{{ trans('general.password') }}</label>
+        </div>
 
-            <div class="input-field col s12">
-                <i class="material-icons prefix">vpn_key</i>
-                <input id="pass2" type="password" class="validate" name="pass2" required>
-                <label for="pass2">{{ trans('general.repeat password') }}</label>
-            </div>
+        <div class="input-field col s12">
+            <i class="material-icons prefix">vpn_key</i>
+            <input id="pass2" type="password" class="validate" name="pass2" required>
+            <label for="pass2">{{ trans('general.repeat password') }}</label>
+        </div>
 
-            <div class="col s12 white-text">
-                <p class="center">
-                    <input type="checkbox" required id="check" checked="checked"/>
-                    <label for="check">{{ trans('register.agree with') }} <a href="{{ url('terms')}}" class="white-text"><strong>{{ trans('register.terms and conditions') }}</strong></a></label>
-                </p>
-            </div>
+        <div class="col s12 white-text">
+            <p class="center">
+                <input type="checkbox" id="check" onChange="validateIfChecked(this);" checked/>
+                <label for="check">{{ trans('register.agree with') }} <a href="{{ url('terms')}}" class="white-text"><strong>{{ trans('register.terms and conditions') }}</strong></a></label>
+            </p>
+        </div>
 
-            <div class="input-field col s12">
-                <button type="submit" class="waves-effect waves-dark btn btn-primary">{{ trans('general.sign up') }}</button>
-            </div>
+        <div class="input-field col s12">
+            <button type="submit" id="register_button" class="waves-effect waves-dark btn btn-primary">{{ trans('general.sign up') }}</button>
+        </div>
         {!! Form::close() !!}
     </div>
 </main>

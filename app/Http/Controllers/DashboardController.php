@@ -17,7 +17,7 @@ class DashboardController extends Controller
     public function showData(){
 
         if(Auth::check()){
-            $user = Auth::user()->name;
+            $user = Auth::user();
         }else{
             $user = "user";
         }

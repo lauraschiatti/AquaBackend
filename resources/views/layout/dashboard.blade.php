@@ -10,7 +10,7 @@
   <div class="desktop row container">
       <div class="chip right">
           <img src="img/face.jpg" alt="Contact Person">
-          {{$user}}
+          <a href="{{url('/settings',$user->id)}}">{{$user->name}}</a>
       </div>
      <!-- GRAPH -->
      <!-- ALERT - Use #dash_graph for link the graph in .js file -->

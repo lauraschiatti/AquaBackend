@@ -18,7 +18,7 @@ return [
     'email' => 'Correo',
     'password' => 'Contraseña',
     'repeat password' => 'Repite contraseña',
-    'log in' => 'Iniciar sesión',
+    'login' => 'Iniciar sesión',
     'wiki' => 'Wiki',
     'contact' => 'Contacto',
     'terms' => 'Términos y Condiciones',

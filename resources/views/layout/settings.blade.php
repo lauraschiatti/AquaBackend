@@ -97,6 +97,14 @@
                     </div>
                     <!-- FLOATING BUTTONS -->
                     {!! Form::close() !!}
+
+                    <!-- FLOATING BUTTONS -->
+                    <div class="fixed-action-btn" id="cancel">
+                        <a href="{{ url('dashboard')}}" class="btn-floating btn-large waves-effect waves-circle waves-light">
+                            <i class="large material-icons">close</i>
+                        </a>
+                    </div>
+                    <!-- FLOATING BUTTONS -->
                 </div>
 
             </div>

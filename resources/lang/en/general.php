@@ -18,7 +18,7 @@ return [
     'email' => 'Email',
     'password' => 'Password',
     'repeat password' => 'Repeat passoword',
-    'log in' => 'Log in',
+    'login' => 'Login',
     'wiki' => 'Wiki',
     'contact' => 'Contact',
     'terms' => 'Terms',

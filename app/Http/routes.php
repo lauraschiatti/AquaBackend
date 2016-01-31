@@ -14,6 +14,8 @@ Route::get('/', function () {
     return view('layout.home');
 });
 
+Route::get('lang/{lang}', ['as'=>'lang.switch', 'uses'=>'HomeController@switchLanguage']);
+
 Route::get('home', function () {
     return view('layout.home');
 });
@@ -94,6 +96,7 @@ Route::get('sync', function(){
     return \App\Data::all();
 });
 
+//Routes for testing
 Route::get('sensorsbynode', function(){
     return \App\SensorsByNode::all();
 });
