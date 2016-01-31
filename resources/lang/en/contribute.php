@@ -37,12 +37,5 @@ return [
     'a special place' => 'We\'ve designed a special place where u can find all the ',
     'faqs' => 'Faqs',
     'app documentation' => 'and the APP documentation. Take a look...',
-    '' => '',
-    '' => '',
-    '' => '',
-    '' => '',
-    '' => '',
-    '' => '',
-    '' => '',
 
 ];
