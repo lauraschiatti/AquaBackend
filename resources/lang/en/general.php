@@ -19,7 +19,6 @@ return [
     'password' => 'Password',
     'repeat password' => 'Repeat passoword',
     'login' => 'Login',
-    'wiki' => 'Wiki',
     'contact' => 'Contact',
     'terms' => 'Terms',
     'all rights reserved' => '&copy; 2015 All rights reserved',
@@ -58,5 +57,8 @@ return [
     'in' => 'in',
     'and' => 'and',
     'back to top' => 'Back to top',
+    'product' => 'Product',
+
+    'downloads' => 'Downloads',
 
 ];

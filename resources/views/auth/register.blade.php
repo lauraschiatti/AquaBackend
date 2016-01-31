@@ -101,7 +101,7 @@
         <a class="light">{{ trans('general.all rights reserved') }}</a>
     </div>
     <div class="right">
-        <a href="#!">{{ trans('general.wiki') }}</a>
+        <a href="#!">Wiki</a>
         <a href="{{ url('contact')}}">{{ trans('general.contact') }}</a>
         <a href="{{ url('terms')}}">{{ trans('general.terms') }}</a>
     </div>

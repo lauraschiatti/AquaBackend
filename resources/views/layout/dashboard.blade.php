@@ -1,7 +1,7 @@
 @extends('layout.admin')
 
 @section('title')
-    <a href="#" class="mobile-tittle">Dashboard</a>
+    <a href="#" class="mobile-tittle">{{ trans("home.general") }}</a>
 @stop
 
 @section('content')
@@ -64,7 +64,7 @@
            <div class="progress">
               <div class="determinate" style="width: 20%"></div>
            </div>
-           <h6 class="light" class="content"> Sensors</h6>
+           <h6 class="light" class="content"> {{ trans("general.sensors") }}</h6>
          </div>
 
        </div>
@@ -74,7 +74,7 @@
            <div class="progress">
               <div class="determinate" style="width: 20%"></div>
            </div>
-           <h6 class="light" class="content"> My Nodes </h6>
+           <h6 class="light" class="content"> {{ trans("nodes.my nodes") }} </h6>
          </div>
        </div>
 
@@ -84,7 +84,7 @@
            <div class="progress">
               <div class="determinate" style="width: 20%"></div>
            </div>
-           <h6 class="light" class="content">All nodes  </h6>
+           <h6 class="light" class="content">{{ trans("nodes.all nodes") }} </h6>
          </div>
        </div>
 
@@ -94,7 +94,7 @@
            <div class="progress">
               <div class="determinate" style="width: 20%"></div>
            </div>
-           <h6 class="light" class="content">Users</h6>
+           <h6 class="light" class="content">{{ trans("general.users") }}</h6>
          </div>
      </div>
      <div class="col s6 m4 l4" id="boxes">
@@ -103,7 +103,7 @@
           <div class="progress">
              <div class="determinate" style="width: 20%"></div>
           </div>
-          <h6 class="light" class="content">{{trans('dashboard.download')}}</h6>
+          <h6 class="light" class="content">{{trans('general.downloads')}}</h6>
         </div>
     </div>
      <!-- ************** This for admin ***************** -->

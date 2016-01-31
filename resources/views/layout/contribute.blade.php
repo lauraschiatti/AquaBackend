@@ -52,7 +52,7 @@
                     <li><a href="{{ url('/')}}">{{ trans("general.home") }}</a></li>
                     <li><a href="{{ url('contribute')}}">{{ trans("general.contribute") }}</a></li>
                     <li><a href="{{ url('team')}}">{{ trans("general.team") }}</a></li>
-                    <li><a href="#">{{ trans("general.wiki") }}</a></li>
+                    <li><a href="#">Wiki</a></li>
                     <li><a href="{{ url('contact')}}">{{ trans("general.contact") }}</a></li>
                     <div class="divider"></div>
                     <li><a href="{{ url('register')}}">{{ trans("general.sign up") }}</a></li>
@@ -176,7 +176,7 @@
 
                     <h5>{{ trans("general.support") }}</h5>
                     <ul>
-                        <li><a href="#!">{{ trans("general.wiki") }}</a></li>
+                        <li><a href="#!">Wiki</a></li>
                         <li><a href="{{ url('contact')}}">{{ trans("general.contact") }}</a></li>
                         <li><a href="{{ url('team')}}">{{ trans("general.team") }}</a></li>
                     </ul>
@@ -194,7 +194,7 @@
 
                 <div class="col s4">
 
-                    <h5>Product</h5>
+                    <h5>{{ trans("general.product") }}</h5>
                     <ul>
                         <li><a href="{{ url('terms')}}">{{ trans("general.about") }}</a></li>
                         <li><a href="https://github.com/IngenieriaDeSistemasUTB/AquaBackend.git">{{ trans("general.project") }}</a></li>

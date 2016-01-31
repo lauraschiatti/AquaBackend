@@ -19,7 +19,6 @@ return [
     'password' => 'Contraseña',
     'repeat password' => 'Repite contraseña',
     'login' => 'Iniciar sesión',
-    'wiki' => 'Wiki',
     'contact' => 'Contacto',
     'terms' => 'Términos y Condiciones',
     'all rights reserved' => '&copy; 2015 Todos los Derechos reservados',
@@ -27,7 +26,7 @@ return [
     //PARA ADMIN.BLADE.PHP
     'dashboard' => 'Panel administrativo',
     'general' => 'General',
-    'home' => 'Home',
+    'home' => 'Inicio',
     'nodes' => 'Nodos',
     'sensors' => 'Sensores',
     'users' => 'Usuarios',
@@ -58,4 +57,7 @@ return [
     'in' => 'en',
     'and' => 'y',
     'back to top' => 'Regreso al Inicio',
+    'product' => 'Producto',
+
+    'downloads' => 'Descargas',
 ];
