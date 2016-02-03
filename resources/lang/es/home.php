@@ -43,7 +43,7 @@ return [
     'must invite them to take' => 'que debe invitarlos a participar en la conversación. Así, nos invertimos muchas horas diseñando una poderosa mirada.',
     'modern' => 'Moderno',
     'when we start' => 'Cuando empezamos este proyecto queríamos hacerlo lo más simple y fácil posible, así que decidimos utilizar Tecnologías Web para desarrollarlo, pensando en el futuro:',
-    'cloud computing' => 'Computación en la Nube.',
+    'cloud computing' => ' Computación en la Nube.',
     'cross-browser' => 'Compatible',
     'we build this' => 'Lo construimos para ser compatible con ',
     'all modern browsers' => 'todos los navegadores modernos.',

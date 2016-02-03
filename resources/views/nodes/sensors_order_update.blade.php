@@ -9,15 +9,15 @@
 @stop
 
 @section('title')
-    <a href="#" class="mobile-tittle">Update Node</a>
+    <a href="#" class="mobile-tittle">{{ trans("nodes.update node") }}</a>
     <a href="{{ url('nodes')}}" class="mobile-right"><i class="material-icons">close</i></a>
 @stop
 
 @section('content')
     <div class="desktop row" id="nodes">
         <!-- Tittle -->
-        <div class="linker"><p class="light">Dashboard > Nodes > Edit </p></div>
-        <h4 class="light">Choose data sending schema</h4>
+        <div class="linker"><p class="light">{{ trans("general.dashboard") }} > {{ trans("general.nodes") }} > {{ trans("general.edit") }} </p></div>
+        <h4 class="light">{{ trans("nodes.choose data sending schema") }}</h4>
         <div class="divider"></div><br>
 
         @if (session('id'))
@@ -72,7 +72,7 @@
 
             @if (!session('data'))
                 <div class="warning-box">
-                    <p style="text-align: center;"><i class="material-icons">highlight_off</i><span class="ups">Wops!</span> NO SENSORS SELECTED</p>
+                    <p style="text-align: center;"><i class="material-icons">highlight_off</i><span class="ups">Wops!</span> {{ trans("nodes.no sensors selected") }}</p>
                 </div>
             @endif
 

@@ -1,7 +1,7 @@
 @extends('layout.admin')
 
 @section('title')
-    <a href="#" class="mobile-tittle">{{ trans("home.general") }}</a>
+    <a href="#" class="mobile-tittle">{{ trans("general.dashboard") }}</a>
 @stop
 
 @section('content')

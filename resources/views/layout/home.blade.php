@@ -60,7 +60,7 @@
 
                     <!-- Sign up-in Buttons -->
                     @if(Auth::check())
-                        <li><a class="dropdown-button" href="#" data-beloworigin="true" data-activates="dropdown1"><i class="material-icons right">arrow_drop_down</i>Hi <span style="text-transform: capitalize;">{{(Auth::user()->name)}}</span></a></li>
+                        <li><a class="dropdown-button" href="#" data-beloworigin="true" data-activates="dropdown1"><i class="material-icons right">arrow_drop_down</i>{{ trans("general.hi") }} <span style="text-transform: capitalize; font-weight: lighter;">{{(Auth::user()->name)}}</span></a></li>
                         <!-- Dropdown Structure -->
                         <ul id="dropdown1" class="dropdown-content">
                             @if(Auth::check() and Auth::user()->role == 'superadmin')
@@ -106,9 +106,8 @@
                     </li>
 
                     @if(Auth::check())
-                        <li><a href="#">Logged as <span style="font-size: 2em;">{{(Auth::user()->name)}}</span></a></li>
-                        <li><a href="#">tune</a></li>
-                        <li><a href="{{ url('logout')}}">{{ trans("general.login") }}</a></li>
+                        <li><a>{{ trans("general.hi") }} <span style="font-weight: lighter;">{{(Auth::user()->name)}}</span></a></li>
+                        <li><a href="{{ url('logout')}}">{{ trans("general.log out") }}</a></li>
                     @else
                         <li><a href="{{ url('register')}}">{{ trans("general.sign up") }}</a></li>
                         <li><a href="{{ url('login')}}">{{ trans("general.login") }}</a></li>

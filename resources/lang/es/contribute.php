@@ -13,7 +13,7 @@ return [
     |
     */
     //FOR CONTRIBUTE.BLADE.PHP
-    'back home' => 'Home',
+    'back home' => 'Inicio',
     'how can i contribute?' => '¿Cómo puedo contribuir?',
     'keep scrolling' => 'Sigue bajando',
     'we\'ve designed a' => 'Diseñamos un',

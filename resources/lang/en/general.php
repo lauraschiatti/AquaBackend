@@ -17,7 +17,7 @@ return [
     'name' => 'Name',
     'email' => 'Email',
     'password' => 'Password',
-    'repeat password' => 'Repeat passoword',
+    'repeat password' => 'Repeat password',
     'login' => 'Login',
     'contact' => 'Contact',
     'terms' => 'Terms',
@@ -58,7 +58,15 @@ return [
     'and' => 'and',
     'back to top' => 'Back to top',
     'product' => 'Product',
+    'back' => 'Back',
 
     'downloads' => 'Downloads',
+    'hi' => 'Hi',
+
+    //FOR CRUDs
+    'create' => 'Create',
+    'edit' => 'Edit',
+    'actions' => 'Actions',
+    'show' => 'Show',
 
 ];

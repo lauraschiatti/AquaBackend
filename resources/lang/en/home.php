@@ -43,7 +43,7 @@ return [
     'must invite them to take' => 'must invite them to take part in the conversation. So, We expend a lot of hours designing a powerful look an feel.',
     'modern' => 'Modern',
     'when we start' => 'When we start this we wanted to made it the most simple and easy as It was possible, so we decided to use Web technologies to develop this, thinking in the future: ',
-    'cloud computing' => 'Cloud Computing.',
+    'cloud computing' => ' Cloud Computing.',
     'cross-browser' => 'Cross-Browser',
     'we build this' => 'We build this for been compatible with ',
     'all modern browsers' => 'all modern browsers.',

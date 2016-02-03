@@ -7,7 +7,7 @@
     <meta name="description" content="AquApp">
     <meta name="author" content="">
     @yield('meta')
-    <title> AquAPP Admin | {{ trans("general.dashboard") }} </title>
+    <title> AquAPP Admin | Panel </title>
 
     <link href="/css/materialize.min.css" rel="stylesheet">               					           <!-- Materialize core CSS -->
     <link href="/css/lab.css" rel="stylesheet">                         						           <!-- Lab core CSS -->

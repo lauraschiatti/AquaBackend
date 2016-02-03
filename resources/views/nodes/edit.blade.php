@@ -1,15 +1,15 @@
 @extends('layout.admin')
 
 @section('title')
-    <a href="#" class="mobile-tittle">Edit Node</a>
+    <a href="#" class="mobile-tittle">{{ trans("nodes.edit node") }}</a>
     <a href="{{ url('nodes')}}" class="mobile-right"><i class="material-icons">close</i></a>
 @stop
 
 @section('content')
     <div class="desktop row" id="nodes">
         <!-- Tittle -->
-        <div class="linker"><p class="light">Dashboard > Nodes > Edit </p></div>
-        <h4 class="light">Edit Node</h4>
+        <div class="linker"><p class="light">{{ trans("general.dashboard") }} > {{ trans("general.nodes") }} > {{ trans("general.edit") }} </p></div>
+        <h4 class="light">{{ trans("nodes.edit node") }}</h4>
         <div class="divider"></div><br>
 
         @if (session('error'))
@@ -29,44 +29,44 @@
                 <div class="input-field col s12">
                     <i class="material-icons prefix">play_for_work</i>
                     <input id="icon_label" class="validate" name="name" type="text" id="name" value="{{session('name')}}" required>
-                    <label for="icon_label">Name</label>
+                    <label for="icon_label">{{ trans("general.name") }}</label>
                 </div>
             @else
                 <div class="input-field col s12">
                     <i class="material-icons prefix">play_for_work</i>
                     <input id="icon_label" class="validate" name="name" type="text" id="name" value="{{$node->name}}" required>
-                    <label for="icon_label">Name</label>
+                    <label for="icon_label">{{ trans("general.name") }}</label>
                 </div>
             @endif
             @if (session('latitude'))
                 <div class="input-field col s12" style="margin-bottom: 10px;">
                     <i class="material-icons prefix">swap_vert</i>
                     <input id="icon_swap_vert" class="validate" name="longitude" type="text" id="longitude" pattern="\d+(\.\d*)?" value="{{session('latitude')}}" required>
-                    <label for="icon_swap_vert">Latitude</label>
+                    <label for="icon_swap_vert">{{ trans("nodes.latitude") }}</label>
                 </div>
             @else
                 <div class="input-field col s12" style="margin-bottom: 10px;">
                     <i class="material-icons prefix">swap_vert</i>
                     <input id="icon_swap_vert" class="validate" name="longitude" type="text" id="longitude" pattern="\d+(\.\d*)?" value="{{$node->latitude}}" required>
-                    <label for="icon_swap_vert">Latitude</label>
+                    <label for="icon_swap_vert">{{ trans("nodes.latitude") }}</label>
                 </div>
             @endif
             @if (session('longitude'))
                 <div class="input-field col s12">
                     <i class="material-icons prefix">swap_horiz</i>
                     <input id="icon_swap_horiz" class="validate"  name="latitude" type="text" id="latitude" pattern="\d+(\.\d*)?" value="{{session('longitude')}}" required>
-                    <label for="icon_swap_horiz">Longitude</label>
+                    <label for="icon_swap_horiz">{{ trans("nodes.longitude") }}</label>
                 </div>
             @else
                 <div class="input-field col s12">
                     <i class="material-icons prefix">swap_horiz</i>
                     <input id="icon_swap_horiz" class="validate"  name="latitude" type="text" id="latitude" pattern="\d+(\.\d*)?" value="{{$node->longitude}}" required>
-                    <label for="icon_swap_horiz">Longitude</label>
+                    <label for="icon_swap_horiz">{{ trans("nodes.longitude") }}</label>
                 </div>
             @endif
         </div>
 
-        <h4 class="light">Edit Sensors</h4>
+        <h4 class="light">{{ trans("nodes.edit sensors") }}</h4>
         <div class="divider"></div>
         <div id="add" style="display: none;">
             <div class="row container" name="sensors[]">
@@ -133,8 +133,8 @@
 
         <br>
         <div class="warning-box" id="delete">
-            <p><i class="material-icons">highlight_off</i><span class="ups">Warning!</span> If you continue the sensors data sending schema of the node will be deleted </p>
-            <p><strong>It´s recommended to create other node</strong></p>
+            <p><i class="material-icons">highlight_off</i><span class="ups">{{ trans("nodes.warning") }}</span>{{ trans("nodes.if you continue the sensors") }} </p>
+            <p><strong>{{ trans("nodes.it´s recommended to create other node") }}</strong></p>
         </div>
 
         <br><br>
@@ -155,7 +155,7 @@
             <br/>
         </div>-->
         <div class="center">
-            <button type="submit" class="btn btn-primary" id="continue">Continue</button>
+            <button type="submit" class="btn btn-primary" id="continue">{{ trans("nodes.continue") }}</button>
         </div>
     </div>
 @stop

@@ -1,15 +1,15 @@
 @extends('layout.admin')
 
 @section('title')
-    <a href="#" class="mobile-tittle">New Node</a>
+    <a href="#" class="mobile-tittle">{{ trans("nodes.new node") }}</a>
     <a href="{{ url('nodes')}}" class="mobile-right"><i class="material-icons">close</i></a>
 @stop
 
 @section('content')
     <div class="desktop row" id="nodes">
         <!-- Tittle -->
-        <div class="linker"><p class="light">Dashboard > Nodes > Create </p></div>
-        <h4 class="light">Create Node</h4>
+        <div class="linker"><p class="light">{{ trans("general.dashboard") }} > {{ trans("general.nodes")  }} > {{ trans("general.create")  }} </p></div>
+        <h4 class="light">{{ trans("nodes.create node") }}</h4>
         <div class="divider"></div><br>
 
         @if (session('error'))
@@ -25,44 +25,44 @@
                 <div class="input-field col s12">
                     <i class="material-icons prefix">play_for_work</i>
                     <input type="text" name="name" id="name"  value="{{session('name')}}" required class="validate">
-                    <label for="name">Name</label>
+                    <label for="name">{{ trans("general.name") }}</label>
                 </div>
             @else
                 <div class="input-field col s12">
                     <i class="material-icons prefix">play_for_work</i>
                     <input type="text" name="name" id="name" required class="validate">
-                    <label for="name">Name</label>
+                    <label for="name">{{ trans("general.name") }}</label>
                 </div>
             @endif
             @if (session('longitude'))
                 <div class="input-field col s12" style="margin-bottom: 10px;">
                     <i class="material-icons prefix">swap_vert</i>
                     <input type="text" name="longitude" id="longitude" pattern="\d+(\.\d*)?" value="{{session('longitude')}}" required class="validate">
-                    <label for="longitude">Longitude</label>
+                    <label for="longitude">{{ trans("nodes.longitude") }}</label>
                 </div>
             @else
                 <div class="input-field col s12" style="margin-bottom: 10px;">
                     <i class="material-icons prefix">swap_vert</i>
                     <input type="text" name="longitude" id="longitude" pattern="\d+(\.\d*)?" required class="validate">
-                    <label for="longitude">Longitude</label>
+                    <label for="longitude">{{ trans("nodes.longitude") }}</label>
                 </div>
             @endif
             @if (session('latitude'))
                 <div class="input-field col s12">
                     <i class="material-icons prefix">swap_horiz</i>
                     <input type="text"  name="latitude" id="latitude" pattern="\d+(\.\d*)?" value="{{session('latitude')}}" required class="validate">
-                    <label for="latitude">Latitude</label>
+                    <label for="latitude">{{ trans("nodes.latitude") }}</label>
                 </div>
             @else
                 <div class="input-field col s12">
                     <i class="material-icons prefix">swap_horiz</i>
                     <input type="text"  name="latitude" id="latitude" pattern="\d+(\.\d*)?" required class="validate">
-                    <label for="latitude">Latitude</label>
+                    <label for="latitude">{{ trans("nodes.latitude") }}</label>
                 </div>
             @endif
         </div>
 
-        <h4 class="light">Choose sensors</h4>
+        <h4 class="light">{{ trans("nodes.choose sensors") }}</h4>
         <div class="divider"></div><br>
 
         <div id="list">
@@ -88,7 +88,7 @@
             </div>
         </div><br><br>
         <div class="container center">
-            <a class="btn btn-primary center" href="{{url('/sensors/create')}}">ADD NEW TYPE</a>
+            <a class="btn btn-primary center" href="{{url('/sensors/create')}}">{{ trans("nodes.add new type") }}</a>
         </div>
         <!--
         <dl name="sensors[]">

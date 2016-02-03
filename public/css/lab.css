@@ -240,6 +240,11 @@ input[type=number].valid, input[type=number]:focus.valid {
     font-size: 18px;
 }
 
+/***** Warning Box BLUE*****/
+#sensors_warning_box {
+    background: #007EE5;
+}
+
 /********************************************
  			PROFILE SETTINGS
 ********************************************/

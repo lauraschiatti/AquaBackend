@@ -1,7 +1,7 @@
 @extends('layout.admin')
 
 @section('title')
-    <a href="#" class="mobile-tittle">Settings</a>
+    <a href="#" class="mobile-tittle">{{ trans("general.settings") }}</a>
     <a href="{{ url('dashboard')}}" class="mobile-right"><i class="material-icons">close</i></a>
 @stop
 
@@ -9,8 +9,8 @@
 
     <div class="desktop show row">
         <!-- Tittle -->
-        <div class="linker"><p class="light">Dashboard > Settings </p></div>
-        <h4 class="light">Profile Settings</h4>
+        <div class="linker"><p class="light">{{ trans("general.dashboard") }} > {{ trans("general.settings") }} </p></div>
+        <h4 class="light">{{ trans("settings.profile settings") }}</h4>
         <div class="hide-on-med-and-down divider"></div>
 
         <section id="profile">
@@ -26,7 +26,7 @@
                         <br><br>
                         <div class="divider"></div>
                         <br>
-                        <h6 class="light"><strong>100</strong> Downloads</h6>
+                        <h6 class="light"><strong>100</strong> {{ trans("general.downloads") }}</h6>
                         <br>
                         <div class="divider"></div>
                         <br>
@@ -55,30 +55,30 @@
                     <div class="input-field col s12">
                         <i class="material-icons prefix">person</i>
                         <input id="name" type="text" class="validate" name="name" value="{{$user->name}}">
-                        <label for="name">Name</label>
+                        <label for="name">{{ trans("general.name") }}</label>
                     </div>
-
+                    <br><br>
                     <div class="input-field col s12">
                         <i class="material-icons prefix">verified_user</i>
                         <input id="last-pass" type="password" class="validate" name="last-pass">
-                        <label for="last-pass">Last Password</label>
+                        <label for="last-pass">{{ trans("settings.last password") }}</label>
                     </div>
 
                     <div class="input-field col s12">
                         <i class="material-icons prefix">lock</i>
                         <input id="pass" type="password" class="validate" name="pass">
-                        <label for="pass" data-error="hola">New Password</label>
+                        <label for="pass">{{ trans("settings.new password") }}</label>
                     </div>
 
                     <div class="input-field col s12">
                         <i class="material-icons prefix">vpn_key</i>
                         <input id="pass2" type="password" class="validate" name="pass2">
-                        <label for="pass2">Repeat Password</label>
+                        <label for="pass2">{{ trans("settings.repeat password") }}</label>
                     </div>
 
                     <div class="col s12">
                         <br>
-                        <label>Select new timezone</label>
+                        <label>{{ trans("settings.select new timezone") }}</label>
                         <div class="input-field col s12">
                             <select name="timezone" class="browser-default">
                                 <option value="{{$user->timezone}}">UTC/GMT -05:00 {{$user->timezone}}</option>

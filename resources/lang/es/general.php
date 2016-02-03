@@ -58,6 +58,14 @@ return [
     'and' => 'y',
     'back to top' => 'Regreso al Inicio',
     'product' => 'Producto',
+    'back' => 'Atrás',
 
     'downloads' => 'Descargas',
+    'hi' => 'Hola',
+
+    //FOR CRUDs
+    'create' => 'Crear',
+    'edit' => 'Editar',
+    'actions' => 'Acciones',
+    'show' => 'Mostrar',
 ];
