@@ -75,7 +75,7 @@
             @endif
         </div>
 
-        <h4 class="light">{{ trans("nodes.creator info") }}</h4>
+        <br><h4 class="light">{{ trans("nodes.creator info") }}</h4>
         <div class="hide-on-med-and-down divider"></div><br/>
 
         <ul class="collection" id="person">
@@ -86,6 +86,7 @@
             </li>
         </ul>
 
-        <a href="{{url('nodes')}}" class="btn btn-primary right hide-on-med-and-down">Back</a>
+        <br>
+        <a href="{{url('nodes')}}" class="btn btn-primary right hide-on-med-and-down">{{ trans("general.back") }}</a>
     </div>
 @stop
