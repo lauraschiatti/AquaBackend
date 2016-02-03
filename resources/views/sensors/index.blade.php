@@ -1,15 +1,15 @@
 @extends('layout.admin')
 
 @section('title')
-    <a href="#" class="mobile-tittle">Sensors</a>
+    <a href="#" class="mobile-tittle">{{ trans("general.sensors") }}</a>
 @stop
 
 
 @section('content')
     <div class="desktop row" id="sensors">
         <!-- Tittle -->
-        <div class="linker"><p class="light">Dashboard > Sensors </p></div>
-        <h4 class="light">Sensors</h4>
+        <div class="linker"><p class="light">{{ trans("general.dashboard") }} > {{ trans("general.sensors") }}</p></div>
+        <h4 class="light">{{ trans("general.sensors") }}</h4>
         <div class="divider"></div>
 
         <!-- Table -->
@@ -18,10 +18,10 @@
                 <thead>
                 <tr>
                     <th data-field="id">Id</th>
-                    <th data-field="type">Type</th>
-                    <th data-field="type">Unit</th>
+                    <th data-field="type">{{ trans("sensors.type") }}</th>
+                    <th data-field="type">{{ trans("sensors.unit") }}</th>
                     @if(Auth::check() and Auth::user()->role == 'superadmin')
-                        <th data-field="actions">Actions</th>
+                        <th data-field="actions">{{ trans("general.actions") }}</th>
                     @endif
                 </tr>
                 </thead>

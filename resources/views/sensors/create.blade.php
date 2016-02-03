@@ -1,15 +1,15 @@
 @extends('layout.admin')
 
 @section('title')
-    <a href="#" class="mobile-tittle">New Sensor</a>
+    <a href="#" class="mobile-tittle">{{ trans("sensors.new sensor") }}</a>
     <a href="{{ url('sensors')}}" class="mobile-right"><i class="material-icons">close</i></a>
 @stop
 
 @section('content')
     <div class="desktop row" id="sensors">
         <!-- Tittle -->
-        <div class="linker"><p class="light">Dashboard > Sensors > Create </p></div>
-        <h4 class="light">Create Sensor Type</h4>
+        <div class="linker"><p class="light">{{ trans("general.dashboard") }} > {{ trans("general.sensors") }} > {{ trans("general.create") }} </p></div>
+        <h4 class="light">{{ trans("sensors.create sensor type") }}</h4>
         <div class="divider"></div><br>
 
         @if (session('error'))
@@ -26,26 +26,26 @@
                     <div class="input-field col s12" style="margin-bottom: 10px;">
                         <i class="material-icons prefix">select_all</i>
                         <input class="validate" name="type" id="type" type="text" value="{{session('type')}}" required>
-                        <label for="type">Type</label>
+                        <label for="type">{{ trans("sensors.type") }}</label>
                     </div>
                 @else
                     <div class="input-field col s12" style="margin-bottom: 10px;">
                         <i class="material-icons prefix">select_all</i>
                         <input class="validate" name="type" id="type" type="text" required>
-                        <label for="type">Type</label>
+                        <label for="type">{{ trans("sensors.type") }}</label>
                     </div>
                 @endif
                 @if (session('unit'))
                     <div class="input-field col s12">
                         <i class="material-icons prefix">grain</i>
                         <input class="validate" name="unit" type="text" id="unit"  value="{{session('unit')}} " required>
-                        <label for="unit">Unit</label>
+                        <label for="unit">{{ trans("sensors.unit") }}</label>
                     </div>
                 @else
                     <div class="input-field col s12">
                         <i class="material-icons prefix">grain</i>
                         <input class="validate" name="unit" type="text" id="unit" required>
-                        <label for="unit">Unit</label>
+                        <label for="unit">{{ trans("sensors.unit") }}</label>
                     </div>
                 @endif
             </div>
