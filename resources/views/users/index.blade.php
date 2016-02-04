@@ -1,15 +1,15 @@
 @extends('layout.admin')
 
 @section('title')
-    <a href="#" class="mobile-tittle">Users</a>
+    <a href="#" class="mobile-tittle">{{ trans("general.users") }}</a>
 @stop
 
 
 @section('content')
     <div class="desktop row" id="nodes">
         <!-- Tittle -->
-        <div class="linker"><p class="light">Dashboard > Users </p></div>
-        <h4 class="light">Users</h4>
+        <div class="linker"><p class="light">{{ trans("general.dashboard") }} > {{ trans("general.users") }} </p></div>
+        <h4 class="light">{{ trans("general.users") }}</h4>
         <div class="divider"></div>
 
         <!-- Table -->
@@ -18,9 +18,9 @@
                 <thead>
                 <tr>
                     <th data-field="id">Id</th>
-                    <th data-field="longitude">Email</th>
-                    <th data-field="latitude">Role</th>
-                    <th data-field="actions">Actions</th>
+                    <th data-field="email">{{ trans("users.email") }}</th>
+                    <th data-field="role">{{ trans("users.role") }}</th>
+                    <th data-field="actions">{{ trans("general.actions") }}</th>
                 </tr>
                 </thead>
 

@@ -19,5 +19,17 @@ return [
     'select new timezone' => 'Select new timezone',
     'save' => 'save',
     'cancel' => 'cancel',
+    'new user' => 'New User',
+    'edit user' => 'Edit User',
+    'change user type' => 'Change user type',
+    'user' => 'User',
+    'provider' => 'Provider',
+    'super admin' => 'Super Admin',
+    'email' => 'Email',
+    'role' => 'Role',
+    'create user' => 'Create User',
+    'select timezone' => 'Select timezone',
+    'select user type' => 'Select user type',
+    '' => '',
 
 ];
