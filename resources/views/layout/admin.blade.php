@@ -90,9 +90,10 @@
                         @if(Auth::check() and Auth::user()->role == 'provider')
                             <li><a href="{{url('/mynodes')}}"><i class="material-icons left">flag</i>{{ trans("general.nodes") }}</a></li>
                         @endif
+
                         <li><a href="{{url('/sensors')}}"><i class="material-icons left">place</i>{{ trans("general.sensors") }}</a></li>
-                        <li><a href="{{url('/users')}}"><i class="material-icons left">people</i>{{ trans("general.users") }}</a></li>
-                        <li class="etiquette">Configurations</li>
+
+                        <li class="etiquette">{{ trans("general.configurations") }}</li>
                         <li><a href="{{url('/settings/'.Auth::user()->id)}}"><i class="material-icons left">settings</i>{{ trans("general.settings") }}</a></li>
                         <li><a href="{{url('/contact')}}"><i class="material-icons left">turned_in</i>{{ trans("general.help &amp; feed") }}</a></li>
                         <li><a class="modal-trigger" href="#modal1"><i class="material-icons left">power_settings_new</i>{{ trans("general.log out") }}</a></li>
@@ -128,11 +129,7 @@
 
                         <li><a href="{{url('/sensors')}}"><i class="material-icons left">place</i>{{ trans("general.sensors") }}</a></li>
 
-                        @if(Auth::check() and Auth::user()->role == 'superadmin')
-                            <li><a href="{{url('/users')}}"><i class="material-icons left">people</i>{{ trans("general.users") }}</a></li>
-                        @endif
-
-                        <li class="etiquette">Configurations</li>
+                        <li class="etiquette">{{ trans("general.configurations") }}</li>
                         <li><a href="{{url('/settings')}}"><i class="material-icons left">settings</i>{{ trans("general.settings") }}</a></li>
                         <li><a href="{{url('/contact')}}"><i class="material-icons left">turned_in</i>{{ trans("general.help &amp; feed") }}</a></li>
                         <li><a class="modal-trigger" href="#modal1"><i class="material-icons left">power_settings_new</i>{{ trans("general.log out") }}</a></li>

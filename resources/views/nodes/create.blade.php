@@ -60,6 +60,20 @@
                     <label for="latitude">{{ trans("nodes.latitude") }}</label>
                 </div>
             @endif
+
+            <label>{{ trans("nodes.select node type") }}</label>
+            <div id="radiobuttons">
+                <p>
+                    <i class="material-icons prefix">supervisor_account</i>
+                    <input type="radio" name="type" id="public" value="public" checked>
+                    <label for="public">{{ trans("nodes.public") }}</label>
+                </p>
+                <p>
+                    <i class="material-icons prefix">accessibility</i>
+                    <input type="radio" name="type" id="private" value="private">
+                    <label for="private">{{ trans("nodes.private") }}</label>
+                </p>
+            </div>
         </div>
 
         <h4 class="light">{{ trans("nodes.choose sensors") }}</h4>

@@ -21,6 +21,7 @@
                     <th data-field="name">{{ trans("general.name") }}</th>
                     <th data-field="longitude">{{ trans("nodes.longitude") }}</th>
                     <th data-field="latitude">{{ trans("nodes.latitude") }}</th>
+                    <th data-field="type">{{ trans("nodes.type") }}</th>
                     <th data-field="actions">{{ trans("general.actions") }}</th>
                 </tr>
                 </thead>
@@ -33,6 +34,7 @@
                             <td>{{ $node->name }}</td>
                             <td>{{ $node->longitude }}</td>
                             <td>{{ $node->latitude }}</td>
+                            <td>{{ $node->type }}</td>
                             <td>
                                 <a href="{{url('nodes',$node->id)}}"><i class="material-icons">visibility</i></a>
                                 <a href="{{route('nodes.edit', $node->id)}}"><i class="material-icons">edit</i></a>

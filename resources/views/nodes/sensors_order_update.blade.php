@@ -71,8 +71,8 @@
             @endif
 
             @if (!session('data'))
-                <div class="warning-box">
-                    <p style="text-align: center;"><i class="material-icons">highlight_off</i><span class="ups">Wops!</span> {{ trans("nodes.no sensors selected") }}</p>
+                <div class="warning-box" id="no_sensors">
+                    <p><i class="material-icons">highlight_off</i><span class="ups">Wops!</span> {{ trans("nodes.no sensors selected") }}</p>
                 </div>
             @endif
 

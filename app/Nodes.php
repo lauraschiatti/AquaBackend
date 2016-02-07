@@ -14,6 +14,7 @@ class Nodes extends Model
      protected $fillable=[
         'name',
         'longitude',
-        'latitude'
+        'latitude',
+        'type' //public or private
      ];
 }

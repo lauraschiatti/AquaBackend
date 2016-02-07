@@ -52,7 +52,7 @@ return [
     'support' => 'Soporte',
     'about' => 'Acerca',
     'project' => 'Proyecto',
-    'legal' => 'Legal',
+    'legal' => 'Condiciones',
     'with' => 'con',
     'in' => 'en',
     'and' => 'y',
@@ -68,4 +68,5 @@ return [
     'edit' => 'Editar',
     'actions' => 'Acciones',
     'show' => 'Mostrar',
+    'configurations' => 'Configuraciones',
 ];

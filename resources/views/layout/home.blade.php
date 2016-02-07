@@ -63,12 +63,12 @@
                         <li><a class="dropdown-button" href="#" data-beloworigin="true" data-activates="dropdown1"><i class="material-icons right">arrow_drop_down</i>{{ trans("general.hi") }} <span style="text-transform: capitalize; font-weight: lighter;">{{(Auth::user()->name)}}</span></a></li>
                         <!-- Dropdown Structure -->
                         <ul id="dropdown1" class="dropdown-content">
-                            @if(Auth::check() and Auth::user()->role == 'superadmin')
+                            @if(Auth::check() and Auth::user()->role == 'superadmin' or 'provider')
                                 <li><a href="{{url('settings/'.Auth::user()->id)}}">{{ trans("general.settings") }}</a></li>
                             @else
                                 <li><a href="{{url('profile/settings/'.Auth::user()->id)}}">{{ trans("general.settings") }}</a></li>
                             @endif
-                            @if(Auth::check() and Auth::user()->role == 'superadmin')
+                            @if(Auth::check() and Auth::user()->role == 'superadmin' or 'provider')
                                 <li><a href="{{ url('dashboard')}}">{{ trans("general.dashboard") }}</a></li>
                             @endif
                             <li><a href="{{ url('logout')}}">{{ trans("general.log out") }}</a></li>

@@ -86,8 +86,13 @@ class UsersController extends Controller
                     //return var_dump('filenot downloaded.......');
                 }
             }*/
-            //return redirect('users');
-            return $newUser;
+            if($role == "superadmin"){
+                return redirect('users');
+            }else{
+                return redirect('/');
+            }
+
+            //return $newUser;
 
         }else{
             return redirect('users/create')->with('error', ' USER EXISTS')

@@ -59,11 +59,11 @@ class NodesController extends Controller
      */
     public function store()
     {
-        //$sensors_data = Request::all();
-
         $name = trim(Input::get('name'));
         $latitude =  trim(Input::get('latitude'));
         $longitude = trim(Input::get('longitude'));
+        $type = Input::get('type');
+
         //sensors in that node
         $sensors_names = Input::get('sensors_units');
         $sensors_numbers = Input::get('sensors_number');
@@ -86,6 +86,7 @@ class NodesController extends Controller
             $newNode->name = $name;
             $newNode->latitude = $latitude;
             $newNode->longitude = $longitude;
+            $newNode->type = $type;
 
             if(Auth::check()){
                 $newNode->user_id = Auth::user()->id;
@@ -300,36 +301,40 @@ class NodesController extends Controller
         $name =  trim(Input::get('name'));
         $latitude = trim(Input::get('latitude'));
         $longitude = trim(Input::get('longitude'));
+        $type = Input::get('type');
 
         $node = Nodes::where("name", "=", $name)
                        ->Where("id", "!=", $id)
                        ->first();
 
         if($node == null){
-            Nodes::where('id', '=', $id)->update(['name' => $name, 'latitude' => $latitude, 'longitude' => $longitude]);
+            Nodes::where('id', '=', $id)->update(['name' => $name, 'latitude' => $latitude, 'longitude' => $longitude, 'type' => $type]);
 
             $sensors_data = Request::all();
 
-            //sensors in that node
-            $sensors_names = $sensors_data["sensors_units"];
+            if($sensors_data["sensors_units"] != null){
+                //sensors in that node
+                $sensors_names = $sensors_data["sensors_units"];
 
-            $sensors_numbers = $sensors_data["sensors_number"];
-            //convert to int
-            foreach ($sensors_numbers as $key => $var) {
-                $sensors_numbers[$key] = (int)$var;
-            }
-
-            $sensors = array();
-
-            $i = 0;
-            while ($i < count($sensors_names)){
-                $j = 0;
-                while ($j < $sensors_numbers[$i]) {
-                    array_push($sensors, $sensors_names[$i]);
-                    $j++;
+                $sensors_numbers = $sensors_data["sensors_number"];
+                //convert to int
+                foreach ($sensors_numbers as $key => $var) {
+                    $sensors_numbers[$key] = (int)$var;
                 }
-                $i++;
+
+                $sensors = array();
+
+                $i = 0;
+                while ($i < count($sensors_names)){
+                    $j = 0;
+                    while ($j < $sensors_numbers[$i]) {
+                        array_push($sensors, $sensors_names[$i]);
+                        $j++;
+                    }
+                    $i++;
+                }
             }
+
             //return $sensors;
             return Redirect::route('order_update')->with('data', $sensors)
                                                   ->with('id', $id);

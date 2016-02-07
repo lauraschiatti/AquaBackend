@@ -66,12 +66,12 @@
                 <div id="radiobuttons">
                     <p>
                         <i class="material-icons prefix">person_pin</i>
-                        <input name="role" type="radio" id="user" value="user"/>
+                        <input name="role" type="radio" id="user" value="user" checked>
                         <label for="user">{{ trans("users.user") }}</label>
                     </p>
                     <p>
                         <i class="material-icons prefix">assistant</i>
-                        <input name="role" type="radio" id="provider" value="provider"/>
+                        <input name="role" type="radio" id="provider" value="provider">
                         <label for="provider">{{ trans("users.provider") }}</label>
                     </p>
                     @if(Auth::check() and Auth::user()->role == 'superadmin')

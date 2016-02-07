@@ -34,7 +34,9 @@ return [
     'no sensors added to this node' => 'No sensors added to this node',
     'sensors data sending schema' => 'Sensors Data Sending Schema',
     'creator info' => 'Creator Info',
-    '' => '',
-    '' => '',
+    'select node type' => 'Select node type',
+    'type' => 'Type',
+    'public' => 'Public',
+    'private' => 'Private',
 
 ];

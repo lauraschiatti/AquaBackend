@@ -243,6 +243,18 @@ input[type=number].valid, input[type=number]:focus.valid {
 /***** Warning Box BLUE*****/
 #sensors_warning_box {
     background: #007EE5;
+    font-size: large;
+    font-weight: lighter;"
+}
+
+#no_sensors p{
+    padding: 0;
+}
+
+#no_sensors{
+    font-weight:lighter;
+    text-align: center;
+    inherited: no;
 }
 
 /********************************************

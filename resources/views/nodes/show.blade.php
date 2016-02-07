@@ -25,13 +25,18 @@
         </div>
         <div class="input-field col s12">
             <i class="material-icons prefix">swap_vert</i>
-            <input id="longitude" type="text" id="id" value="{{$node->longitude}}" readonly>
+            <input id="longitude" type="text" value="{{$node->longitude}}" readonly>
             <label for="longitude">{{ trans("nodes.longitude") }}</label>
         </div>
         <div class="input-field col s12">
             <i class="material-icons prefix">swap_horiz</i>
-            <input id="latitude" type="text" id="id" value="{{$node->latitude}}" readonly>
+            <input id="latitude" type="text" value="{{$node->latitude}}" readonly>
             <label for="latitude">{{ trans("nodes.latitude") }}</label>
+        </div>
+        <div class="input-field col s12">
+            <i class="material-icons prefix">public</i>
+            <input id="type" type="text" value="{{$node->type}}" readonly>
+            <label for="type">{{ trans("nodes.type") }}</label>
         </div>
 
         <div class="input-field col s12">
@@ -39,7 +44,7 @@
             <div class="hide-on-med-and-down divider"></div><br/>
                 @if ($size == 0)
                     <div class="warning-box" id="sensors_warning_box">
-                        <p><i class="material-icons">feedback</i><span style="font-weight: lighter; font-size: medium;">{{ trans("nodes.no sensors added to this node") }}</span></p>
+                        <p><i class="material-icons">feedback</i><span>{{ trans("nodes.no sensors added to this node") }}</span></p>
                     </div>
                 @else
                     <ul class="collection">
@@ -59,7 +64,7 @@
 
             @if ($size == 0)
                 <div class="warning-box" id="sensors_warning_box">
-                    <p><i class="material-icons">feedback</i><span style="font-weight: lighter; font-size: medium;">{{ trans("nodes.no sensors added to this node") }}</span></p>
+                    <p><i class="material-icons">feedback</i><span>{{ trans("nodes.no sensors added to this node") }}</span></p>
                 </div>
             @else
                 <ul class="collection">

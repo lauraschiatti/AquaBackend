@@ -18,6 +18,7 @@ class CreateNodesTable extends Migration
             $table->string('name');
             $table->double('longitude');
             $table->double('latitude');
+            $table->string('type');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
