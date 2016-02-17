@@ -24,7 +24,7 @@
                     <p class="light" style="font-size: 1em;"><strong>100</strong> {{ trans("general.downloads") }}</p>
                     <div class="divider"></div>
                     <p class="light" style="font-size: 1em;"><strong>{{ trans("settings.timezone") }}</strong><br><br>UTC/GMT -05:00 {{$user->timezone}}</p>
-                    <a href="{{ url('users')}}" class="btn btn-primary right hide-on-med-and-down">{{ trans("general.back") }}</a>
+                    <a href="{{ URL::previous() }}" class="btn btn-primary right hide-on-med-and-down">{{ trans("general.back") }}</a>
                 </div>
             </div>
             <div class="col m3 l3"></div>

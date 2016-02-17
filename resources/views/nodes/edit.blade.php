@@ -93,6 +93,7 @@
             </div>
         </div>
 
+        <br>
         <h4 class="light">{{ trans("nodes.edit sensors") }}</h4>
         <div class="divider"></div>
         <div id="add" style="display: none;">

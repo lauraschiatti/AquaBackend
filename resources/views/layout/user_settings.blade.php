@@ -134,7 +134,7 @@
 
                     <div class="input-field col s12">
                         <button type="submit" class="btn btn-secundary waves-effect waves-light"><strong>{{ trans("settings.save") }}</strong></button>
-                        <a class="btn btn-flat waves-effect waves-light" href="{{url('/')}}">{{ trans("settings.cancel") }}</a>
+                        <a class="btn btn-flat waves-effect waves-light" href="{{ URL::previous() }}">{{ trans("settings.cancel") }}</a>
                     </div>
                 {!! Form::close() !!}
             </div>

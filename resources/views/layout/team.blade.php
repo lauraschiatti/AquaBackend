@@ -73,37 +73,48 @@
 <main>
   <!-- === TEAM === -->
   <section class="center"><br>
-    <h2 class="light">{{ trans("team.meet the team") }}</h2>
+      <h2 class="light">{{ trans("team.meet the team") }}</h2>
 
-    <div class="row cards">
-      <div class="tcard col s12 m3 l2 center">
-        <img src="/img/face.jpg" alt="" />
-        <h3>Laura Schiatti</h3>
-        <h5 class="light">{{ trans("team.back-end developer") }}</h5>
+      <div class="row cards">
+          <div class="tcard col s12 m3 l2 center">
+            <img src="/img/face.jpg" alt="" />
+            <h3>Laura Schiatti</h3>
+            <h5 class="light">{{ trans("team.back-end developer") }}</h5>
+          </div>
+          <div class="tcard col s12 m3 l2 center">
+            <img src="/img/face.jpg" alt="" />
+            <h3>Yefferson Marín</h3>
+            <h5 class="light">{{ trans("team.front-end developer") }}</h5>
+          </div>
+          <div class="tcard col s12 m3 l2 center">
+            <img src="/img/face.jpg" alt="" />
+            <h3>Juan Martínez</h3>
+            <h5 class="light">{{ trans("team.investigator") }}</h5>
+          </div>
+          <div class="tcard col s12 m3 l2 center">
+            <img src="/img/face.jpg" alt="" />
+            <h3>Oscar Acevedo</h3>
+            <h5 class="light">{{ trans("team.investigator") }}</h5>
+          </div>
+          <div class="tcard col s12 m3 l2 center">
+            <img src="/img/face.jpg" alt="" />
+            <h3>Jairo Serrano</h3>
+            <h5 class="light">{{ trans("team.investigator") }}</h5>
+          </div>
       </div>
 
-      <div class="tcard col s12 m3 l2 center">
-        <img src="/img/face.jpg" alt="" />
-        <h3>Yefferson Marín</h3>
-        <h5 class="light">{{ trans("team.front-end developer") }}</h5>
-      </div>
-
-      <div class="tcard col s12 m3 l2 center">
-        <img src="/img/face.jpg" alt="" />
-        <h3>Juan Martínez</h3>
-        <h5 class="light">{{ trans("team.investigator") }}</h5>
-      </div>
-      <div class="tcard col s12 m3 l2 center">
-        <img src="/img/face.jpg" alt="" />
-        <h3>Oscar Acevedo</h3>
-        <h5 class="light">{{ trans("team.investigator") }}</h5>
-      </div>
-      <div class="tcard col s12 m3 l2 center">
-        <img src="/img/face.jpg" alt="" />
-        <h3>Jairo Serrano</h3>
-        <h5 class="light">{{ trans("team.investigator") }}</h5>
-      </div>
-    </div>
+      <ul class="container collection">
+          @for ($i = 0; $i < $num_providers; $i++)
+              <li class="collection-item avatar">
+                  <img src="images/yuna.jpg" alt="" class="circle">
+                  <span class="title">{{$providers[$i]->id}}</span>
+                  <p>First Line <br>
+                      Second Line
+                  </p>
+                  <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+              </li>
+          @endfor
+      </ul>
   </section>
   <!-- === TEAM === -->
   <!-- === HOME === -->

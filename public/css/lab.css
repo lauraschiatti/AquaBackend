@@ -254,7 +254,10 @@ input[type=number].valid, input[type=number]:focus.valid {
 #no_sensors{
     font-weight:lighter;
     text-align: center;
-    inherited: no;
+    padding: auto;
+    height: 90px;
+    width: 50%;
+    padding-left: 50px;
 }
 
 /********************************************

@@ -86,11 +86,7 @@ class UsersController extends Controller
                     //return var_dump('filenot downloaded.......');
                 }
             }*/
-            if($role == "superadmin"){
-                return redirect('users');
-            }else{
-                return redirect('/');
-            }
+            return redirect('users');
 
             //return $newUser;
 

@@ -24,9 +24,7 @@ Route::get('contribute', function(){
    return view('layout.contribute');
 });
 
-Route::get('team', function(){
-    return view('layout.team');
-});
+Route::get('team', 'TeamController@getTeam');
 
 Route::get('terms', function(){
     return view('layout.terms');
