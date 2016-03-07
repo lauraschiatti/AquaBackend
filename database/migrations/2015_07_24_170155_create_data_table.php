@@ -20,8 +20,8 @@ class CreateDataTable extends Migration
             $table->float('value');
             $table->timestamps();
 
-            $table->foreign('node_id')->references('id')->on('nodes');
-            $table->foreign('sensorbynode_id')->references('id')->on('sensorsbynode');
+            /*$table->foreign('node_id')->references('id')->on('nodes');
+            $table->foreign('sensorbynode_id')->references('id')->on('sensorsbynode');*/
         });
     }
 

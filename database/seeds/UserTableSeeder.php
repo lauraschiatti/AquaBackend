@@ -12,8 +12,8 @@ class UserTableSeeder extends Seeder
     public function run()
     {
        App\User::create([
-            'name'     => 'Laura Schiatti',
-            'email'    => 'lauri_cdd@hotmail.com',
+            'name'     => 'Admin',
+            'email'    => 'admin@hotmail.com',
             'password' => bcrypt('123456'),
             'role' => 'superadmin',
             'timezone' => 'America/Bogota'

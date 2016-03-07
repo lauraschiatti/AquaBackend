@@ -19,8 +19,8 @@ class CreateSensorsbynodeTable extends Migration
             $table->integer('weight')->unsigned();
             $table->timestamps();
 
-            $table->foreign('node_id')->references('id')->on('nodes');
-            $table->foreign('sensor_type_id')->references('id')->on('sensors');
+            /*$table->foreign('node_id')->references('id')->on('nodes');
+            $table->foreign('sensor_type_id')->references('id')->on('sensors');*/
         });
     }
 
