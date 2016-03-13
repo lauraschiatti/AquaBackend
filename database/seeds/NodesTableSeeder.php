@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Nodes;
 
 class NodesTableSeeder extends Seeder
 {
@@ -11,7 +12,7 @@ class NodesTableSeeder extends Seeder
      */
     public function run()
     {
-        App\Nodes::create([
+        Nodes::create([
             'id'     => 'dDaE4CFD',
             'user_id' => '1',
             'name'    => 'node_a',
@@ -20,7 +21,7 @@ class NodesTableSeeder extends Seeder
             'type' => 'public',
         ]);
 
-        App\Nodes::create([
+        Nodes::create([
             'id'     => '8C2Ab5fA',
             'user_id' => '1',
             'name'    => 'node_b',
@@ -29,7 +30,7 @@ class NodesTableSeeder extends Seeder
             'type' => 'public',
         ]);
 
-        App\Nodes::create([
+        Nodes::create([
             'id'     => '99f80D47',
             'user_id' => '1',
             'name'    => 'node_c',

@@ -16,6 +16,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call(UserTableSeeder::class);
         $this->call(NodesTableSeeder::class);
+        $this->call(SensorsTableSeeder::class);
+        $this->call(SensorsByNodeTableSeeder::class);
 
         Model::reguard();
     }

@@ -12,4 +12,15 @@ class SensorsByNode extends Model
      * @var string
      */
     protected $table = "sensorsbynode";
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable=[
+        'node_id',
+        'sensor_type_id',
+        'weight'
+    ];
 }
