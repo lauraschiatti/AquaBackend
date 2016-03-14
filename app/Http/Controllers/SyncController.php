@@ -41,6 +41,10 @@ class SyncController extends Controller
             //@todo: save logs
         }
 
+        return "Data saved";
+    }
+
+    public function getData(){
         return Data::all();
     }
 }
