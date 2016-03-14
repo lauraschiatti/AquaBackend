@@ -27,7 +27,7 @@ class NodesTableSeeder extends Seeder
             'name'    => 'node_b',
             'longitude' => '1212.23',
             'latitude' => '12.14',
-            'type' => 'public',
+            'type' => 'private',
         ]);
 
         Nodes::create([

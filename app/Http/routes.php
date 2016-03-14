@@ -90,10 +90,6 @@ Route::resource('sensors', 'SensorsController');
 //Sync random generated data routes
 Route::get('sync/{data}', 'SyncController@postData');
 
-Route::get('sync', function(){
-    return \App\Data::all();
-});
-
 //Routes for testing
 Route::get('sensorsbynode', function(){
     return \App\SensorsByNode::all();
