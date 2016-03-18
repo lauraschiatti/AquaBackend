@@ -43,8 +43,4 @@ class SyncController extends Controller
 
         return "Data saved";
     }
-
-    public function getData(){
-        return Data::all();
-    }
 }

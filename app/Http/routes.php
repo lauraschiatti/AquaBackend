@@ -90,7 +90,7 @@ Route::resource('sensors', 'SensorsController');
 //Sync random generated data routes
 Route::get('sync/{data}', 'SyncController@postData');
 
-Route::get('data', 'SyncController@getData');
+Route::resource('data', 'DataController');
 
 //Routes for testing
 Route::get('sensorsbynode', function(){
@@ -103,4 +103,8 @@ Route::get('timezone', function(){
 
 Route::get('messages', function(){
     return \App\Contact::all();
+});
+
+Route::get('date', function(){
+    return \App\Data::all();
 });

@@ -212,7 +212,6 @@ class NodesController extends Controller
             }
         }
 
-
         return view('nodes.show',compact('node', 'sensors_array', 'size', 'user', 'sensors_types', 'sensors_types_by_unit', 'sensors_types_by_unit_number'));
         //return $size;
     }

@@ -67,4 +67,7 @@ return [
     'we use api information stored for' => 'We use API information stored for',
     'create charts' => 'create charts',
     'we\'ve made easy reading that information' => 'We\'ve made easy reading that information. It\'s disponible for you to use it, you can also download it in different file formats.',
+    'the graph shown above reflects' => 'The graph shown above reflects data collected by sensors from different units of measurement at specific nodes
+                    in water bodies of the city of Cartagena. The data is updated every x hours.',
+    'click to get data' => 'Click to get data'
 ];
