@@ -5,3 +5,5 @@
 Thumbs.db
 composer.lock
 composer.phar
+/aquapp.generator/sent
+/aquapp.generator/spool
