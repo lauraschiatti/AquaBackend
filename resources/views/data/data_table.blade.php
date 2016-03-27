@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="description" content="AquApp">
     <meta name="author" content="">
+
+    <!--csrf token-->
+    <meta name="csrf-token" content="{{csrf_token()}}">
+
     <title> AquApp | {{ trans("home.site") }} </title>
 
     <link href="/css/materialize.min.css" rel="stylesheet">               			<!-- Materialize core CSS -->
@@ -140,6 +144,9 @@
 </header>
 <!-- === NAVBAR === -->
 
+<!--<input type="hidden" id="user_id" value="{{--Auth::user()->id--}}">-->
+
+
 <section class="section" id="home">
     <div id="title">
         <h4 class="light">Recopilación de datos</h4>
@@ -148,40 +155,46 @@
         <p class="light">Fechas <strong>sensores y fechas</strong> Sensores</p>
     </div>
 
-    @if(Auth::check())
-        <div class="row container">
-            <a class="dropdown-button btn-floating btn-large waves-effect waves-light right blue darken-1" href="#!" data-activates="files">
-                <i class="mdi-editor-vertical-align-bottom"></i>
-            </a>
-            <ul id="files" class="dropdown-content active">
-                <li><a href="#!" class="-text" onclick="exportcsv()">csv</a>
-                </li>
-                <li><a href="#!" class="-text" onclick="exporttxt()">txt</a>
-                </li>
-            </ul>
+    @if($sensors_size == 0)
+        <div class="warning-box" id="warning_box">
+            <p><i class="material-icons">feedback</i><span>No hay datos encontrados</span></p>
         </div>
-    @endif
+    @else
+        @if(Auth::check())
+            {!! Form::open(['url' => 'downloads']) !!}
+                <div class="row container">
+                    <a class="dropdown-button btn-floating btn-large waves-effect waves-light right blue darken-1" href="#!" data-activates="files">
+                        <i class="mdi-editor-vertical-align-bottom"></i>
+                    </a>
 
+                    <!--inputs-->
+                    <input type="text" name="sensors" value="{{$sensors}}" style="display: none;">
+                    <input type="text" name="user_id" value="{{Auth::user()->id}}" style="display: none;">
 
-    <!-- === TABLE === -->
-    <table id="data_table" class="responsive-table centered striped container">
-        <thead>
-        <tr>
-            <th>Num</th>
-            <th>Node id</th>
-            <th>Sensor id</th>
-            <th>Sensor type</th>
-            <th>Time</th>
-            <th>Value</th>
-        </tr>
-        </thead>
-
-        <tbody>
-            @if($sensors_size == 0)
-                <div class="warning-box" id="sensors_warning_box">
-                    <p><i class="material-icons">feedback</i><span>No hay datos encontrados</span></p>
+                    <ul id="files" class="dropdown-content active">
+                        <li>
+                            <button type="submit" id="csv" class="-text">csv</button>
+                        </li>
+                        <li><button type="submit" id="txt" class="-text">txt</button>
+                        </li>
+                    </ul>
                 </div>
-            @else
+            {!! Form::close() !!}
+        @endif
+        <div class="section">
+            <table id="data_table" class="responsive-table centered striped container">
+                <thead>
+                <tr>
+                    <th>Num</th>
+                    <th>Node id</th>
+                    <th>Sensor id</th>
+                    <th>Sensor type</th>
+                    <th>Time</th>
+                    <th>Value</th>
+                </tr>
+                </thead>
+
+                <tbody>
                 @for($i = 0; $i < $sensors_size; $i++)
                     @if(is_array ($data_array))
                         <tr>
@@ -192,16 +205,17 @@
                             <td>{{$data_array[$i] -> time}}</td> 
                             <td>{{$data_array[$i] -> value}} {{$sensors_unit_array[$i]}}</td> 
                         </tr>
-                    @endif
-                {{--@forelse--}}
-                    <!--<div class="warning-box" id="sensors_warning_box">
-                        <p><i class="material-icons">feedback</i><span>No hay datos encontrados</span></p>
-                    </div>-->
-                @endfor
-            @endif
-        </tbody>
-    </table>
-    <!-- === TABLE === -->
+                        @endif
+                        {{--@forelse--}}
+                                <!--<div class="warning-box" id="sensors_warning_box">
+                    <p><i class="material-icons">feedback</i><span>No hay datos encontrados</span></p>
+                </div>-->
+                        @endfor
+                </tbody>
+            </table>
+        </div>
+    @endif
+
 </section>
 
 <script src="/js/materialize.min.js" type="text/javascript"></script> 					<!-- Materialize core JS -->
@@ -211,18 +225,14 @@
 <script>
     $(document).ready(function() {
         $('ul.tabs').tabs();
-    });
 
-    function exportcsv(){
-        var csv = $("#data_table").table2CSV({
-            delivery: 'download'
+        $('#csv').click(function(){
+            var csv = $("#data_table").table2CSV({
+                delivery: 'download'
+            });
+            window.open('data:text/csv;charset=UTF-8,' + encodeURIComponent(csv));
         });
-        window.open('data:text/csv;charset=UTF-8,' + encodeURIComponent(csv));
-    }
-
-    function exporttxt(){
-        $('#data_table').tableExport({type:'txt',escape:'false'});
-    }
+    });
 </script>
 
 </body>

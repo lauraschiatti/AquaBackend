@@ -90,7 +90,6 @@
 @stop
 
 @section('javascript')
-    <!-- Example JavaScript files -->
     <script type="text/javascript" src="/js/jq/jquery-ui.min.js"></script>
     <script type="text/javascript" src="/js/jq/jquery.cookie.js"></script>
 

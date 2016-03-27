@@ -92,6 +92,9 @@ Route::get('sync/{data}', 'SyncController@postData');
 
 Route::resource('data', 'DataController');
 
+//Downloads
+Route::resource('downloads', 'DownloadsController');
+
 //Routes for testing
 Route::get('sensorsbynode', function(){
     return \App\SensorsByNode::all();
@@ -107,4 +110,9 @@ Route::get('messages', function(){
 
 Route::get('date', function(){
     return \App\Data::all();
+});
+
+
+Route::get('users', function(){
+    return \App\User::all();
 });

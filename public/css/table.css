@@ -30,6 +30,35 @@ main {
     flex: 1 0 auto;
 }
 
+/***** Warning Box *****/
+.warning-box {
+    background: #E0717C;
+    color: #F4F7FE;
+    text-align: center;
+    max-width: 500px;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 0 auto;
+}
+
+.warning-box i {
+    font-size: 40px;
+    vertical-align: -12px;
+    margin-right: 20px;
+}
+
+.warning-box span.ups {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/***** Warning Box BLUE*****/
+#warning_box {
+    background: #007EE5;
+    font-size: large;
+    font-weight: lighter;"
+}
+
 /***** Palette *****/
 .primary { background: #007EE5 !important; }
 
@@ -99,6 +128,22 @@ nav {
     height: 50px;
     line-height: 50px;
     padding: 0 15px;
+}
+
+/******Dropdown*****/
+.dropdown-content li > button{
+    font-size: 1.2rem;
+    display: block;
+    padding: 1rem 1rem;
+}
+
+.dropdown-content button {
+    color: #039be5;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+    width: 100%;
+    background-color: transparent;
+    border: transparent;
 }
 
 /********************************************

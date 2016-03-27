@@ -151,9 +151,9 @@ class dataController extends Controller
 
         $sensors_size = count($data_array);
 
-        //return $sensors_type_array;
+        $sensors = json_encode($sensors);
 
-        return view('data.data_table', compact('data_array', 'sensors_size', 'sensors_type_array', 'sensors_unit_array'));
+        return view('data.data_table', compact('data_array', 'sensors_size', 'sensors_type_array', 'sensors_unit_array', 'sensors'));
     }
 
     /**
