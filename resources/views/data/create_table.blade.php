@@ -9,7 +9,7 @@
     <title> AquApp | {{ trans("home.site") }} </title>
 
     <link href="/css/materialize.min.css" rel="stylesheet">               			<!-- Materialize core CSS -->
-    <link href="/css/site.css" rel="stylesheet">                         				<!-- Site core CSS -->
+    <link href="/css/table.css" rel="stylesheet">                       				<!-- Site core CSS -->
     <link href="/css/materialicons.css" rel="stylesheet">	                      <!-- Material Icons -->
 
     <script type="text/javascript" src="/js/jq/jquery.min.js"></script>					<!-- Jquery core JS -->
@@ -42,6 +42,17 @@
                 document.getElementById('register_button').disabled = true;
         }
     </script>
+
+    <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+    <!-- Javascript -->
+    <script>
+        $(function() {
+            $("#datepicker-13").datepicker();
+        });
+    </script>
+
 </head>
 <body>
 
@@ -129,6 +140,7 @@
 </header>
 <!-- === NAVBAR === -->
 
+<p>Enter Date: <input type="text" id="datepicker-13"></p>
 <section class="section" id="home">
     <div id="title">
         <h3 class="light">Selecciona datos</h3>
@@ -160,9 +172,7 @@
                                             @foreach($nodes_array[$i][$j]["sensors"] as $key => $value) 
                                                 <div class="left-align"> 
                                                     <input type="checkbox" id="{{$value["sensor_id"]}}" name="sensors[]" value="{{$value["sensor_id"]}}" /> 
-                                                    <label for="{{$value["sensor_id"]}}">{{ucwords($value["sensor_type"])}}</label> 
-                                                    <br>
-                                                    <span>{{ucwords($value["sensor_unit"])}}</span>
+                                                    <label for="{{$value["sensor_id"]}}">{{ucwords($value["sensor_type"])}} - {{ucwords($value["sensor_unit"])}}</label> 
                                                 </div> 
                                             @endforeach
                                         @else
@@ -180,6 +190,35 @@
                 </div>
             @endif
 
+            <div id="date" class="container">
+                <h5 class="center">Rango de fechas</h5>
+                <div class="row">
+                    <div class="col s12 m2 l2">
+                        <p class="center">Inicio</p>
+                    </div>
+                    <div class="col s6 m2 l2">
+                        <input type="date" name="initial_date" class="datepicker center">
+                        <i class="material-icons prefix">event</i>
+                    </div>
+                    <div class="col s6 m2 l2">
+                        <input type="time" name="initial_time">
+                        <i class="material-icons prefix">alarm</i>
+                    </div>
+
+                    <div class="col s12 m2 l2">
+                        <p class="center">Fin</p>
+                    </div>
+                    <div class="col s6 m2 l2">
+                        <input type="date" name="final_date" class="datepicker center">
+                        <i class="material-icons prefix">event</i>
+                    </div>
+                    <div class="col s6 m2 l2">
+                        <input type="time" name="final_time">
+                        <i class="material-icons prefix">alarm</i>
+                    </div>
+                </div>
+            </div>
+
             <div class="col s12">
                 <p class="center"><button class="btn waves-effect waves-light" type="submit">VER TABLA</button></p>
             </div>
@@ -187,132 +226,17 @@
     </div>
 </section>
 
-<div class="col s12 offset-m1 m7 offset-l1 l7">
-    <a class="dropdown-button btn-floating btn-large waves-effect waves-light right blue darken-1" href="#!" data-activates="files">
-        <i class="mdi-editor-vertical-align-bottom"></i>
-    </a>
-    <ul id="files" class="dropdown-content active">
-        <li><a href="#!" class="-text">.csv</a>
-        </li>
-        <li><a href="#!" class="-text">.txt</a>
-        </li>
-    </ul>
-    <!-- === TABLE === -->
-    <table id="example" cellspacing="0" width="100%"> 
-        <thead> 
-        <tr> 
-            <th>Node name</th> 
-            <th>Sensor type/Sensor unit</th> 
-            <th>Time</th> 
-            <th>Value</th> 
-        </tr> 
-        </thead> 
-        <tbody> 
-        <tr> 
-            <td>Node name</td> 
-            <td>Sensor type/Sensor unit</td> 
-            <td>Time</td> 
-            <td>Value</td> 
-        </tr>
-        </tbody> 
-    </table>
-    <!-- === TABLE === -->
-</div>
-
-<!-- === FOOTER === -->
-<footer class="page-footer" id="footer">
-    <div class="container">
-        <div class="row">
-            <!-- Address -->
-            <div class="col m3 l3 hide-on-small-only" id="details">
-                <h5>{{ trans("general.address") }}</h5>
-                <ul>
-                    <li><strong>{{ trans("general.technological campus") }}</strong></li>
-                    <li>{{ trans("general.park") }}</li>
-                    <li>{{ trans("general.turbaco") }} - Tel: (57) 5 6535200  </li>
-                    <li>{{ trans("general.morning") }} 8:00 a.m. - 12:00 p.m.</li>
-                    <li>{{ trans("general.afternoon") }}1:00 p.m - 5:00 p.m. </li>
-                </ul>
-            </div>
-            <!-- Address -->
-            <!-- Links -->
-            <div class="col s12 m9 l5" id="links">
-
-                <div class="col s4">
-
-                    <h5>{{ trans("general.support") }}</h5>
-                    <ul>
-                        <li><a href="#!">Wiki</a></li>
-                        <li><a href="{{ url('contact')}}">{{ trans("general.contact") }}</a></li>
-                        <li><a href="{{ url('team')}}">{{ trans("general.team") }}</a></li>
-                    </ul>
-                </div>
-
-                <div class="col s4">
-
-                    <h5>{{ trans("general.contribute") }}</h5>
-                    <ul>
-                        <li><a href="https://github.com/IngenieriaDeSistemasUTB/AquaBackend.git">Github</a></li>
-                        <li><a href="#!">Twitter</a></li>
-                        <li><a href="#!">Google</a></li>
-                    </ul>
-                </div>
-
-                <div class="col s4">
-
-                    <h5>{{ trans("general.product") }}</h5>
-                    <ul>
-                        <li><a href="{{ url('terms')}}">{{ trans("general.about") }}</a></li>
-                        <li><a href="https://github.com/IngenieriaDeSistemasUTB/AquaBackend.git">{{ trans("general.project") }}</a></li>
-                        <li><a href="{{ url('terms')}}">{{ trans("general.legal") }}</a></li>
-                    </ul>
-                </div>
-            </div>
-            <!-- Links -->
-            <!-- Small -->
-            <div class="col s12 show-on-small hide-on-med-and-up center" id="details">
-                <div class="container">
-                    <img src="/img/utb-logo-03.png" alt=""/>
-                </div>
-                <ul class="light">
-                    <li><strong>{{ trans("general.technological campus") }}</strong></li>
-                    <li>{{ trans("general.park") }}</li>
-                    <li>{{ trans("general.turbaco") }} - Tel: (57) 5 6535200  </li>
-                    <li>{{ trans("general.morning") }} 8:00 a.m. - 12:00 p.m.</li>
-                    <li>{{ trans("general.afternoon") }}1:00 p.m - 5:00 p.m. </li>
-                </ul>
-            </div>
-            <!-- Small -->
-            <!-- Brand -->
-            <div class="col l4 hide-on-med-and-down">
-                <div class="container">
-                    <a target="_blank" href="http://www.unitecnologica.edu.co/"><div id="brand-utb"></div></a>
-                </div>
-            </div>
-            <!-- Brand -->
-
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <div class="footer-copyright center">
-        <div class="container light">
-            &#60;&#47;&#62; {{ trans("general.with") }} <span class="red-text">&#10084;</span> {{ trans("general.in") }} Cartagena de Indias, D.T. {{ trans("general.and") }} C - Colombia
-            <a class="right hide-on-small-only" href="#home">{{ trans("general.back to top") }}</a>
-        </div>
-    </div>
-</footer>
-<!-- === FOOTER === -->
-
 <script src="/js/materialize.min.js" type="text/javascript"></script> 					<!-- Materialize core JS -->
-<script src="/js/init.js" type="text/javascript"></script> 					          <!-- Init core JS -->
+<script src="/js/init.js" type="text/javascript"></script>
+
 <script>
     $(document).ready(function() {
         $('select').material_select();
     });
     $('.datepicker').pickadate({
         selectMonths: true, // Creates a dropdown to control month
-        selectYears: 15 // Creates a dropdown of 15 years to control year
+        selectYears: 2, // Creates a dropdown of 2 years to control year
+        format: 'yyyymmdd'
     });
 </script>
 

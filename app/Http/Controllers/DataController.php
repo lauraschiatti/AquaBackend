@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Data;
 use App\Nodes;
 use App\SensorsByNode;
 use App\Sensors;
 use Request;
 use App\Http\Requests;
-
-use App\Http\Controllers\Controller;
-use App\Data;
+use Illuminate\Support\Facades\Input;
 
 class dataController extends Controller
 {
@@ -21,9 +20,9 @@ class dataController extends Controller
     public function index()
     {
         //Mostrar sensores publicos
-        //$nodes = Nodes::where("type", "=", "public")->get();
+        $nodes = Nodes::where("type", "=", "public")->get();
 
-        $nodes = Nodes::all();
+        //$nodes = Nodes::all();
 
         $nodes_array = array();
 
@@ -59,14 +58,16 @@ class dataController extends Controller
             $size = count($nodes_array);
 
         }else{
-            $nodes_array = "No hay nodos creados";
+            $nodes_array = "No nodes created";
             $size = 0;
         }
 
         $nodes_array = array_chunk($nodes_array, 3);
+
+        $data_array = "No data found";
         //return $nodes_array[1][1]["sensors"];
         //return view('layout.table', compact('nodes_array', 'size'));
-        return view('layout.table', compact('nodes', 'nodes_array', 'size'));
+        return view('data.create_table', compact('nodes', 'nodes_array', 'size', 'data_array'));
 
     }
 
@@ -88,7 +89,71 @@ class dataController extends Controller
      */
     public function store(Request $request)
     {
-        return $input=Request::all();
+        //$input=Request::all();
+
+        //datos: 20160314130324 20160314130326 20160314130327 20160314130328 20160314130329 20160314130330 20160314130331
+
+        $data_array = array();
+        $sensors_unit_array = array();
+        $sensors_type_array = array();
+
+        //Dates
+        $initial_date = trim(Input::get('initial_date'));
+        $initial_time = trim(Input::get('initial_time'));
+        $final_date = trim(Input::get('final_date'));
+        $final_time = trim(Input::get('final_time'));
+
+        $initial = date($initial_date . $initial_time);
+        $final = date($final_date . $final_time);
+
+        $initial = date("20160314130324");
+        $final = date("20160314130329");
+
+
+        //Sensors
+        $sensors = Input::get('sensors');
+
+        for($i = 0; $i < count($sensors); $i++){
+
+            $data = Data::where("sensorbynode_id", "=", $sensors[$i])->get();
+
+
+            if (!$data->isEmpty()) {
+                foreach ($data as $datum) {
+                    $time = date($datum->time);
+
+                    if ($initial <= $time && $time <= $final) {
+                        array_push($data_array, $datum);
+
+                        //Sensor type and unit
+                        $sensor = SensorsByNode::where("id", "=", $sensors[$i])->first();
+
+                        if(!$sensor){
+
+                        }else{
+                            $sensor_data = Sensors::where("id", "=", $sensor -> sensor_type_id)->first();
+
+                            if(!$sensor_data){
+                                array_push($sensors_type_array, "type");
+                                array_push($sensors_unit_array, "unit");
+                            }else{
+                                array_push($sensors_type_array, $sensor_data -> type);
+                                array_push($sensors_unit_array, $sensor_data -> unit);
+                            }
+
+                        }
+                    }
+                }
+            } else{
+                $data_array = "No data found";
+            }
+        }
+
+        $sensors_size = count($data_array);
+
+        //return $sensors_type_array;
+
+        return view('data.data_table', compact('data_array', 'sensors_size', 'sensors_type_array', 'sensors_unit_array'));
     }
 
     /**
