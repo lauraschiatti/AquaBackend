@@ -96,6 +96,7 @@ class dataController extends Controller
         $data_array = array();
         $sensors_unit_array = array();
         $sensors_type_array = array();
+        $data_id = array();
 
         //Dates
         $initial_date = trim(Input::get('initial_date'));
@@ -124,6 +125,7 @@ class dataController extends Controller
 
                     if ($initial <= $time && $time <= $final) {
                         array_push($data_array, $datum);
+                        array_push($data_id, $datum->id);
 
                         //Sensor type and unit
                         $sensor = SensorsByNode::where("id", "=", $sensors[$i])->first();
@@ -151,9 +153,9 @@ class dataController extends Controller
 
         $sensors_size = count($data_array);
 
-        $sensors = json_encode($sensors);
+        $data_id = json_encode($data_id);
 
-        return view('data.data_table', compact('data_array', 'sensors_size', 'sensors_type_array', 'sensors_unit_array', 'sensors'));
+        return view('data.data_table', compact('data_array', 'sensors_size', 'sensors_type_array', 'sensors_unit_array', 'data_id'));
     }
 
     /**

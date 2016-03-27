@@ -15,7 +15,7 @@ class CreateDownloadsTable extends Migration
         Schema::create('downloads', function (Blueprint $table) {
             $table->increments('id');
             $table->string('user_id')->unsigned();
-            $table->json('sensors');
+            $table->json('data');
             $table->timestamps();
         });
     }

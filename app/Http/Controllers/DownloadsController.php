@@ -40,10 +40,11 @@ class DownloadsController extends Controller
 
         $download = new Downloads();
         $download->user_id = $data["user_id"];
-        $download->sensors = $data["sensors"];
+        $download->data = $data["data"];
         $download->save();
 
         return $download;
+        return redirect()->back();
     }
 
     /**
