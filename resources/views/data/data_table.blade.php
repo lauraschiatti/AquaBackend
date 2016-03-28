@@ -7,9 +7,6 @@
     <meta name="description" content="AquApp">
     <meta name="author" content="">
 
-    <!--csrf token-->
-    <meta name="csrf-token" content="{{csrf_token()}}">
-
     <title> AquApp | {{ trans("home.site") }} </title>
 
     <link href="/css/materialize.min.css" rel="stylesheet">               			<!-- Materialize core CSS -->
@@ -175,13 +172,13 @@
                         <li>
                             <button type="submit" id="csv" class="-text">csv</button>
                         </li>
-                        <li><button type="submit" id="txt" class="-text">txt</button>
+                        <li><button type="submit" id="excel" class="-text">excel</button>
                         </li>
                     </ul>
                 </div>
             {!! Form::close() !!}
         @endif
-        <div class="section">
+        <div id="div_table" class="section">
             <table id="data_table" class="responsive-table centered striped container">
                 <thead>
                 <tr>
@@ -226,11 +223,18 @@
     $(document).ready(function() {
         $('ul.tabs').tabs();
 
-        $('#csv').click(function(){
+        $('#csv').click(function(e){
             var csv = $("#data_table").table2CSV({
                 delivery: 'download'
             });
             window.open('data:text/csv;charset=UTF-8,' + encodeURIComponent(csv));
+            e.preventDefault();
+        });
+
+        $('#excel').click(function(e){
+            window.open('data:application/vnd.ms-excel,' + $('#div_table').html());
+            e.preventDefault();
+
         });
     });
 </script>

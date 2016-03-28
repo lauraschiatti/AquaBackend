@@ -6,6 +6,7 @@ use App\Data;
 use App\Nodes;
 use App\SensorsByNode;
 use App\Sensors;
+use App\Downloads;
 use Request;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Input;
