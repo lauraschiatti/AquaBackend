@@ -102,7 +102,7 @@
             </div>
         </div><br><br>
         <div class="container center">
-            <a class="btn btn-primary center" href="{{url('/sensors/create')}}">{{ trans("nodes.add new type") }}</a>
+            <a class="btn btn-primary center" href="{{url('/sensors/create')}}" target="_blank">{{ trans("nodes.add new type") }}</a>
         </div>
         <!--
         <dl name="sensors[]">

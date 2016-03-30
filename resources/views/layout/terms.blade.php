@@ -51,9 +51,9 @@
                     </section>
                     <li><a href="{{ url('/')}}">Home</a></li>
                     <li><a href="{{ url('contribute')}}">Contribute</a></li>
-                    <li><a href="#">Team</a></li>
-                    <li><a href="#">Wiki</a></li>
-                    <li><a href="{{ url('contact')}}">Contact</a></li>
+                    <li><a href="{{ url('team')}}">Team</a></li>
+                    <li><a href="https://github.com/IngenieriaDeSistemasUTB/AquaBackend/wiki">Wiki</a></li>
+                    <li><a href="https://github.com/IngenieriaDeSistemasUTB/AquaBackend/issues/new">Contact</a></li>
                     <div class="divider"></div>
                     <li><a href="{{ url('register')}}">Sign up</a></li>
                     <li><a href="{{ url('login')}}">Login</a></li>

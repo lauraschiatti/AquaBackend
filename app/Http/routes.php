@@ -10,15 +10,14 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-Route::get('/', function () {
+Route::get('/', function(){
+    return view('layout.home');
+});
+Route::get('home', function(){
     return view('layout.home');
 });
 
 Route::get('lang/{lang}', ['as'=>'lang.switch', 'uses'=>'HomeController@switchLanguage']);
-
-Route::get('home', function () {
-    return view('layout.home');
-});
 
 Route::get('contribute', function(){
    return view('layout.contribute');
@@ -30,9 +29,9 @@ Route::get('terms', function(){
     return view('layout.terms');
 });
 
-Route::get('contact', function(){
+/*Route::get('contact', function(){
     return view('layout.contact');
-});
+});*/
 
 Route::post('contact', 'UsersController@contact');
 
@@ -58,12 +57,12 @@ Route::get('profile/settings/{id}', function($id){
     return view('layout.user_settings', compact('user'));
 });
 
-// Authentication routes...
+// Authentication routes
 Route::get('login', 'Auth\AuthController@getLogin');
 Route::post('login', 'Auth\AuthController@postLogin');
 Route::get('logout', 'Auth\AuthController@getLogout');
 
-// Registration routes...
+// Registration routes
 Route::get('register', 'Auth\AuthController@getRegister');
 Route::post('register', 'Auth\AuthController@postRegister');
 
@@ -94,6 +93,9 @@ Route::resource('data', 'DataController');
 
 //Downloads
 Route::resource('downloads', 'DownloadsController');
+
+//Graphs
+Route::resource('graph', 'GraphsController');
 
 //Routes for testing
 Route::get('sensorsbynode', function(){

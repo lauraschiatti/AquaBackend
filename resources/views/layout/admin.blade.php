@@ -99,7 +99,7 @@
 
                         <li class="etiquette">{{ trans("general.configurations") }}</li>
                         <li><a href="{{url('/settings/'.Auth::user()->id)}}"><i class="material-icons left">settings</i>{{ trans("general.settings") }}</a></li>
-                        <li><a href="{{url('/contact')}}"><i class="material-icons left">turned_in</i>{{ trans("general.help &amp; feed") }}</a></li>
+                        <li><a href="https://github.com/IngenieriaDeSistemasUTB/AquaBackend/issues/new"><i class="material-icons left">turned_in</i>{{ trans("general.help &amp; feed") }}</a></li>
                         <li><a class="modal-trigger" href="#modal1"><i class="material-icons left">power_settings_new</i>{{ trans("general.log out") }}</a></li>
                     </div>
                 </ul>
@@ -135,7 +135,7 @@
 
                         <li class="etiquette">{{ trans("general.configurations") }}</li>
                         <li><a href="{{url('/settings')}}"><i class="material-icons left">settings</i>{{ trans("general.settings") }}</a></li>
-                        <li><a href="{{url('/contact')}}"><i class="material-icons left">turned_in</i>{{ trans("general.help &amp; feed") }}</a></li>
+                        <li><a href="https://github.com/IngenieriaDeSistemasUTB/AquaBackend/issues/new"><i class="material-icons left">turned_in</i>{{ trans("general.help &amp; feed") }}</a></li>
                         <li><a class="modal-trigger" href="#modal1"><i class="material-icons left">power_settings_new</i>{{ trans("general.log out") }}</a></li>
                     </div>
                 </ul>

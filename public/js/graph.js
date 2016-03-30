@@ -1,43 +1,52 @@
-/*
- * GRAPH01
- */
+$(document).ready(function () {
+    Highcharts.setOptions({
+        global: {
+            useUTC: true
+        }
+    });
 
-$(function () {
-    $(document).ready(function () {
-        Highcharts.setOptions({
-            global: {
-                useUTC: false
-            }
-        });
+    $.getJSON('/graph', function(object) {
+        var date = new Array();
+        var value = new Array();
+
+        var unit = object["unit"];
+        var type = object["type"];
+        var sensorbynode_id = object["sensorbynode_id"];
+        var node_id = object["node_id"];
+        var data = object["data"];
+        var count = data.length;
+
+        console.log(object);
+
+        for(var i=0; i<count; i++){
+            var year = data[i]["time"][0]+data[i]["time"][1]+data[i]["time"][2]+data[i]["time"][3];
+            var month = data[i]["time"][4]+data[i]["time"][5];
+            var day = data[i]["time"][6]+data[i]["time"][7];
+            var hours = data[i]["time"][8]+data[i]["time"][9];
+            var minutes = data[i]["time"][10]+data[i]["time"][11];
+            var seconds = data[i]["time"][12]+data[i]["time"][13];
+
+            var date_obj = new Date(Date.UTC(year, month, day, hours, minutes, seconds));
+            date.push(date_obj);
+            //date.push(parseInt(data[i]["time"]));
+            value.push(parseFloat(data[i]["value"]));
+        }
 
         $('#graph').highcharts({
-            chart: {
-                type: 'spline',
-                animation: Highcharts.svg, // don't animate in old IE
-                marginRight: 10,
-                events: {
-                    load: function () {
-
-                        // set up the updating of the chart each second
-                        var series = this.series[0];
-                        setInterval(function () {
-                            var x = (new Date()).getTime(), // current time
-                                y = Math.random();
-                            series.addPoint([x, y], true, true);
-                        }, 2000);
-                    }
-                }
-            },
             title: {
-                text: ''
+                text: 'Sensor Taken Data',
+                x: -20 //center
+            },
+            subtitle: {
+                text: 'Source: aquapp.utbweb.co',
+                x: -20
             },
             xAxis: {
-                type: 'datetime',
-                tickPixelInterval: 150
+                categories: date
             },
             yAxis: {
                 title: {
-                    text: 'Celsius Degrees'
+                    text: type+'('+unit+')'
                 },
                 plotLines: [{
                     value: 0,
@@ -46,34 +55,17 @@ $(function () {
                 }]
             },
             tooltip: {
-                formatter: function () {
-                    return '<b>' + this.series.name + '</b><br/>' +
-                        Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
-                        Highcharts.numberFormat(this.y, 2);
-                }
+                valueSuffix: '('+unit+')'
             },
             legend: {
-                enabled: false
-            },
-            exporting: {
-                enabled: false
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle',
+                borderWidth: 0
             },
             series: [{
-                name: 'Temperature',
-                data: (function () {
-                    // generate an array of random data
-                    var data = [],
-                        time = (new Date()).getTime(),
-                        i;
-
-                    for (i = -19; i <= 0; i += 1) {
-                        data.push({
-                            x: time + i * 1000,
-                            y: Math.random()
-                        });
-                    }
-                    return data;
-                }())
+                name: 'Sensor: '+ sensorbynode_id+' ( '+node_id+' ) ',
+                data: value
             }]
         });
     });

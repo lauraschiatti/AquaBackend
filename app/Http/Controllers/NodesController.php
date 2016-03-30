@@ -475,6 +475,14 @@ class NodesController extends Controller
             //In each iteration, add a char correspondent to $pos position in the $string to the hash string randomly
             $hash .= substr($string, $pos ,1);
         }
-        return $hash;
+
+        $nodes = Nodes::where('id', '=', $hash)->first();
+
+        if($nodes){
+            $this->generateHash();
+        }else{
+            return $hash;
+        }
+
     }
 }

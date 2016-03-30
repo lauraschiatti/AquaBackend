@@ -20,7 +20,7 @@ class dataController extends Controller
      */
     public function index()
     {
-        //Mostrar sensores publicos
+        //Public nodes
         $nodes = Nodes::where("type", "=", "public")->get();
 
         //$nodes = Nodes::all();
@@ -90,7 +90,7 @@ class dataController extends Controller
      */
     public function store(Request $request)
     {
-        //$input=Request::all();
+        //$input=Request::all(); get no post
 
         //datos: 20160314130324 20160314130326 20160314130327 20160314130328 20160314130329 20160314130330 20160314130331
 

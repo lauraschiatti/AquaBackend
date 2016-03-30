@@ -57,7 +57,7 @@
                     <li><a href="{{ url('contribute')}}">{{ trans("general.contribute") }}</a></li>
                     <li><a href="{{ url('team')}}">{{ trans("general.team") }}</a></li>
                     <li><a href="#">{{ trans("general.wiki") }}</a></li>
-                    <li><a href="{{ url('contact')}}">{{ trans("general.contact") }}</a></li>
+                    <li><a href="https://github.com/IngenieriaDeSistemasUTB/AquaBackend/issues/new">{{ trans("general.contact") }}</a></li>
                     <div class="divider"></div>
                     <li><a href="{{ url('register')}}">{{ trans("general.sign up") }}</a></li>
                     <li><a href="{{ url('login')}}">{{ trans("general.login") }}</a></li>
@@ -137,7 +137,7 @@
                 {{ trans("contribute.app documentation") }}</p>
             <div class="buttons">
                 <a href="https://github.com/IngenieriaDeSistemasUTB/AquaBackend'" class="btn btn-primary waves-effect waves-light">{{ trans("general.read our wiki") }}</a>
-                <a href="{{ url('contact')}}"class="btn btn-secundary waves-effect waves-light">{{ trans("general.contact support") }}</a>
+                <a href="https://github.com/IngenieriaDeSistemasUTB/AquaBackend/issues/new"class="btn btn-secundary waves-effect waves-light">{{ trans("general.contact support") }}</a>
             </div>
         </div>
     </section>
@@ -168,8 +168,8 @@
 
                     <h5>{{ trans("general.support") }}</h5>
                     <ul>
-                        <li><a href="#!">Wiki</a></li>
-                        <li><a href="{{ url('contact')}}">{{ trans("general.contact") }}</a></li>
+                        <li><a href="https://github.com/IngenieriaDeSistemasUTB/AquaBackend/wiki">Wiki</a></li>
+                        <li><a href="https://github.com/IngenieriaDeSistemasUTB/AquaBackend/issues/new">{{ trans("general.contact") }}</a></li>
                         <li><a href="{{ url('team')}}">{{ trans("general.team") }}</a></li>
                     </ul>
                 </div>

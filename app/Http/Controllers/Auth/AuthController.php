@@ -79,32 +79,16 @@ class AuthController extends Controller
         $email = trim(Input::get('email'));
         $password = Input::get('password');
 
-        if (Auth::attempt(['email' => $email, 'password' => $password, 'role' => 'user'])) {
+        if (Auth::attempt(['email' => $email, 'password' => $password])) {
             //change app timezone
             $userTimezone = Auth::user()->timezone;
             date_default_timezone_set($userTimezone);
             Config::set('app.timezone', $userTimezone);
 
-            return view('layout.home');
-        }
-
-        if (Auth::attempt(['email' => $email, 'password' => $password, 'role' => 'provider']) ||
-            Auth::attempt(['email' => $email, 'password' => $password, 'role' => 'superadmin'])) {
-            // Authentication passed...
-
-            //change app timezone
-            $userTimezone = Auth::user()->timezone;
-            date_default_timezone_set($userTimezone);
-            Config::set('app.timezone', $userTimezone);
-
-            return redirect()->action('DashboardController@showData');
-
-        }
-
-        if(!(Auth::attempt(['email' => $email, 'password' => $password]))){
+            return redirect()->back();
+        }else {
             $error = "WRONG USER OR PASSWORD";
             return view('auth.login', compact('error'));
-            //return User::where("email", "=", $email)->first();
         }
     }
 

@@ -49,7 +49,7 @@
                     <li><a href="{{ url('contribute')}}">{{ trans("general.contribute") }}</a></li>
                     <li><a href="{{ url('team')}}">{{ trans("general.team") }}</a></li>
                     <li><a href="https://github.com/IngenieriaDeSistemasUTB/AquaBackend.git">Wiki</a></li>
-                    <li><a href="{{ url('contact')}}">{{ trans("general.contact") }}</a></li>
+                    <li><a href="https://github.com/IngenieriaDeSistemasUTB/AquaBackend/issues/new">{{ trans("general.contact") }}</a></li>
                     <!-- Dropdown Structure -->
                     <li><a class="dropdown-button" href="#" data-beloworigin="true" data-activates="dropdown2"><i class="material-icons right">arrow_drop_down</i>{{ Config::get('languages')[App::getLocale()] }}</a></li>
                     <ul id="dropdown2" class="dropdown-content">
@@ -88,7 +88,7 @@
                     <li><a href="{{ url('contribute')}}">{{ trans("general.contribute") }}</a></li>
                     <li><a href="#">{{ trans("general.team") }}</a></li>
                     <li><a href="https://github.com/IngenieriaDeSistemasUTB/AquaBackend.git">Wiki</a></li>
-                    <li><a href="{{ url('contribute')}}">{{ trans("general.contact") }}</a></li>
+                    <li><a href="{{ url('contribute')}}">{{ trans("general.contribute") }}</a></li>
                     <div class="divider"></div>
                     <li class="no-padding">
                         <ul class="collapsible collapsible-accordion">
@@ -128,7 +128,9 @@
             <h5 class="light"><strong>{{ trans("home.real time statistics") }}</strong> {{ trans("home.of cities bays") }}</h5>
         </div>
 
-        <div id="graph01" class="col s12"><div id="graph"></div></div>
+        <div id="graph01" class="col s12">
+            <div id="graph"></div>
+        </div>
 
         <div class="row">
             <div class="white-text col s12 offset-m1 m10 offset-l1 l10">
@@ -283,7 +285,7 @@
                 {{ trans("contribute.app documentation") }}</p>
             <div class="buttons">
                 <a href="https://github.com/IngenieriaDeSistemasUTB/AquaBackend'" class="btn btn-primary waves-effect waves-light">{{ trans("general.read our wiki") }}</a>
-                <a href="{{ url('contact')}}" class="btn btn-secundary waves-effect waves-light">{{ trans("general.contact support") }}</a>
+                <a href="https://github.com/IngenieriaDeSistemasUTB/AquaBackend/issues/new" class="btn btn-secundary waves-effect waves-light">{{ trans("general.contact support") }}</a>
             </div>
         </div>
     </section>
@@ -314,8 +316,8 @@
 
                     <h5>{{ trans("general.support") }}</h5>
                     <ul>
-                        <li><a href="#!">Wiki</a></li>
-                        <li><a href="{{ url('contact')}}">{{ trans("general.contact") }}</a></li>
+                        <li><a href="https://github.com/IngenieriaDeSistemasUTB/AquaBackend/wiki">Wiki</a></li>
+                        <li><a href="https://github.com/IngenieriaDeSistemasUTB/AquaBackend/issues/new">{{ trans("general.contact") }}</a></li>
                         <li><a href="{{ url('team')}}">{{ trans("general.team") }}</a></li>
                     </ul>
                 </div>
