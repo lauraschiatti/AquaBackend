@@ -13,8 +13,8 @@
     <link href="/css/materialicons.css" rel="stylesheet">	                      <!-- Material Icons -->
 
     <script type="text/javascript" src="/js/jq/jquery.min.js"></script>					<!-- Jquery core JS -->
-    <script type="text/javascript" src="/js/highcharts.js"></script>            <!-- HighCharts core JS -->
-    <script type="text/javascript" src="/js/graph.js"></script>                 <!-- Graphs core JS -->
+    <script type="text/javascript" src="/js/highcharts/highcharts.js"></script>            <!-- HighCharts core JS -->
+    <script type="text/javascript" src="/js/graphs/graph_home.js"></script>                 <!-- Graphs core JS -->
     <!--favicon-->
     <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png">

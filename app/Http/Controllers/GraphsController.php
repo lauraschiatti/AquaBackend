@@ -8,6 +8,7 @@ use App\Nodes;
 use App\Sensors;
 use App\SensorsByNode;
 use App\Data;
+use Illuminate\Support\Facades\Auth;
 
 class GraphsController extends Controller
 {
@@ -16,9 +17,9 @@ class GraphsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function getHomeGraph()
     {
-        //Public nodes
+        //Show a random sensor of a public node
         $nodes = Nodes::where("type", "=", "public")->get();
 
         if(!$nodes->isEmpty()) {
@@ -37,6 +38,36 @@ class GraphsController extends Controller
         }
     }
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getDashboardGraph()
+    {
+        //User node
+        if(Auth::check()){
+            $user = Auth::user()->id;
+            $nodes = Nodes::where("user_id", "=", $user)->get();
+        }else{
+            $nodes = Nodes::where("type", "=", "public")->get();
+        }
+
+        if(!$nodes->isEmpty()) {
+            $count = count($nodes);
+
+            do {
+                $num = rand(0, $count - 1);
+                $node = $nodes[$num];
+                $data = self::getData($node);
+            }while(!is_array($data));
+
+            return $data;
+
+        }else{
+            return "no nodes";
+        }
+    }
     public function getData($node){
 
         $id = $node->id;
@@ -52,11 +83,6 @@ class GraphsController extends Controller
                             ->take(15)->get()->toArray();
 
             if($data){
-                /*$object = array(
-                    "node_id" => $data[0]["node_id"],
-                    "sensorbynode_id" => $data[0]["sensorbynode_id"]
-                );*/
-
                 $sensor_data = Sensors::where('id', '=', $sensor->sensor_type_id)->first();
 
                 $object = array(

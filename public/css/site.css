@@ -113,7 +113,7 @@ i.medium { font-size: 40px; }
     #title h5 { font-size: 1rem; }
 }
 
-#graph { /* To do: include other graphs*/
+#graph {
     width: 95%;
     height: 55vh;
     margin: 0 auto;

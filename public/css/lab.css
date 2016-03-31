@@ -13,6 +13,14 @@
 
  #modal1 { max-width: 450px; }
 
+ /***** Graph *******/
+#graph { /* To do: include other graphs*/
+    width: 95%;
+    height: 55vh;
+    margin: 0 auto;
+    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
 /***** Palette *****/
 .primary { background: #007EE5 !important; }
 

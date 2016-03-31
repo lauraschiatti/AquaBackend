@@ -32,7 +32,6 @@
     <meta name="msapplication-TileImage" content="/favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 
-
     <script src="/js/jq/jquery.min.js" type="text/javascript"></script>						<!-- Jquery core JS -->
 
     @yield('css')
@@ -98,8 +97,14 @@
                         @endif
 
                         <li class="etiquette">{{ trans("general.configurations") }}</li>
-                        <li><a href="{{url('/settings/'.Auth::user()->id)}}"><i class="material-icons left">settings</i>{{ trans("general.settings") }}</a></li>
-                        <li><a href="https://github.com/IngenieriaDeSistemasUTB/AquaBackend/issues/new"><i class="material-icons left">turned_in</i>{{ trans("general.help &amp; feed") }}</a></li>
+
+                        @if(Auth::check())
+                            <li><a href="{{url('/settings/'.Auth::user()->id)}}"><i class="material-icons left">settings</i>{{ trans("general.settings") }}</a></li>
+                        @else
+                            <li><a href="{{url('/')}}"><i class="material-icons left">settings</i>{{ trans("general.settings") }}</a></li>
+                        @endif
+
+                            <li><a href="https://github.com/IngenieriaDeSistemasUTB/AquaBackend/issues/new"><i class="material-icons left">turned_in</i>{{ trans("general.help &amp; feed") }}</a></li>
                         <li><a class="modal-trigger" href="#modal1"><i class="material-icons left">power_settings_new</i>{{ trans("general.log out") }}</a></li>
                     </div>
                 </ul>

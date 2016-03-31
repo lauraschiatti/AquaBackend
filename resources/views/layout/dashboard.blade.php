@@ -10,13 +10,17 @@
   <div class="desktop row container">
       <div class="chip right">
           <img src="img/face.jpg" alt="Contact Person">
-          <a href="{{url('users',$user->id)}}">{{$user->name}}</a>
+          @if(Auth::check())
+              <a href="{{url('users',$user->id)}}">{{$user->name}}</a>
+          @else
+              <a href="{{url('/')}}">User</a>
+          @endif
+
       </div>
      <!-- GRAPH -->
-     <!-- ALERT - Use #dash_graph for link the graph in .js file -->
-     <div class="col s12" id="dash_graph">
-         <h2 class="white-text">HERE GOES A GRAPH THAT DEPENDS ON THE ROL</h2>
-     </div>
+      <div id="graph01" class="col s12">
+          <div id="graph"></div>
+      </div>
      <!-- GRAPH -->
 
      <div id="second">
@@ -55,7 +59,6 @@
          </div>
      </div>
       ************** Use this for Providers ***************** -->
-
 
         <!-- ************** This for admin ***************** -->
        <div class="col s6 m2 l2" id="boxes">
@@ -112,4 +115,10 @@
    </div>
  </div>
 <!-- DESKTOP -->
+@stop
+
+@section('javascript')
+    <script type="text/javascript" src="/js/highcharts/highcharts.js"></script>            <!-- HighCharts core JS -->
+    <script type="text/javascript" src="/js/graphs/graph_dash.js"></script>                 <!-- Graphs core JS -->
+    <script type="text/javascript" src="/js/highcharts/sand-signika.js"></script>
 @stop

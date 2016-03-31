@@ -76,7 +76,7 @@ main {
 }
 
 /*****Datepicker*****/
-#date .btn-flat, #date .btn-flat:hover, #date .btn-flat:focus {
+/*#date .btn-flat, #date .btn-flat:hover, #date .btn-flat:focus {
     background: #007EE5;
     color: white;
     box-shadow: none !important;
@@ -93,7 +93,7 @@ main {
 
 .picker__day.picker__day--today {
     color: #007EE5;
-}
+}*/
 
 /***** Navbar *****/
 nav {

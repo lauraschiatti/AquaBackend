@@ -1,3 +1,8 @@
+
+/**
+ * Created by lauricdd on 30/03/16.
+ */
+
 $(document).ready(function () {
     Highcharts.setOptions({
         global: {
@@ -5,7 +10,7 @@ $(document).ready(function () {
         }
     });
 
-    $.getJSON('/graph', function(object) {
+    $.getJSON('/dashboard/graph', function(object) {
         var date = new Array();
         var value = new Array();
 

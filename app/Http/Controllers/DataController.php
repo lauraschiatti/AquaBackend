@@ -105,6 +105,7 @@ class dataController extends Controller
         $final_date = trim(Input::get('final_date'));
         $final_time = trim(Input::get('final_time'));
 
+
         $initial = date($initial_date . $initial_time);
         $final = date($final_date . $final_time);
 

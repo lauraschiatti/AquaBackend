@@ -95,7 +95,8 @@ Route::resource('data', 'DataController');
 Route::resource('downloads', 'DownloadsController');
 
 //Graphs
-Route::resource('graph', 'GraphsController');
+Route::get('home/graph', 'GraphsController@getHomeGraph');
+Route::get('dashboard/graph', 'GraphsController@getDashboardGraph');
 
 //Routes for testing
 Route::get('sensorsbynode', function(){
@@ -106,7 +107,7 @@ Route::get('timezone', function(){
     return config('app.timezone');
 });
 
-Route::get('messages', function(){
+/*Route::get('messages', function(){
     return \App\Contact::all();
 });
 
@@ -117,4 +118,4 @@ Route::get('date', function(){
 
 Route::get('users', function(){
     return \App\User::all();
-});
+});*/

@@ -13,8 +13,12 @@
     <link href="/css/materialicons.css" rel="stylesheet">	                      <!-- Material Icons -->
 
     <script type="text/javascript" src="/js/jq/jquery.min.js"></script>					<!-- Jquery core JS -->
-    <script type="text/javascript" src="/js/highcharts.js"></script>            <!-- HighCharts core JS -->
-    <script type="text/javascript" src="/js/graph.js"></script>                 <!-- Graphs core JS -->
+
+    <!--Datepicker-->
+    <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <script src="/js/jq/jquery.timepicker.js" type="text/javascript"></script>
+
     <!--favicon-->
     <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png">
@@ -33,25 +37,6 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
-
-    <script>
-        function ifChecked(checkbox, node_id) {
-            if (checkbox.checked)
-                document.getElementsByClassName('.').disabled = false;
-            else
-                document.getElementById('register_button').disabled = true;
-        }
-    </script>
-
-    <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
-    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-
-    <!-- Javascript -->
-    <script>
-        $(function() {
-            $("#datepicker-13").datepicker();
-        });
-    </script>
 
 </head>
 <body>
@@ -140,7 +125,6 @@
 </header>
 <!-- === NAVBAR === -->
 
-<p>Enter Date: <input type="text" id="datepicker-13"></p>
 <section class="section" id="home">
     <div id="title">
         <h3 class="light">Selecciona datos</h3>
@@ -163,7 +147,7 @@
                                 <dl class="col s12 4 l4">
                                     <dt>
                                         <p>
-                                            <input type="checkbox" id="{{ ucwords($node_data->id) }}" onChange="ifChecked(this);"/>
+                                            <input type="checkbox" id="{{ ucwords($node_data->id) }}" onChange="ifChecked(this, '<?php echo ucwords($node_data->id); ?>');">
                                             <label for="{{ ucwords($node_data->id) }}">{{ ucwords($node_data->name) }}</label>
                                         </p>
                                     </dt>
@@ -171,7 +155,7 @@
                                         @if(is_array ($nodes_array[$i][$j]["sensors"]))
                                             @foreach($nodes_array[$i][$j]["sensors"] as $key => $value) 
                                                 <div class="left-align"> 
-                                                    <input type="checkbox" id="{{$value["sensor_id"]}}" name="sensors[]" value="{{$value["sensor_id"]}}" /> 
+                                                    <input type="checkbox" class="{{ ucwords($node_data->id) }}" id="{{$value["sensor_id"]}}" name="sensors[]" value="{{$value["sensor_id"]}}" /> 
                                                     <label for="{{$value["sensor_id"]}}">{{ucwords($value["sensor_type"])}} - {{ucwords($value["sensor_unit"])}}</label> 
                                                 </div> 
                                             @endforeach
@@ -190,6 +174,8 @@
                 </div>
             @endif
 
+             <input type="text" name="initial_date" class="timepicker center" required>
+
             <div id="date" class="container">
                 <h5 class="center">Rango de fechas</h5>
                 <div class="row">
@@ -197,11 +183,11 @@
                         <p class="center">Inicio</p>
                     </div>
                     <div class="col s6 m2 l2">
-                        <input type="date" name="initial_date" class="datepicker center">
+                        <input type="text" name="initial_date" class="datepicker center" required>
                         <i class="material-icons prefix">event</i>
                     </div>
                     <div class="col s6 m2 l2">
-                        <input type="time" name="initial_time">
+                        <input type="time" name="initial_time" step="1">
                         <i class="material-icons prefix">alarm</i>
                     </div>
 
@@ -209,11 +195,11 @@
                         <p class="center">Fin</p>
                     </div>
                     <div class="col s6 m2 l2">
-                        <input type="date" name="final_date" class="datepicker center">
+                        <input type="text" name="final_date" class="datepicker center" required>
                         <i class="material-icons prefix">event</i>
                     </div>
                     <div class="col s6 m2 l2">
-                        <input type="time" name="final_time">
+                        <input type="time" name="final_time" step="1">
                         <i class="material-icons prefix">alarm</i>
                     </div>
                 </div>
@@ -233,12 +219,38 @@
     $(document).ready(function() {
         $('select').material_select();
     });
-    $('.datepicker').pickadate({
+    /*$('.datepicker').pickadate({
         selectMonths: true, // Creates a dropdown to control month
         selectYears: 2, // Creates a dropdown of 2 years to control year
         format: 'yyyymmdd'
-    });
-</script>
+    });*/
 
+    $(function() {
+        $(".datepicker").datepicker({ dateFormat: 'yymmdd' });
+    })
+
+    $('.timepicker').timepicker({});
+
+    function ifChecked(checkbox, id) {
+        var str1 = ".";
+        var str2 = id;
+        var id = str1.concat(str2);
+
+        //alert($(id).length);
+        if (checkbox.checked) {
+            /*$(id).each(function() {
+                if($(this).not(':checked'))
+                    $(this).attr('checked', true);
+            });*/
+            $(id).attr('checked', true);
+        }else {
+            $(id).attr('checked', false);
+            /*$(id).each(function() {
+             if($(this).is(':checked'))
+             $(this).attr('checked', false);
+             });*/
+        }
+    }
+</script>
 </body>
 </html>
