@@ -43,7 +43,7 @@ class DownloadsController extends Controller
 
         $download = new Downloads();
         $download->user_id = $data["user_id"];
-        $download->data = $data["data"];
+        $download->sensors = $data["sensors"];
         $download->save();
 
         return redirect()->back();

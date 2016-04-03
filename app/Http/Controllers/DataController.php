@@ -120,7 +120,6 @@ class dataController extends Controller
 
             $data = Data::where("sensorbynode_id", "=", $sensors[$i])->get();
 
-
             if (!$data->isEmpty()) {
                 foreach ($data as $datum) {
                     $time = date($datum->time);
@@ -155,9 +154,10 @@ class dataController extends Controller
 
         $sensors_size = count($data_array);
 
-        $data_id = json_encode($data_id);
+        $sensors = json_encode($sensors);
 
-        return view('data.data_table', compact('data_array', 'sensors_size', 'sensors_type_array', 'sensors_unit_array', 'data_id'));
+
+        return view('data.data_table', compact('data_array', 'sensors_size', 'sensors_type_array', 'sensors_unit_array', 'sensors'));
     }
 
     /**

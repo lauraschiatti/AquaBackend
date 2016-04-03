@@ -165,7 +165,7 @@
                     </a>
 
                     <!--inputs-->
-                    <input type="text" name="data" value="{{$data_id}}" style="display: none;">
+                    <input type="text" name="sensors" value="{{$sensors}}" style="display: none;">
                     <input type="text" name="user_id" value="{{Auth::user()->id}}" style="display: none;">
 
                     <ul id="files" class="dropdown-content active">
