@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Downloads;
 use App\User;
 use Auth;
 use App\Nodes;
@@ -24,28 +25,35 @@ class DashboardController extends Controller
 
         if(Auth::check()){
             $mynodes = Nodes::where("user_id", "=", Auth::user()->id)->get()->count();
+
         }else{
             $mynodes = 0;
         }
 
-        if (Sensors::all()->count() == null){
+        $sensors = Sensors::all()->count();
+
+        /*if ($sensors->isEmpty()){
             $sensors = 0;
-        }else{
-            $sensors = Sensors::all()->count();
-        }
+        }*/
 
         $nodes = Nodes::all()->count();
 
-        if ($nodes == null){
+        /*if ($nodes->isEmpty()){
             $nodes = 0;
-        }
+        }*/
 
         $users = User::all()->count();
 
-        if ($users == null){
+        /*if ($users->isEmpty()){
             $users = 0;
-        }
+        }*/
 
-        return view('layout.dashboard', compact('user', 'sensors', 'nodes','mynodes','users'));
+        $downloads = Downloads::all()->count();
+
+        /*if ($downloads->isEmpty()){
+            $downloads = 0;
+        }*/
+
+        return view('layout.dashboard', compact('user', 'sensors', 'nodes','mynodes', 'users', 'downloads'));
     }
 }

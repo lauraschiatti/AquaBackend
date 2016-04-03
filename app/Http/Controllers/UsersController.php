@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Contact;
+use App\Downloads;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Request;
@@ -105,8 +105,15 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        $user=User::find($id);
-        return view('users.show',compact('user'));
+        $user = User::find($id);
+
+        if(!$user){
+            $user = "user";
+        }
+
+        $downloads = Downloads::where('user_id', '=', $id)->get()->count();
+
+        return view('users.show',compact('user', 'downloads'));
     }
 
     /**
@@ -195,7 +202,7 @@ class UsersController extends Controller
     /*
      * Recibir mensaje de contacto
      */
-    public function contact(){
+    /*public function contact(){
         $message = Request::all();
         Contact::create($message);
 
@@ -204,9 +211,22 @@ class UsersController extends Controller
         $contact->sender_email = Input::get('email');;
         $contact->type = Input::get('type');;
         $contact->message = Input::get('message');;
-        $contact->save();*/
+        $contact->save();
 
-        return $message;//redirect('books');
+        return $message;
+    }*/
+
+
+    public function getUserProfile($id){
+        $user = User::where("id", "=", $id)->first();
+
+        if(!$user){
+            $user = "user";
+        }
+
+        $downloads = Downloads::where('user_id', '=', $id)->get()->count();
+
+        return view('layout.user_settings', compact('user', 'downloads'));
     }
 
 

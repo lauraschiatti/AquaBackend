@@ -51,11 +51,7 @@ Route::get('settings/{id}', function($id){
     return view('layout.settings', compact('user', 'zones_array'));
 });
 
-Route::get('profile/settings/{id}', function($id){
-    $user = \App\User::where("id", "=", $id)->first();
-
-    return view('layout.user_settings', compact('user'));
-});
+Route::get('profile/settings/{id}', 'UsersController@getUserProfile');
 
 // Authentication routes
 Route::get('login', 'Auth\AuthController@getLogin');
@@ -109,8 +105,8 @@ Route::get('timezone', function(){
     return config('app.timezone');
 });
 
-Route::get('downloads', function(){
-    return \App\Downloads::all();
+Route::get('users', function(){
+    return \App\User::all();
 });
 
 /*Route::get('date', function(){

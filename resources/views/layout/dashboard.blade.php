@@ -101,7 +101,7 @@
          </div>
      </div>
      <div class="col s6 m4 l4" id="boxes">
-        <h2 class="light title">15233</h2>  <!-- Here all Downloads -->
+        <h2 class="light title">{{$users}}</h2>  <!-- Here all Downloads -->
         <div id="box5">
           <div class="progress">
              <div class="determinate" style="width: 20%"></div>

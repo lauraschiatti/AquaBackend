@@ -86,7 +86,7 @@
                     <h6 class="light">{{$user->email}}</h6>
                     <span class="light" style="text-transform: uppercase;"><strong>{{$user->role}}</strong></span>
                     <div class="divider"></div>
-                    <h6 class="light"><strong>100</strong> {{ trans("general.downloads") }}</h6>
+                    <h6 class="light"><strong>{{$downloads}}</strong> {{ trans("general.downloads") }}</h6>
                     <div class="divider"></div>
 
                     {!! Form::open(['method' => 'DELETE', 'route'=>['users.destroy', $user->id]])!!}

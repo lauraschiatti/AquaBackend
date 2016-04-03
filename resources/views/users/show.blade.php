@@ -21,7 +21,7 @@
                     <span class="light" style="text-transform: uppercase; font-size: 1.2rem;"><strong>{{$user->role}}</strong></span>
                     <br><br>
                     <div class="divider"></div>
-                    <p class="light" style="font-size: 1em;"><strong>100</strong> {{ trans("general.downloads") }}</p>
+                    <p class="light" style="font-size: 1em;"><strong>{{$downloads}}</strong> {{ trans("general.downloads") }}</p>
                     <div class="divider"></div>
                     <p class="light" style="font-size: 1em;"><strong>{{ trans("settings.timezone") }}</strong><br><br>UTC/GMT -05:00 {{$user->timezone}}</p>
                     <a href="{{ URL::previous() }}" class="btn btn-primary right hide-on-med-and-down">{{ trans("general.back") }}</a>
