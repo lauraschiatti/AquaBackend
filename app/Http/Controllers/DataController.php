@@ -18,7 +18,7 @@ class dataController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function chooseData()
     {
         //Public nodes
         $nodes = Nodes::where("type", "=", "public")->get();
@@ -88,7 +88,7 @@ class dataController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function showData()
     {
         //$input=Request::all(); get no post
 

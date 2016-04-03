@@ -132,7 +132,7 @@
     </div>
 
     <div id="form">
-        {!! Form::open(['url' => 'data']) !!}
+        {!! Form::open(['url' => 'data/table', 'method' => 'GET']) !!}
             @if ($size == 0)
                 <div class="warning-box" id="sensors_warning_box">
                     <p><i class="material-icons">feedback</i><span>No hay nodos en el sistema</span></p>
@@ -174,7 +174,7 @@
                 </div>
             @endif
 
-             <input type="text" name="initial_date" class="timepicker center" required>
+             <!--<input type="text" name="initial_date" class="timepicker center" required>-->
 
             <div id="date" class="container">
                 <h5 class="center">Rango de fechas</h5>

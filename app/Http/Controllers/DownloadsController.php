@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Downloads;
-use Illuminate\Http\Request;
+use Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -38,13 +38,15 @@ class DownloadsController extends Controller
      */
     public function store(Request $request)
     {
-        return Downloads::all();
-        //$data = $request::all();
+        //return Downloads::all();
+        $data = $request::all();
 
-        //$download = new Downloads();
-        //$download->user_id = $data["user_id"];
-        //$download->data = $data["data"];
-        //$download->save();
+        $download = new Downloads();
+        $download->user_id = $data["user_id"];
+        $download->data = $data["data"];
+        $download->save();
+
+        return redirect()->back();
     }
 
     /**

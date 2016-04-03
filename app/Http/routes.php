@@ -89,7 +89,9 @@ Route::resource('sensors', 'SensorsController');
 //Sync random generated data routes
 Route::get('sync/{data}', 'SyncController@postData');
 
-Route::resource('data', 'DataController');
+//Data
+Route::get('data', 'DataController@chooseData');
+Route::get('data/table', 'DataController@showData');
 
 //Downloads
 Route::resource('downloads', 'DownloadsController');
@@ -107,11 +109,11 @@ Route::get('timezone', function(){
     return config('app.timezone');
 });
 
-/*Route::get('messages', function(){
-    return \App\Contact::all();
+Route::get('downloads', function(){
+    return \App\Downloads::all();
 });
 
-Route::get('date', function(){
+/*Route::get('date', function(){
     return \App\Data::all();
 });
 

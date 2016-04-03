@@ -228,13 +228,10 @@
                 delivery: 'download'
             });
             window.open('data:text/csv;charset=UTF-8,' + encodeURIComponent(csv));
-            e.preventDefault();
         });
 
         $('#excel').click(function(e){
             window.open('data:application/vnd.ms-excel,' + $('#div_table').html());
-            e.preventDefault();
-
         });
     });
 </script>
