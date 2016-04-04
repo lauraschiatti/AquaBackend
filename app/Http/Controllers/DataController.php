@@ -90,8 +90,6 @@ class dataController extends Controller
      */
     public function showData()
     {
-        //$input=Request::all(); get no post
-
         //datos: 20160314130324 20160314130326 20160314130327 20160314130328 20160314130329 20160314130330 20160314130331
 
         $data_array = array();
@@ -101,17 +99,18 @@ class dataController extends Controller
 
         //Dates
         $initial_date = trim(Input::get('initial_date'));
-        $initial_time = trim(Input::get('initial_time'));
         $final_date = trim(Input::get('final_date'));
-        $final_time = trim(Input::get('final_time'));
 
+        $initial_time = trim(Input::get('initial_time'));
+        $initial_time = $initial_time[0].$initial_time[1].$initial_time[3].$initial_time[4].$initial_time[6].$initial_time[7];
+        $final_time = trim(Input::get('final_time'));
+        $final_time = $final_time[0].$final_time[1].$final_time[3].$final_time[4].$final_time[6].$final_time[7];
 
         $initial = date($initial_date . $initial_time);
         $final = date($final_date . $final_time);
 
         $initial = date("20160314130324");
         $final = date("20160314130329");
-
 
         //Sensors
         $sensors = Input::get('sensors');

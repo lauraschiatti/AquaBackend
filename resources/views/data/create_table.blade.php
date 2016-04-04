@@ -17,7 +17,6 @@
     <!--Datepicker-->
     <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
     <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-    <script src="/js/jq/jquery.timepicker.js" type="text/javascript"></script>
 
     <!--favicon-->
     <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png">
@@ -174,8 +173,6 @@
                 </div>
             @endif
 
-             <!--<input type="text" name="initial_date" class="timepicker center" required>-->
-
             <div id="date" class="container">
                 <h5 class="center">Rango de fechas</h5>
                 <div class="row">
@@ -187,7 +184,7 @@
                         <i class="material-icons prefix">event</i>
                     </div>
                     <div class="col s6 m2 l2">
-                        <input type="time" name="initial_time" step="1">
+                        <input type="time" name="initial_time" step=1 required>
                         <i class="material-icons prefix">alarm</i>
                     </div>
 
@@ -199,7 +196,7 @@
                         <i class="material-icons prefix">event</i>
                     </div>
                     <div class="col s6 m2 l2">
-                        <input type="time" name="final_time" step="1">
+                        <input type="time" name="final_time" step=1  required>
                         <i class="material-icons prefix">alarm</i>
                     </div>
                 </div>
@@ -229,8 +226,6 @@
         $(".datepicker").datepicker({ dateFormat: 'yymmdd' });
     })
 
-    $('.timepicker').timepicker({});
-
     function ifChecked(checkbox, id) {
         var str1 = ".";
         var str2 = id;
@@ -251,6 +246,7 @@
              });*/
         }
     }
+
 </script>
 </body>
 </html>
