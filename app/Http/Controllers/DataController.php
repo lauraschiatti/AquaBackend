@@ -102,9 +102,9 @@ class dataController extends Controller
         $final_date = trim(Input::get('final_date'));
 
         $initial_time = trim(Input::get('initial_time'));
-        $initial_time = $initial_time[0].$initial_time[1].$initial_time[3].$initial_time[4].$initial_time[6].$initial_time[7];
+        //$initial_time = $initial_time[0].$initial_time[1].$initial_time[3].$initial_time[4].$initial_time[6].$initial_time[7];
         $final_time = trim(Input::get('final_time'));
-        $final_time = $final_time[0].$final_time[1].$final_time[3].$final_time[4].$final_time[6].$final_time[7];
+        //$final_time = $final_time[0].$final_time[1].$final_time[3].$final_time[4].$final_time[6].$final_time[7];
 
         $initial = date($initial_date . $initial_time);
         $final = date($final_date . $final_time);
