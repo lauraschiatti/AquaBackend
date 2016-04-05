@@ -64,8 +64,10 @@ main {
 
 /***** Button Settings *****/
 .btn-log, .btn-log:hover, .btn-log:focus {
-    background: #FFFFFF;
-    color: #007EE5;
+   background: #2797FF;
+   color: #FFF;
+   box-shadow: none !important;
+   -webkit-box-shadow:none !important;
 }
 
 .navbar-fixed .btn-flat, .btn-flat:hover, .btn-flat:focus {
@@ -447,8 +449,8 @@ textarea.materialize-textarea:focus:not([readonly]) {
 
 /***** secundary *****/
 .btn-secundary, .btn-secundary:hover, .btn-secundary:focus {
-    background: #FFFFFF;
-    color: #007EE5;
+    background: #007EE5;
+    color: #FFF;
 }
 
 /********************************************

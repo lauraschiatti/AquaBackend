@@ -88,20 +88,6 @@
                     <li><a href="https://github.com/IngenieriaDeSistemasUTB/AquaBackend.git">Wiki</a></li>
                     <li><a href="{{ url('contribute')}}">{{ trans("general.contribute") }}</a></li>
                     <div class="divider"></div>
-                    <li class="no-padding">
-                        <ul class="collapsible collapsible-accordion">
-                            <li>
-                                <a class="collapsible-header"><i class="mdi-navigation-arrow-drop-down"></i>{{ Config::get('languages')[App::getLocale()] }}</a>
-                                <div class="collapsible-body">
-                                    <ul>
-                                        @foreach (Config::get('languages') as $lang => $language)
-                                            <li><a href="{{ route('lang.switch', $lang) }}">{{$language}}</a></li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
 
                     @if(Auth::check())
                         @if(Auth::user()->role == 'superadmin' or Auth::user()->role == 'provider')
@@ -115,6 +101,26 @@
                         <li><a href="{{ url('register')}}">{{ trans("general.sign up") }}</a></li>
                         <li><a href="{{ url('login')}}">{{ trans("general.login") }}</a></li>
                     @endif
+
+                    <div class="divider"></div>
+                    <!--<li class="no-padding">
+                      <ul class="collapsible collapsible-accordion">
+                            <li>
+                                <a class="collapsible-header"><i class="mdi-navigation-arrow-drop-down"></i>{{ Config::get('languages')[App::getLocale()] }}</a>
+                                <div class="collapsible-body">
+                                    <ul>
+                                        @foreach (Config::get('languages') as $lang => $language)
+                                            <li><a href="{{ route('lang.switch', $lang) }}">{{$language}}</a></li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>-->
+
+                    @foreach (Config::get('languages') as $lang => $language)
+                        <li><a href="{{ route('lang.switch', $lang) }}">{{$language}}</a></li>
+                    @endforeach
 
                 </ul>
             </div>
@@ -140,7 +146,7 @@
                 <p class="light">
                     <i class="material-icons left">info</i>{{ trans("home.the graph shown above reflects") }}
                 </p>
-                <a href="{{ url('data')}}" class="btn btn-log waves-effect waves-dark light"><i class="material-icons left">playlist_add</i>{{ trans("home.click to get data") }}</a>
+                <a href="{{ url('data')}}" class="btn btn-down waves-effect waves-dark light"><i class="material-icons left">playlist_add</i>{{ trans("home.click to get data") }}</a>
             </div>
         </div>
     </section>

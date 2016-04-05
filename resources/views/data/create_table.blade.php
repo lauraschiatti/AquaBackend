@@ -203,10 +203,10 @@
             </div>
 
             <div class="col s12">
-                <p class="center"><button class="btn waves-effect waves-light" type="submit">VER TABLA</button></p>
+                <p class="center"><button class="btn btn-secundary waves-effect waves-light" type="submit">VER TABLA</button></p>
             </div>
         {!! Form::close() !!}
-    </div>
+    </div><br><br><br>
 </section>
 
 <script src="/js/materialize.min.js" type="text/javascript"></script> 					<!-- Materialize core JS -->
