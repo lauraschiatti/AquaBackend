@@ -12,8 +12,7 @@
     <link href="/css/materialize.min.css" rel="stylesheet">               					           <!-- Materialize core CSS -->
     <link href="/css/lab.css" rel="stylesheet">                         						           <!-- Lab core CSS -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">	 <!-- Material Icons -->
-    <link href="/css/materialicons.css" rel="stylesheet">	 <!-- Material Icons -->
-    <!--favicon-->
+    
     <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="/favicon/apple-icon-72x72.png">

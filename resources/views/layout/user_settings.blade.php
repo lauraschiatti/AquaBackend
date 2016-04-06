@@ -9,7 +9,8 @@
 
     <link href="/css/materialize.min.css" rel="stylesheet">               					           <!-- Materialize core CSS -->
     <link href="/css/site.css" rel="stylesheet">                         						         <!-- Site core CSS -->
-    <link href="/css/materialicons.css" rel="stylesheet">	 <!-- Material Icons -->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> <!-- Material Icons -->
+
 
     <!--favicon-->
     <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png">
@@ -29,7 +30,7 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
-    
+
 </head>
 <body>
 
