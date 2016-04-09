@@ -143,7 +143,7 @@
                         <div class="row">
                             <?php $j = 0; ?>
                             @foreach ($node as $node_data)
-                                <dl class="col s12 4 l4">
+                                <dl class="col s12 m4 l4">
                                     <dt>
                                         <p>
                                             <input type="checkbox" id="{{ ucwords($node_data->id) }}" onChange="ifChecked(this, '<?php echo ucwords($node_data->id); ?>');">

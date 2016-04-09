@@ -10,12 +10,11 @@
 
     <link href="/css/materialize.min.css" rel="stylesheet">               			<!-- Materialize core CSS -->
     <link href="/css/site.css" rel="stylesheet">                         				<!-- Site core CSS -->
-    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> <!-- Material Icons -->
+    <link href="/css/materialicons.css" rel="stylesheet"> <!-- Material Icons -->
 
 
     <script type="text/javascript" src="/js/jq/jquery.min.js"></script>					<!-- Jquery core JS -->
-    <script type="text/javascript" src="/js/highcharts.js"></script>            <!-- HighCharts core JS -->
-    <script src="http://code.highcharts.com/highcharts-more.js"></script>       <!-- HighCharts-more core JS -->
+    <script type="text/javascript" src="/js/highcharts/highcharts.js"></script>            <!-- HighCharts core JS -->
 
     <!--favicon-->
     <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png">

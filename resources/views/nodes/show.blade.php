@@ -92,6 +92,6 @@
         </ul>
 
         <br>
-        <a href="{{url('nodes')}}" class="btn btn-primary right hide-on-med-and-down">{{ trans("general.back") }}</a>
+        <a href="{{ URL::previous() }}" class="btn btn-primary right hide-on-med-and-down">{{ trans("general.back") }}</a>
     </div>
 @stop

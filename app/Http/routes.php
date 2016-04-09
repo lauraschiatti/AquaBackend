@@ -105,11 +105,6 @@ Route::get('timezone', function(){
     return config('app.timezone');
 });
 
-/*Route::get('date', function(){
-    return \App\Data::all();
+Route::get('downloads', function(){
+    return \App\Downloads::all();
 });
-
-
-Route::get('users', function(){
-    return \App\User::all();
-});*/

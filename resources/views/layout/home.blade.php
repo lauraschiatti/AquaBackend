@@ -141,6 +141,8 @@
             <div id="graph"></div>
         </div>
 
+        <br><br>
+
         <div class="row">
             <div class="white-text col s12 offset-m1 m10 offset-l1 l10">
                 <p class="light">

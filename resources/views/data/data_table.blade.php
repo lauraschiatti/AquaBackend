@@ -14,8 +14,11 @@
     <link href="/css/materialicons.css" rel="stylesheet">	                      <!-- Material Icons -->
 
     <script type="text/javascript" src="/js/jq/jquery.min.js"></script>					<!-- Jquery core JS -->
-    <script type="text/javascript" src="/js/highcharts.js"></script>            <!-- HighCharts core JS -->
-    <script type="text/javascript" src="/js/graph.js"></script>                 <!-- Graphs core JS -->
+    <!-- HighCharts core JS -->
+
+    <script type="text/javascript" src="/js/jquery.battatech.excelexport.js"></script>
+
+
     <!--favicon-->
     <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png">
@@ -172,7 +175,7 @@
                         <li>
                             <button type="submit" id="csv" class="-text">csv</button>
                         </li>
-                        <li><button type="submit" id="excel" class="-text">excel</button>
+                        <li><a id="excel" href="#" download="" class="-text">excel</a>
                         </li>
                     </ul>
                 </div>
@@ -231,7 +234,13 @@
         });
 
         $('#excel').click(function(e){
-            window.open('data:application/vnd.ms-excel,' + $('#div_table').html());
+            var uri = $("#data_table").battatech_excelexport({
+                containerid: "tblExport"
+                , datatype: 'table'
+                , returnUri: true
+            });
+
+            $(this).attr('download', 'ExportToExcel.xls').attr('href', uri).attr('target', '_blank');
         });
     });
 </script>
