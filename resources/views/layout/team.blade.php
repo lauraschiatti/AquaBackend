@@ -103,8 +103,8 @@
           </div>
       </div>
 
-      <ul class="container collection">
-          @for ($i = 0; $i < $num_providers; $i++)
+      <!--<ul class="container collection">
+          {{--@for ($i = 0; $i < $num_providers; $i++)
               <li class="collection-item avatar">
                   <img src="images/yuna.jpg" alt="" class="circle">
                   <span class="title">{{$providers[$i]->id}}</span>
@@ -113,7 +113,7 @@
                   </p>
                   <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
               </li>
-          @endfor
+          @endfor--}}
       </ul>
   </section>
   <!-- === TEAM === -->

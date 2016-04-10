@@ -39,16 +39,23 @@ Route::get('dashboard', 'DashboardController@showData');
 
 Route::get('settings/{id}', function($id){
     $user = \App\User::where("id", "=", $id)->first();
+    if($user){
+        $zones_array = array();
+        $timestamp = time();
+        foreach(timezone_identifiers_list() as $key => $zone) {
+            date_default_timezone_set($zone);
+            $zones_array[$key]['zone'] = $zone;
+            $zones_array[$key]['diff_from_GMT'] = 'UTC/GMT ' . date('P', $timestamp);
+        }
 
-    $zones_array = array();
-    $timestamp = time();
-    foreach(timezone_identifiers_list() as $key => $zone) {
-        date_default_timezone_set($zone);
-        $zones_array[$key]['zone'] = $zone;
-        $zones_array[$key]['diff_from_GMT'] = 'UTC/GMT ' . date('P', $timestamp);
+        $downloads = \App\Downloads::where('user_id', '=', $id)->get()->count();
+
+        return view('layout.settings', compact('user', 'zones_array', 'downloads'));
+    }else{
+        return view('errors.404');
     }
 
-    return view('layout.settings', compact('user', 'zones_array'));
+
 });
 
 Route::get('profile/settings/{id}', 'UsersController@getUserProfile');

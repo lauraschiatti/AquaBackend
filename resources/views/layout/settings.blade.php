@@ -26,7 +26,7 @@
                         <br><br>
                         <div class="divider"></div>
                         <br>
-                        <h6 class="light"><strong>100</strong> {{ trans("general.downloads") }}</h6>
+                        <h6 class="light"><strong>{{$downloads}}</strong> {{ trans("general.downloads") }}</h6>
                         <br>
                         <div class="divider"></div>
                         <br>
