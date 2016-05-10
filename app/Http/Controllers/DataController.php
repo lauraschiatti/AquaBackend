@@ -109,8 +109,8 @@ class dataController extends Controller
         $initial = date($initial_date . $initial_time);
         $final = date($final_date . $final_time);
 
-        $initial = date("20160314130324");
-        $final = date("20160314130329");
+        $initial = \DateTime::createFromFormat( 'U', "20160314130324");
+        $final = \DateTime::createFromFormat( 'U', "20160314130350");
 
         //Sensors
         $sensors = Input::get('sensors');
@@ -121,7 +121,7 @@ class dataController extends Controller
 
             if (!$data->isEmpty()) {
                 foreach ($data as $datum) {
-                    $time = date($datum->time);
+                    $time = \DateTime::createFromFormat('U', $datum->time);
 
                     if ($initial <= $time && $time <= $final) {
                         array_push($data_array, $datum);
@@ -146,8 +146,6 @@ class dataController extends Controller
                         }
                     }
                 }
-            } else{
-                $data_array = "No data found";
             }
         }
 

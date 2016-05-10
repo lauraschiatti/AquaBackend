@@ -145,10 +145,10 @@
                             @foreach ($node as $node_data)
                                 <dl class="col s12 m4 l4">
                                     <dt>
-                                        <p>
-                                            <input type="checkbox" id="{{ ucwords($node_data->id) }}" onChange="ifChecked(this, '<?php echo ucwords($node_data->id); ?>');">
-                                            <label for="{{ ucwords($node_data->id) }}">{{ ucwords($node_data->name) }}</label>
-                                        </p>
+                                        <p>{{ ucwords($node_data->name) }}</p>
+                                        <!-- <input type="text" id="{{ ucwords($node_data->id) }}" onChange="ifChecked(this, '<?php echo ucwords($node_data->id); ?>');" disabled>
+                                        <label for="{{ ucwords($node_data->id) }}">{{ ucwords($node_data->name) }}</label>-->
+
                                     </dt>
                                     <dd>
                                         @if(is_array ($nodes_array[$i][$j]["sensors"]))
@@ -226,7 +226,7 @@
         $(".datepicker").datepicker({ dateFormat: 'yymmdd' });
     })
 
-    function ifChecked(checkbox, id) {
+    /*function ifChecked(checkbox, id) {
         var str1 = ".";
         var str2 = id;
         var id = str1.concat(str2);
@@ -237,15 +237,15 @@
                 if($(this).not(':checked'))
                     $(this).attr('checked', true);
             });*/
-            $(id).attr('checked', true);
+            /*$(id).attr('checked', true);
         }else {
             $(id).attr('checked', false);
             /*$(id).each(function() {
              if($(this).is(':checked'))
              $(this).attr('checked', false);
              });*/
-        }
-    }
+        //}
+    //}
 
 </script>
 </body>

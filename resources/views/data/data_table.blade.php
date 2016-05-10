@@ -16,8 +16,8 @@
     <script type="text/javascript" src="/js/jq/jquery.min.js"></script>					<!-- Jquery core JS -->
     <!-- HighCharts core JS -->
 
+    <!-- Download as excel file -->
     <script type="text/javascript" src="/js/jquery.battatech.excelexport.js"></script>
-
 
     <!--favicon-->
     <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png">
@@ -235,10 +235,11 @@
 
         $('#excel').click(function(e){
             var uri = $("#data_table").battatech_excelexport({
-                containerid: "tblExport"
+                containerid: "data_table"
                 , datatype: 'table'
                 , returnUri: true
             });
+
 
             $(this).attr('download', 'ExportToExcel.xls').attr('href', uri).attr('target', '_blank');
         });

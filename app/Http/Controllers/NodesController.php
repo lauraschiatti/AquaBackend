@@ -253,9 +253,7 @@ class NodesController extends Controller
         //$sensors_types_by_unit_number = array_fill(0, count($sensors_number), 0);
 
         foreach($sensores as $sensor){
-            if(in_array($sensor->type, $sensors_types_by_unit)){
-
-            }else{
+            if(!in_array($sensor->type, $sensors_types_by_unit)){
                 array_push($sensors_types_by_unit,$sensor->type);
                 array_push($sensors_types,$sensor->type);
             }
