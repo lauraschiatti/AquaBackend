@@ -46,28 +46,22 @@ class GraphsController extends Controller
     public function getDashboardGraph()
     {
         //User node
-        if(Auth::check()){
-            $user = Auth::user()->id;
-            $nodes = Nodes::where("user_id", "=", $user)->get();
-        }else{
-            $nodes = Nodes::where("type", "=", "public")->get();
-        }
+        $user = Auth::user()->id;
+        $nodes = Nodes::where("user_id", "=", $user)->get();
 
         if(!$nodes->isEmpty()) {
             $count = count($nodes);
-
             do {
                 $num = rand(0, $count - 1);
                 $node = $nodes[$num];
                 $data = self::getData($node);
             }while(!is_array($data));
-
-            return $data;
-
         }else{
-            return "no nodes";
+            $data = "nonodes";
         }
+        return response()->json($data);
     }
+
     public function getData($node){
 
         $id = $node->id;

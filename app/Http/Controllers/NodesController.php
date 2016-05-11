@@ -370,15 +370,26 @@ class NodesController extends Controller
      */
     public function destroy($id)
     {
-        Nodes::find($id)->delete();
-        //dd($id);
+        $node = Nodes::where("id", "=", $id)->first();
 
-        SensorsByNode::where("node_id", "=", $id)->delete();
+        if ($node){
+            if (Auth::user()->role == 'superadmin' || Auth::user()->id == $node->user_id){
+                Nodes::find($id)->delete();
+                //dd($id);
 
-        if(Auth::check() && Auth::user()->role == 'superadmin'){
-            return redirect('nodes');
+                SensorsByNode::where("node_id", "=", $id)->delete();
+
+                if(Auth::check() && Auth::user()->role == 'superadmin'){
+                    return redirect('nodes');
+                }else{
+                    return redirect('mynodes');
+                }
+            }else{
+                return abort(401);
+            }
+
         }else{
-            return redirect('mynodes');
+            return abort(404);
         }
 
     }
