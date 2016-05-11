@@ -29,36 +29,14 @@ Route::get('terms', function(){
     return view('layout.terms');
 });
 
+//Graphs
+Route::get('home/graph', 'GraphsController@getHomeGraph');
+
 /*Route::get('contact', function(){
     return view('layout.contact');
-});*/
-
-Route::post('contact', 'UsersController@contact');
-
-Route::get('dashboard', 'DashboardController@showData');
-
-Route::get('settings/{id}', function($id){
-    $user = \App\User::where("id", "=", $id)->first();
-    if($user){
-        $zones_array = array();
-        $timestamp = time();
-        foreach(timezone_identifiers_list() as $key => $zone) {
-            date_default_timezone_set($zone);
-            $zones_array[$key]['zone'] = $zone;
-            $zones_array[$key]['diff_from_GMT'] = 'UTC/GMT ' . date('P', $timestamp);
-        }
-
-        $downloads = \App\Downloads::where('user_id', '=', $id)->get()->count();
-
-        return view('layout.settings', compact('user', 'zones_array', 'downloads'));
-    }else{
-        return view('errors.404');
-    }
-
-
 });
 
-Route::get('profile/settings/{id}', 'UsersController@getUserProfile');
+Route::post('contact', 'UsersController@contact');*/
 
 // Authentication routes
 Route::get('login', 'Auth\AuthController@getLogin');
@@ -69,49 +47,75 @@ Route::get('logout', 'Auth\AuthController@getLogout');
 Route::get('register', 'Auth\AuthController@getRegister');
 Route::post('register', 'Auth\AuthController@postRegister');
 
-Route::resource('users', 'UsersController');
+Route::group(['middleware' => 'auth'], function() {
+    Route::get('settings/{id}', function($id){
+        $user = \App\User::where("id", "=", $id)->first();
+        if($user){
+            $zones_array = array();
+            $timestamp = time();
+            foreach(timezone_identifiers_list() as $key => $zone) {
+                date_default_timezone_set($zone);
+                $zones_array[$key]['zone'] = $zone;
+                $zones_array[$key]['diff_from_GMT'] = 'UTC/GMT ' . date('P', $timestamp);
+            }
 
-Route::resource('nodes', 'NodesController');
+            $downloads = \App\Downloads::where('user_id', '=', $id)->get()->count();
 
-Route::get('sensorsorder', ['as' => 'order', function(){
-    return view('nodes.sensors_order');
-}]);
+            return view('layout.settings', compact('user', 'zones_array', 'downloads'));
+        }else{
+            return view('errors.404');
+        }
 
-Route::post('sensorsorder', 'NodesController@saveSensorsByNode');
 
-Route::get('sensorsorderupdate', ['as' => 'order_update', function(){
-    return view('nodes.sensors_order_update');
-}]);
+    });
 
-Route::post('sensorsorderupdate', 'NodesController@updateSensorsByNode');
+    Route::get('profile/settings/{id}', 'UsersController@getUserProfile');
 
-Route::get('mynodes', 'NodesController@getMyNodes');
+    Route::get('dashboard', 'DashboardController@showData');
 
-Route::resource('sensors', 'SensorsController');
+    Route::resource('users', 'UsersController');
 
-//Sync random generated data routes
-Route::get('sync/{data}', 'SyncController@postData');
+    Route::resource('nodes', 'NodesController');
 
-//Data
-Route::get('data', 'DataController@chooseData');
-Route::get('data/table', 'DataController@showData');
+    Route::get('sensorsorder', ['as' => 'order', function(){
+        return view('nodes.sensors_order');
+    }]);
 
-//Downloads
-Route::resource('downloads', 'DownloadsController');
+    Route::post('sensorsorder', 'NodesController@saveSensorsByNode');
 
-//Graphs
-Route::get('home/graph', 'GraphsController@getHomeGraph');
-Route::get('dashboard/graph', 'GraphsController@getDashboardGraph');
+    Route::get('sensorsorderupdate', ['as' => 'order_update', function(){
+        return view('nodes.sensors_order_update');
+    }]);
 
-//Routes for testing
-Route::get('sensorsbynode', function(){
-    return \App\SensorsByNode::all();
-});
+    Route::post('sensorsorderupdate', 'NodesController@updateSensorsByNode');
 
-Route::get('timezone', function(){
-    return config('app.timezone');
-});
+    Route::get('mynodes', 'NodesController@getMyNodes');
 
-Route::get('downloads', function(){
-    return \App\Downloads::all();
+    Route::resource('sensors', 'SensorsController');
+
+    //Sync random generated data routes
+    Route::get('sync/{data}', 'SyncController@postData');
+
+    //Data
+    Route::get('data', 'DataController@chooseData');
+    Route::get('data/table', 'DataController@showData');
+
+    //Downloads
+    Route::resource('downloads', 'DownloadsController');
+
+    Route::get('dashboard/graph', 'GraphsController@getDashboardGraph');
+
+    //Routes for testing
+    Route::get('sensorsbynode', function(){
+        return \App\SensorsByNode::all();
+    });
+
+    Route::get('timezone', function(){
+        return config('app.timezone');
+    });
+
+    Route::get('downloads', function(){
+        return \App\Downloads::all();
+    });
+
 });

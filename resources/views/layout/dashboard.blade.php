@@ -10,11 +10,7 @@
   <div class="desktop row container">
       <div class="chip right">
           <img src="img/face.jpg" alt="Contact Person">
-          @if(Auth::check())
-              <a href="{{url('users',$user->id)}}">{{$user->name}}</a>
-          @else
-              <a href="{{url('/')}}">User</a>
-          @endif
+          <a href="{{url('users',$user->id)}}">{{$user->name}}</a>
 
       </div>
      <!-- GRAPH -->

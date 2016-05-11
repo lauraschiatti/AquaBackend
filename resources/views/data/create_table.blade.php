@@ -198,8 +198,6 @@
                         <input type="time" name="final_time" step=1  required>
                         <i class="material-icons prefix">alarm</i>
                     </div>
-
-                    <input type="text" name="slider_example_2" id="slider_example_2" value="" class="hasDatepicker">
                 </div>
             </div>
 
@@ -216,43 +214,7 @@
 <script>
     $(document).ready(function() {
         $('select').material_select();
-    });
-    /*$('.datepicker').pickadate({
-        selectMonths: true, // Creates a dropdown to control month
-        selectYears: 2, // Creates a dropdown of 2 years to control year
-        format: 'yyyymmdd'
-    });*/
-
-    $(function() {
         $(".datepicker").datepicker({ dateFormat: 'yymmdd' });
-    })
-
-    /*function ifChecked(checkbox, id) {
-        var str1 = ".";
-        var str2 = id;
-        var id = str1.concat(str2);
-
-        //alert($(id).length);
-        if (checkbox.checked) {
-            /*$(id).each(function() {
-                if($(this).not(':checked'))
-                    $(this).attr('checked', true);
-            });*/
-            /*$(id).attr('checked', true);
-        }else {
-            $(id).attr('checked', false);
-            /*$(id).each(function() {
-             if($(this).is(':checked'))
-             $(this).attr('checked', false);
-             });*/
-        //}
-    //}
-
-    $('#slider_example_2').datetimepicker({
-        timeFormat: 'HH:mm:ss',
-        stepHour: 2,
-        stepMinute: 10,
-        stepSecond: 10
     });
 
 </script>

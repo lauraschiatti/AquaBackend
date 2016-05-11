@@ -72,4 +72,12 @@ return [
 
     //FOR DASHBOARD
     'general system data' => 'General system data',
+
+    //FOR ERRORS
+    'page not found' => 'PAGE NOT FOUND',
+    'things you can try' => 'Things you can try:',
+    'go back' => 'Go back',
+    'and try another way' => 'and try another way',
+    'head to the' => 'Head to the',
+    'use the navigation above' => 'Use the navigation above'
 ];
