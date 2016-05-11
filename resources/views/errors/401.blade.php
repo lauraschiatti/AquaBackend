@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="description" content="AquApp">
     <meta name="author" content="">
-    <title> Error 404 </title>
+    <title> Error 401 </title>
 
     <link href="/css/materialize.min.css" rel="stylesheet">               			<!-- Materialize core CSS -->
     <link href="/css/site.css" rel="stylesheet">
@@ -123,20 +123,6 @@
                     @endif
 
                     <div class="divider"></div>
-                    <!--<li class="no-padding">
-                      <ul class="collapsible collapsible-accordion">
-                            <li>
-                                <a class="collapsible-header"><i class="mdi-navigation-arrow-drop-down"></i>{{ Config::get('languages')[App::getLocale()] }}</a>
-                                <div class="collapsible-body">
-                                    <ul>
-                                        @foreach (Config::get('languages') as $lang => $language)
-                            <li><a href="{{ route('lang.switch', $lang) }}">{{$language}}</a></li>
-                                        @endforeach
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
-            </li>-->
 
                     @foreach (Config::get('languages') as $lang => $language)
                         <li><a href="{{ route('lang.switch', $lang) }}">{{$language}}</a></li>
@@ -156,13 +142,9 @@
                 <img src="/img/brand-no-back.png" alt="brand">
             </div>
             <div class="container white-text">
-                <h4>404 - {{ trans("general.page not found") }}</h4>
-                <p>{{ trans("general.things you can try") }}</p>
-                <ul id="options">
-                    <li><a href="{{ URL::previous() }}">{{ trans("general.go back") }}</a> {{ trans("general.and try another way") }}</li>
-                    <li>{{ trans("general.use the navigation above") }}</li>
-                    <li>{{ trans("general.head to the") }} <a href="{{'/'}}">{{ trans("general.home") }}</a></li>
-                </ul>
+                <h4>401 - {{ trans("general.access not granted") }}</h4><br><br>
+
+                <a href="{{ URL::previous() }}" class="btn btn-secundary">{{ trans("general.back") }}</a>
             </div>
         </div>
     </section>

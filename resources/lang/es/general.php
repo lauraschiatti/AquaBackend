@@ -75,6 +75,7 @@ return [
 
     //FOR ERRORS
     'page not found' => 'PAGINA NO ENCONTRADA',
+    'access not granted' => 'ACCESO NO PERMITIDO',
     'things you can try' => 'Lo que puedes hacer:',
     'go back' => 'Regresa ',
     'and try another way' => 'y prueba de otra manera',

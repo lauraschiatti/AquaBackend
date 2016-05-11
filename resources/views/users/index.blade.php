@@ -35,7 +35,7 @@
                                 <a href="{{url('users',$user->id)}}"><i class="material-icons">visibility</i></a>
 
                                 @if(Auth::check() and Auth::user()->role == 'superadmin')
-                                    <a href="{{route('users.edit', $user->id)}}"><i class="material-icons">edit</i></a>
+                                    <!--<a href="{{route('users.edit', $user->id)}}"><i class="material-icons">edit</i></a>-->
                                     <a onclick="showDeleteModal('<?php echo $user -> id ?>');"><i class="material-icons">delete</i></a>
 
                                     {!! Form::open(['method' => 'DELETE', 'route'=>['users.destroy', $user->id], 'id'=>$user->id]) !!}

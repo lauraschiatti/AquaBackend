@@ -70,8 +70,19 @@ class SensorsController extends Controller
      */
     public function show($id)
     {
-        $sensor=Sensors::find($id);
-        return view('sensors.show',compact('sensor'));
+       // if (Auth::user()->role == 'superadmin' || Auth::user()->id == $id){
+
+            $sensor = Sensors::where("id", "=", $id)->first();
+
+            //if($sensor){
+                return view('sensors.show',compact('sensor'));
+           /* }else{
+                return abort(404);
+            }
+        }else{
+            return abort(401);
+        }*/
+
     }
 
     /**
@@ -82,8 +93,14 @@ class SensorsController extends Controller
      */
     public function edit($id)
     {
-        $sensor=Sensors::find($id);
-        return view('sensors.edit',compact('sensor'));
+         $sensor = Sensors::where("id", "=", $id)->first();
+
+         if($sensor){
+            return view('sensors.edit',compact('sensor'));
+         }else{
+             return abort(404);
+         }
+
     }
 
     /**

@@ -105,15 +105,19 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        $user = User::find($id);
+        if (Auth::user()->role == 'superadmin' || Auth::user()->id == $id){
+            $user = User::where("id", "=", $id)->first();
 
-        if(!$user){
-            $user = "user";
+            if($user){
+                $downloads = Downloads::where('user_id', '=', $id)->get()->count();
+
+                return view('users.show',compact('user', 'downloads'));
+            }else{
+                return abort(404);
+            }
+        }else{
+            return abort(401);
         }
-
-        $downloads = Downloads::where('user_id', '=', $id)->get()->count();
-
-        return view('users.show',compact('user', 'downloads'));
     }
 
     /**
@@ -128,6 +132,7 @@ class UsersController extends Controller
         return view('users.edit',compact('user'));
     }
 
+
     /**
      * Update the specified resource in storage.
      *
@@ -140,10 +145,6 @@ class UsersController extends Controller
         $current_password = trim(Input::get('last-pass'));
         $password = Input::get('pass');
         $password2 = Input::get('pass2');
-
-        if(Auth::user()->role != "user") {
-            $timezone = Input::get('timezone');
-        }
 
         $user = User::where("id", "=", $id)->first();
 
@@ -171,6 +172,10 @@ class UsersController extends Controller
 
         //change timezone
         if(Auth::user()->role != "user") {
+            $timezone = Input::get('timezone');
+        }
+    
+        if(Auth::user()->role != "user") {
             if($user->timezone != $timezone){
                 User::where('id', '=', $id)->update(['timezone' => $timezone]);
                 return redirect('');
@@ -188,14 +193,23 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::where("id", "=", $id)->first();
+        if (Auth::user()->role == 'superadmin' || Auth::user()->id == $id){
+            $user = User::where("id", "=", $id)->first();
 
-        User::find($id)->delete();
+            if($user){
+                User::find($id)->delete();
 
-        if($user->role == "superadmin") {
-            return redirect('users');
+                if($user->role == "superadmin") {
+                    return redirect('users');
+                }else{
+                    return redirect('/');
+                }
+            }else{
+                return abort(404);
+            }
+
         }else{
-            return redirect('/');
+            return abort(401);
         }
     }
 
@@ -218,15 +232,20 @@ class UsersController extends Controller
 
 
     public function getUserProfile($id){
-        $user = User::where("id", "=", $id)->first();
 
-        if(!$user){
-            $user = "user";
+        if (Auth::user()->role == 'superadmin' || Auth::user()->id == $id){
+            $user = User::where("id", "=", $id)->first();
+
+            if($user){
+                $downloads = Downloads::where('user_id', '=', $id)->get()->count();
+
+                return view('layout.user_settings', compact('user', 'downloads'));
+            }else{
+                return abort(404);
+            }
+        }else{
+            return abort(401);
         }
-
-        $downloads = Downloads::where('user_id', '=', $id)->get()->count();
-
-        return view('layout.user_settings', compact('user', 'downloads'));
     }
 
 
