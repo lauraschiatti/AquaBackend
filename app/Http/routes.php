@@ -63,7 +63,7 @@ Route::group(['middleware' => 'auth'], function() {
 
             return view('layout.settings', compact('user', 'zones_array', 'downloads'));
         }else{
-            return view('errors.404');
+            return view('errors.401'); //acceso no permitido
         }
 
 

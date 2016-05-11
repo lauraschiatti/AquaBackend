@@ -38,8 +38,9 @@
                             <td>
                                 <a href="{{url('nodes',$node->id)}}"><i class="material-icons">visibility</i></a>
                                 <a href="{{route('nodes.edit', $node->id)}}"><i class="material-icons">edit</i></a>
-                                {!! Form::open(['method' => 'DELETE', 'route'=>['nodes.destroy', $node->id]]) !!}
-                                    <button type="submit" class="btn-flat"><i class="material-icons">delete</i></button>
+                                <a onclick="showDeleteModal('<?php echo $node -> id ?>');"><i class="material-icons">delete</i></a>
+
+                                {!! Form::open(['method' => 'DELETE', 'route'=>['nodes.destroy', $node->id], 'id'=>$node->id]) !!}
                                 {!! Form::close() !!}
                             </td>
                         </tr>
@@ -50,6 +51,16 @@
         </div>
     </div>
 
+    <!-- Delete Modal Structure -->
+    <div id="delete" class="modal">
+        <div class="modal-content center">
+            <h6 class="light">{{ trans("general.sure to delete this?") }}</h6><br>
+            <a href="#" class=" modal-action modal-close btn-flat">No</a>
+            <input type="hidden" id="delete_value">
+            <a class="btn primary" onclick="eliminar();">{{ trans("general.yes") }}</a>
+        </div>
+    </div>
+
     <!-- FLOATING BUTTON -->
     <div class="fixed-action-btn" id="add">
         <a href="{{url('/nodes/create')}}" class="btn-floating btn-large waves-effect waves-circle waves-light red">
@@ -57,4 +68,19 @@
         </a>
     </div>
     <!-- FLOATING BUTTON -->
+@endsection
+
+@section('javascript')
+    <script type="text/javascript">
+        /**** Eliminar usando modal ****/
+        function showDeleteModal(id){
+            $('#delete_value').val(id);
+            $('#delete').openModal();
+        }
+
+        function eliminar(){
+            var id = $('#delete input').val();
+            $("#"+id).submit();
+        }
+    </script>
 @endsection

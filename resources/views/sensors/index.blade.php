@@ -35,27 +35,26 @@
                                 <!--<a href="{{url('sensors',$sensor->id)}}"><i class="material-icons">visibility</i></a>-->
                                 <a href="{{route('sensors.edit', $sensor->id)}}"><i class="material-icons">edit</i></a>
 
-                                {!! Form::open(['method' => 'DELETE', 'route'=>['sensors.destroy', $sensor->id]]) !!}
-                                    <button type="submit" class="btn-flat"><i class="material-icons">delete</i></button>
-                                {!! Form::close() !!}
-                                    <!--<a class="modal-trigger" href="#modal2"><i class="material-icons">delete</i></a>
+                                <a onclick="showDeleteModal('<?php echo $sensor -> id ?>');"><i class="material-icons">delete</i></a>
 
-                                    <!-- cancel modal Structure -->
-                                    <!--<div id="modal2" class="modal">
-                                        <div class="modal-content center">
-                                            <h6 class="light">This action can not be reversed, would you like to continue? </h6><br>
-                                            <div class="modal-footer">
-                                                <button type="submit" class="btn btn-flat">Yes</button>
-                                                <button class="btn btn-flat modal-action modal-close">No</button>
-                                            </div>
-                                        </div>
-                                    </div>-->
+                                {!! Form::open(['method' => 'DELETE', 'route'=>['sensors.destroy', $sensor->id], 'id'=>$sensor->id]) !!}
+                                {!! Form::close() !!}
                             @endif
                         </td>
                     </tr>
                 @endforeach
                 </tbody>
             </table>
+        </div>
+    </div>
+
+    <!-- Delete Modal Structure -->
+    <div id="delete" class="modal">
+        <div class="modal-content center">
+            <h6 class="light">{{ trans("general.sure to delete this?") }}</h6><br>
+            <a href="#" class=" modal-action modal-close btn-flat">No</a>
+            <input type="hidden" id="delete_value">
+            <a class="btn primary" onclick="eliminar();">{{ trans("general.yes") }}</a>
         </div>
     </div>
 
@@ -66,4 +65,19 @@
         </a>
     </div>
     <!-- FLOATING BUTTON -->
+@endsection
+
+@section('javascript')
+    <script type="text/javascript">
+        /**** Eliminar usando modal ****/
+        function showDeleteModal(id){
+            $('#delete_value').val(id);
+            $('#delete').openModal();
+        }
+
+        function eliminar(){
+            var id = $('#delete input').val();
+            $("#"+id).submit();
+        }
+    </script>
 @endsection

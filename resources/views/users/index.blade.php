@@ -32,27 +32,14 @@
                         <td>{{ $user->role }}</td>
                         <td>
                             <div class="buttons">
-                                <button class="btn-flat"><a href="{{url('users',$user->id)}}"><i class="material-icons">visibility</i></a></button>
+                                <a href="{{url('users',$user->id)}}"><i class="material-icons">visibility</i></a>
 
                                 @if(Auth::check() and Auth::user()->role == 'superadmin')
-                                    <button class="btn-flat"><a href="{{route('users.edit', $user->id)}}"><i class="material-icons">edit</i></a></button>
-                                    {!! Form::open(['method' => 'DELETE', 'route'=>['users.destroy', $user->id]]) !!}
-                                    <button type="submit" class="btn-flat"><i class="material-icons">delete</i></button>
-                                    {!! Form::close() !!}
-                                    <!--<a class="modal-trigger" href="#modal2"><i class="material-icons">delete</i></a>-->
+                                    <a href="{{route('users.edit', $user->id)}}"><i class="material-icons">edit</i></a>
+                                    <a onclick="showDeleteModal('<?php echo $user -> id ?>');"><i class="material-icons">delete</i></a>
 
-                                    <!-- cancel modal Structure -->
-                                    <!--<div id="modal2" class="modal">
-                                        <div class="modal-content center">
-                                            <h6 class="light">This action can not be reversed, would you like to continue? </h6><br>
-                                            <div class="modal-footer">
-                                                {!! Form::open(['method' => 'DELETE', 'route'=>['users.destroy', $user->id]]) !!}
-                                                <button type="submit" class="btn btn-flat">Yes</button>
-                                                {!! Form::close() !!}
-                                                <button class="btn btn-flat modal-action modal-close">No</button>
-                                            </div>
-                                        </div>
-                                    </div>-->
+                                    {!! Form::open(['method' => 'DELETE', 'route'=>['users.destroy', $user->id], 'id'=>$user->id]) !!}
+                                    {!! Form::close() !!}
                                 @endif
                             </div>
                         </td>
@@ -63,6 +50,16 @@
         </div>
     </div>
 
+    <!-- Delete Modal Structure -->
+    <div id="delete" class="modal">
+        <div class="modal-content center">
+            <h6 class="light">{{ trans("general.sure to delete this?") }}</h6><br>
+            <a href="#" class=" modal-action modal-close btn-flat">No</a>
+            <input type="hidden" id="delete_value">
+            <a class="btn primary" onclick="eliminar();">{{ trans("general.yes") }}</a>
+        </div>
+    </div>
+
     <!-- FLOATING BUTTON -->
     <div class="fixed-action-btn" id="add">
         <a href="{{url('/users/create')}}" class="btn-floating btn-large waves-effect waves-circle waves-light red">
@@ -70,4 +67,19 @@
         </a>
     </div>
     <!-- FLOATING BUTTON -->
+@endsection
+
+@section('javascript')
+    <script type="text/javascript">
+        /**** Eliminar usando modal ****/
+        function showDeleteModal(id){
+            $('#delete_value').val(id);
+            $('#delete').openModal();
+        }
+
+        function eliminar(){
+            var id = $('#delete input').val();
+            $("#"+id).submit();
+        }
+    </script>
 @endsection

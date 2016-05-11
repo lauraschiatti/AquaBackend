@@ -79,5 +79,8 @@ return [
     'go back' => 'Go back',
     'and try another way' => 'and try another way',
     'head to the' => 'Head to the',
-    'use the navigation above' => 'Use the navigation above'
+    'use the navigation above' => 'Use the navigation above',
+
+     //MODALS
+    'sure to delete this?' => 'Sure to delete this?'
 ];

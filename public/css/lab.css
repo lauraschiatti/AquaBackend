@@ -1,6 +1,10 @@
 /********************************************
 			LAYOUT GENERAL SETTINGS
  ********************************************/
+
+a{
+    cursor: pointer;
+}
  header, main, footer {
    padding-left: 240px;
  }

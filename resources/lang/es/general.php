@@ -79,5 +79,8 @@ return [
     'go back' => 'Regresa ',
     'and try another way' => 'y prueba de otra manera',
     'head to the' => 'Vuelve al ',
-    'use the navigation above' => 'Usa la barra de navegación en la parte superior'
+    'use the navigation above' => 'Usa la barra de navegación en la parte superior',
+
+    //MODALS
+    'sure to delete this?' => '¿Seguro que quieres eliminar esto?'
 ];

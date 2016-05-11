@@ -352,6 +352,7 @@ class NodesController extends Controller
     public function destroy($id)
     {
         Nodes::find($id)->delete();
+        //dd($id);
 
         SensorsByNode::where("node_id", "=", $id)->delete();
 
