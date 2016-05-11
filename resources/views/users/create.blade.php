@@ -14,39 +14,47 @@
 
         @if (session('error'))
             <div class="warning-box">
-                <p><i class="material-icons">highlight_off</i><span class="ups">Wops!</span>{{session('error')}}</p>
+                <h6><i class="material-icons">highlight_off</i><span class="ups">Wops!</span>{{session('error')}}</h6>
             </div>
         @endif
 
         <!-- Form -->
         {!! Form::open(array('url' => 'users', 'files'=> true)) !!}
-            @if (session('name'))
-                <div class="input-field col s12">
-                    <i class="material-icons prefix">person</i>
-                    <input class="validate"  name="name" type="text" id="name" value="{{session('name')}}" required>
-                    <label for="name">{{ trans("general.name") }}</label>
-                </div>
-            @else
-                <div class="input-field col s12">
-                    <i class="material-icons prefix">person</i>
-                    <input class="validate"  name="name" type="text" id="name" required>
-                    <label for="name">{{ trans("general.name") }}</label>
-                </div>
-            @endif
-            @if (session('email'))
-                <div class="input-field col s12" style="margin-bottom: 10px;">
-                    <i class="material-icons prefix">email</i>
-                    <input class="validate"  name="email" type="email" id="email" value="{{session('email')}}" required>
-                    <label for="email">{{ trans("users.email") }}</label>
-                </div>
-            @else
-                <div class="input-field col s12" style="margin-bottom: 10px;">
-                    <i class="material-icons prefix">email</i>
-                    <input class="validate"  name="email" type="email" id="email" required>
-                    <label for="email">{{ trans("users.email") }}</label>
-                </div>
-            @endif
+            <div class="col s6">
+                @if (session('name'))
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">person</i>
+                        <input class="validate"  name="name" type="text" id="name" value="{{session('name')}}" required>
+                        <label for="name">{{ trans("general.name") }}</label>
+                    </div>
+                @else
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">person</i>
+                        <input class="validate"  name="name" type="text" id="name" required>
+                        <label for="name">{{ trans("general.name") }}</label>
+                    </div>
+                @endif
+                @if (session('email'))
+                    <div class="input-field col s12" style="margin-bottom: 10px;">
+                        <i class="material-icons prefix">email</i>
+                        <input class="validate"  name="email" type="email" id="email" value="{{session('email')}}" required>
+                        <label for="email">{{ trans("users.email") }}</label>
+                    </div>
+                @else
+                    <div class="input-field col s12" style="margin-bottom: 10px;">
+                        <i class="material-icons prefix">email</i>
+                        <input class="validate"  name="email" type="email" id="email" required>
+                        <label for="email">{{ trans("users.email") }}</label>
+                    </div>
+                @endif
+            </div>
 
+            <div class="col s4 offset-s1">
+                <br><br>
+                <div class="warning-box" id="sensors_warning_box">
+                    <p><i class="material-icons">info</i><span>Todos los usuarios creados tienen 123456 como contraseña por defecto</span></p>
+                </div>
+            </div>
             <div class="col s12">
                 <br>
                 <label>{{ trans("users.select timezone") }}</label>
@@ -102,5 +110,6 @@
         </div>
         <!-- FLOATING BUTTONS -->
     </div>
+
 @stop
 

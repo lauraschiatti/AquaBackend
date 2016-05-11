@@ -184,10 +184,9 @@
                         <i class="material-icons prefix">event</i>
                     </div>
                     <div class="col s6 m2 l2">
-                        <input type="time" name="initial_time" step=1 required>
+                        <input type="time" name="initial_time" value="00:00:00" step="1" required>
                         <i class="material-icons prefix">alarm</i>
                     </div>
-
                     <div class="col s12 m2 l2">
                         <p class="center">Fin</p>
                     </div>
@@ -199,6 +198,8 @@
                         <input type="time" name="final_time" step=1  required>
                         <i class="material-icons prefix">alarm</i>
                     </div>
+
+                    <input type="text" name="slider_example_2" id="slider_example_2" value="" class="hasDatepicker">
                 </div>
             </div>
 
@@ -246,6 +247,13 @@
              });*/
         //}
     //}
+
+    $('#slider_example_2').datetimepicker({
+        timeFormat: 'HH:mm:ss',
+        stepHour: 2,
+        stepMinute: 10,
+        stepSecond: 10
+    });
 
 </script>
 </body>

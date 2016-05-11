@@ -48,8 +48,8 @@
                     <li><a href="{{ url('/')}}">{{ trans("general.home") }}</a></li>
                     <li><a href="{{ url('contribute')}}">{{ trans("general.contribute") }}</a></li>
                     <li><a href="{{ url('team')}}">{{ trans("general.team") }}</a></li>
-                    <li><a href="https://github.com/IngenieriaDeSistemasUTB/AquaBackend.git">Wiki</a></li>
-                    <li><a href="https://github.com/IngenieriaDeSistemasUTB/AquaBackend/issues/new">{{ trans("general.contact") }}</a></li>
+                    <li><a href="https://github.com/IngenieriaDeSistemasUTB/AquaBackend/wiki">Wiki</a></li>
+                    <li><a href="https://github.com/IngenieriaDeSistemasUTB/AquaBackend/wiki/_new">{{ trans("general.contact") }}</a></li>
                     <!-- Dropdown Structure -->
                     <li><a class="dropdown-button" href="#" data-beloworigin="true" data-activates="dropdown2"><i class="material-icons right">arrow_drop_down</i>{{ Config::get('languages')[App::getLocale()] }}</a></li>
                     <ul id="dropdown2" class="dropdown-content">
@@ -85,7 +85,7 @@
                     <li><a href="{{ url('/')}}">{{ trans("general.home") }}</a></li>
                     <li><a href="{{ url('contribute')}}">{{ trans("general.contribute") }}</a></li>
                     <li><a href="#">{{ trans("general.team") }}</a></li>
-                    <li><a href="https://github.com/IngenieriaDeSistemasUTB/AquaBackend.git">Wiki</a></li>
+                    <li><a href="https://github.com/IngenieriaDeSistemasUTB/AquaBackend/wiki">Wiki</a></li>
                     <li><a href="{{ url('contribute')}}">{{ trans("general.contribute") }}</a></li>
                     <div class="divider"></div>
 
@@ -295,8 +295,8 @@
             <p class="light">{{ trans("contribute.a special place") }}<a href="" class="blue-light">{{ trans("contribute.faqs") }}</a>
                 {{ trans("contribute.app documentation") }}</p>
             <div class="buttons">
-                <a href="https://github.com/IngenieriaDeSistemasUTB/AquaBackend'" class="btn btn-primary waves-effect waves-light">{{ trans("general.read our wiki") }}</a>
-                <a href="https://github.com/IngenieriaDeSistemasUTB/AquaBackend/issues/new" class="btn btn-secundary waves-effect waves-light">{{ trans("general.contact support") }}</a>
+                <a href="https://github.com/IngenieriaDeSistemasUTB/AquaBackend/wiki" class="btn btn-primary waves-effect waves-light">{{ trans("general.read our wiki") }}</a>
+                <a href="https://github.com/IngenieriaDeSistemasUTB/AquaBackend/wiki/_new" class="btn btn-secundary waves-effect waves-light">{{ trans("general.contact support") }}</a>
             </div>
         </div>
     </section>
@@ -328,7 +328,7 @@
                     <h5>{{ trans("general.support") }}</h5>
                     <ul>
                         <li><a href="https://github.com/IngenieriaDeSistemasUTB/AquaBackend/wiki">Wiki</a></li>
-                        <li><a href="https://github.com/IngenieriaDeSistemasUTB/AquaBackend/issues/new">{{ trans("general.contact") }}</a></li>
+                        <li><a href="https://github.com/IngenieriaDeSistemasUTB/AquaBackend/wiki/_new">{{ trans("general.contact") }}</a></li>
                         <li><a href="{{ url('team')}}">{{ trans("general.team") }}</a></li>
                     </ul>
                 </div>

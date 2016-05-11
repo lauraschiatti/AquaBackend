@@ -66,7 +66,7 @@ $(document).ready(function () {
                 borderWidth: 0
             },
             series: [{
-                name: 'Sensor: '+ sensorbynode_id+' ( '+node_id+' ) ',
+                name: 'Sensor: '+ sensorbynode_id,
                 data: value
             }]
         });

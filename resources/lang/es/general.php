@@ -69,4 +69,7 @@ return [
     'actions' => 'Acciones',
     'show' => 'Mostrar',
     'configurations' => 'Configuraciones',
+
+    //FOR DASHBOARD
+    'general system data' => 'Datos generales del sistema',
 ];

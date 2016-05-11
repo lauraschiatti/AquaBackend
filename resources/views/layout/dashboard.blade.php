@@ -24,7 +24,10 @@
      <!-- GRAPH -->
 
      <div id="second">
-
+         <div class="col s12" style="margin-top: 50px;">
+            <h5 class="light" class="content"> {{ trans("general.general system data") }}</h5>
+             <div class="divider"></div>
+         </div>
         <!-- ************** This for admin ***************** -->
        <div class="col s6 m2 l2" id="boxes">
          <h2 class="light title">{{$sensors}}</h2>   <!-- Here all Sensors created -->

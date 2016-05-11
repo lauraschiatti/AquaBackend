@@ -17,7 +17,6 @@
             <table class="striped">
                 <thead>
                 <tr>
-                    <th data-field="id">Id</th>
                     <th data-field="type">{{ trans("sensors.type") }}</th>
                     <th data-field="type">{{ trans("sensors.unit") }}</th>
                     @if(Auth::check() and Auth::user()->role == 'superadmin')
@@ -29,7 +28,6 @@
                 <tbody>
                 @foreach ($sensors as $sensor)
                     <tr>
-                        <td>{{ $sensor->id }}</td>
                         <td>{{ $sensor->type }}</td>
                         <td>{{ $sensor->unit }}</td>
                         <td>

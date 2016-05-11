@@ -70,4 +70,6 @@ return [
     'show' => 'Show',
     'configurations' => 'Configurations',
 
+    //FOR DASHBOARD
+    'general system data' => 'General system data',
 ];

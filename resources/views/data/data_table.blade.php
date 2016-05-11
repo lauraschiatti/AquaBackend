@@ -191,6 +191,7 @@
                     <th>Sensor type</th>
                     <th>Time</th>
                     <th>Value</th>
+                    <th>Unit</th>
                 </tr>
                 </thead>
 
@@ -203,7 +204,8 @@
                             <td>{{$data_array[$i] -> sensorbynode_id}}</td> 
                             <td>{{$sensors_type_array[$i]}}</td>
                             <td>{{$data_array[$i] -> time}}</td> 
-                            <td>{{$data_array[$i] -> value}} {{$sensors_unit_array[$i]}}</td> 
+                            <td>{{$data_array[$i] -> value}}</td> 
+                            <td>{{$sensors_unit_array[$i]}}</td>
                         </tr>
                         @endif
                         {{--@forelse--}}
