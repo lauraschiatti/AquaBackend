@@ -14,9 +14,11 @@
 
     <script type="text/javascript" src="/js/jq/jquery.min.js"></script>					<!-- Jquery core JS -->
 
-    <!--Datepicker-->
-    <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+    <!--Timepicker-->
+    <link href="https://code.jquery.com/ui/1.12.0-rc.2/themes/smoothness/jquery-ui.css" rel="stylesheet">
     <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <script type="text/javascript" src="/js/jq/jquery.timepicker.min.js"></script>
+    <link href="/css/jquery.timepicker.css" rel="stylesheet">
 
     <!--favicon-->
     <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png">
@@ -182,7 +184,7 @@
                         <i class="material-icons prefix">event</i>
                     </div>
                     <div class="col s6 m2 l2">
-                        <input type="time" name="initial_time" value="00:00:00" step="1" required>
+                        <input type="text" name="initial_time" class="time ui-timepicker-input timepicker" required>
                         <i class="material-icons prefix">alarm</i>
                     </div>
                     <div class="col s12 m2 l2">
@@ -193,7 +195,7 @@
                         <i class="material-icons prefix">event</i>
                     </div>
                     <div class="col s6 m2 l2">
-                        <input type="time" name="final_time" step=1  required>
+                        <input type="text" name="final_time" class="time ui-timepicker-input timepicker" required>
                         <i class="material-icons prefix">alarm</i>
                     </div>
                 </div>
@@ -213,8 +215,11 @@
     $(document).ready(function() {
         $('select').material_select();
         $(".datepicker").datepicker({ dateFormat: 'yymmdd' });
+        $('.timepicker').timepicker({
+            'timeFormat': 'H:i:s',
+            'step': 1
+        });
     });
-
 </script>
 </body>
 </html>
