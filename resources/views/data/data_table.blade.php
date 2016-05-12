@@ -186,7 +186,6 @@
                 <thead>
                 <tr>
                     <th>Num</th>
-                    <th>Node id</th>
                     <th>Sensor id</th>
                     <th>Sensor type</th>
                     <th>Time</th>
@@ -200,7 +199,6 @@
                     @if(is_array ($data_array))
                         <tr>
                             <td>{{$i+1}}</td> 
-                            <td>{{$data_array[$i] -> node_id}}</td> 
                             <td>{{$data_array[$i] -> sensorbynode_id}}</td> 
                             <td>{{$sensors_type_array[$i]}}</td>
                             <td>{{$data_array[$i] -> time}}</td> 

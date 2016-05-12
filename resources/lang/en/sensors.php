@@ -19,5 +19,6 @@ return [
     'unit' => 'Unit',
     'edit sensor' => 'Edit Sensor',
     'sensor info' => 'Sensor Info',
+    'no sensors in this node' => 'No sensors in this node',
 
 ];

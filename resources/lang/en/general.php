@@ -27,6 +27,7 @@ return [
     'dashboard' => 'Dashboard',
     'general' => 'General',
     'home' => 'Home',
+    'go home' => 'go home',
     'nodes' => 'Nodes',
     'sensors' => 'Sensors',
     'users' => 'Users',

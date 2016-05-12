@@ -7,7 +7,6 @@ $(document).ready(function () {
     });
 
     $.getJSON('/home/graph', function(object) {
-        console.log(object);
         var date = new Array();
         var value = new Array();
 

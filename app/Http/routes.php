@@ -47,26 +47,34 @@ Route::get('logout', 'Auth\AuthController@getLogout');
 Route::get('register', 'Auth\AuthController@getRegister');
 Route::post('register', 'Auth\AuthController@postRegister');
 
+//Data
+Route::get('data', 'DataController@chooseData');
+Route::get('data/table', 'DataController@showData');
+
 Route::group(['middleware' => 'auth'], function() {
     Route::get('settings/{id}', function($id){
-        $user = \App\User::where("id", "=", $id)->first();
-        if($user){
-            $zones_array = array();
-            $timestamp = time();
-            foreach(timezone_identifiers_list() as $key => $zone) {
-                date_default_timezone_set($zone);
-                $zones_array[$key]['zone'] = $zone;
-                $zones_array[$key]['diff_from_GMT'] = 'UTC/GMT ' . date('P', $timestamp);
+
+        if (Auth::user()->role == 'superadmin' || Auth::user()->id == $id){
+            $user = \App\User::where("id", "=", $id)->first();
+
+            if($user){
+                $zones_array = array();
+                $timestamp = time();
+                foreach(timezone_identifiers_list() as $key => $zone) {
+                    date_default_timezone_set($zone);
+                    $zones_array[$key]['zone'] = $zone;
+                    $zones_array[$key]['diff_from_GMT'] = 'UTC/GMT ' . date('P', $timestamp);
+                }
+
+                $downloads = \App\Downloads::where('user_id', '=', $id)->get()->count();
+
+                return view('layout.settings', compact('user', 'zones_array', 'downloads'));
+            }else{
+                return abort(404);
             }
-
-            $downloads = \App\Downloads::where('user_id', '=', $id)->get()->count();
-
-            return view('layout.settings', compact('user', 'zones_array', 'downloads'));
         }else{
-            return view('errors.401'); //acceso no permitido
+            return abort(401);
         }
-
-
     });
 
     Route::get('profile/settings/{id}', 'UsersController@getUserProfile');
@@ -95,10 +103,6 @@ Route::group(['middleware' => 'auth'], function() {
 
     //Sync random generated data routes
     Route::get('sync/{data}', 'SyncController@postData');
-
-    //Data
-    Route::get('data', 'DataController@chooseData');
-    Route::get('data/table', 'DataController@showData');
 
     //Downloads
     Route::resource('downloads', 'DownloadsController');

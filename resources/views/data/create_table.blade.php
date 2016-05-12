@@ -159,9 +159,7 @@
                                                 </div> 
                                             @endforeach
                                         @else
-                                            <div class="warning-box" id="sensors_warning_box">
-                                                <p><i class="material-icons">feedback</i><span>{{$nodes_array[$i][$j]["sensors"]}}</span></p>
-                                            </div>
+                                            <p><i class="material-icons left">info_outline</i><span>{{trans('sensors.no sensors in this node')}}</span></p>
                                         @endif
                                     </dd>
                                 </dl>

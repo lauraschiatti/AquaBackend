@@ -31,19 +31,18 @@
     <meta name="msapplication-TileImage" content="/favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 
+    <style>
+        a{
+            cursor: pointer;
+        }
+
+        .material-icons{
+            color: white;
+        }
+    </style>
+
 </head>
 <body>
-
-<!-- Dropdown Structure -->
-<!--
-<ul id="dropdown1" class="dropdown-content">
-  <li><a href="index.html">Home</a></li>
-  <li><a href="index.html">About</a></li>
-  <li><a href="contribute.html">Contribute</a></li>
-  <li><a href="#">Team</a></li>
-  <li><a href="#">Wiki</a></li>
-</ul>-->
-
 <!-- === NAVBAR === -->
 <header class="primary">
     <div class="navbar-fixed">
@@ -90,8 +89,9 @@
                     <h6 class="light"><strong>{{$downloads}}</strong> {{ trans("general.downloads") }}</h6>
                     <div class="divider"></div>
 
-                    {!! Form::open(['method' => 'DELETE', 'route'=>['users.destroy', $user->id]])!!}
-                    <button type="submit" class="btn btn-medium waves-effect waves-light red"><i class="material-icons">delete</i></button>
+                    <a onclick="showDeleteModal('<?php echo $user -> id ?>');"><i class="material-icons">delete</i></a>
+
+                    {!! Form::open(['method' => 'DELETE', 'route'=>['users.destroy', $user->id], 'id'=>$user->id]) !!}
                     {!! Form::close() !!}
                 </div>
             </div>
@@ -143,8 +143,31 @@
     </section>
 </main>
 
+<!-- Delete Modal Structure -->
+<div id="delete" class="modal">
+    <div class="modal-content center">
+        <h6 class="light">{{ trans("general.sure to delete this?") }}</h6><br>
+        <a href="#" class=" modal-action modal-close btn btn-secundary">No</a>
+        <input type="hidden" id="delete_value">
+        <a class="btn primary" onclick="eliminar();">{{ trans("general.yes") }}</a>
+    </div>
+</div>
+
 <script type="text/javascript" src="/js/jq/jquery.min.js"></script>						<!-- Jquery core JS -->
 <script src="/js/materialize.min.js" type="text/javascript"></script> 					<!-- Materialize core JS -->
 <script src="/js/init.js" type="text/javascript"></script> 					          <!-- Init core JS -->
+<script type="text/javascript">
+    /**** Eliminar usando modal ****/
+    function showDeleteModal(id){
+        $('#delete_value').val(id);
+        $('#delete').openModal();
+    }
+
+    function eliminar(){
+        var id = $('#delete input').val();
+        //$("#"+id).submit();
+        alert(id);
+    }
+</script>
 </body>
 </html>

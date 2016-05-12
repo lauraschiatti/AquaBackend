@@ -27,6 +27,7 @@ return [
     'dashboard' => 'Panel administrativo',
     'general' => 'General',
     'home' => 'Inicio',
+    'go home' => 'ir a inicio',
     'nodes' => 'Nodos',
     'sensors' => 'Sensores',
     'users' => 'Usuarios',

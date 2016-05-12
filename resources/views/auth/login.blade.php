@@ -84,9 +84,9 @@
 
 <div class="footer light">
     <p>{{ trans('login.help') }} <a class="light" href="#"><strong>{{ trans('login.reading our wiki') }}</strong></a> {{ trans('login.or') }}
-        <a class="light" href="{{ url('contact')}}"><strong>{{ trans('login.contacting a human') }}</strong></a></p>
+        <a class="light" href="{{ url('/')}}"><strong>{{ trans('general.go home') }}</strong></a>
+    </p>
 </div>
-
 <script src="/js/jq/jquery.min.js" type="text/javascript"></script>						<!-- Jquery core JS -->
 <script src="/js/materialize.min.js" type="text/javascript"></script> 					<!-- Materialize core JS -->
 </body>

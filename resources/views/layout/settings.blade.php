@@ -6,7 +6,6 @@
 @stop
 
 @section('content')
-
     <div class="desktop show row">
         <!-- Tittle -->
         <div class="linker"><p class="light">{{ trans("general.dashboard") }} > {{ trans("general.settings") }} </p></div>
@@ -31,8 +30,9 @@
                         <div class="divider"></div>
                         <br>
 
-                        {!! Form::open(['method' => 'DELETE', 'route'=>['users.destroy', $user->id]])!!}
-                            <button type="submit" class="btn btn-medium waves-effect waves-light red"><i class="material-icons">delete</i></button>
+                        <a onclick="showDeleteModal('<?php echo $user -> id ?>');"><i class="material-icons">delete</i></a>
+
+                        {!! Form::open(['method' => 'DELETE', 'route'=>['users.destroy', $user->id], 'id'=>$user->id]) !!}
                         {!! Form::close() !!}
                     </div>
                 </div>
@@ -46,56 +46,55 @@
                     @endif
                     <br><br>
 
-
                     <!-- Form -->
                     {!! Form::model($user,[
-                    'method' => 'PUT',
-                    'route'=>['users.update',$user->id]
-                    ]) !!}
-                    <div class="input-field col s12">
-                        <i class="material-icons prefix">person</i>
-                        <input id="name" type="text" class="validate" name="name" value="{{$user->name}}">
-                        <label for="name">{{ trans("general.name") }}</label>
-                    </div>
-                    <br><br>
-                    <div class="input-field col s12">
-                        <i class="material-icons prefix">verified_user</i>
-                        <input id="last-pass" type="password" class="validate" name="last-pass">
-                        <label for="last-pass">{{ trans("settings.last password") }}</label>
-                    </div>
-
-                    <div class="input-field col s12">
-                        <i class="material-icons prefix">lock</i>
-                        <input id="pass" type="password" class="validate" name="pass">
-                        <label for="pass">{{ trans("settings.new password") }}</label>
-                    </div>
-
-                    <div class="input-field col s12">
-                        <i class="material-icons prefix">vpn_key</i>
-                        <input id="pass2" type="password" class="validate" name="pass2">
-                        <label for="pass2">{{ trans("settings.repeat password") }}</label>
-                    </div>
-
-                    <div class="col s12">
-                        <br>
-                        <label>{{ trans("settings.select new timezone") }}</label>
+                        'method' => 'PUT',
+                        'route'=>['users.update',$user->id]
+                        ]) !!}
                         <div class="input-field col s12">
-                            <select name="timezone" class="browser-default">
-                                <option value="{{$user->timezone}}">UTC/GMT -05:00 {{$user->timezone}}</option>
-                                @foreach($zones_array as $t)
-                                    <option value="{{$t['zone']}}">{{$t['diff_from_GMT'] . ' - ' . $t['zone']}}</option>
-                                @endforeach
-                            </select>
+                            <i class="material-icons prefix">person</i>
+                            <input id="name" type="text" class="validate" name="name" value="{{$user->name}}">
+                            <label for="name">{{ trans("general.name") }}</label>
                         </div>
-                    </div>
+                        <br><br>
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">verified_user</i>
+                            <input id="last-pass" type="password" class="validate" name="last-pass">
+                            <label for="last-pass">{{ trans("settings.last password") }}</label>
+                        </div>
 
-                    <!-- FLOATING BUTTONS -->
-                    <div class="fixed-action-btn" id="add">
-                        <button type="submit" class="btn-floating btn-large waves-effect waves-circle waves-light"> <!-- Green -->
-                            <i class="large material-icons">check</i>
-                        </button>
-                    </div>
-                    <!-- FLOATING BUTTONS -->
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">lock</i>
+                            <input id="pass" type="password" class="validate" name="pass">
+                            <label for="pass">{{ trans("settings.new password") }}</label>
+                        </div>
+
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">vpn_key</i>
+                            <input id="pass2" type="password" class="validate" name="pass2">
+                            <label for="pass2">{{ trans("settings.repeat password") }}</label>
+                        </div>
+
+                        <div class="col s12">
+                            <br>
+                            <label>{{ trans("settings.select new timezone") }}</label>
+                            <div class="input-field col s12">
+                                <select name="timezone" class="browser-default">
+                                    <option value="{{$user->timezone}}">UTC/GMT -05:00 {{$user->timezone}}</option>
+                                    @foreach($zones_array as $t)
+                                        <option value="{{$t['zone']}}">{{$t['diff_from_GMT'] . ' - ' . $t['zone']}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- FLOATING BUTTONS -->
+                        <div class="fixed-action-btn" id="add">
+                            <button type="submit" class="btn-floating btn-large waves-effect waves-circle waves-light"> <!-- Green -->
+                                <i class="large material-icons">check</i>
+                            </button>
+                        </div>
+                        <!-- FLOATING BUTTONS -->
                     {!! Form::close() !!}
 
                     <!-- FLOATING BUTTONS -->
@@ -109,6 +108,30 @@
 
             </div>
         </section>
-
    </div>
+
+    <!-- Delete Modal Structure -->
+    <div id="delete" class="modal">
+        <div class="modal-content center">
+            <h6 class="light">{{ trans("general.sure to delete this?") }}</h6><br>
+            <a href="#" class=" modal-action modal-close btn-flat">No</a>
+            <input type="hidden" id="delete_value">
+            <a class="btn primary" onclick="eliminar();">{{ trans("general.yes") }}</a>
+        </div>
+    </div>
+@stop
+
+@section('javascript')
+    <script type="text/javascript">
+        /**** Eliminar usando modal ****/
+        function showDeleteModal(id){
+            $('#delete_value').val(id);
+            $('#delete').openModal();
+        }
+
+        function eliminar(){
+            var id = $('#delete input').val();
+            $("#"+id).submit();
+        }
+    </script>
 @stop
