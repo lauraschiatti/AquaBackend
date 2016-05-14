@@ -40,6 +40,7 @@ class DownloadsController extends Controller
     {
         //return Downloads::all();
         $data = $request::all();
+        return $data;
 
         $download = new Downloads();
         $download->user_id = $data["user_id"];

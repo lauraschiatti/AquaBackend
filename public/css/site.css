@@ -5,6 +5,7 @@
 /***** General *****/
 * { box-sizing: border-box; }
 
+/***** Sticky footer *****/
 body {
     display: flex;
     min-height: 100vh;
@@ -196,7 +197,7 @@ i.medium { font-size: 40px; }
 /***** Footer *****/
 #footer { background: #343E4C; margin: 0px; /*font-family: 'Questrial', sans-serif; */}
 #footer .container { width: 92%; }
-#footer li, #footer a { color: #A5B6C3; }
+#footer li, #footer a { color: #F2F8F8; }
 #footer h5 { color: #F2F8F8; }
 #footer .footer-copyright { color: #F2F8F8; background-color: rgba(51, 51, 51, 0.09); }
 
@@ -209,12 +210,7 @@ i.medium { font-size: 40px; }
 #footer h5 { font-size: 1.4rem; }
 #links { margin-top: 10px; }
 
-#footer #brand-utb {
-    margin-top: 30px;
-    background: url("../img/utb-logo-01.png") no-repeat;
-    min-width: 300px;
-    min-height: 81px;
-}
+
 
 /********************************************
 				        CONTRIBUTE

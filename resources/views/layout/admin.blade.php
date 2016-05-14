@@ -36,140 +36,127 @@
     @yield('css')
 </head>
 <body>
-<header>
-    <div class="navbar-fixed">
-        <nav role="navigation" id="large-top-nav">
-            <div class="nav-wrapper">
+    <header>
+        <div class="navbar-fixed">
+            <nav role="navigation" id="large-top-nav">
+                <div class="nav-wrapper">
 
-                <!-- Small Navigation Bar -->
-                <div class="mobile-nav hide-on-large-only primary" id="small-top-nav">
-                    <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-                    @yield('title')
-                </div>
+                    <!-- Small Navigation Bar -->
+                    <div class="mobile-nav hide-on-large-only primary" id="small-top-nav">
+                        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+                        @yield('title')
+                    </div>
 
-                <!-- Large Navigation Bar -->
+                    <!-- Desktop Menu  -->
+                    <ul class="side-nav fixed hide-on-med-and-down" id="nav-desktop">
+                        <section class="menu-header">
+                            <img src="/img/brand-no-back.png">
+                        </section>
 
-                <!--<ul class="desktop-nav right hide-on-med-and-down">
-                  <li><a href="#"><i class="material-icons">trending_up</i></a></li>
-                </ul>-->
+                        <!--Options-->
+                        <!--<div class="container">-->
+                        <div class="menu-desktop">
+                            <li class="etiquette">{{ trans("general.general") }}</li>
+                            <li><a href="{{url('/')}}"><i class="material-icons left">home</i>{{ trans("general.home") }}</a></li>
+                            <li><a href="{{url('/dashboard')}}"><i class="material-icons left">widgets</i>{{ trans("general.dashboard") }}</a></li>
+                            @if(Auth::check() and Auth::user()->role == 'superadmin')
+                                <ul class="collapsible collapsible-accordion">
+                                    <li><a class="collapsible-header"><i class="material-icons left">games</i>{{ trans("general.nodes") }}</a>
+                                        <div class="collapsible-body">
+                                            <ul>
+                                                <li><a href="{{url('/mynodes')}}"><i class="material-icons left">flag</i>{{ trans("nodes.my nodes") }}</a></li>
+                                                <li><a href="{{url('/nodes')}}"><i class="material-icons left">toys</i>{{ trans("nodes.all nodes") }}</a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            @endif
 
-                <!-- Desktop Menu  -->
-                <ul class="side-nav fixed hide-on-med-and-down" id="nav-desktop">
-                    <section class="menu-header">
-                        <img src="/img/brand-no-back.png">
-                    </section>
-                    <!--<ul class="collection">
-                      <li class="collection-item avatar">
-                        <img src="img/face.jpg" alt="" class="circle">
-                        <span class="title black-text">Username</span>
-                        <p class="black-text">Admin Profile</p>
-                        <a href="#!" class="secondary-content"><i class="right material-icons">chevron_right</i></a>
-                      </li>
-                    </ul>-->
-                    <!--Options-->
-                    <!--<div class="container">-->
-                    <div class="menu-desktop">
-                        <li class="etiquette">{{ trans("general.general") }}</li>
-                        <li><a href="{{url('/')}}"><i class="material-icons left">home</i>{{ trans("general.home") }}</a></li>
-                        <li><a href="{{url('/dashboard')}}"><i class="material-icons left">widgets</i>{{ trans("general.dashboard") }}</a></li>
-                        @if(Auth::check() and Auth::user()->role == 'superadmin')
-                            <ul class="collapsible collapsible-accordion">
-                                <li><a class="collapsible-header"><i class="material-icons left">games</i>{{ trans("general.nodes") }}</a>
-                                    <div class="collapsible-body">
-                                        <ul>
-                                            <li><a href="{{url('/mynodes')}}"><i class="material-icons left">flag</i>{{ trans("nodes.my nodes") }}</a></li>
-                                            <li><a href="{{url('/nodes')}}"><i class="material-icons left">toys</i>{{ trans("nodes.all nodes") }}</a></li>
-                                        </ul>
-                                    </div>
-                                </li>
-                            </ul>
-                        @endif
+                            @if(Auth::check() and Auth::user()->role == 'provider')
+                                <li><a href="{{url('/mynodes')}}"><i class="material-icons left">flag</i>{{ trans("general.nodes") }}</a></li>
+                            @endif
 
-                        @if(Auth::check() and Auth::user()->role == 'provider')
-                            <li><a href="{{url('/mynodes')}}"><i class="material-icons left">flag</i>{{ trans("general.nodes") }}</a></li>
-                        @endif
+                            <li><a href="{{url('/sensors')}}"><i class="material-icons left">place</i>{{ trans("general.sensors") }}</a></li>
 
-                        <li><a href="{{url('/sensors')}}"><i class="material-icons left">place</i>{{ trans("general.sensors") }}</a></li>
+                            @if(Auth::check() and Auth::user()->role == 'superadmin')
+                                <li><a href="{{url('/users')}}"><i class="material-icons left">people</i>{{ trans("general.users") }}</a></li>
+                            @endif
 
-                        @if(Auth::check() and Auth::user()->role == 'superadmin')
-                            <li><a href="{{url('/users')}}"><i class="material-icons left">people</i>{{ trans("general.users") }}</a></li>
-                        @endif
+                            <li class="etiquette">{{ trans("general.configurations") }}</li>
 
-                        <li class="etiquette">{{ trans("general.configurations") }}</li>
+                            @if(Auth::check())
+                                <li><a href="{{url('/settings/'.Auth::user()->id)}}"><i class="material-icons left">settings</i>{{ trans("general.settings") }}</a></li>
+                            @else
+                                <li><a href="{{url('/')}}"><i class="material-icons left">settings</i>{{ trans("general.settings") }}</a></li>
+                            @endif
 
-                        @if(Auth::check())
-                            <li><a href="{{url('/settings/'.Auth::user()->id)}}"><i class="material-icons left">settings</i>{{ trans("general.settings") }}</a></li>
-                        @else
-                            <li><a href="{{url('/')}}"><i class="material-icons left">settings</i>{{ trans("general.settings") }}</a></li>
-                        @endif
+                                <li><a href="https://github.com/IngenieriaDeSistemasUTB/AquaBackend/issues/new"><i class="material-icons left">turned_in</i>{{ trans("general.help &amp; feed") }}</a></li>
+                            <li><a class="modal-trigger" href="#modal1"><i class="material-icons left">power_settings_new</i>{{ trans("general.log out") }}</a></li>
+                        </div>
+                    </ul>
 
+                    <!-- Mobile Menu  -->
+                    <ul class="side-nav" id="nav-mobile">
+                        <section class="menu-header">
+                            <img src="/img/brand-no-back.png">
+                        </section>
+                        <!--Options-->
+                        <div class="menu-mobile">
+                            <li class="etiquette">General</li>
+                            <li><a href="{{url('/dashboard')}}"><i class="material-icons left">widgets</i>{{ trans("general.dashboard") }}</a></li>
+
+                            @if(Auth::check() and Auth::user()->role == 'superadmin')
+                                <ul class="collapsible collapsible-accordion">
+                                    <li><a class="collapsible-header"><i class="material-icons left">games</i>{{ trans("general.nodes") }}</a>
+                                        <div class="collapsible-body">
+                                            <ul>
+                                                <li><a href="{{url('/mynodes')}}"><i class="material-icons left">flag</i>{{ trans("general.my nodes") }}</a></li>
+                                                <li><a href="{{url('/nodes')}}"><i class="material-icons left">toys</i>{{ trans("general.all nodes") }}</a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            @endif
+
+                            @if(Auth::check() and Auth::user()->role == 'provider')
+                                <li><a href="{{url('/mynodes')}}"><i class="material-icons left">flag</i>{{ trans("general.nodes") }}</a></li>
+                            @endif
+
+                            <li><a href="{{url('/sensors')}}"><i class="material-icons left">place</i>{{ trans("general.sensors") }}</a></li>
+
+                            <li class="etiquette">{{ trans("general.configurations") }}</li>
+                            <li><a href="{{url('/settings')}}"><i class="material-icons left">settings</i>{{ trans("general.settings") }}</a></li>
                             <li><a href="https://github.com/IngenieriaDeSistemasUTB/AquaBackend/issues/new"><i class="material-icons left">turned_in</i>{{ trans("general.help &amp; feed") }}</a></li>
-                        <li><a class="modal-trigger" href="#modal1"><i class="material-icons left">power_settings_new</i>{{ trans("general.log out") }}</a></li>
-                    </div>
-                </ul>
+                            <li><a class="modal-trigger" href="#modal1"><i class="material-icons left">power_settings_new</i>{{ trans("general.log out") }}</a></li>
+                        </div>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!-- === NAV BAR === -->
+    <main>
+    <!-- DESKTOP -->
+    @yield('content')
+    <!-- DESKTOP -->
 
-                <!-- Mobile Menu  -->
-                <ul class="side-nav" id="nav-mobile">
-                    <section class="menu-header">
-                        <img src="/img/brand-no-back.png">
-                    </section>
-                    <!--Options-->
-                    <div class="menu-mobile">
-                        <li class="etiquette">General</li>
-                        <li><a href="{{url('/dashboard')}}"><i class="material-icons left">widgets</i>{{ trans("general.dashboard") }}</a></li>
-
-                        @if(Auth::check() and Auth::user()->role == 'superadmin')
-                            <ul class="collapsible collapsible-accordion">
-                                <li><a class="collapsible-header"><i class="material-icons left">games</i>{{ trans("general.nodes") }}</a>
-                                    <div class="collapsible-body">
-                                        <ul>
-                                            <li><a href="{{url('/mynodes')}}"><i class="material-icons left">flag</i>{{ trans("general.my nodes") }}</a></li>
-                                            <li><a href="{{url('/nodes')}}"><i class="material-icons left">toys</i>{{ trans("general.all nodes") }}</a></li>
-                                        </ul>
-                                    </div>
-                                </li>
-                            </ul>
-                        @endif
-
-                        @if(Auth::check() and Auth::user()->role == 'provider')
-                            <li><a href="{{url('/mynodes')}}"><i class="material-icons left">flag</i>{{ trans("general.nodes") }}</a></li>
-                        @endif
-
-                        <li><a href="{{url('/sensors')}}"><i class="material-icons left">place</i>{{ trans("general.sensors") }}</a></li>
-
-                        <li class="etiquette">{{ trans("general.configurations") }}</li>
-                        <li><a href="{{url('/settings')}}"><i class="material-icons left">settings</i>{{ trans("general.settings") }}</a></li>
-                        <li><a href="https://github.com/IngenieriaDeSistemasUTB/AquaBackend/issues/new"><i class="material-icons left">turned_in</i>{{ trans("general.help &amp; feed") }}</a></li>
-                        <li><a class="modal-trigger" href="#modal1"><i class="material-icons left">power_settings_new</i>{{ trans("general.log out") }}</a></li>
-                    </div>
-                </ul>
-            </div>
-        </nav>
+    <!-- Log out modal Structure -->
+    <div id="modal1" class="modal">
+        <div class="modal-content center">
+            <h6 class="light">{{ trans("general.would you like to close admin session?") }} </h6><br>
+            @if(Auth::check() and Auth::user()->role == 'superadmin')
+                <a href="{{url('/dashboard')}}" class=" modal-action modal-close btn-flat">No</a>
+            @else
+                <a href="{{url('/')}}" class=" modal-action modal-close btn-flat">No</a>
+            @endif
+            <a href="{{url('/logout')}}" class="btn primary">{{ trans("general.yes") }}</a>
+        </div>
     </div>
-</header>
-<!-- === NAV BAR === -->
-<main>
-<!-- DESKTOP -->
-@yield('content')
-<!-- DESKTOP -->
+    </main>
+    <script src="/js/materialize.min.js" type="text/javascript"></script> 					<!-- Materialize core JS -->
+    <script src="/js/init.js" type="text/javascript"></script> 					          <!-- Init core JS -->
 
-<!-- Log out modal Structure -->
-<div id="modal1" class="modal">
-    <div class="modal-content center">
-        <h6 class="light">{{ trans("general.would you like to close admin session?") }} </h6><br>
-        @if(Auth::check() and Auth::user()->role == 'superadmin')
-            <a href="{{url('/dashboard')}}" class=" modal-action modal-close btn-flat">No</a>
-        @else
-            <a href="{{url('/')}}" class=" modal-action modal-close btn-flat">No</a>
-        @endif
-        <a href="{{url('/logout')}}" class="btn primary">{{ trans("general.yes") }}</a>
-    </div>
-</div>
-</main>
-<script src="/js/materialize.min.js" type="text/javascript"></script> 					<!-- Materialize core JS -->
-<script src="/js/init.js" type="text/javascript"></script> 					          <!-- Init core JS -->
+    @yield('javascript')
 
-@yield('javascript')
-
-</body>
+    </body>
 </html>

@@ -40,6 +40,7 @@ return [
     //FOR NAVBAR
     'contribute' => 'Contribuye',
     'team' => 'Equipo',
+    'terms' => 'Términos',
 
     //FOR BOTTOM MENUS AND FOOTER
     'contact support' => 'Soporte',
