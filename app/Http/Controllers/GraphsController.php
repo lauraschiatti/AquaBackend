@@ -57,7 +57,7 @@ class GraphsController extends Controller
                 $data = self::getData($node);
             }while(!is_array($data));
         }else{
-            $data = "nonodes";
+            $data = "no nodes";
         }
         return response()->json($data);
     }

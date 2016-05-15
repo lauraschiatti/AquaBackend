@@ -31,14 +31,13 @@
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
     </head>
     <body>
-
         <!-- === NAVBAR === -->
         <header class="primary">
             <div class="navbar-fixed">
                 <nav>
                     <div class="nav-wrapper">
                         <a href="{{ url('/')}}" class="brand hide-on-med-and-down"><img src="/img/brand.png" alt="..."/></a>
-                        <a href="#"href="{{ url('/')}}" data-activates="mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+                        <a data-activates="mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
 
                         <ul class="right hide-on-med-and-down">
                             <li><a href="{{ url('/')}}">{{ trans("general.home") }}</a></li>
@@ -46,32 +45,6 @@
                             <li><a href="{{ url('team')}}">{{ trans("general.team") }}</a></li>
                             <li><a href="https://github.com/IngenieriaDeSistemasUTB/AquaBackend/wiki" target="_blank">Wiki</a></li>
                             <li><a href="https://github.com/IngenieriaDeSistemasUTB/AquaBackend/wiki/_new" target="_blank">{{ trans("general.contact") }}</a></li>
-                            <!-- Dropdown Structure -->
-                            <li><a class="dropdown-button" href="#" data-beloworigin="true" data-activates="dropdown2"><i class="material-icons right">arrow_drop_down</i>{{ Config::get('languages')[App::getLocale()] }}</a></li>
-                            <ul id="dropdown2" class="dropdown-content">
-                                @foreach (Config::get('languages') as $lang => $language)
-                                    <li><a href="{{ route('lang.switch', $lang) }}">{{$language}}</a></li>
-                                @endforeach
-                            </ul>
-
-                            <!-- Sign up-in Buttons -->
-                            @if(Auth::check())
-                                <li><a class="dropdown-button" href="#" data-beloworigin="true" data-activates="dropdown1"><i class="material-icons right">arrow_drop_down</i>{{ trans("general.hi") }} <span style="text-transform: capitalize; font-weight: lighter;">{{(Auth::user()->name)}}</span></a></li>
-                                <!-- Dropdown Structure -->
-                                <ul id="dropdown1" class="dropdown-content">
-                                    @if(Auth::user()->role == 'superadmin' or Auth::user()->role == 'provider')
-                                        <li><a href="{{url('settings/'.Auth::user()->id)}}">{{ trans("general.settings") }}</a></li>
-                                        <li><a href="{{ url('dashboard')}}">{{ trans("general.dashboard") }}</a></li>
-                                    @else
-                                        <li><a href="{{url('profile/settings/'.Auth::user()->id)}}">{{ trans("general.settings") }}</a></li>
-                                    @endif
-                                    <li><a href="{{ url('logout')}}">{{ trans("general.log out") }}</a></li>
-                                </ul>
-                            @else
-                                <li><a href="{{ url('register')}}" class="btn-flat waves-effect waves-light btn">{{ trans("general.sign up") }}</a></li>
-                                <li><a href="{{ url('login')}}" class="btn btn-log waves-effect waves-dark">{{ trans("general.login") }}</a></li>
-                            @endif
-
                         </ul>
 
                         <ul class="side-nav center" id="mobile">
@@ -110,7 +83,6 @@
             </div>
         </header>
         <!-- === NAVBAR === -->
-
         @yield('content')
     </body>
 </html>

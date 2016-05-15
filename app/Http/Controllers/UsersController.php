@@ -19,8 +19,13 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users=User::all(); //json data
-        return view('users.index',compact('users')); //pass json data to index view
+        $users=User::all();
+
+        if(!$users->isEmpty()){
+            $users = null;
+        }
+
+        return view('users.index',compact('users'));
     }
 
     /**
@@ -63,32 +68,7 @@ class UsersController extends Controller
             $newUser->role = $role;
             $newUser->timezone = $timezone;
             $newUser->save();
-
-            //profile picture
-            /*$url = Input::get('URL');
-
-            $user = User::where("email", "=", Input::get('email'))->first();
-            $owner_id =$user->id;
-
-            $extension = pathinfo($url, PATHINFO_EXTENSION);
-            $filename = $owner_id.'.'. $extension; //photo of a user beginning with "u"
-
-            //get file content from url
-            $file = file_get_contents($url);
-            $save = file_put_contents('users_photos/'.$filename, $file);
-
-            if($save){
-                try {
-                    //return var_dump('file downloaded to images folder and saved to database as well.......');
-                } catch (Exception $e) {
-                    //delete if no db things........
-                    File::delete('users_photos/'. $filename);
-                    //return var_dump('filenot downloaded.......');
-                }
-            }*/
             return redirect('users');
-
-            //return $newUser;
 
         }else{
             return redirect('users/create')->with('error', ' USER EXISTS')

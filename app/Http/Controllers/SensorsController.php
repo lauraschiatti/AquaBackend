@@ -17,8 +17,13 @@ class SensorsController extends Controller
      */
     public function index()
     {
-        $sensors=Sensors::all(); //json data
-        return view('sensors.index',compact('sensors')); //pass json data to index view
+        $sensors = Sensors::all();
+
+        if(!$sensors->isEmpty()){
+            $sensors = null;
+        }
+
+        return view('sensors.index',compact('sensors'));
     }
 
     /**

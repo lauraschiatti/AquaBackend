@@ -103,6 +103,7 @@
                         <!--Options-->
                         <div class="menu-mobile">
                             <li class="etiquette">General</li>
+                            <li><a href="{{url('/')}}"><i class="material-icons left">home</i>{{ trans("general.home") }}</a></li>
                             <li><a href="{{url('/dashboard')}}"><i class="material-icons left">widgets</i>{{ trans("general.dashboard") }}</a></li>
 
                             @if(Auth::check() and Auth::user()->role == 'superadmin')

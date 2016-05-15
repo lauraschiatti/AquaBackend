@@ -16,6 +16,12 @@ main {
     flex: 1 0 auto;
 }
 
+/****** Footer *****/
+.logo{
+    width: 300px;
+    margin-top: 12px;
+}
+
 /***** Palette *****/
 .primary { background: #007EE5 !important; }
 

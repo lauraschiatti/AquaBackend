@@ -11,7 +11,7 @@ $(document).ready(function () {
     });
 
     $.getJSON('/dashboard/graph', function(object) {
-        if(!(object === "nonodes")){
+        if(object !== "no nodes"){
             var date = new Array();
             var value = new Array();
 

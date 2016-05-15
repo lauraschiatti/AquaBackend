@@ -42,7 +42,7 @@
         <nav>
             <div class="nav-wrapper">
                 <a href="{{ url('/')}}" class="brand hide-on-med-and-down"><img src="/img/brand.png" alt="..."/></a>
-                <a href="#"href="{{ url('/')}}" data-activates="mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+                <a data-activates="mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
 
                 <ul class="right hide-on-med-and-down">
                     <li><a href="{{ url('/')}}">{{ trans("general.home") }}</a></li>
@@ -170,7 +170,7 @@
             <!-- Small -->
             <div class="col s12 show-on-small hide-on-med-and-up center" id="details">
                 <div class="container">
-                    <img src="/img/utb-logo-03.png" alt=""/>
+                        <img src="/img/utb-logo-01.png" alt="" class="logo"/>
                 </div>
                 <ul class="light">
                     <li><strong>{{ trans("general.technological campus") }}</strong></li>
@@ -184,7 +184,7 @@
             <!-- Brand -->
             <div class="col l4 hide-on-med-and-down">
                 <div class="container">
-                    <a target="_blank" href="http://www.unitecnologica.edu.co/"><img src="/img/utb-logo-01.png" alt="" style="width: 300px; margin-top: 12px";></a>
+                    <a target="_blank" href="http://www.unitecnologica.edu.co/"><img src="/img/utb-logo-01.png" alt="" class="logo"></a>
                 </div>
             </div>
             <!-- Brand -->

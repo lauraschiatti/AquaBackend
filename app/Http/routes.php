@@ -13,6 +13,7 @@
 Route::get('/', function(){
     return view('layout.home');
 });
+
 Route::get('home', function(){
     return view('layout.home');
 });
@@ -23,7 +24,9 @@ Route::get('contribute', function(){
    return view('layout.contribute');
 });
 
-Route::get('team', 'TeamController@getTeam');
+Route::get('team', function(){
+    return view('layout.team');
+});
 
 Route::get('terms', function(){
     return view('layout.terms');
@@ -31,12 +34,6 @@ Route::get('terms', function(){
 
 //Graphs
 Route::get('home/graph', 'GraphsController@getHomeGraph');
-
-/*Route::get('contact', function(){
-    return view('layout.contact');
-});
-
-Route::post('contact', 'UsersController@contact');*/
 
 // Authentication routes
 Route::get('login', 'Auth\AuthController@getLogin');
@@ -52,6 +49,7 @@ Route::get('data', 'DataController@chooseData');
 Route::get('data/table', 'DataController@showData');
 
 Route::group(['middleware' => 'auth'], function() {
+
     Route::get('settings/{id}', function($id){
 
         if (Auth::user()->role == 'superadmin' || Auth::user()->id == $id){
@@ -81,9 +79,9 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::get('dashboard', 'DashboardController@showData');
 
-    Route::resource('users', 'UsersController');
 
-    Route::resource('nodes', 'NodesController');
+    Route::get('mynodes', 'NodesController@getMyNodes');
+
 
     Route::get('sensorsorder', ['as' => 'order', function(){
         return view('nodes.sensors_order');
@@ -97,29 +95,21 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::post('sensorsorderupdate', 'NodesController@updateSensorsByNode');
 
-    Route::get('mynodes', 'NodesController@getMyNodes');
-
-    Route::resource('sensors', 'SensorsController');
-
     //Sync random generated data routes
     Route::get('sync/{data}', 'SyncController@postData');
 
-    //Downloads
-    Route::resource('downloads', 'DownloadsController');
-
     Route::get('dashboard/graph', 'GraphsController@getDashboardGraph');
 
-    //Routes for testing
-    Route::get('sensorsbynode', function(){
-        return \App\SensorsByNode::all();
+    Route::group(['middleware' => 'role'], function()
+    {
+        Route::resource('nodes', 'NodesController', ['only' => ['index']]);
+
+        Route::resource('users', 'UsersController', ['only' => ['index']]);
     });
 
-    Route::get('timezone', function(){
-        return config('app.timezone');
-    });
+    Route::resource('sensors', 'SensorsController');
 
-    Route::get('downloads', function(){
-        return \App\Downloads::all();
-    });
 
+    //Downloads
+    Route::resource('downloads', 'DownloadsController');
 });

@@ -21,7 +21,12 @@ class NodesController extends Controller
      */
     public function index()
     {
-        $nodes=Nodes::all(); //json data
+        $nodes = Nodes::all(); //json data
+
+        if(!$nodes->isEmpty()){
+            $nodes = null;
+        }
+
         return view('nodes.index',compact('nodes')); //pass json data to index view
     }
 
@@ -80,7 +85,7 @@ class NodesController extends Controller
 
         $node = Nodes::where("name", "=", $name)->first();
 
-        if($node == null){
+        if($node){
             $newNode = new Nodes();
             $newNode->id = $id;
             $newNode->name = $name;
@@ -118,18 +123,12 @@ class NodesController extends Controller
             return Redirect::route('order')->with('data', $sensors)
                                            ->with('id', $id);
 
-            //return Request::all();
-             //return $sensors_data;
-             //return $newNode;
-             //return Nodes::where("name", "=", $name)->first();;
-
         }else{
             return redirect('nodes/create')->with('error', ' NODE NAME EXISTS')
                                            ->with('name', $name)
                                            ->with('latitude', $latitude)
                                            ->with('longitude', $longitude);
         }
-
     }
 
     /**
@@ -275,25 +274,6 @@ class NodesController extends Controller
                     $sensors_types_by_unit[$sensor->type][] = $sensor->unit;
                 }
 
-                //$sensorsbynode =  SensorsByNode::where("node_id", "=", $id)->get()->toArray();
-
-
-                /*$j = 0;
-                foreach($sensores as $sensor){
-                    $aux = 0;
-                    for($i = 0; $i<count($sensorsbynode); $i++){
-                        if( $sensor->id ==$sensorsbynode[$i]["sensor_type_id"]){
-                            $aux += 1;
-                        }
-                    }
-                    $sensors_types_by_unit_number[$sensor->unit][] =  $aux;
-                    $j++;
-                }*/
-
-                /*for($i = 0; $i < count($sensors_number); $i++){
-                    $sensors_types_by_unit_number[$i] = trim($sensors_types_by_unit_number[$i]);
-                }*/
-
                 //return $sensors_types_by_unit_number["g/m3"];
                 return view('nodes.edit', compact('node', 'sensors', 'size', 'sensors_types', 'sensors_types_by_unit'));//, 'sensors_types_by_unit_number'));
             }else{
@@ -323,7 +303,7 @@ class NodesController extends Controller
                        ->Where("id", "!=", $id)
                        ->first();
 
-        if($node == null){
+        if($node){
             Nodes::where('id', '=', $id)->update(['name' => $name, 'latitude' => $latitude, 'longitude' => $longitude, 'type' => $type]);
 
             $sensors_data = Request::all();
@@ -379,7 +359,7 @@ class NodesController extends Controller
 
                 SensorsByNode::where("node_id", "=", $id)->delete();
 
-                if(Auth::check() && Auth::user()->role == 'superadmin'){
+                if(Auth::user()->role == 'superadmin'){
                     return redirect('nodes');
                 }else{
                     return redirect('mynodes');
@@ -404,7 +384,7 @@ class NodesController extends Controller
         }else{
             $nodes = null;
         }
-        return view('nodes.mynodes',compact('nodes')); //pass json data to index view
+        return view('nodes.mynodes',compact('nodes'));
 
     }
 
@@ -486,7 +466,7 @@ class NodesController extends Controller
 
     function generateHash(){
         //String
-        $string = "ABCDEFabcdef1234567890";
+        $string = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
 
         //String length
         $string_length = strlen($string);

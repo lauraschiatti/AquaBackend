@@ -27,26 +27,28 @@
                 </thead>
 
                 <tbody>
-                @foreach ($nodes as $node)
-                    <tr>
-                        <td>{{ $node->id }}</td>
-                        <td>{{ $node->name }}</td>
-                        <td>{{ $node->longitude }}</td>
-                        <td>{{ $node->latitude }}</td>
-                        <td>{{ $node->type }}</td>
-                        <td>
-                            <a href="{{url('nodes',$node->id)}}"><i class="material-icons">visibility</i></a>
+                @if($nodes)
+                    @foreach ($nodes as $node)
+                        <tr>
+                            <td>{{ $node->id }}</td>
+                            <td>{{ $node->name }}</td>
+                            <td>{{ $node->longitude }}</td>
+                            <td>{{ $node->latitude }}</td>
+                            <td>{{ $node->type }}</td>
+                            <td>
+                                <a href="{{url('nodes',$node->id)}}"><i class="material-icons">visibility</i></a>
 
-                            @if(Auth::check() and Auth::user()->role == 'superadmin')
-                                <a href="{{route('nodes.edit', $node->id)}}"><i class="material-icons">edit</i></a>
-                                <a onclick="showDeleteModal('<?php echo $node -> id ?>');"><i class="material-icons">delete</i></a>
+                                @if(Auth::check() and Auth::user()->role == 'superadmin')
+                                    <a href="{{route('nodes.edit', $node->id)}}"><i class="material-icons">edit</i></a>
+                                    <a onclick="showDeleteModal('<?php echo $node -> id ?>');"><i class="material-icons">delete</i></a>
 
-                                {!! Form::open(['method' => 'DELETE', 'route'=>['nodes.destroy', $node->id], 'id'=>$node->id]) !!}
-                                {!! Form::close() !!}
-                            @endif
-                        </td>
-                    </tr>
-                @endforeach
+                                    {!! Form::open(['method' => 'DELETE', 'route'=>['nodes.destroy', $node->id], 'id'=>$node->id]) !!}
+                                    {!! Form::close() !!}
+                                @endif
+                            </td>
+                        </tr>
+                    @endforeach
+                @endif
                 </tbody>
             </table>
         </div>

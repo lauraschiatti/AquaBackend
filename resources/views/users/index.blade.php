@@ -25,26 +25,28 @@
                 </thead>
 
                 <tbody>
-                @foreach ($users as $user)
-                    <tr>
-                        <td>{{ $user->id }}</td>
-                        <td>{{ $user->email }}</td>
-                        <td>{{ $user->role }}</td>
-                        <td>
-                            <div class="buttons">
-                                <a href="{{url('users',$user->id)}}"><i class="material-icons">visibility</i></a>
+                @if($users)
+                    @foreach ($users as $user)
+                        <tr>
+                            <td>{{ $user->id }}</td>
+                            <td>{{ $user->email }}</td>
+                            <td>{{ $user->role }}</td>
+                            <td>
+                                <div class="buttons">
+                                    <a href="{{url('users',$user->id)}}"><i class="material-icons">visibility</i></a>
 
-                                @if(Auth::check() and Auth::user()->role == 'superadmin')
-                                    <!--<a href="{{route('users.edit', $user->id)}}"><i class="material-icons">edit</i></a>-->
-                                    <a onclick="showDeleteModal('<?php echo $user -> id ?>');"><i class="material-icons">delete</i></a>
+                                    @if(Auth::check() and Auth::user()->role == 'superadmin')
+                                        <!--<a href="{{route('users.edit', $user->id)}}"><i class="material-icons">edit</i></a>-->
+                                        <a onclick="showDeleteModal('<?php echo $user -> id ?>');"><i class="material-icons">delete</i></a>
 
-                                    {!! Form::open(['method' => 'DELETE', 'route'=>['users.destroy', $user->id], 'id'=>$user->id]) !!}
-                                    {!! Form::close() !!}
-                                @endif
-                            </div>
-                        </td>
-                    </tr>
-                @endforeach
+                                        {!! Form::open(['method' => 'DELETE', 'route'=>['users.destroy', $user->id], 'id'=>$user->id]) !!}
+                                        {!! Form::close() !!}
+                                    @endif
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
+                @endif
                 </tbody>
             </table>
         </div>

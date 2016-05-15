@@ -17,42 +17,12 @@ class DashboardController extends Controller
      */
     public function showData(){
 
-        if(Auth::check()){
-            $user = Auth::user();
-        }else{
-            $user = "user";
-        }
-
-        if(Auth::check()){
-            $mynodes = Nodes::where("user_id", "=", Auth::user()->id)->get()->count();
-
-        }else{
-            $mynodes = 0;
-        }
-
+        $user = Auth::user();
+        $mynodes = Nodes::where("user_id", "=", Auth::user()->id)->get()->count();
         $sensors = Sensors::all()->count();
-
-        /*if ($sensors->isEmpty()){
-            $sensors = 0;
-        }*/
-
         $nodes = Nodes::all()->count();
-
-        /*if ($nodes->isEmpty()){
-            $nodes = 0;
-        }*/
-
         $users = User::all()->count();
-
-        /*if ($users->isEmpty()){
-            $users = 0;
-        }*/
-
         $downloads = Downloads::all()->count();
-
-        /*if ($downloads->isEmpty()){
-            $downloads = 0;
-        }*/
 
         return view('layout.dashboard', compact('user', 'sensors', 'nodes','mynodes', 'users', 'downloads'));
     }
