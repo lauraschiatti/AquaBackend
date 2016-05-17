@@ -14,8 +14,8 @@ class CreateSensorsbynodeTable extends Migration
     {
         Schema::create('sensorsbynode', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('node_id')->unsigned();
-            $table->string('sensor_type_id')->unsigned();
+            $table->integer('node_id')->unsigned();
+            $table->integer('sensor_type_id')->unsigned();
             $table->integer('weight')->unsigned();
             $table->timestamps();
 

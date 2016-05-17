@@ -19,4 +19,20 @@ class HomeController extends Controller
         }
         return back();
     }
+
+    public function getHome(){
+        return view('layout.home');
+    }
+
+    public function getContribute(){
+        return view('layout.contribute');
+    }
+
+    public function getTeam(){
+        return view('layout.team');
+    }
+
+    public function getTerms(){
+        return view('layout.terms');
+    }
 }

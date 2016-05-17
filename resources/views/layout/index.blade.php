@@ -151,7 +151,7 @@
                     <h5>{{ trans("general.contribute") }}</h5>
                     <ul>
                         <li><a href="https://github.com/IngenieriaDeSistemasUTB/AquaBackend.git" target="_blank">Github</a></li>
-                        <li><a href="#!">Twitter</a></li>
+                        <li><a href="{{ url('contribute')}}">{{ trans("general.contribute") }}</a></li>
                         <li><a href="#!">Google</a></li>
                     </ul>
                 </div>

@@ -10,28 +10,18 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-Route::get('/', function(){
-    return view('layout.home');
-});
 
-Route::get('home', function(){
-    return view('layout.home');
-});
+Route::get('/', 'HomeController@getHome');
+
+Route::get('home', 'HomeController@getHome');
 
 Route::get('lang/{lang}', ['as'=>'lang.switch', 'uses'=>'HomeController@switchLanguage']);
 
-Route::get('contribute', function(){
-   return view('layout.contribute');
-});
+Route::get('contribute', 'HomeController@getContribute');
 
-Route::get('team', function(){
-    return view('layout.team');
-});
+Route::get('team', 'HomeController@getTeam');
 
-Route::get('terms', function(){
-    return view('layout.terms');
-});
-
+Route::get('terms', 'HomeController@getTerms');
 //Graphs
 Route::get('home/graph', 'GraphsController@getHomeGraph');
 
@@ -100,15 +90,11 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::get('dashboard/graph', 'GraphsController@getDashboardGraph');
 
-    Route::group(['middleware' => 'role'], function()
-    {
-        Route::resource('nodes', 'NodesController', ['only' => ['index']]);
+    Route::resource('nodes', 'NodesController');
 
-        Route::resource('users', 'UsersController', ['only' => ['index']]);
-    });
+    Route::resource('users', 'UsersController');
 
     Route::resource('sensors', 'SensorsController');
-
 
     //Downloads
     Route::resource('downloads', 'DownloadsController');

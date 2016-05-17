@@ -19,13 +19,18 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users=User::all();
 
-        if(!$users->isEmpty()){
-            $users = null;
+        if (Auth::user()->role == 'superadmin'){
+            $users=User::all();
+
+            if(!$users->isEmpty()){
+                $users = null;
+            }
+
+            return view('users.index',compact('users'));
+        }else{
+            return abort(401);
         }
-
-        return view('users.index',compact('users'));
     }
 
     /**

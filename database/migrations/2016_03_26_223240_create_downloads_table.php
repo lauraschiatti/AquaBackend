@@ -17,6 +17,8 @@ class CreateDownloadsTable extends Migration
             $table->string('user_id')->unsigned();
             $table->json('sensors');
             $table->timestamps();
+
+            /*$table->foreign('user_id')->references('id')->on('users');*/
         });
     }
 

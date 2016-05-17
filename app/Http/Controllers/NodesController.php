@@ -11,6 +11,7 @@ use App\Sensors;
 use App\SensorsByNode;
 use Illuminate\Support\Facades\Input;
 use Auth;
+use Symfony\Component\Routing\Matcher\ApacheUrlMatcher;
 
 class NodesController extends Controller
 {
@@ -21,13 +22,17 @@ class NodesController extends Controller
      */
     public function index()
     {
-        $nodes = Nodes::all(); //json data
+        if (Auth::user()->role == 'superadmin'){
+            $nodes = Nodes::all(); //json data
 
-        if(!$nodes->isEmpty()){
-            $nodes = null;
+            if ($nodes->isEmpty()) {
+                $nodes = null;
+            }
+
+            return view('nodes.index',compact('nodes')); //pass json data to index view
+        }else{
+            return abort(401);
         }
-
-        return view('nodes.index',compact('nodes')); //pass json data to index view
     }
 
     /**

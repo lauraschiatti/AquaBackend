@@ -75,19 +75,13 @@ class SensorsController extends Controller
      */
     public function show($id)
     {
-       // if (Auth::user()->role == 'superadmin' || Auth::user()->id == $id){
+        /*$sensor = Sensors::where("id", "=", $id)->first();
 
-            $sensor = Sensors::where("id", "=", $id)->first();
-
-            //if($sensor){
-                return view('sensors.show',compact('sensor'));
-           /* }else{
-                return abort(404);
-            }
+        if($sensor) {
+            return view('sensors.show', compact('sensor'));
         }else{
-            return abort(401);
+            abort(404);
         }*/
-
     }
 
     /**

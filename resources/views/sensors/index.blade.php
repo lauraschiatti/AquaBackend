@@ -26,23 +26,25 @@
                 </thead>
 
                 <tbody>
-                @foreach ($sensors as $sensor)
-                    <tr>
-                        <td>{{ $sensor->type }}</td>
-                        <td>{{ $sensor->unit }}</td>
-                        <td>
-                            @if(Auth::check() and Auth::user()->role == 'superadmin')
-                                <!--<a href="{{url('sensors',$sensor->id)}}"><i class="material-icons">visibility</i></a>-->
-                                <a href="{{route('sensors.edit', $sensor->id)}}"><i class="material-icons">edit</i></a>
+                @if($sensors)
+                    @foreach ($sensors as $sensor)
+                        <tr>
+                            <td>{{ $sensor->type }}</td>
+                            <td>{{ $sensor->unit }}</td>
+                            <td>
+                                @if(Auth::check() and Auth::user()->role == 'superadmin')
+                                    <!--<a href="{{url('sensors',$sensor->id)}}"><i class="material-icons">visibility</i></a>-->
+                                    <a href="{{route('sensors.edit', $sensor->id)}}"><i class="material-icons">edit</i></a>
 
-                                <a onclick="showDeleteModal('<?php echo $sensor -> id ?>');"><i class="material-icons">delete</i></a>
+                                    <a onclick="showDeleteModal('<?php echo $sensor -> id ?>');"><i class="material-icons">delete</i></a>
 
-                                {!! Form::open(['method' => 'DELETE', 'route'=>['sensors.destroy', $sensor->id], 'id'=>$sensor->id]) !!}
-                                {!! Form::close() !!}
-                            @endif
-                        </td>
-                    </tr>
-                @endforeach
+                                    {!! Form::open(['method' => 'DELETE', 'route'=>['sensors.destroy', $sensor->id], 'id'=>$sensor->id]) !!}
+                                    {!! Form::close() !!}
+                                @endif
+                            </td>
+                        </tr>
+                    @endforeach
+                @endif
                 </tbody>
             </table>
         </div>
