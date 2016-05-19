@@ -23,7 +23,7 @@ class UsersController extends Controller
         if (Auth::user()->role == 'superadmin'){
             $users=User::all();
 
-            if(!$users->isEmpty()){
+            if($users->isEmpty()){
                 $users = null;
             }
 

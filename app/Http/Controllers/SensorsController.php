@@ -19,7 +19,7 @@ class SensorsController extends Controller
     {
         $sensors = Sensors::all();
 
-        if(!$sensors->isEmpty()){
+        if($sensors->isEmpty()){
             $sensors = null;
         }
 

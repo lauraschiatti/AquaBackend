@@ -93,21 +93,22 @@
             </div>
 
             {!! Form::open(['url' => 'downloads']) !!}
-            <div class="row container">
-                <a class="dropdown-button btn waves-effect waves-light right blue darken-1" href="#!" data-activates="files">
-                    <i class="mdi-editor-vertical-align-bottom left"></i> Download
-                </a>
-                @if(Auth::check())
-                <!--inputs-->
-                <input type="text" name="sensors" value="{{$sensors}}" style="display: none;">
-                <input type="text" name="user_id" value="{{Auth::user()->id}}" style="display: none;">
+            @if(Auth::check())
+                <div class="row container">
+                    <a class="dropdown-button btn waves-effect waves-light right blue darken-1" href="#!" data-activates="files">
+                        <i class="mdi-editor-vertical-align-bottom left"></i> Download
+                    </a>
 
-                <ul id="files" class="dropdown-content active">
-                    <li><button type="submit" id="csv">csv</button></li>
-                    <li><a id="excel" href="#" download="">excel</a></li>
-                </ul>
-                @endif
-            </div>
+                    <!--inputs-->
+                    <input type="text" name="sensors" value="{{$sensors}}" style="display: none;">
+                    <input type="text" name="user_id" value="{{Auth::user()->id}}" style="display: none;">
+
+                    <ul id="files" class="dropdown-content active">
+                        <li><button type="submit" id="csv">csv</button></li>
+                        <li><a id="excel" href="#" download="">excel</a></li>
+                    </ul>
+                </div>
+            @endif
             {!! Form::close() !!}
         @endif
 

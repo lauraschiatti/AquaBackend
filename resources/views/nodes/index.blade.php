@@ -12,6 +12,10 @@
         <h4 class="light">{{ trans("general.nodes") }}</h4>
         <div class="divider"></div>
 
+        @if (session('language'))
+            <input type="text" value="{{session('language')}}">
+        @endif
+
         <!-- Table -->
         <div class="col s12">
             <table class="striped">

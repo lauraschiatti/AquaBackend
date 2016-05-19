@@ -17,8 +17,6 @@ $(document).ready(function () {
         var data = object["data"];
         var count = data.length;
 
-
-
         for(var i=0; i<count; i++){
             var year = data[i]["time"][0]+data[i]["time"][1]+data[i]["time"][2]+data[i]["time"][3];
             var month = data[i]["time"][4]+data[i]["time"][5];

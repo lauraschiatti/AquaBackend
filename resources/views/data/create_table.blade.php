@@ -23,7 +23,7 @@
             $(".datepicker").datepicker({ dateFormat: 'yymmdd' });
             $('.timepicker').timepicker({
                 'timeFormat': 'H:i:s',
-                'step': 1
+                'step': 1 //cada un minuto
             });
         });
     </script>

@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
+use Cookie;
 
 class HomeController extends Controller
 {
@@ -17,6 +16,7 @@ class HomeController extends Controller
         if (array_key_exists($language, Config::get('languages'))) {
             Session::set('applocale', $language);
         }
+
         return back();
     }
 

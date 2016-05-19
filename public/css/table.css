@@ -65,3 +65,15 @@ input{
 #date input {
     border-bottom: 1px solid #007EE5;
 }
+
+/***** Download dropdown******/
+.dropdown-content button {
+    padding: 1rem 1rem;
+    color: #007EE5;
+    font-weight: 400;
+}
+
+.dropdown-content li > a {
+    text-align: center;
+    font-weight: 400;
+}
