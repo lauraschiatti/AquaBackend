@@ -90,7 +90,7 @@ class NodesController extends Controller
 
         $node = Nodes::where("name", "=", $name)->first();
 
-        if($node){
+        if(!$node){
             $newNode = new Nodes();
             $newNode->id = $id;
             $newNode->name = $name;
@@ -308,7 +308,7 @@ class NodesController extends Controller
                        ->Where("id", "!=", $id)
                        ->first();
 
-        if($node){
+        if(!$node){
             Nodes::where('id', '=', $id)->update(['name' => $name, 'latitude' => $latitude, 'longitude' => $longitude, 'type' => $type]);
 
             $sensors_data = Request::all();
