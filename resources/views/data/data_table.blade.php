@@ -30,6 +30,7 @@
                 var csv = $("#data_table").table2CSV({
                     delivery: 'download'
                 });
+
                 window.open('data:text/csv;charset=UTF-8,' + encodeURIComponent(csv));
             });
 
@@ -39,7 +40,6 @@
                     , datatype: 'table'
                     , returnUri: true
                 });
-
 
                 $(this).attr('download', 'ExportToExcel.xls').attr('href', uri).attr('target', '_blank');
             });

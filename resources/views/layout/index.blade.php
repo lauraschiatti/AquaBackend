@@ -193,12 +193,7 @@
     </div>
 
     <!-- Footer -->
-    <div class="footer-copyright center">
-        <div class="container light">
-            &#60;&#47;&#62; {{ trans("general.with") }} <span class="red-text">&#10084;</span> {{ trans("general.in") }} Cartagena de Indias, D.T. {{ trans("general.and") }} C - Colombia
-            <!--<a class="right hide-on-small-only" href="#home">{{ trans("general.back to top") }}</a>-->
-        </div>
-    </div>
+
 </footer>
 
 <!-- === FOOTER === -->
